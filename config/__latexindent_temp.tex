@@ -1,0 +1,42 @@
+% import txfont 
+\DeclareSymbolFont{lettersA}{U}{txmia}{m}{it}
+\DeclareMathSymbol{\m@thbbch@rA}{\mathord}{lettersA}{129}
+\DeclareMathSymbol{\m@thbbch@rB}{\mathord}{lettersA}{130}
+\DeclareMathSymbol{\m@thbbch@rC}{\mathord}{lettersA}{131}
+\DeclareMathSymbol{\m@thbbch@rD}{\mathord}{lettersA}{132}
+\DeclareMathSymbol{\m@thbbch@rE}{\mathord}{lettersA}{133}
+\DeclareMathSymbol{\m@thbbch@rF}{\mathord}{lettersA}{134}
+\DeclareMathSymbol{\m@thbbch@rG}{\mathord}{lettersA}{135}
+\DeclareMathSymbol{\m@thbbch@rH}{\mathord}{lettersA}{136}
+\DeclareMathSymbol{\m@thbbch@rI}{\mathord}{lettersA}{137}
+\DeclareMathSymbol{\m@thbbch@rJ}{\mathord}{lettersA}{138}
+\DeclareMathSymbol{\m@thbbch@rK}{\mathord}{lettersA}{139}
+\DeclareMathSymbol{\m@thbbch@rL}{\mathord}{lettersA}{140}
+\DeclareMathSymbol{\m@thbbch@rM}{\mathord}{lettersA}{141}
+\DeclareMathSymbol{\m@thbbch@rN}{\mathord}{lettersA}{142}
+\DeclareMathSymbol{\m@thbbch@rO}{\mathord}{lettersA}{143}
+\DeclareMathSymbol{\m@thbbch@rP}{\mathord}{lettersA}{144}
+\DeclareMathSymbol{\m@thbbch@rQ}{\mathord}{lettersA}{145}
+\DeclareMathSymbol{\m@thbbch@rR}{\mathord}{lettersA}{146}
+\DeclareMathSymbol{\m@thbbch@rS}{\mathord}{lettersA}{147}
+\DeclareMathSymbol{\m@thbbch@rT}{\mathord}{lettersA}{148}
+\DeclareMathSymbol{\m@thbbch@rU}{\mathord}{lettersA}{149}
+\DeclareMathSymbol{\m@thbbch@rV}{\mathord}{lettersA}{150}
+\DeclareMathSymbol{\m@thbbch@rW}{\mathord}{lettersA}{151}
+\DeclareMathSymbol{\m@thbbch@rX}{\mathord}{lettersA}{152}
+\DeclareMathSymbol{\m@thbbch@rY}{\mathord}{lettersA}{153}
+\DeclareMathSymbol{\m@thbbch@rZ}{\mathord}{lettersA}{154}
+\long\def\DoLongFutureLet #1#2#3#4{% 
+   \def\@FutureLetDecide{#1#2\@FutureLetToken
+      \def\@FutureLetNext{#3}\else
+      \def\@FutureLetNext{#4}\fi\@FutureLetNext}
+   \futurelet\@FutureLetToken\@FutureLetDecide}
+\def\DoFutureLet #1#2#3#4{\DoLongFutureLet{#1}{#2}{#3}{#4}}
+\def\@EachCharacter{\DoFutureLet{\ifx}{\@EndEachCharacter}%
+   {\@EachCharacterDone}{\@PickUpTheCharacter}}
+\def\m@keCharacter#1{\csname\F@ntPrefix#1\endcsname}
+\def\@PickUpTheCharacter#1{\m@keCharacter{#1}\@EachCharacter}
+\def\@EachCharacterDone \@EndEachCharacter{}
+\DeclareRobustCommand*{\varmathbb}[1]{\gdef\F@ntPrefix{m@thbbch@r}%
+  \@EachCharacter #1\@EndEachCharacter}
+% end import

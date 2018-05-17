@@ -1,0 +1,24 @@
+\usepackage[linktocpage=true,
+            pagebackref=true,
+            colorlinks,
+            linkcolor=blue,
+            citecolor=ForestGreen,
+            bookmarks,
+            bookmarksopen,
+            bookmarksnumbered]{hyperref}
+\usepackage{nameref}
+\usepackage[nameinlink]{cleveref}
+
+% define cleveref names
+\crefname{thm}{Thm.}{Thms.}
+\crefname{fact}{Fact}{Facts}
+\crefname{lem}{Lem.}{Lem.}
+\crefname{assumption}{Assumption}{Assumptions}
+\crefname{equation}{Eq.}{Eq.}
+\crefname{defn}{Def.}{Def.}
+\crefname{prop}{Prop.}{Prop.}
+\crefname{prog}{Program}{Program}
+
+
+\renewcommand\equationautorefname{\@gobble}
+\AtBeginDocument{\let\ref\Cref}
