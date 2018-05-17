@@ -1,3 +1,7 @@
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+
+\makeatletter
 % import txfont 
 \DeclareSymbolFont{lettersA}{U}{txmia}{m}{it}
 \DeclareMathSymbol{\m@thbbch@rA}{\mathord}{lettersA}{129}
@@ -40,3 +44,6 @@
 \DeclareRobustCommand*{\varmathbb}[1]{\gdef\F@ntPrefix{m@thbbch@r}%
   \@EachCharacter #1\@EndEachCharacter}
 %end import
+
+\makeatother
+
