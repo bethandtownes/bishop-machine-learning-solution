@@ -6,5 +6,5 @@
 *.out
 *.synctex.gz
 *.DS_Store
-_latexindent_temp.tex
+__latexindent_temp.tex
 *.lyx#
