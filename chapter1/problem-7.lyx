@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass book
 \begin_preamble
 \input{"/config/config.tex"}
 \end_preamble
@@ -35,10 +35,10 @@ theorems-ams-chap-bytype
 \bibtex_command default
 \index_command default
 \paperfontsize default
-\spacing single
+\spacing other 1.12
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 1
@@ -63,6 +63,10 @@ theorems-ams-chap-bytype
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 3.2cm
+\topmargin 3cm
+\rightmargin 3.2cm
+\bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -84,34 +88,44 @@ theorems-ams-chap-bytype
 \begin_body
 
 \begin_layout Standard
-We just need to show that it actually converges to the right limit.
- 
-\end_layout
+First, we write 
+\begin_inset Formula 
+\begin{align*}
+I^{2} & =\left(\int_{\R}\exp\bigg\{-\frac{1}{2\sigma^{2}}x^{2}\bigg\} dx\right)\left(\int_{\R}\exp\left\{ -\frac{1}{2\sigma^{2}}y^{2}\right\} dy\right)\\
+ & =\int\int_{\R\times\R}\exp\left\{ -\frac{1}{2\sigma^{2}}\left(x^{2}+y^{2}\right)\right\} dxdx.
+\end{align*}
 
-\begin_layout Theorem
-fgdf
-\end_layout
+\end_inset
 
-\begin_layout Standard
-\begin_inset Separator plain
+Now using polar coordinate - let 
+\begin_inset Formula $x=r\cos\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $y=r\sin\theta$
+\end_inset
+
+.
+ Then we get the Jacobian matrix as 
+\begin_inset Formula 
+\[
+\frac{\partial(x,y)}{\partial(r,\theta)}=\begin{bmatrix}\cos\theta & -r\sin\theta\\
+\sin\theta & r\cos\theta
+\end{bmatrix}\implies\left|\frac{\partial(x,y)}{\partial(r,\theta)}\right|=r(\cos\theta^{2}+\sin\theta^{2})=r.
+\]
+
+\end_inset
+
+Hence, as a result 
+\begin_inset Formula 
+\begin{align*}
+I^{2} & =\int_{0}^{2\pi}\int_{0}^{\infty}\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\right\} rdrd\theta=_{1}\int_{0}^{2\pi}\int_{0}^{\infty}\exp(-u)\sigma^{2}dud\theta\\
+ & =\int_{0}^{2\pi}\sigma^{2}d\theta\int_{0}^{\infty}\exp(-u)du=2\pi\sigma^{2}\left[-\exp(-u)\right]_{0}^{\infty}=2\pi\sigma^{2}.
+\end{align*}
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Lemma
-fsgdfg 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Remark
-fdgdf gdf gdf gdf
 \end_layout
 
 \end_body

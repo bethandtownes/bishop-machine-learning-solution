@@ -1,0 +1,200 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input{"/config/config.tex"}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing other 1.12
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 2
+\use_package mathtools 2
+\use_package mhchem 1
+\use_package stackrel 2
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3.2cm
+\topmargin 3cm
+\rightmargin 3.2cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+We first observe that if 
+\begin_inset Formula $x_{*}$
+\end_inset
+
+ maximizes the likelihood function 
+\begin_inset Formula $p_{x}(x)$
+\end_inset
+
+, then 
+\begin_inset Formula $p_{x}'(x_{*})=0.$
+\end_inset
+
+ By chain rule, we have that 
+\begin_inset Formula 
+\begin{align*}
+\frac{dp_{x}(g(y))\left|g'\left(y\right)\right|}{dy} & =\frac{dp_{x}(g(y))}{dy}\left|g'(y)\right|+p_{x}(g(y))\frac{d\left|g'(y)\right|}{dy}\\
+ & =\frac{dp_{x}(g(y))}{dg(y)}\frac{dg(y)}{dy}\left|g'(y)\right|+p_{x}(g(y))\frac{d\left|g'(y)\right|}{dy}\tag{1}.
+\end{align*}
+
+\end_inset
+
+Hence, if 
+\begin_inset Formula $x_{*}=g(y_{*})$
+\end_inset
+
+, the 
+\begin_inset Formula 
+\[
+\frac{dp_{x}(g(y_{*}))}{dg(y_{*})}=\frac{dp_{x}(x_{*})}{dx_{*}}=0.
+\]
+
+\end_inset
+
+However, there is no guarantee that the second term of the RHS of Eq.
+ 1 is zero.
+ For example, if 
+\begin_inset Formula $p_{x}(x)=2x$
+\end_inset
+
+ for 
+\begin_inset Formula $0\leq x\leq1$
+\end_inset
+
+ and 
+\begin_inset Formula $x=\sin(y),$
+\end_inset
+
+ where 
+\begin_inset Formula $0\leq y\leq\pi/2.$
+\end_inset
+
+ Then according to the transformation formula, we have that 
+\begin_inset Formula 
+\[
+p_{y}(y)=p_{x}(g(y))g'(y)=2\sin(y)\cos(y)=\sin(2y)\text{ for }0\leq y\leq\frac{\pi}{2}.
+\]
+
+\end_inset
+
+Clearly, 
+\begin_inset Formula $p_{y}(y)$
+\end_inset
+
+ reaches its peak at 
+\begin_inset Formula $y=\pi/4$
+\end_inset
+
+ but 
+\begin_inset Formula $\sin(\pi/4)\neq x_{*}=1.$
+\end_inset
+
+ Thus, we have found a counterexample.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+On the other hand, if 
+\begin_inset Formula $g(y)$
+\end_inset
+
+ is an affine map, then 
+\begin_inset Formula $g'(y)$
+\end_inset
+
+ is a constant map and as a result 
+\begin_inset Formula 
+\[
+\frac{d\left|g'(y)\right|}{dy}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

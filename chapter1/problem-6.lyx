@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass book
 \begin_preamble
 \input{"/config/config.tex"}
 \end_preamble
@@ -35,10 +35,10 @@ theorems-ams-chap-bytype
 \bibtex_command default
 \index_command default
 \paperfontsize default
-\spacing single
+\spacing other 1.12
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 1
@@ -63,6 +63,10 @@ theorems-ams-chap-bytype
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 3.2cm
+\topmargin 3cm
+\rightmargin 3.2cm
+\bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -84,34 +88,28 @@ theorems-ams-chap-bytype
 \begin_body
 
 \begin_layout Standard
-We just need to show that it actually converges to the right limit.
- 
-\end_layout
+Since 
+\begin_inset Formula $X\perp Y,$
+\end_inset
 
-\begin_layout Theorem
-fgdf
-\end_layout
+ then it follows that 
+\begin_inset Formula $\E[XY]=\E[X]\E[Y]$
+\end_inset
 
-\begin_layout Standard
-\begin_inset Separator plain
+.
+ Then we have 
+\begin_inset Formula 
+\begin{align*}
+\mathrm{Cov}(X,Y) & =\E[(X-\E[X])(Y-\E[Y])]\\
+ & =\E[XY-X\E[Y]-\E[X]Y+\E[X]\E[Y]]\\
+ & =\E[XY]-\E[X]\E[Y]-\E[X]\E[Y]+\E[X]\E[Y]\\
+ & =\E[X]\E[Y]-\E[X]\E[Y]-\E[X]\E[Y]+\E[X]\E[Y]\\
+ & =0.
+\end{align*}
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Lemma
-fsgdfg 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Remark
-fdgdf gdf gdf gdf
 \end_layout
 
 \end_body
