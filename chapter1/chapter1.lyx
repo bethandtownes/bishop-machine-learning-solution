@@ -1645,10 +1645,10 @@ For concise notation, we write the loss matrix as
  (1.81) in the book as 
 \begin_inset Formula 
 \begin{align*}
-\min\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x) & =\min\vec{\P}(\mathcal{C}\vert x)^{T}(\mathbbm{1}\mathbbm{1}^{T}-I)e_{j}\\
- & =\min\vec{\P}(\mathcal{C}\vert x)^{T}\mathbbm{1}-\P(\mathcal{C}_{j}\vert x)\\
- & =\min1-\P(\mathcal{C}_{j}\vert x)\\
- & =\max_{j}\P(\mathcal{C}_{j}\vert x).
+\argmin_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x) & =\argmin_{j}\vec{\P}(\mathcal{C}\vert x)^{T}(\mathbbm{1}\mathbbm{1}^{T}-I)e_{j}\\
+ & =\argmin_{j}\vec{\P}(\mathcal{C}\vert x)^{T}\mathbbm{1}-\P(\mathcal{C}_{j}\vert x)\\
+ & =\argmin_{j}1-\P(\mathcal{C}_{j}\vert x)\\
+ & =\argmax_{j}\P(\mathcal{C}_{j}\vert x).
 \end{align*}
 
 \end_inset
@@ -1677,6 +1677,56 @@ We can interpret this loss in the following way: this loss assigns unit
  labels and therefore minimizing the expectation represents minimizing the
  misclassification rate.
  
+\end_layout
+
+\begin_layout Section
+Problem 1.23 - Characterization for minimizing general expected loss
+\end_layout
+
+\begin_layout Standard
+Note 
+\begin_inset Formula 
+\[
+\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x)=\frac{1}{p(x)}\sum_{k}L_{kj}\P(x\vert\mathcal{C}_{k})\P(\mathcal{C}_{k}).
+\]
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $m=\min(\sum_{k}L_{kj}\P(x\vert\mathcal{C}_{k})$
+\end_inset
+
+, if we increase 
+\begin_inset Formula $\P(\mathcal{C}_{k})$
+\end_inset
+
+, we would have to decrease 
+\begin_inset Formula $L_{kj}$
+\end_inset
+
+ to keep the minimum.
+ Hence, there is a direct trade-off between 
+\begin_inset Formula $\P(\mathcal{C}_{k})$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{kj}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 1.24 - Duality between decision and rejection criterion 
+\end_layout
+
+\begin_layout Standard
+According to Eq.
+ (1.81) in the book, the decision of labels is found via computing 
+\begin_inset Formula $\argmin_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x).$
+\end_inset
+
+ Since rejection option is also used in this case, 
 \end_layout
 
 \end_body
