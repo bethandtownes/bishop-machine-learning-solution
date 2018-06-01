@@ -362,7 +362,7 @@ status open
 
 
 \backslash
-medskip
+bigskip
 \end_layout
 
 \end_inset
@@ -842,7 +842,7 @@ where the last inequality follows from the fact that
  
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Problem 1.15 - Independent terms of 
 \begin_inset Formula $M$
 \end_inset
@@ -850,7 +850,7 @@ Problem 1.15 - Independent terms of
 -th order term in polynomial
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Enumerate-LeftAlign
 Since by writing the 
 \begin_inset Formula $M$
 \end_inset
@@ -898,7 +898,7 @@ n(D,M) & =\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{i_{1}}\cdots\sum_{i_{M}=1}^{i_{M-1}}
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Enumerate-LeftAlign
 To show the equality holds using induction, we note for the base case of
  
 \begin_inset Formula $D=1,$
@@ -942,7 +942,7 @@ where Eq.
  
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Enumerate-LeftAlign
 We establish the identity by inducting on 
 \begin_inset Formula $M$
 \end_inset
@@ -1109,7 +1109,7 @@ The case for
 Problem 1.17 - Gamma density warmup
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Enumerate-LeftAlign
 Note 
 \begin_inset Formula 
 \begin{align*}
@@ -1123,7 +1123,7 @@ Note
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Enumerate-LeftAlign
 We note that 
 \begin_inset Formula 
 \[
@@ -1645,10 +1645,10 @@ For concise notation, we write the loss matrix as
  (1.81) in the book as 
 \begin_inset Formula 
 \begin{align*}
-\argmin_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x) & =\argmin_{j}\vec{\P}(\mathcal{C}\vert x)^{T}(\mathbbm{1}\mathbbm{1}^{T}-I)e_{j}\\
- & =\argmin_{j}\vec{\P}(\mathcal{C}\vert x)^{T}\mathbbm{1}-\P(\mathcal{C}_{j}\vert x)\\
- & =\argmin_{j}1-\P(\mathcal{C}_{j}\vert x)\\
- & =\argmax_{j}\P(\mathcal{C}_{j}\vert x).
+\min_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x) & =\min_{j}\vec{\P}(\mathcal{C}\vert x)^{T}(\mathbbm{1}\mathbbm{1}^{T}-I)e_{j}\\
+ & =\min_{j}\vec{\P}(\mathcal{C}\vert x)^{T}\mathbbm{1}-\P(\mathcal{C}_{j}\vert x)\\
+ & =\min_{j}1-\P(\mathcal{C}_{j}\vert x)\\
+ & =\max_{j}\P(\mathcal{C}_{j}\vert x).
 \end{align*}
 
 \end_inset
@@ -1720,13 +1720,1393 @@ Suppose
 Problem 1.24 - Duality between decision and rejection criterion 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate-LeftAlign
 According to Eq.
- (1.81) in the book, the decision of labels is found via computing 
+ (1.81) in the book, the decision of labels is found by computing 
 \begin_inset Formula $\argmin_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x).$
 \end_inset
 
- Since rejection option is also used in this case, 
+ Since rejection option is also used, let 
+\begin_inset Formula $\hat{j}$
+\end_inset
+
+ be the minimum, then the decision criterion can be modeled as a function
+ 
+\begin_inset Formula $\varphi:\mathbb{N}\rightarrow\mathbb{N}\cup\{\emptyset\}$
+\end_inset
+
+ by 
+\begin_inset Formula 
+\[
+j\mapsto\begin{cases}
+\argmin_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x) & \text{if }\min_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x)\\
+\emptyset & \text{otherwise}
+\end{cases}.
+\]
+
+\end_inset
+
+Note the 
+\begin_inset Formula $j$
+\end_inset
+
+ defined in 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ by default refers to the minimizer of 
+\begin_inset Formula $\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x),$
+\end_inset
+
+ and the mapping to empty set means rejection.
+ 
+\end_layout
+
+\begin_layout Enumerate-LeftAlign
+When 
+\begin_inset Formula $L=\mathbbm{1}\mathbbm{1}^{T}-I,$
+\end_inset
+
+ then we have by previous part that 
+\begin_inset Formula 
+\begin{align*}
+\varphi(\hat{j})=j & \iff\min_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x)\leq\lambda\\
+ & \iff\min_{j}1-\P(\mathcal{C}_{j}\vert x)\leq\lambda\tag{by Problem 1.22}\\
+ & \iff\max\P(\mathcal{C}_{k}\vert x)\geq1-\lambda.
+\end{align*}
+
+\end_inset
+
+Note that the last stipulation is equivalent to 
+\begin_inset Formula $\theta=1-\lambda$
+\end_inset
+
+ in the reject option definition.
+ Hence, the two criteria coincide when 
+\begin_inset Formula $\theta=1-\lambda.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Problem 1.25 - Generalized squared loss function
+\end_layout
+
+\begin_layout Standard
+We follow the same procedure as in the 1 dimensional case.
+ Note 
+\begin_inset Formula 
+\begin{align*}
+\frac{\delta\E[L]}{\delta L} & =\frac{\delta}{\delta L}\left[\int\int\left\Vert y(x)-t\right\Vert ^{2}p(t,x)dxdt\right]\\
+ & =\int2(y(x)-t)p(t,x)dt.
+\end{align*}
+
+\end_inset
+
+Setting it to zero yields: 
+\begin_inset Formula 
+\begin{align*}
+y(x)\int p(t,x)dt=\int tp(t,x)dt & \iff y(x)=\frac{\int tp(t,x)dt}{\int p(t,x)dt}\\
+ & \iff y(x)=\frac{\int tp(t,x)dt}{p(x)}=\int tp(t\vert x)dt
+\end{align*}
+
+\end_inset
+
+as desired.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 1.26 - Decomposition of expected squared loss
+\end_layout
+
+\begin_layout Standard
+We use the similar argument as in deriving Eq.
+ (1.90) in here.
+ We write 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert y(x)-t\right\Vert ^{2} & =\left\Vert y(x)-\E[t\vert x]+\E[t\vert x]-t\right\Vert ^{2}\\
+ & =\left\Vert y(x)-\E[t\vert x]\right\Vert ^{2}-2(y(x)-\E[y\vert x])^{T}(\E[t\vert x]-t)+\left\Vert \E[t\vert x]-t\right\Vert ^{2}.
+\end{align*}
+
+\end_inset
+
+Also note that we can rewrite 
+\begin_inset Formula $\E[t\vert x]-t=\E[t\vert x]-\E[\E[t\vert x]]$
+\end_inset
+
+ and that 
+\begin_inset Formula $\E[y(x)-\E[y\vert x]]=\E[y]-\E[y]=0$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula 
+\begin{align*}
+\E\left[\left\Vert y(x)-t\right\Vert ^{2}\right] & =\int\left\Vert y(x)-\E[t\vert x]\right\Vert ^{2}p(x)dx+\int\left\Vert \E[t\vert x-t\right\Vert ^{2}p(x)dx\\
+ & =\int\left\Vert y(x)-\E[t\vert x]\right\Vert ^{2}p(x)dx+\int\text{Var}[t\vert x]p(x)dx.
+\end{align*}
+
+\end_inset
+
+Hence, we see that 
+\begin_inset Formula $\E[\left\Vert y(x)-t\right\Vert ^{2}]$
+\end_inset
+
+ is minimized when 
+\begin_inset Formula $y(x)=\E[t\vert x],$
+\end_inset
+
+ which is analogues to Eq.
+ (1.90).
+ 
+\end_layout
+
+\begin_layout Section
+Problem 1.27 - Maximizer of 
+\begin_inset Formula $L_{1},L_{0^{+}}$
+\end_inset
+
+ expected loss 
+\end_layout
+
+\begin_layout Standard
+According to Eq.
+ (1.91), an application of Fubini's theorem we can rewrite the expected Minkowski
+ loss in the following form:
+\begin_inset Formula 
+\[
+\E[L]=\int\underbrace{\int\left|y(x)-t\right|^{q}p(x,t)dt}_{:=G(x,y(x))}dx
+\]
+
+\end_inset
+
+Here we need assume 
+\begin_inset Formula $G(x,y(x))$
+\end_inset
+
+ converges uniformly so that we can differentiate under the improper (possibly)
+ integral.
+ As usual, we compute the first variation: 
+\begin_inset Formula 
+\begin{align*}
+\frac{\delta\E[L]}{\delta y(x)} & =\frac{\partial G(x,y(x))}{\partial y(x)}=\int q\left|y(x)-t\right|^{q-1}\frac{(y(x)-t)}{\left|y(x)-t\right|}p(x,t)dt\\
+ & =p(x)\int q\left|y(x)-t\right|^{q-1}\text{sgn}(y(x)-t)p(t\vert x)dt\\
+ & =p(x)\left(\int_{\{t\leq y(x)\}}q\left|y(x)\right|^{q-1}p(t\vert x)dt-\int_{t>y(x)}q\left|y(x)-t\right|^{q-1}p(t\vert x)dt\right)\tag{1}
+\end{align*}
+
+\end_inset
+
+To find the stationary point when 
+\begin_inset Formula $q=1$
+\end_inset
+
+, we set Eq.(1) to zero: 
+\begin_inset Formula 
+\begin{align*}
+ & p(x)\left(\int_{\{t\leq y(x)\}}q\left|y(x)\right|^{q-1}p(t\vert x)dt-\int_{\{t>y(x)\}}q\left|y(x)-t\right|^{q-1}p(t\vert x)dt\right)=0\\
+\implies_{1} & \int_{\{t\leq y(x)\}}p(t\vert x)dt=\int_{\{t>y(x)\}}p(t\vert x),\tag{2}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\implies_{1}$
+\end_inset
+
+ follows since we only need to care about 
+\begin_inset Formula $x\in\text{supp}(p(x)).$
+\end_inset
+
+ Hence, the 
+\begin_inset Formula $y(x)$
+\end_inset
+
+ that maximizes the expected loss function with 
+\begin_inset Formula $q=1$
+\end_inset
+
+ satisfies Eq.(2), which is the definition of the median.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Now we consider the case when 
+\begin_inset Formula $p\rightarrow0.$
+\end_inset
+
+ Instead of taking the functional derivative, we will use a more delicate
+ and analytical approach.
+ First, we write 
+\begin_inset Formula 
+\[
+\E[L]=\lim_{q\rightarrow0}\int\left|y(x)-t\right|^{q}d(F_{x}\times F_{t}).
+\]
+
+\end_inset
+
+Observe that 
+\begin_inset Formula $\lim_{q\rightarrow0}\left|y(x)-t\right|^{q}=\mathbbm{1}_{\{y(x)\neq t\}},$
+\end_inset
+
+ which is in 
+\begin_inset Formula $L_{2}(\Omega)$
+\end_inset
+
+ (we use 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ to denote the probability space).
+ An application of DCT yields 
+\begin_inset Formula 
+\begin{align*}
+\E[L] & =\int\mathbbm{1}_{\{y(x)\neq t\}}d(F_{x}\times F_{t})\\
+ & =\int d(F_{x}\times F_{t})-\int\mathbbm{1}_{\{y(x)=t\}}d(F_{x}\times F_{t})\\
+ & =1-\underbrace{\int\int\mathbbm{1}_{\{y(x)=t\}}p(x,t)dtdx}_{:=\mathcal{I}_{1}(y(x),x,t)}\tag{by change of variable theorem}.
+\end{align*}
+
+\end_inset
+
+In order to minimize 
+\begin_inset Formula $\E[L]$
+\end_inset
+
+, it suffices to find 
+\begin_inset Formula $\argmax_{y(x)}\mathcal{I}_{1}(y(x),x,t).$
+\end_inset
+
+ First, we rewrite 
+\begin_inset Formula 
+\[
+\mathcal{I}_{1}(y(x),x,t)=\int p(x)\underbrace{\int\mathbbm{1}_{\{t=y(x)\}}p(t\vert x)dt}_{:=\mathcal{I}_{2}(y(x),x,t)}dx.
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $p(x)\geq0$
+\end_inset
+
+ for any 
+\begin_inset Formula $x\in\mathbb{R}^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{I}_{2}(y(x),x,t)\geq0,$
+\end_inset
+
+ it follows that 
+\begin_inset Formula $\argmax_{y(x)}\mathcal{I}_{1}(y(x),x,t)=\argmax_{y(x)}\mathcal{I}_{2}(y(x),x,t).$
+\end_inset
+
+ Note that 
+\begin_inset Formula $\mathcal{I}_{2}(y(x),x,t)=0$
+\end_inset
+
+ since it is an integral w.r.t to a singleton point whose Lebesgue measure
+ is zero.
+ However, we can circumvent this in the following manner: note that 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{I}_{2}(y(x),x,t) & =\int\lim_{n\rightarrow\infty}\mathbbm{1}_{\{t\in(y(x)-\frac{1}{2n},y(x)+\frac{1}{2n})\}}p(t\vert x)dt\\
+ & =\lim_{n\rightarrow\infty}\int\mathbbm{1}_{\{t\in(y(x)-\frac{1}{2n},y(x)+\frac{1}{2n})\}}p(t\vert x)dt\\
+ & \leq\lim_{n\rightarrow\infty}\frac{1}{n}\sup_{t\in(y(x)-\frac{1}{2n},y(x)+\frac{1}{2n})}p(t\vert x)\tag{3}
+\end{align*}
+
+\end_inset
+
+If we define 
+\begin_inset Formula $F_{n}(y(x))=\frac{1}{n}\sup_{t\in(y(x)-1/(2n),y(x)+1/(2n))}p(t\vert x),$
+\end_inset
+
+ then it follows from Eq.(3) that 
+\begin_inset Formula $F_{n}(y(x))\rightarrow0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ for any 
+\begin_inset Formula $y(x)\in\mathbb{R}$
+\end_inset
+
+.
+ However, we would like to find a 
+\begin_inset Formula $\tilde{y}(x)$
+\end_inset
+
+ s.t.
+ 
+\begin_inset Formula $F_{n}(\tilde{y}(x))\leq F_{n}(y(x))$
+\end_inset
+
+ for any other choice of 
+\begin_inset Formula $y(x).$
+\end_inset
+
+ We claim that 
+\begin_inset Formula $\tilde{y}(x)=\argmax_{t\in\mathbb{R}}p(t\vert x).$
+\end_inset
+
+ Indeed, if so, we have 
+\begin_inset Formula 
+\begin{align*}
+F_{n}(\tilde{y}(x)) & =\frac{1}{n}\sup_{t\in(\argmax_{t}p(t\vert x)-\frac{1}{2n},\argmax_{t}p(t\vert x)+\frac{1}{2n})}p(t\vert x)=\frac{1}{n}\sup_{t\in\mathbb{R}^{n}}p(t\vert x)\\
+ & \geq\frac{1}{n}\sup_{t\in(y(x)-1/(2n),y(x)+1/(2n))}p(t\vert x)=F(y(x)).
+\end{align*}
+
+\end_inset
+
+So to translate into heuristic terms, 
+\begin_inset Formula $y(x)=\argmax_{t}p(t\vert x)$
+\end_inset
+
+ minimizes the loss function in "each step" of the process of "approaching
+ the limit of 
+\begin_inset Formula $q\rightarrow0$
+\end_inset
+
+".
+ 
+\end_layout
+
+\begin_layout Section
+Problem 1.28 - Derivation of information content
+\end_layout
+
+\begin_layout Standard
+Assuming the randoms variables to be discrete does simplifies the argument
+ but it also losses rigor.
+ To achieve maximum amount of rigor possible, we use a measure theoretic
+ language.
+ For this reason, we will use a slightly different formulation, but the
+ idea remains the same.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Instead of using 
+\begin_inset Formula $x,y$
+\end_inset
+
+ to denote random variable, we use 
+\begin_inset Formula $X,Y$
+\end_inset
+
+.
+ Note that for any 
+\begin_inset Formula $A\in\mathcal{B}(X),$
+\end_inset
+
+ 
+\begin_inset Formula $B\in\mathcal{B}(Y)$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ denote the Borel sets, if 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent, 
+\begin_inset Formula 
+\begin{align*}
+h(X\in A,Y\in B) & =h\bigg(\int_{A\times B}d(F_{X}\times F_{Y})\bigg)=h\bigg(\int_{A}dF_{X}\cdot\int_{B}dF_{Y}\bigg).\tag{by independence}\\
+ & =h(X\in A)+h(Y\in B)=h\bigg(\int_{A}dF_{X}\bigg)+h\bigg(\int_{B}dF_{Y}\bigg).
+\end{align*}
+
+\end_inset
+
+If we let 
+\begin_inset Formula $x=\int_{A}dF_{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $y=\int_{B}dF_{Y},$
+\end_inset
+
+ then this problem reduces to the following form: find a representation
+ of 
+\begin_inset Formula $h$
+\end_inset
+
+ such that 
+\begin_inset Formula $h(xy)=h(x)+h(y)$
+\end_inset
+
+ for any 
+\begin_inset Formula $x,y\in[0,1].$
+\end_inset
+
+ This is variant of the Cauchy Functional Equation problem.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Recall that the Cauchy functional equation in its standard form is as follows:
+ find a function 
+\begin_inset Formula $f$
+\end_inset
+
+ that satisfies 
+\begin_inset Formula $f(x+y)=f(x)+f(y).$
+\end_inset
+
+ The obvious solution to 
+\begin_inset Formula $f$
+\end_inset
+
+ is the linear one: 
+\begin_inset Formula $x\mapsto cx$
+\end_inset
+
+ for 
+\begin_inset Formula $x\in\mathbb{R}^{n}.$
+\end_inset
+
+ However, without additional assumptions, one can obtain other complicated
+ solutions as well.
+ But generally these solutions serves as pedagogical example.
+ A classical result is that if we assume 
+\begin_inset Formula $f$
+\end_inset
+
+ to be either continuous or monotone, then 
+\begin_inset Formula $f(x)=cx$
+\end_inset
+
+ for arbitrary 
+\begin_inset Formula $c\in\mathbb{R}$
+\end_inset
+
+ is then the only solution.
+ (cf.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kuczma2009an"
+literal "false"
+
+\end_inset
+
+).
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+With this in mind, to solve for 
+\begin_inset Formula $h$
+\end_inset
+
+, we define 
+\begin_inset Formula $g(x)=h(e^{x}).$
+\end_inset
+
+ Then we see that 
+\begin_inset Formula 
+\[
+g(x+y)=h(e^{x}e^{y})=h(e^{x})+h(e^{y})=g(x)+g(y).
+\]
+
+\end_inset
+
+Then if we require 
+\begin_inset Formula $g$
+\end_inset
+
+ to be continuous, then 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ is uniquely represented as 
+\begin_inset Formula $cx$
+\end_inset
+
+ for any 
+\begin_inset Formula $c\in\mathbb{R}.$
+\end_inset
+
+ Then note that for any 
+\begin_inset Formula $x\in\mathbb{R}^{+},$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+h(x)=h(e^{\ln x})=g(\ln x)=c\ln x,\text{ for any }c\in\mathbb{R}.
+\]
+
+\end_inset
+
+Therefore, we have 
+\begin_inset Formula $h(x)\propto\ln(x)$
+\end_inset
+
+ as desired.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 1.29 - Upper bound for entropy of discrete variables
+\end_layout
+
+\begin_layout Standard
+We directly apply Jensen's inequality: 
+\begin_inset Formula 
+\[
+H(x)=-\sum_{i=1}^{M}p(x_{i})\ln(x_{i})=\sum_{i=1}^{M}p(x_{i})\ln\frac{1}{p(x_{i})}\leq\ln\bigg(\sum_{i=1}^{M}p(x_{i})\frac{1}{p(x_{i})}\bigg)=\ln M,
+\]
+
+\end_inset
+
+where the 
+\begin_inset Formula $\leq$
+\end_inset
+
+ follows since 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+ is concave.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 1.30 - KL-divergence for Gaussian
+\end_layout
+
+\begin_layout Standard
+We use the original definition of KL-divergence: 
+\begin_inset Formula 
+\[
+KL(p||q)=\underbrace{-\int p(x)\ln q(x)dx}_{(1)}-\underbrace{\left(-\int p(x)\ln p(x)dx\right)}_{(2)}.
+\]
+
+\end_inset
+
+We compute it term by term, first note that 
+\begin_inset Formula 
+\begin{alignat*}{1}
+(1)= & -\int\varphi(x\vert\mu,\sigma^{2})\ln\left[\varphi(x\vert m,s^{2})\right]dx\\
+= & -\int\varphi(x\vert\mu,\sigma^{2})\left\{ \ln\frac{1}{(2\pi s^{2})^{1/2}}-\frac{(x-m)^{2}}{2s^{2}}\right\} \\
+= & \int\varphi(x\vert\mu,\sigma^{2})\left[\frac{1}{2}\ln(2\pi s^{2})+\frac{(x-m)^{2}}{2s^{2}}\right]dx\\
+= & \frac{1}{2}\int\varphi(x\vert\mu,\sigma^{2})\ln(2\pi s^{2})dx+\frac{1}{2s^{2}}\left[\int\varphi(x\vert\mu,\sigma^{2})x^{2}dx-2m\int\varphi(x\vert\mu,\sigma^{2})xdx+\int\varphi(x\vert\mu,\sigma^{2})m^{2}dx\right]\\
+= & \frac{1}{2}\ln(2\pi s^{2})+\frac{1}{2s^{2}}\left[\sigma^{2}+\mu^{2}-2m\mu+m^{2}\right].
+\end{alignat*}
+
+\end_inset
+
+And similarly 
+\begin_inset Formula 
+\begin{align*}
+(2) & =-\int\varphi(x\vert\mu,\sigma^{2})\ln\left[\varphi(x\vert\mu,\sigma^{2})\right]dx\\
+ & =\frac{1}{2}\int\varphi(x\vert\mu,\sigma^{2})\ln(2\pi\sigma^{2})dx+\frac{1}{2\sigma^{2}}\left[\int\varphi(x\vert\mu,\sigma^{2})x^{2}dx-2\mu\int\varphi(x\vert\mu,\sigma^{2})xdx+\mu^{2}\int\varphi(x\vert\mu,\sigma^{2})dx\right]\\
+ & =\frac{1}{2}\ln(2\pi\sigma^{2})+\frac{1}{2\sigma^{2}}\left[\sigma^{2}+\mu^{2}-2\mu^{2}+\mu^{2}\right]\\
+ & =\frac{1}{2}\ln(2\pi\sigma^{2})+\frac{1}{2}.
+\end{align*}
+
+\end_inset
+
+Hence, it follows that 
+\begin_inset Formula 
+\begin{align*}
+KL(p||q) & =\frac{1}{2}\ln(2\pi s^{2})+\frac{1}{2s^{2}}\left[\sigma^{2}+\mu^{2}-2m\mu+m^{2}\right]-\frac{1}{2}\ln(2\pi\sigma^{2})-\frac{1}{2}\\
+ & =\frac{1}{2s^{2}}\left[(m-\mu)^{2}+(\sigma^{2}-s^{2})+s^{2}\log\frac{s^{2}}{\sigma^{2}}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 1.31 - Differential entropy and independence
+\end_layout
+
+\begin_layout Standard
+In this problem, we extend the definition to of KL-divergence to a more
+ general setting as follows:
+\end_layout
+
+\begin_layout Definition
+If 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ are probability measures over a set 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, if 
+\begin_inset Formula $P$
+\end_inset
+
+ is absolutely continuous w.r.t.
+ 
+\begin_inset Formula $Q$
+\end_inset
+
+, then the KL divergence is defined as 
+\begin_inset Formula 
+\[
+KL(P||Q)=\int_{\Omega}\log\frac{dP}{dQ}dP,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $dP/dQ$
+\end_inset
+
+ is the Radon-Nikodym derivative, whose existence is guaranteed by the fact
+ that 
+\begin_inset Formula $P$
+\end_inset
+
+ is absolutely continuous w.r.t 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula $KL(P||Q)\geq0$
+\end_inset
+
+ for any pair
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: KL divergence eq"
+
+\end_inset
+
+ of probability measures 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ such that 
+\begin_inset Formula $P\ll Q$
+\end_inset
+
+, the equality if 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ are equal.
+ 
+\end_layout
+
+\begin_layout Proof
+This is a directly application of Jensen's inequality.
+ Note that 
+\begin_inset Formula 
+\[
+KL(P||Q)=-\int_{\Omega}\log\frac{dQ}{dP}dP\geq-\log\left(\int_{\Omega}\frac{dQ}{dP}dP\right)=-\log\int_{\Omega}dQ=0.
+\]
+
+\end_inset
+
+Recall that Jensen's inequality attains the equality if and only if when
+ the function is affine or its argument is constant.
+ In this case, 
+\begin_inset Formula $\log(t)$
+\end_inset
+
+ is not constant, and thus 
+\begin_inset Formula $KL(P||Q)=0$
+\end_inset
+
+ iff 
+\begin_inset Formula $dP/dQ=C$
+\end_inset
+
+ for some constant 
+\begin_inset Formula $C\in\mathbb{R}$
+\end_inset
+
+.
+ We claim that 
+\begin_inset Formula $C=1,$
+\end_inset
+
+ since otherwise we would have 
+\begin_inset Formula 
+\[
+\int_{\Omega}dP=\int_{\Omega}\frac{dP}{dQ}dQ=C\int_{\Omega}dQ=C\neq1,
+\]
+
+\end_inset
+
+which is a contradiction since 
+\begin_inset Formula $P$
+\end_inset
+
+ is a probability measure.
+ Then we claim that 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ are equal.
+ For any set 
+\begin_inset Formula $A$
+\end_inset
+
+ in the (predefined) sigma algebra, we have 
+\begin_inset Formula 
+\[
+P(A)=\int_{A}dP=\int_{A}\frac{dP}{dQ}dQ=\int_{A}1dQ=Q(A).
+\]
+
+\end_inset
+
+Hence, 
+\begin_inset Formula $P=Q.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Now we come back to the problem.
+ We instead use 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ two denote the random variables and 
+\begin_inset Formula $f_{X},f_{Y},f_{X,Y}$
+\end_inset
+
+, to denote their (marginal) densities.
+ Suppose 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent.
+ Then it follows that 
+\begin_inset Formula 
+\begin{align*}
+H(X,Y) & =\int\int f_{X,Y}(x,y)\log f_{X,Y}(x,y)dxdy\\
+ & =\int\int f_{X}(x)f_{Y}(y)(\log f_{X}(x)+\log f_{Y}(y))dxdy\\
+ & =\int\int f_{X}(x)f_{Y}(y)\log f_{X}(x)dxdy+\int\int f_{X}(x)f_{Y}(y)\log f_{Y}(y)dxdy\\
+ & =\int f_{X}(x)\log f_{X}(x)dx+\int f_{Y}(y)\log f_{Y}(y)dy\\
+ & =H(X)+H(Y).
+\end{align*}
+
+\end_inset
+
+Now on the other hand, suppose 
+\begin_inset Formula $H(X,Y)=H(X)+H(Y).$
+\end_inset
+
+ Then since 
+\begin_inset Formula $H(X,Y)=H(Y\vert X)+H(X)$
+\end_inset
+
+ according to Eq.
+ (1.112), it follows that 
+\begin_inset Formula $H(Y\vert X)=H(Y).$
+\end_inset
+
+ Note that 
+\begin_inset Formula 
+\begin{align*}
+H(Y\vert X)-H(Y) & =-\int\int f(x,y)\log f(y\vert x)dxdy+\int\int f(x,y)\log f(y)dxdy\\
+ & =\int\int f(x,y)\log\frac{f(y)}{f(y\vert x)}dxdy\\
+ & =KL(f_{Y}(y)||f_{Y\vert X}(y\vert x)).
+\end{align*}
+
+\end_inset
+
+Then according to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: KL divergence eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $f_{Y}(y)=f_{Y\vert X}(y\vert x)$
+\end_inset
+
+ almost surely, and as a result 
+\begin_inset Formula $f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)$
+\end_inset
+
+ which implies that 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 1.32 - Entropy under linear transformation 
+\end_layout
+
+\begin_layout Standard
+Since this problem uses transformation theorem, we first recall this classical
+ result: 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Thm. 17.2"
+key "billingsley2012probability"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $T$
+\end_inset
+
+ be a continuously differentiable map of the open set 
+\begin_inset Formula $U$
+\end_inset
+
+ onto 
+\begin_inset Formula $V.$
+\end_inset
+
+ Suppose that 
+\begin_inset Formula $T$
+\end_inset
+
+ is injective an that 
+\begin_inset Formula $J(x)\neq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x.$
+\end_inset
+
+ If 
+\begin_inset Formula $f$
+\end_inset
+
+ is non-negative, then 
+\begin_inset CommandInset label
+LatexCommand label
+name "thm: transformation thm"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{U}f(Tx)\left|J(x)\right|dx=\int_{V=TU}f(y)dy.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+We can use this theorem to the get change of variable formula for random
+ variables in 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+ in the following way.
+ Suppose 
+\begin_inset Formula $X$
+\end_inset
+
+ is a random variable in 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+ with density 
+\begin_inset Formula $f_{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $g(\cdot)$
+\end_inset
+
+ is a 
+\begin_inset Formula $C^{1}$
+\end_inset
+
+ diffeomorphism in 
+\begin_inset Formula $\mathbb{R}^{d},$
+\end_inset
+
+ whose inverse is denoted as 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $J_{T}(x)\neq0,$
+\end_inset
+
+ then it follows that 
+\begin_inset Formula 
+\[
+\P[g(X)\in A]=\P[X\in g^{-1}(A)]=\P[X\in TA]=\int_{TA}f_{X}(y)dy.
+\]
+
+\end_inset
+
+Now apply 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm: transformation thm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and we get 
+\begin_inset Formula 
+\[
+\int_{TA}f_{X}(y)dy=\int_{A}f_{X}(Tx)|J_{T}(x)|dx=\int_{A}f_{X}(g^{-1}(x))|J_{g^{-1}}(x)|dx.
+\]
+
+\end_inset
+
+Hence, from 
+\begin_inset Formula 
+\begin{align*}
+\P(g(X)\in A) & =\int\mathbbm{1}_{A}dF_{g(X)}=\int\mathbbm{1}_{A}\frac{dF_{g(X)}}{dx}dx\tag{\ensuremath{dx} refers to Lebesgue measure}\\
+ & =\int_{A}f_{X}(g^{-1}(x))\left|J_{g^{-1}}(x)\right|dx
+\end{align*}
+
+\end_inset
+
+and the fact that Radon-Nikodym derivative is unique it follows that 
+\begin_inset Formula $g(X)$
+\end_inset
+
+ has density of the form 
+\begin_inset Formula $f_{X}(g^{-1}(x))\left|J_{g^{-1}}(x)\right|.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Now we return to the problem.
+ We instead use 
+\begin_inset Formula $f_{Y}(y)$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{X}(x)$
+\end_inset
+
+ to denote the density function for 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ First, by previous remark, we see that 
+\begin_inset Formula $f_{Y}(y)=f_{X}(A^{-1}y)\left|J_{A^{-1}}\right|=f_{X}(A^{-1}y)\left|\det(A)^{-1}\right|.$
+\end_inset
+
+ So,
+\begin_inset Formula 
+\begin{align*}
+H(Y) & =-\int\ln f_{Y}(y)dF_{Y}=\int\ln f_{X}(A^{-1}y)\left|\det(A)^{-1}\right|dF_{Y}\\
+ & =-\int\ln\left[f_{X}(A^{-1}y)\left|\det(A)^{-1}\right|\right]f_{X}(A^{-1}y)\left|\det(A)^{-1}\right|dy\\
+ & =-\int\ln\left[f_{X}(A^{-1}Ax)\left|\det(A)^{-1}\right|\right]f_{X}(A^{-1}Ax)\left|\det(A)^{-1}\right|\left|\det(A)\right|dx\tag{1}\\
+ & =-\int\ln\left[f_{X}(x)\left|\det(A)^{-1}\right|\right]f_{X}(x)dx\\
+ & =-\int f_{X}(x)\ln f_{X}(x)dx+\int(\ln\det A)f_{X}(x)dx\\
+ & =H(X)+\ln(\det A)
+\end{align*}
+
+\end_inset
+
+as desired.
+ Note that the justification for Eq.
+ (1) is as follows: we abbreviate 
+\begin_inset Formula 
+\[
+\varphi(x)=f_{X}(x)\left|\det(A)^{-1}\right|f_{X}(x)\left|\det(A)^{-1}\right|,
+\]
+
+\end_inset
+
+then again by an application of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm: transformation thm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+(1)=-\int\varphi\circ Ld\mu=-\det(L^{-1})\int\varphi\circ L\circ L^{-1}d\mu=-\det(L^{-1})\int\varphi d\mu.
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is the Lebesgue measure.
+ Here since 
+\begin_inset Formula $L$
+\end_inset
+
+ is represented by 
+\begin_inset Formula $A^{-1},$
+\end_inset
+
+ 
+\begin_inset Formula $L^{-1}$
+\end_inset
+
+ is thus represented by 
+\begin_inset Formula $A.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 1.33 - Zero conditional entropy implies singleton concentration
+\end_layout
+
+\begin_layout Standard
+Instead of 
+\begin_inset Formula $x,y,$
+\end_inset
+
+ we use 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ to denote random variables.
+ First, we reformulate 
+\begin_inset Formula $H(Y\vert X)$
+\end_inset
+
+ as follows:
+\begin_inset Formula 
+\begin{align*}
+H(Y\vert X) & =-\sum_{i}\sum_{j}\P(X=x_{i},Y=y_{j})\log\P(Y_{j}=y_{j}\vert X=x_{i})\\
+ & =-\sum_{i}\sum_{j}\P(Y=y_{j}\vert X=x_{i})\P(X=x_{i})\log\P(Y_{j}=y_{j}\vert X=x_{i})\\
+ & =\sum_{i}\P(X=x_{i})\sum_{j}f(x_{ij}),
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $f:\mathbb{R}^{+}\cup\{0\}\rightarrow\mathbb{R}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $x\mapsto-x\log x$
+\end_inset
+
+.
+ We now observe that 
+\begin_inset Formula $f$
+\end_inset
+
+ is strictly positive for 
+\begin_inset Formula $x\in(0,1)$
+\end_inset
+
+ and zero for 
+\begin_inset Formula $x=1$
+\end_inset
+
+or 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ The latter is straightforward by direct substitution.
+ To see the former, note 
+\begin_inset Formula 
+\[
+f(x)=x\log\frac{1}{x}>x\log1=0\text{ for }x\in(0,1).
+\]
+
+\end_inset
+
+Without loss of generality, we assume 
+\begin_inset Formula $\P(X=x_{i})>0$
+\end_inset
+
+ since otherwise we get remove these zeros terms without affect the sum.
+ Note that 
+\begin_inset Formula 
+\begin{align*}
+H(Y\vert X)=0 & \implies\sum_{i}x\P(X=x_{i})\sum_{j}f(x_{ij})=0\\
+ & \implies\sum_{j}f(x_{ij})=0\text{ \ \ \ \ for any given }i\tag{since \ensuremath{\P(X=x_{i})>0} for any \ensuremath{i} }.
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $f(x)=0$
+\end_inset
+
+ iff 
+\begin_inset Formula $x_{ij}=0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+, it follows that for any given 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $\P(Y=y_{j}\vert X=x_{i})=0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+ for any 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Clearly, there must be only 
+\begin_inset Formula $j$
+\end_inset
+
+ such that 
+\begin_inset Formula $\P(Y=y_{j}\vert X=x_{i})=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\P(Y=y_{j}\vert X=x_{i})=0$
+\end_inset
+
+ for all other 
+\begin_inset Formula $j$
+\end_inset
+
+'s since otherwise 
+\begin_inset Formula $\sum_{j}\P(Y=y_{j}\vert X=x_{i})\neq0$
+\end_inset
+
+, causing a contradiction.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 1.34 - Gaussian distribution maximizes entropy under constraints
+\end_layout
+
+\begin_layout Standard
+To facilitate the notation, we define 
+\begin_inset Formula 
+\[
+F(p(x)=-\int_{\mathbb{R}}p(x)\ln p(x)dx+\lambda_{1}\left(\int_{\R}p(x)dx-1\right)+\lambda_{2}\left(\int_{\mathbb{R}}xp(x)dx-\mu\right)+\lambda_{3}\left(\int_{\mathbb{R}}(x-\mu)^{2}p(x)dx-\sigma^{2}\right).
+\]
+
+\end_inset
+
+First, we rearrange to get 
+\begin_inset Formula 
+\[
+F(p(x))=\int_{\mathbb{R}}\underbrace{-p(x)\ln p(x)dx+\lambda_{1}p(x)+\lambda_{2}xp(x)+\lambda_{3}(x-\mu)^{2}p(x)}_{:=G(p(x),x)}dx-(\lambda_{1}+\lambda_{2}\mu+\lambda_{3}\sigma^{2}).
+\]
+
+\end_inset
+
+To get the stationary point, we take the functional derivative: 
+\begin_inset Formula 
+\[
+\frac{\delta F(p(x))}{\delta p(x)}=\frac{\partial G(p(x),x)}{\partial p(x)}=-\ln p(x)-1+\lambda_{1}+\lambda_{2}x+\lambda_{3}(x-\mu)^{2}.
+\]
+
+\end_inset
+
+Setting it to zero yields, 
+\begin_inset Formula 
+\[
+\ln(p(x))=\lambda_{1}+\lambda_{2}x+\lambda_{3}(x-\mu)^{2}-1\implies p(x)=\exp\{\lambda_{1}+\lambda_{2}x+\lambda_{3}(x-\mu)^{2}-1\}.
+\]
+
+\end_inset
+
+Now we need to eliminate the 
+\begin_inset Formula $\lambda'$
+\end_inset
+
+s by substituting back to the constraints 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\int p(x)dx=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\int xp(x)dx=\mu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\int(x-\mu)^{2}p(x)dx=\sigma^{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is system of integral equations.
+ To solve it using first principles would require a lot more work (plus
+ I don't know if Gaussian density is the unique solution).
+ But since we are only required to show that Gaussian density is indeed
+ one solution, we are relieved from the burden of proving uniqueness.
+ And we can just directly compare the coefficients.
+ Note that 
+\begin_inset Formula 
+\[
+\int_{\mathbb{R}}\frac{1}{(2\pi\sigma^{2})^{1/2}}\exp\left\{ -\frac{(x-\mu)^{2}}{2\sigma^{2}}\right\} dx=1.
+\]
+
+\end_inset
+
+Hence, if we let 
+\begin_inset Formula 
+\[
+\exp
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_body
