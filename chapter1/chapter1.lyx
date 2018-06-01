@@ -3101,12 +3101,48 @@ This is system of integral equations.
 Hence, if we let 
 \begin_inset Formula 
 \[
-\exp
+\exp\left\{ \lambda_{2}x+\lambda_{3}(x-\mu)^{2}\right\} =\exp\left\{ -\frac{(x-\mu)^{2}}{2\sigma^{2}}\right\} \implies\lambda_{3}=-\frac{1}{2\sigma^{2}},\lambda_{2}=0\text{ is a solution}
 \]
 
 \end_inset
 
+and 
+\begin_inset Formula 
+\[
+\exp\left\{ \lambda_{1}-1\right\} =\frac{1}{(2\pi\sigma^{2})^{1/2}}\implies\lambda_{1}=1-\frac{1}{2}\ln2\pi\sigma^{2}\text{ is a solution}.
+\]
 
+\end_inset
+
+Hence, we have shown that we can find admissible 
+\begin_inset Formula $\lambda_{1},\lambda_{2},\lambda_{3}$
+\end_inset
+
+ such that 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ satisfies the constraint, and the resulting distribution with this set
+ of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+'s is Gaussian.
+ Therefore, Gaussian distribution is a minimizer.
+ 
+\end_layout
+
+\begin_layout Remark
+One can potentially ask is Gaussian a unique minimizer for this optimization
+ problem? I don't know on the top of my head.
+ This is equivalent to showing that the solution to the integral constraints
+ with 
+\begin_inset Formula $p(x)=\exp\{\lambda_{1}+\lambda_{2}x+\lambda_{3}(x-\mu)^{2}-1\}$
+\end_inset
+
+, has unique solution.
+ I would guess some deep theorems are needed to prove this result, assuming
+ it is true.
 \end_layout
 
 \end_body
