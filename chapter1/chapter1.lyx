@@ -213,7 +213,7 @@ we have that
 \begin{align*}
 \varphi(w+h) & =\frac{\lambda}{2}\left(w+h\right)^{T}\left(w+h\right)\\
  & =\frac{\lambda}{2}\left(w^{T}w+w^{T}h+h^{T}x+\left\Vert h\right\Vert \right)\\
- & =\varphi\left(w\right)+\left\langle \lambda w,h\right\rangle +\underbrace{\frac{\lambda}{2}\left\Vert h\right\Vert }_{=o(\left\Vert h\right\Vert )}.
+ & =\varphi\left(w\right)+\left\langle \lambda w,h\right\rangle +\underbrace{\frac{\lambda}{2}\left\Vert h\right\Vert ^{2}}_{=o(\left\Vert h\right\Vert )}.
 \end{align*}
 
 \end_inset
@@ -3143,6 +3143,433 @@ One can potentially ask is Gaussian a unique minimizer for this optimization
 , has unique solution.
  I would guess some deep theorems are needed to prove this result, assuming
  it is true.
+\end_layout
+
+\begin_layout Section
+Problem 1.35 - Entropy of Gaussian
+\end_layout
+
+\begin_layout Standard
+We let 
+\begin_inset Formula $\varphi(x\vert\mu,\sigma^{2})$
+\end_inset
+
+ denote the density of Gaussian distribution.
+ Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a Gaussian random variable, then 
+\begin_inset Formula 
+\begin{align*}
+H(X) & =-\int\varphi(x\vert\mu,\sigma^{2})\ln\left[\varphi(x\vert\mu,\sigma^{2})\right]dx\\
+ & =\frac{1}{2}\int\varphi(x\vert\mu,\sigma^{2})\ln(2\pi\sigma^{2})dx+\frac{1}{2\sigma^{2}}\left[\int\varphi(x\vert\mu,\sigma^{2})x^{2}dx-2\mu\int\varphi(x\vert\mu,\sigma^{2})xdx+\mu^{2}\int\varphi(x\vert\mu,\sigma^{2})dx\right]\\
+ & =\frac{1}{2}\ln(2\pi\sigma^{2})+\frac{1}{2\sigma^{2}}\left[\sigma^{2}+\mu^{2}-2\mu^{2}+\mu^{2}\right]\\
+ & =\frac{1}{2}\ln(2\pi\sigma^{2})+\frac{1}{2}\\
+ & =\frac{1}{2}(1+\ln(2\pi\sigma^{2}))
+\end{align*}
+
+\end_inset
+
+as desired.
+\end_layout
+
+\begin_layout Section
+Problem 1.36 - Second order characterization of convexity
+\end_layout
+
+\begin_layout Standard
+We prove a slightly more generalized version.
+ First, we recall the definition of the convexity.
+ 
+\end_layout
+
+\begin_layout Definition
+A function 
+\begin_inset Formula $f:\mathbb{R}^{n}\rightarrow\mathbb{R}$
+\end_inset
+
+ is convex if its domain 
+\begin_inset Formula $\mathcal{D}_{f}$
+\end_inset
+
+ is a convex set and for any 
+\begin_inset Formula $x,y\in\mathcal{D}_{f}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda\in[0,1],$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+f(\lambda x+(1-\lambda)y)\leq\lambda f(x)+(1-\lambda)f(y).\tag{1}
+\]
+
+\end_inset
+
+The result of this problem is an direct consequence of the following proposition.
+\end_layout
+
+\begin_layout Proposition
+Let 
+\begin_inset Formula $f:\mathbb{R}^{n}\rightarrow\mathbb{R}$
+\end_inset
+
+ be a function.
+ Then the following statements are equivalent.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ is convex.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(y)\geq f(x)+\nabla f(x)^{T}(y-x)$
+\end_inset
+
+ assuming 
+\begin_inset Formula $f$
+\end_inset
+
+ is differentiable.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The Hessian matrix 
+\begin_inset Formula $H_{f}(x)$
+\end_inset
+
+ is positive semidefinite, assuming 
+\begin_inset Formula $f$
+\end_inset
+
+ is twice differentiable and 
+\begin_inset Formula $\mathcal{D}_{f}$
+\end_inset
+
+ is open.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+\begin_inset Formula $(1)\Rightarrow(2).$
+\end_inset
+
+ Suppose 
+\begin_inset Formula $f$
+\end_inset
+
+ is convex.
+ Then by definition for any 
+\begin_inset Formula $y,x\in\mathcal{D}_{f}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+f(\lambda y+(1-\lambda)x) & =f(x+\lambda(y-x))\\
+ & \leq\lambda f(y)+(1-\lambda)f(x)\\
+ & =f(x)+\lambda(f(y)-f(x)).
+\end{align*}
+
+\end_inset
+
+Rearranging the expression yields 
+\begin_inset Formula 
+\[
+\frac{f(x+\lambda(y-x))-f(x)}{\lambda}\leq f(y)-f(x).
+\]
+
+\end_inset
+
+Now we take the limit: 
+\begin_inset Formula 
+\[
+\lim_{\lambda\rightarrow0}\frac{f(x+\lambda(y-x))-f(x)}{\lambda}=\nabla f(x)^{T}(y-x).
+\]
+
+\end_inset
+
+This equality can be derived from the following argument: note the Taylor
+ expansion of 
+\begin_inset Formula $f$
+\end_inset
+
+ at 
+\begin_inset Formula $x+h$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+f(x+th)=f(x)+t\left\langle \nabla f(x),h\right\rangle +o(\left\Vert th\right\Vert ).
+\]
+
+\end_inset
+
+Then by rearranging we get 
+\begin_inset Formula 
+\[
+\frac{f(x+th)-f(x)}{t}=\left\langle \nabla f(x),h\right\rangle +\frac{o(\left\Vert th\right\Vert )}{t\left\Vert h\right\Vert }\left\Vert h\right\Vert \xrightarrow{t\rightarrow0}\left\langle \nabla f(x),h\right\rangle =\nabla f(x)^{T}h.
+\]
+
+\end_inset
+
+Hence, we have 
+\begin_inset Formula 
+\[
+\nabla f(x)^{T}(y-x)\leq f(y)-f(x)\iff f(y)\geq f(x)+f(x)^{T}(y-x)
+\]
+
+\end_inset
+
+as desired.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(2)\Rightarrow(1)$
+\end_inset
+
+.
+ Now assume 
+\begin_inset Formula $f(y)\geq f(x)+\nabla f(x)^{T}(y-x)$
+\end_inset
+
+ for any 
+\begin_inset Formula $x,y\in\mathcal{D}_{f}.$
+\end_inset
+
+ Fix 
+\begin_inset Formula $x,y\in\mathcal{D}_{f}$
+\end_inset
+
+.
+ Then note that since 
+\begin_inset Formula $\mathcal{D}_{f}$
+\end_inset
+
+ is convex, 
+\begin_inset Formula $\lambda x+(1-\lambda)y\in\mathcal{D}_{f}$
+\end_inset
+
+.
+ We first apply it to the pair 
+\begin_inset Formula $(\lambda x+(1-\lambda)y,y)$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align*}
+f(y) & \geq f(\lambda x+(1-\lambda)y)+\nabla f(\lambda x+(1-\lambda)y)^{T}(y-\lambda x-(1-\lambda)y)\\
+ & =f(\lambda x+(1-\lambda)y)+\nabla f(\lambda x+(1-\lambda)y)^{T}\lambda(y-x).\tag{2}
+\end{align*}
+
+\end_inset
+
+Similarly, we apply it to the pair 
+\begin_inset Formula $(\lambda x+(1-\lambda)y,x):$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+f(x)\geq f(\lambda x+(1-\lambda)y)+\nabla f(\lambda x+(1-\lambda)y)(1-\lambda)(x-y).\tag{3}
+\]
+
+\end_inset
+
+Now, we note that for 
+\begin_inset Formula $\lambda\in(0,1),$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+(1-\lambda)\times\text{Eq.}(2)+\lambda\times\text{Eq.}(3)= & (1-\lambda f(y))+\lambda f(x)\\
+\geq & (1-\lambda+\lambda)f(\lambda x+(1-\lambda)y)\\
+= & f(\lambda x+(1-\lambda)y),
+\end{align*}
+
+\end_inset
+
+which is the definition of convexity in defined in Eq.
+ (1).
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(2)\Rightarrow(3).$
+\end_inset
+
+ Pick arbitrary 
+\begin_inset Formula $x,h\in\mathcal{D}_{f}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\mathcal{D}_{f}$
+\end_inset
+
+ is open, we can find a sufficiently small 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ such that 
+\begin_inset Formula $x+\lambda h\in\mathcal{D}_{f}$
+\end_inset
+
+.
+ We first write out the second order Taylor expansion of 
+\begin_inset Formula $f$
+\end_inset
+
+ at 
+\begin_inset Formula $x+\lambda h,$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+f(x+\lambda h)=f(x)+\lambda\left\langle \nabla f(x),h\right\rangle +\frac{\lambda^{2}}{2}H_{f}(x)(h,h)+o(\left\Vert \lambda h\right\Vert ^{2}).\tag{4}
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $f$
+\end_inset
+
+ is convex, it follows that 
+\begin_inset Formula $f(x+\lambda h)\geq f(x)+\lambda\left\langle \nabla f(x),h\right\rangle $
+\end_inset
+
+.
+ Substituting back to Eq.(4) yields 
+\begin_inset Formula 
+\begin{align*}
+\lambda^{2}H_{f}(x)(h,h)+o(\left\Vert \lambda h\right\Vert ^{2})\geq0 & \implies H_{f}(x)(h,h)+\frac{o(\left\Vert \lambda h\right\Vert ^{2})}{\left\Vert \lambda h\right\Vert ^{2}}\left\Vert h\right\Vert ^{2}\geq0\tag{any \ensuremath{\lambda\in(0,1)}}\\
+ & \implies\lim_{\lambda\rightarrow0^{+}}\left[H_{f}(x)(h,h)+\frac{o(\left\Vert \lambda h\right\Vert ^{2})}{\left\Vert \lambda h\right\Vert ^{2}}\left\Vert h\right\Vert ^{2}\right]\geq0\\
+ & \implies H_{f}(x)(h,h)\geq0.
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $h$
+\end_inset
+
+ is arbitrary, it follows that 
+\begin_inset Formula $H_{f}(x)$
+\end_inset
+
+ is positive semidefinite.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(3)\Rightarrow(2).$
+\end_inset
+
+ Suppose 
+\begin_inset Formula $H_{f}$
+\end_inset
+
+ is positive semidefinite.
+ Then for any 
+\begin_inset Formula $x,y\in\mathcal{D}_{f},$
+\end_inset
+
+ since 
+\begin_inset Formula $\mathcal{D}_{f}$
+\end_inset
+
+ is convex, 
+\begin_inset Formula $\lambda x+(1-\lambda)y\in\mathcal{D}_{f}$
+\end_inset
+
+ for any 
+\begin_inset Formula $\lambda\in(0,1).$
+\end_inset
+
+ Then by a second order Taylor formula, we can write 
+\begin_inset Formula 
+\[
+f(y)=f(x)+\left\langle \nabla f(x),y-x\right\rangle +\frac{1}{2}H_{f}(z)(y-x,y-x)
+\]
+
+\end_inset
+
+for some 
+\begin_inset Formula $z$
+\end_inset
+
+ in the segment 
+\begin_inset Formula $\left[x,y\right]:=\left\{ \text{all points of form }\lambda x+(1-\lambda)y\text{ for }\lambda\in(0,1)\right\} $
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $H_{f}$
+\end_inset
+
+ is positive semidefinite, it follows that 
+\begin_inset Formula $f(y)\geq f(x)+\left\langle \nabla f(x),y-x\right\rangle .$
+\end_inset
+
+ 
 \end_layout
 
 \end_body
