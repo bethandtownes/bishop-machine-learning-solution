@@ -1,0 +1,1104 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input{"/config/config.tex"}
+\end_preamble
+\use_default_options true
+\master ../lyxmain.lyx
+\begin_modules
+theorems-ams-chap-bytype
+jason-extension
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 1
+\output_sync_macro "\synctex=-1"
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing other 1.12
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 2
+\use_package mathtools 2
+\use_package mhchem 1
+\use_package stackrel 2
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3.2cm
+\topmargin 3cm
+\rightmargin 3.2cm
+\bottommargin 3cm
+\secnumdepth -1
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Solutions for exercises to chapter 2
+\end_layout
+
+\begin_layout Section
+Problem 2.1 - Bernoulli distribution's expectation, variance, normalized,
+ entropy
+\end_layout
+
+\begin_layout Standard
+In the discussion below, 
+\begin_inset Formula $X$
+\end_inset
+
+ is a random variable following Bernoulli distribution.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
+ To check normalization, we note 
+\begin_inset Formula 
+\[
+\sum_{x=0}^{1}f_{X}(x\vert\mu)=\mu+(1-\mu)=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To find the expectation, note that 
+\begin_inset Formula 
+\[
+\E[X]=\sum_{x=0}^{1}xf_{X}(x\vert\mu)=1\cdot\mu+0\cdot(1-\mu)=\mu.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To find the variance, we note that 
+\begin_inset Formula 
+\[
+\text{Var}[X]=\E[X^{2}]-(\E X)^{2}=\mu-\mu^{2}=\mu(1-\mu).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To find the entropy, we note that 
+\begin_inset Formula 
+\[
+H(X)=-\sum_{x=0}^{1}f_{X}(x\vert\mu)f\log f_{X}(x|\mu)=-\mu\log\mu-(1-\mu)\log1-\mu.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 2.2 - Symmetric Bernoulli distribution's expectation, variance, normalize
+d, entropy
+\end_layout
+
+\begin_layout Standard
+In the discussion below, 
+\begin_inset Formula $X$
+\end_inset
+
+ is a random variable following the distribution stipulated by Eq.(2.261).
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
+ To show it's normalized, we note
+\begin_inset Formula 
+\[
+\sum_{x\in\{-1,1\}}f_{X}(x|\mu)=\left(\frac{1-\mu}{2}\right)^{2/2}\left(\frac{1+\mu}{2}\right)^{0}+\left(\frac{1-\mu}{2}\right)^{0}\left(\frac{1+\mu}{2}\right)^{1}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To find its expectation, we note 
+\begin_inset Formula 
+\[
+\E[X]=\sum_{x\in\{-1,1\}}xf_{X}(x|\mu)=\left(\frac{1+\mu}{2}\right)-\left(\frac{1-\mu}{2}\right)=\mu.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To find its variance, we note 
+\begin_inset Formula 
+\[
+\text{Var}[X]=\E[X^{2}]-(\E[X])^{2}=\left(\frac{1+\mu}{2}\right)+\left(\frac{1-\mu}{2}\right)-\mu^{2}=1-\mu^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To find its entropy, we note 
+\begin_inset Formula 
+\[
+H(X)=-\sum_{x\in\{-1,1\}}f_{X}(x|\mu)\log f_{X}(x|\mu)=-\left(\frac{1-\mu}{2}\right)\log\frac{1-\mu}{2}-\left(\frac{1+\mu}{2}\right)\log\frac{1+\mu}{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 2.3 - Binomial distribution is normalized
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
+ First, we show Eq.(2.262) holds: note that 
+\begin_inset Formula 
+\begin{align*}
+\binom{N}{m}+\binom{N}{m-1} & =\frac{N!}{m!(N-m)!}+\frac{N!}{(m-1)!(N-m+1)!}\\
+ & =\frac{N!(N-m+1)}{m!(N-m+1)!}+\frac{mN!}{m!(N-m+1)!}\\
+ & =\frac{(N+1)!}{m!((N+1)-m)!}\\
+ & =\binom{N+1}{m}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To prove the binomial theorem, we induce on 
+\begin_inset Formula $N.$
+\end_inset
+
+ For the base case 
+\begin_inset Formula $N=1$
+\end_inset
+
+ and 
+\begin_inset Formula $0$
+\end_inset
+
+, it is trivially true:
+\begin_inset Formula 
+\begin{align*}
+(1+x)^{1} & =\binom{1}{0}x^{0}+\binom{1}{1}x^{1}=1+x,\\
+(1+x)^{0} & =\binom{0}{0}x^{0}=1.
+\end{align*}
+
+\end_inset
+
+Now suppose the claim holds for 
+\begin_inset Formula $N=k.$
+\end_inset
+
+ Then for 
+\begin_inset Formula $N=k+1$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\begin{align*}
+(1+x)^{k+1} & =(1+x)(1+x)^{k}=(1+x)\sum_{m=0}^{N}\binom{N}{m}x^{m}\\
+ & =\sum_{m=0}^{M}\binom{N}{m}x^{m}+\sum_{m=0}^{N}\binom{N}{m}x^{m+1}\\
+ & =\binom{N}{0}x^{0}+\sum_{m=1}^{M}\binom{N}{m}x^{m}+\sum_{m=1}^{N}\binom{N}{m-1}x^{m}+\binom{N+1}{N+1}x^{N+1}\\
+ & =\binom{N+1}{0}x^{0}+\sum_{m=1}^{M}\left(\binom{N}{m}+\binom{N}{m-1}\right)x^{m}+\binom{N+1}{N+1}x^{N+1}\\
+ & =\binom{N+1}{0}x^{0}+\sum_{m=1}^{M}\binom{N+1}{m}x^{m}+\binom{N+1}{N+1}x^{N+1}\\
+ & =\sum_{m=0}^{N+1}\binom{N}{m}x^{m}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Now to show that the binomial distribution is normalized, we note that 
+\begin_inset Formula 
+\begin{align*}
+\sum_{m=0}^{N}\binom{N}{m}\mu^{m}(1-\mu)^{N-m} & =(1-\mu)^{N}\sum_{m=0}^{N}\binom{N}{m}\mu^{m}(1-\mu)^{-m}\\
+ & =(1-\mu)^{N}\sum_{m=0}^{N}\binom{N}{m}\left(\frac{\mu}{1-\mu}\right)^{m}\\
+ & =(1-\mu)^{N}\left(1+\frac{\mu}{1-\mu}\right)^{N}.\tag{by binomial theorem}\\
+ & =\left[(1-\mu)\left(1+\frac{\mu}{1-\mu}\right)\right]^{N}
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula 
+\begin{align*}
+(1-\mu)\left(1+\frac{\mu}{1-\mu}\right) & =1+\frac{\mu}{1-\mu}-\mu-\frac{\mu^{2}}{1-\mu}\\
+ & =1+\frac{\mu-\mu+\mu^{2}-\mu^{2}}{1-\mu}\\
+ & =1,
+\end{align*}
+
+\end_inset
+
+it follows that 
+\begin_inset Formula $\sum_{m=0}^{N}\binom{N}{m}\mu^{m}(1-\mu)^{N-m}=1,$
+\end_inset
+
+ and thus the result follows.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 2.4 - Binomial distribution's expectation and variance 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
+ Following the hint, we differentiate Eq.(2.264) w.r.t 
+\begin_inset Formula $\mu$
+\end_inset
+
+ once:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial\mu}\left\{ \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right\} = & n\cdot\sum_{n=1}^{N-1}\binom{N}{n}\mu^{n-1}(1-\mu)^{N-n}-(N-n)\cdot\sum_{n=1}^{N-1}\binom{N}{n}\mu^{n}(1-\mu)^{N-n-1}\\
+ & -N(1-\mu)^{N-1}+N\mu^{N-1}\\
+= & n\cdot\sum_{n=1}^{N}\binom{N}{n}\mu^{n-1}(1-\mu)^{N-n}-(N-n)\cdot\sum_{n=0}^{N-1}\binom{N}{n}\mu^{n}(1-\mu)^{N-n-1}\\
+= & n\cdot\sum_{n=0}^{N}\binom{N}{n}\mu^{n-1}(1-\mu)^{N-n}-(N-n)\cdot\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n-1}\\
+= & \frac{n}{\mu}\cdot\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}-\frac{N-n}{1-\mu}\cdot\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\\
+= & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right).
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}=1,$
+\end_inset
+
+ it follows that 
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\frac{n}{\mu}-\frac{N-n}{1-\mu}\right]=0 & \iff\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\frac{n}{\mu}-\frac{N-n}{1-\mu}\right][\mu(1-\mu)]=0\\
+ & \iff\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}[n(1-\mu)-(N-n)\mu]=0\\
+ & \iff\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)=0.\tag{1}
+\end{align*}
+
+\end_inset
+
+Now we rearrange Eq.(1):
+\begin_inset Formula 
+\[
+\sum_{n=0}^{N}n\cdot\binom{N}{n}\mu^{n}(1-\mu)^{N-n}=N\mu\left(\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right)=N\mu.
+\]
+
+\end_inset
+
+The result follows by observing that 
+\begin_inset Formula 
+\[
+\E[X]=\sum_{n=0}^{N}n\cdot\binom{N}{n}\mu^{n}(1-\mu)^{N-n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To facilitate notation, we let 
+\begin_inset Formula $\varphi(\mu)=\sum_{n=1}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\frac{n}{\mu}-\frac{N-n}{1-\mu}\right].$
+\end_inset
+
+ Then following the hint, we differentiate twice Eq.(2.264) w.r.t.
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and get 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial^{2}}{\partial\mu^{2}}\left\{ \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right\}  & =\frac{\partial\varphi(\mu)}{\partial\mu}\\
+ & =\sum_{n=0}^{N}\underbrace{\frac{\partial}{\partial\mu}\left\{ \binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)\right\} }_{:=H(\mu).}.
+\end{align*}
+
+\end_inset
+
+Hence, it suffices to evaluate 
+\begin_inset Formula $H(\mu)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+H(\mu) & =\frac{\partial}{\partial\mu}\left\{ \binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right\} \left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)+\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\frac{\partial}{\partial\mu}\left\{ \frac{n}{\mu}-\frac{N-n}{1-\mu}\right\} \\
+ & =\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}+\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right]\\
+ & =\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right].
+\end{align*}
+
+\end_inset
+
+Hence, it follows that 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}}{\partial\mu^{2}}\left\{ \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right\} =\underbrace{\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right]=0}_{(2)}.
+\]
+
+\end_inset
+
+Now, we arrange Eq.(2) and get 
+\begin_inset Formula 
+\begin{align*}
+ & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right]=0\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right](\mu^{2}(1-\mu)^{2})=0\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[(n(1-\mu)-(N-n)\mu)^{2}-(N-n)\mu^{2}-n(1-\mu)^{2}\right]=0\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[(n-N\mu)^{2}-(N-n)\mu^{2}-n(1-\mu)^{2}\right]=0\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)^{2}=\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[(N-n)\mu^{2}+n(1-\mu)^{2}\right]\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)^{2}=\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(N\mu^{2}+n-2n\mu)\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)^{2}=N\mu-N\mu^{2}=N\mu(1-\mu).
+\end{align*}
+
+\end_inset
+
+The conclusion can be drawn by observing that
+\begin_inset Formula 
+\[
+\text{Var}[X]=\E[(X-\E[X])^{2}]=\sum_{n=0}^{N}\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 2.5 - Beta distribution is normalized 
+\end_layout
+
+\begin_layout Standard
+First, we note that 
+\begin_inset Formula 
+\begin{align*}
+\Gamma(a)\Gamma(b) & =\int_{0}^{\infty}e^{-x}x^{a-1}dx\int_{0}^{\infty}e^{-y}y^{b-1}dy\\
+ & =\int_{0}^{\infty}\int_{0}^{\infty}e^{-(x+y)}x^{a-1}y^{b-1}dydx.\tag{1}
+\end{align*}
+
+\end_inset
+
+Now, we make a change of variable 
+\begin_inset Formula 
+\[
+x+y=t\implies\begin{cases}
+y=t-x\\
+y\geq0\Leftrightarrow t-x\geq0\Leftrightarrow t\geq x\\
+x\geq0\\
+dt=dy
+\end{cases}.
+\]
+
+\end_inset
+
+Therefore, it follows that 
+\begin_inset Formula 
+\begin{align*}
+\text{Eq.(1)} & =\int_{0}^{\infty}\int_{x}^{\infty}e^{-t}x^{a-1}(t-x)^{b-1}dtdx\\
+ & =\int_{0}^{\infty}\int_{0}^{t}e^{-t}x^{a-1}(t-x)^{b-1}dxdt\tag{by Fubini's theorem}\\
+ & =\int_{0}^{\infty}\int_{0}^{1}e^{-t}(t\mu)^{a-1}(t-t\mu)^{b-1}td\mu dt\tag{2}\\
+ & =\int_{0}^{\infty}e^{-t}t^{a-1}t^{b-1}tdt\int_{0}^{1}\mu^{a-1}(1-\mu)^{b-1}d\mu\\
+ & =\Gamma(a+b)\int_{0}^{1}\mu^{a-1}(1-\mu)^{b-1}d\mu,
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\text{Eq.(2)}$
+\end_inset
+
+ follows from a change of variables 
+\begin_inset Formula 
+\[
+x=t\mu\implies\begin{cases}
+0\leq x\leq t\Leftrightarrow0\leq t\mu\leq t\Leftrightarrow0\leq\mu\leq t\\
+dx=td\mu
+\end{cases}.
+\]
+
+\end_inset
+
+Hence, it follows that 
+\begin_inset Formula 
+\[
+\int_{0}^{1}\mu^{a-1}(1-\mu)^{b-1}d\mu=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)},
+\]
+
+\end_inset
+
+and as a result the Beta density integrates to 1.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 2.6 - Beta distribution's expectation, variance, mode 
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+In the discussion below, let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a random variable that follows Beta distribution with parameter 
+\begin_inset Formula $a,b\in\mathbb{R}^{+}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
+ To find the expectation, note that 
+\begin_inset Formula 
+\begin{align*}
+\E[X] & =\int_{0}^{1}\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}xdx\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\int_{0}^{1}x^{(a+1)-1}(1-x)^{b-1}dx\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\frac{\Gamma(a+1)\Gamma(b)}{\Gamma(a+b+1)}\tag{by Problem 2.5}\\
+ & =\frac{\Gamma(a+b)a\Gamma(a)\Gamma(b)}{\Gamma(a)\Gamma(b)\Gamma(a+b)\Gamma(a+b)}\tag{since \ensuremath{\Gamma(x+1)=x\Gamma(x).}}\\
+ & =\frac{a}{a+b}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To find the variance, we first note 
+\begin_inset Formula 
+\begin{align*}
+\E[X^{2}] & =\int\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}x^{2}dx\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\int_{0}^{1}x^{a+2-1}(1-x)^{b-1}dx\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\frac{\Gamma(a+2)\Gamma(b)}{\Gamma(a+b+2)}\\
+ & =\frac{a(a+1)}{(a+b+1)(a+b)}.
+\end{align*}
+
+\end_inset
+
+Then it follows that 
+\begin_inset Formula 
+\begin{align*}
+\text{Var}[X] & =\E[X^{2}]-(\E[X])^{2}=\frac{a(a+1)}{(a+b+1)(a+b)}-\left(\frac{a}{a+b}\right)^{2}\\
+ & =\frac{a(a+1)(a+b)-a^{2}(a+b+1)}{(a+b+1)(a+b)^{2}}\\
+ & =\frac{ab}{(a+b+1)(a+b)^{2}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Since the mode of a continuous probability distribution is defined as its
+ density function's critical point, it suffices for us to differentiate
+ 
+\begin_inset Formula $f_{X}(x)$
+\end_inset
+
+ and find the critical points.
+ Note that 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial f_{X}(x)}{\partial x} & =\frac{\partial}{\partial x}\left[\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}\right]\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\left[(a-1)x^{a-2}(1-x)^{b-1}+(b-1)x^{a-1}(1-x)^{b-2}\right].
+\end{align*}
+
+\end_inset
+
+Setting it to zero yields 
+\begin_inset Formula 
+\begin{align*}
+ & \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\left[(a-1)x^{a-2}(1-x)^{b-1}+(b-1)x^{a-1}(1-x)^{b-2}\right]=0\\
+\iff & \left[(a-1)x^{a-2}(1-x)^{b-1}+(b-1)x^{a-1}(1-x)^{b-2}\right]=0\\
+\iff & (a-1)(1-x)=(b-1)x\\
+\iff & x=\frac{a-1}{a+b-2}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 2.7 - Comparison between posterior mean and MLE for Bernoulli model
+ 
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+The book didn't go through the details of deriving some of the calculations.
+ Although these calculations are simple, they are worth doing by hand at
+ least once.
+ Hence, we show them here.
+ For notation, we let 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ denote the sample data, 
+\begin_inset Formula $(x_{1},\ldots x_{N})$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\shape italic
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\shape default
+First, we find the posterior mean for the Bernoulli model.
+ By assumption, the parameter of interest, 
+\begin_inset Formula $\mu,$
+\end_inset
+
+ follows beta distribution, i.e.
+ 
+\begin_inset Formula 
+\[
+f(\mu|a,b)=\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\mu^{a-1}(1-\mu)^{b-1}.
+\]
+
+\end_inset
+
+And the likelihood function after sampling the data is given by 
+\begin_inset Formula 
+\[
+f(\mathcal{X}\vert\mu)=\mu^{\sum_{i=1}^{N}x_{i}}(1-\mu)^{\sum_{i=1}^{N}(1-x_{i})}=\mu^{n}(1-\mu)^{m}.
+\]
+
+\end_inset
+
+Therefore, we have the posterior as 
+\begin_inset Formula 
+\begin{align*}
+f(\mu|\vert\mathcal{X}) & \propto f(\mu\vert a,b)\cdot f(x_{1},\ldots,x_{N}\vert\mu)\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\mu^{a-1}(1-\mu)^{b-1}\mu^{n}(1-\mu)^{m}\\
+ & \propto\mu^{a+n-1}(1-\mu)^{b+m-1}.
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $f(\mu|\mathcal{X})$
+\end_inset
+
+ should integrates to 1 in order to be a valid probability density function,
+ in view of Problem 2.5 we see that 
+\begin_inset Formula 
+\[
+f(\mu\vert\mathcal{X})=\frac{\Gamma(a+b+n+m)}{\Gamma(a)\Gamma(b)}\mu^{a+n-1}(1-\mu)^{b+m-1}\sim\text{Beta}(a+n,b+m).
+\]
+
+\end_inset
+
+Hence, it follows that 
+\begin_inset Formula 
+\[
+\E_{\mu|\mathcal{X}}[\mu]=\frac{a+n}{a+b+n+m}
+\]
+
+\end_inset
+
+as desired.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Next, we find 
+\begin_inset Formula $\mu_{MLE}.$
+\end_inset
+
+ First, we write out the likelihood equation, 
+\begin_inset Formula 
+\[
+f(\mathcal{X}|\mu)=\prod_{i=1}^{N}\mu^{x_{i}}(1-\mu)^{1-x_{i}}=\mu^{\sum_{i=1}^{N}x_{i}}(1-\mu)^{\sum_{i=1}^{N}(1-x_{i})},
+\]
+
+\end_inset
+
+from which we can get the log-likelihood equation as 
+\begin_inset Formula 
+\[
+\ell(\mu)=\log f(\mathcal{X}\vert\mu)=\left(\sum_{i=1}^{N}x_{i}\right)\log\mu+\left(\sum_{i=1}^{N}(1-x_{i})\right)\log(1-\mu).
+\]
+
+\end_inset
+
+Now we differentiate and set to zero 
+\begin_inset Formula 
+\begin{align*}
+ & \frac{\partial\ell(\mu)}{\partial\mu}=\left(\sum_{i=1}^{N}x_{i}\right)\frac{1}{\mu}-\left(\sum_{i=1}^{N}(1-x_{i})\right)\frac{1}{1-\mu}=0\\
+\iff & \left(\sum_{i=1}^{N}x_{i}\right)(1-\mu)-\left(\sum_{i=1}^{N}(1-x_{i})\right)\mu=0\\
+\iff & \frac{1}{\mu}=\frac{\sum_{i=1}^{N}(1-x_{i})}{\sum_{i=1}^{N}x_{i}}+1=\frac{\sum_{i=1}^{N}1-\sum_{i=1}^{N}x_{i}+\sum_{i=1}^{N}x_{i}}{\sum_{i=1}^{N}x_{i}}\\
+\iff & \mu_{MLE}=\frac{n}{n+m}.
+\end{align*}
+
+\end_inset
+
+Now it suffices to show that 
+\begin_inset Formula 
+\[
+\frac{a+n}{a+b+n+m}\in\text{Seg}\left(\frac{a}{a+b},\frac{n}{n+m}\right),
+\]
+
+\end_inset
+
+where Seg means the line segment whose endpoints are 
+\begin_inset Formula $a/(a+b)$
+\end_inset
+
+ and 
+\begin_inset Formula $n/(n+m)$
+\end_inset
+
+.
+ To show this, it suffices to show that the solution, denoted as 
+\begin_inset Formula $\lambda_{*}$
+\end_inset
+
+, to the equation 
+\begin_inset Formula 
+\[
+\lambda\left(\frac{a}{a+b}\right)+(1-\lambda)\frac{n}{n+m}=\frac{a+n}{a+b+n+m}
+\]
+
+\end_inset
+
+lies in 
+\begin_inset Formula $(0,1).$
+\end_inset
+
+ Solving the equation yields 
+\begin_inset Formula 
+\[
+\lambda_{*}=\frac{a+b}{a+b+m+n}.
+\]
+
+\end_inset
+
+Then the claim is true since 
+\begin_inset Formula $a,b,n,m>0$
+\end_inset
+
+ by assumption.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 2.9 - Dirichlet distribution is normalized
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+In the discussion below, we let 
+\begin_inset Formula $f_{D}(\mu)$
+\end_inset
+
+ denote the density function for a Dirichlet distribution whose parameter
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is in 
+\begin_inset Formula $K$
+\end_inset
+
+ dimensional Euclidean space.
+ We will use a slightly different approach from the one derived from the
+ hint from the book.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\shape italic
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\shape default
+We need to show that 
+\begin_inset Formula 
+\[
+\int_{\mathbb{S}_{K}}f_{D}(\mu)d\mu=\int_{\mathbb{S}_{K}}\frac{\Gamma(\sum_{i=1}^{K}\alpha_{i})}{\prod_{i=1}^{K}\Gamma(\alpha_{i})}\prod_{i=1}^{K-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{K-1}\mu_{i}\right)^{\alpha_{K}-1}d\mu=1,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbb{S}_{k}:=\{x\in\mathbb{R}^{k}:\sum_{i=1}^{k}x_{k}=1,x_{i}\geq0,i=0,...,k\}$
+\end_inset
+
+ is the 
+\begin_inset Formula $k$
+\end_inset
+
+-simplex in Euclidean space.
+ Following the idea in Problem 2.5, it suffices for us to show that 
+\begin_inset Formula 
+\[
+I_{\mu}(k):=\int_{\mathbb{S}_{k}}\prod_{i=1}^{k-1}\mu_{k}^{\alpha_{i}}\left(1-\sum_{i=1}^{k-1}\mu_{i}\right)^{\alpha_{K}-1}d\mu=\frac{\prod_{i=1}^{K}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{K}\alpha_{i})}.
+\]
+
+\end_inset
+
+We prove this using inducting on 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ For the base case 
+\begin_inset Formula $k=2$
+\end_inset
+
+, note 
+\begin_inset Formula 
+\begin{align*}
+I_{\mu}(2) & =\int_{\{\mu\in\mathbb{R}^{2}:\mu_{1}+\mu_{2}=1,\mu_{1}\geq0,\mu\geq0\}}\mu_{1}^{\alpha_{1}-1}(1-\mu_{1})^{\alpha_{2}-1}d\mu\\
+ & =\int_{\{\mu\in\mathbb{R}^{2}:\mu_{1}\times\mu_{2}\in[0.1]\times[0,1]\}}\mu_{1}^{\alpha_{1}-1}(1-\mu_{1})^{\alpha_{2}-1}d\mu\tag{1}\\
+ & =\int_{0}^{1}d\mu_{2}\int_{0}^{1}\mu_{1}^{\alpha_{1}-1}(1-\mu_{1})^{\alpha_{2}-1}d\mu_{1}\tag{by Fubini's theorem }\\
+ & =\frac{\Gamma(a_{1})\Gamma(\alpha_{2})}{\Gamma(\alpha_{1}+\alpha_{2})}.
+\end{align*}
+
+\end_inset
+
+where Eq.(1) follows from the observation that for any 
+\begin_inset Formula $\mathbb{N}\ni k\geq2$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{S}_{k} & =\left\{ x\in\mathbb{R}^{k}:\sum_{i=1}^{k-1}x_{i}=1-x_{k},x_{k}\in[0,1],x_{i}\geq0,i=1,...,k\right\} \\
+ & =\left\{ x\in\mathbb{R}^{k}:\sum_{i=1}^{k-1}x_{i}\leq1,x_{k}\in[0,1],x_{i}\geq0,i=1,...,k-1\right\} ,
+\end{align*}
+
+\end_inset
+
+where the equality can be verified by an element trace.
+ Now assume the claim is true for 
+\begin_inset Formula $k=n.$
+\end_inset
+
+ Before going into the inductive step, we carefully formulate the inductive
+ hypothesis: note that 
+\begin_inset Formula 
+\begin{align*}
+I_{\mu}(n) & =\int_{\mathbb{S}_{n}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu\\
+ & =\int_{\left\{ \mu\in\mathbb{R}^{n}:\sum_{i=1}^{n-1}\mu_{i}\leq1,\mu_{n}\in[0,1],\mu_{1\leq i\leq n-1}\geq0\right\} }\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu\\
+ & =\int_{\{\mu\in\mathbb{R}^{n}:\sum_{i=1}^{n-1}\mu_{i}\leq1,\mu_{1\leq i\leq n-1}\in[0,1]\}}\int_{0}^{1}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d\mu_{n}d(\times_{i=1}^{n-1}\mu_{i})\\
+ & =\int_{\{\mu\in\mathbb{R}^{n}:\sum_{i=1}^{n-1}\mu_{i}\leq1,\mu_{1\leq i\leq n-1}\in[0,1]\}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=1}^{n-1}\mu_{i})\int_{0}^{1}d\mu_{n}\\
+ & =\int_{\{\mu\in\mathbb{R}^{n}:\sum_{i=1}^{n-1}\mu_{i}\leq1,\mu_{1\leq i\leq n-1}\in[0,1]\}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=1}^{n-1}\mu_{i})\\
+ & =\int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{0}^{1-\mu_{i}}\mu_{2}^{\alpha_{2}-1}\cdots\int_{0}^{1-\sum_{i=1}^{n-2}\mu_{i}}\mu_{n-1}^{\alpha_{n-1}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu_{n-1}d\mu_{n-2}\cdots d\mu_{1}\tag{2}\\
+ & =\frac{\prod_{i=1}^{n}\Gamma(\alpha_{i})}{\Gamma\left(\sum_{i=1}^{n}\alpha_{i}\right)}
+\end{align*}
+
+\end_inset
+
+for any 
+\begin_inset Formula $\{\alpha_{1},\ldots,\alpha_{n}\}$
+\end_inset
+
+ s.t.
+ 
+\begin_inset Formula $\sum_{i=1}^{n}\alpha_{i}=1.$
+\end_inset
+
+ Also note that Eq.(2) follows from repeated application of Fubini's theorem
+ in the following way: 
+\begin_inset Formula 
+\begin{align*}
+ & \text{Eq.(2)}\\
+= & \int_{\{\mu\in\mathbb{R}^{n}:\sum_{i=2}^{n-1}\mu_{i}\leq1-\mu_{1},\mu_{1}\in[0,1],\mu_{2\leq i\leq n-1}\geq0\}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=1}^{n-1}\mu_{i})\\
+= & \int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{\{(\mu_{2},\dots,\mu_{n})\in\mathbb{R}^{n-1}:\sum_{i=2}^{n-1}\mu_{i}\leq1-\mu_{1},\mu_{2\leq n-1}\geq0\}}\prod_{i=2}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=1}^{n-1}\mu_{i})\\
+= & \int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{\big\{\stackrel{(\mu_{2},\dots,\mu_{n})\in\mathbb{R}^{n-1}:\sum_{i=3}^{n-1}\mu_{i}\leq1-\mu_{1}-\mu_{2}}{\mu_{3\leq i\leq n-1}\geq0,\mu_{2}\in[0,1-\mu_{1}]}\big\}}\prod_{i=2}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=2}^{n-1}\mu_{i})d\mu_{1}\\
+= & \int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{0}^{1-\mu_{1}}\mu_{2}^{\alpha_{2}-1}\int_{\big\{\stackrel{(\mu_{3},\dots,\mu_{n})\in\mathbb{R}^{n-2}:\sum_{i=3}^{n-1}\mu_{i}\leq1-\mu_{1}-\mu_{2},}{\mu_{3\leq i\leq n-1}\geq0}\big\}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=3}^{n-1}\mu_{i})d\mu_{2}d\mu_{1}\\
+\cdots\\
+= & \int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{0}^{1-\mu_{i}}\mu_{2}^{\alpha_{2}-2}\cdots\int_{0}^{1-\sum_{i=1}^{n-2}\mu_{i}}\mu_{n-1}^{\alpha_{n-1}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu_{n-1}d\mu_{n-2}\cdots d\mu_{1}\tag{2}
+\end{align*}
+
+\end_inset
+
+We also prove a lemma to facilitate the inductive step.
+ 
+\end_layout
+
+\begin_layout Lemma
+For any 
+\begin_inset Formula $a\in\mathbb{R}-\{0\}$
+\end_inset
+
+ and 
+\begin_inset Formula $m,n>0,$
+\end_inset
+
+ the following integral identity holds: 
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: problem2.9 lem1"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{0}^{1}x^{m-1}(1-x)^{n-1}dx=\frac{1}{a^{m+n-1}}\int_{0}^{a}y^{m-1}(a-y)^{n-1}dy,
+\]
+
+\end_inset
+
+and as a result 
+\begin_inset Formula 
+\[
+\int_{0}^{a}y^{m-1}(a-y)^{n-1}=a^{m+n-1}\frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+By change of variable 
+\begin_inset Formula $x=y/a,$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}x^{m-1}(1-x)^{n-1}dx & =\frac{1}{a}\int_{0}^{a}\left(\frac{y}{a}\right)^{m-1}\left(1-\frac{y}{a}\right)^{n-1}dy\\
+ & =\frac{1}{a^{m+n-1}}\int_{0}^{a}a^{m+n-2}\left(\frac{y}{a}\right)^{m-1}\left(1-\frac{y}{a}\right)^{n-1}dy\\
+ & =\frac{1}{a^{m+n-1}}\int_{0}^{a}a^{m-1}\left(\frac{y}{a}\right)^{m-1}a^{n-1}\left(\frac{a-y}{a}\right)^{n-1}dy\\
+ & =\frac{1}{a^{m+n-1}}\int_{0}^{a}y^{m-1}(a-y)^{n-1}dy.
+\end{align*}
+
+\end_inset
+
+That 
+\begin_inset Formula $\int_{0}^{a}y^{m-1}(a-y)^{n-1}=\frac{1}{a^{m+n-1}}\frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}$
+\end_inset
+
+ then directly follows from Problem 2.5.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+Then for 
+\begin_inset Formula $k=n+1,$
+\end_inset
+
+ again by repeated application of Fubini's theorem we have 
+\begin_inset Formula 
+\begin{align*}
+I_{\mu}(n+1) & =\int_{\mathbb{S}_{n+1}}\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n}\mu_{i}\right)^{\alpha_{n+1}-1}d\mu\\
+ & =\int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{0}^{1-\mu_{1}}\mu_{2}^{\alpha_{2}-1}\cdots\int_{0}^{1-\sum_{i=1}^{n-1}\mu_{i}}\mu_{n}^{\alpha_{n}-1}\left(1-\sum_{i=1}^{n}\mu_{i}\right)^{\alpha_{n+1}-1}d\mu_{n}d\mu_{n-1}\cdots d\mu_{1}.\tag{3}
+\end{align*}
+
+\end_inset
+
+Note that by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: problem2.9 lem1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+ & \int_{0}^{1-\sum_{i=1}^{n-1}\mu_{i}}\mu_{n}^{\alpha_{n}-1}\left(1-\sum_{i=1}^{n}\mu_{i}\right)^{\alpha_{n+1}-1}d\mu_{n}\\
+=\ \  & \int_{0}^{1-\sum_{i=1}^{n-1}\mu_{i}}\mu_{n}^{\alpha_{n}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}-\mu_{n}\right)^{\alpha_{n+1}-1}d\mu_{n}\\
+=\ \  & \frac{\Gamma(\alpha_{n})\Gamma(\alpha_{n+1})}{\Gamma(\alpha_{n}+\alpha_{n+1})}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+\alpha_{n+1}-1}.
+\end{align*}
+
+\end_inset
+
+Therefore, 
+\begin_inset Formula 
+\begin{align*}
+\text{Eq.(3)} & =\frac{\Gamma(\alpha_{n})\Gamma(\alpha_{n+1})}{\Gamma(\alpha_{n}+\alpha_{n+1})}\int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\cdots\int_{0}^{1-\sum_{i=1}^{n-2}\mu_{i}}\mu_{n-1}^{\alpha_{n-1}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+\alpha_{n+1}-1}d\mu_{n-1}\cdots d\mu_{1}\\
+ & =\frac{\Gamma(\alpha_{n})\Gamma(\alpha_{n+1})}{\Gamma(\alpha_{n}+\alpha_{n+1})}\frac{\Gamma(\alpha_{1})\Gamma(\alpha_{2})\cdots\Gamma(\alpha_{n}+\alpha_{n+1})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n+1})}\tag{by inductive hypothesis}\\
+ & =\frac{\prod_{i=1}^{n}\Gamma(\alpha_{i})}{\Gamma\left(\sum_{i=1}^{n}\alpha_{i}\right)}
+\end{align*}
+
+\end_inset
+
+as desired.
+\end_layout
+
+\end_body
+\end_document

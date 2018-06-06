@@ -13,6 +13,7 @@
 \begin_modules
 theorems-ams-chap-bytype
 jason-extension
+enumitem
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -114,6 +115,27 @@ filename "chapter1/chapter1.lyx"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "chapter2/chapter2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 

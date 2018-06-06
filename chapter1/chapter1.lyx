@@ -2228,7 +2228,7 @@ Recall that the Cauchy functional equation in its standard form is as follows:
 \begin_inset Formula $c\in\mathbb{R}$
 \end_inset
 
- is then the only solution.
+ is the only solution.
  (cf.
  
 \begin_inset CommandInset citation
@@ -3827,6 +3827,79 @@ I(X,Y)=H(X)-H(X\vert Y)=\frac{2}{3}\log\frac{3}{4}+\frac{1}{3}\log3.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 1.40 - Proof of AM-GM using Jensen's inequality
+\end_layout
+
+\begin_layout Standard
+Since the function 
+\begin_inset Formula $x\mapsto\log x$
+\end_inset
+
+ is concave, it follows that for any set of points 
+\begin_inset Formula $\{x_{i}\}_{i=1}^{N},N\in\mathbb{N}$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+\ln\left(\sum_{i=1}^{N}\frac{1}{N}x_{i}\right)\geq\sum_{i=1}^{N}\frac{1}{N}\log(x_{i})=\log\left(\prod_{i=1}^{N}\sqrt[N]{x_{i}}\right).
+\]
+
+\end_inset
+
+Next, since 
+\begin_inset Formula $x\mapsto\exp(x)$
+\end_inset
+
+ preserves monotonicity, it follows that 
+\begin_inset Formula $\sum_{i=1}^{N}\frac{1}{N}x_{i}\geq\prod_{i=1}^{N}\sqrt[^{N}]{x_{i}}$
+\end_inset
+
+as desired.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 1.41 - Characterization of mutual information
+\end_layout
+
+\begin_layout Standard
+To show that desired equality, note that 
+\begin_inset Formula 
+\begin{align*}
+I(X,Y) & =-\int\int f_{X,Y}(x,y)\log\frac{f_{X}(x)f_{Y}(y)}{f_{X,Y}(x,y)}dxdy\\
+ & =-\int\int f_{X,Y}(x,y)\log f_{X}(x)dxdy-\left(-\int\int f_{X,Y}(x,y)\log\frac{f_{X,Y}(x,y)}{f_{Y}(y)}dxdy\right)\\
+ & =-\int\log f_{X}(x)\left(\int f_{X,Y}(x,y)dy\right)dx-\left(-\int\int f_{X,Y}(x,y)\log f_{X\vert Y}(x\vert y)dxdy\right)\\
+ & =\left(-\int f_{X}(x)\log f_{X}(x)dx\right)-\left(-\int\int f_{X,Y}(x,y)\log f_{X\vert Y}(x\vert y)dxdy\right)\\
+ & =H(X)-H(X\vert Y).
+\end{align*}
+
+\end_inset
+
+That 
+\begin_inset Formula $I(X,Y)=H(Y)-H(Y\vert X)$
+\end_inset
+
+ follows by the same argument but swapping 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ 
 \end_layout
 
 \end_body
