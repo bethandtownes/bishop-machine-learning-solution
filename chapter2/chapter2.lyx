@@ -96,7 +96,7 @@ Solutions for exercises to chapter 2
 \end_layout
 
 \begin_layout Section
-Problem 2.1 - Bernoulli distribution's expectation, variance, normalized,
+Problem 2.1 - Bernoulli distribution's expectation, variance, normalization,
  entropy
 \end_layout
 
@@ -167,8 +167,8 @@ H(X)=-\sum_{x=0}^{1}f_{X}(x\vert\mu)f\log f_{X}(x|\mu)=-\mu\log\mu-(1-\mu)\log1-
 \end_layout
 
 \begin_layout Section
-Problem 2.2 - Symmetric Bernoulli distribution's expectation, variance, normalize
-d, entropy
+Problem 2.2 - Symmetric Bernoulli distribution's expectation, variance, normaliza
+tion, entropy
 \end_layout
 
 \begin_layout Standard
@@ -896,12 +896,16 @@ where
  Following the idea in Problem 2.5, it suffices for us to show that 
 \begin_inset Formula 
 \[
-I_{\mu}(k):=\int_{\mathbb{S}_{k}}\prod_{i=1}^{k-1}\mu_{k}^{\alpha_{i}}\left(1-\sum_{i=1}^{k-1}\mu_{i}\right)^{\alpha_{K}-1}d\mu=\frac{\prod_{i=1}^{K}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{K}\alpha_{i})}.
+I_{\mu}(k):=\int_{\mathbb{S}_{k}}\prod_{i=1}^{k-1}\mu_{i}^{\alpha_{i}}\left(1-\sum_{i=1}^{k-1}\mu_{i}\right)^{\alpha_{k}-1}d\mu=\frac{\prod_{i=1}^{k}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{k}\alpha_{i})},
 \]
 
 \end_inset
 
-We prove this using inducting on 
+for any 
+\begin_inset Formula $\mathbb{N}\ni k\geq2.$
+\end_inset
+
+ We prove this using inducting on 
 \begin_inset Formula $k$
 \end_inset
 
@@ -1098,6 +1102,216 @@ Therefore,
 \end_inset
 
 as desired.
+\end_layout
+
+\begin_layout Section
+Problem 2.10 - Dirichlet distribution's expectation, variance and covariance
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+In the discussion below, we let 
+\begin_inset Formula $\mu$
+\end_inset
+
+ be a 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensional random vector s.t 
+\begin_inset Formula $\mu\sim\mathrm{Dir}(\alpha)$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbb{S}_{n}$
+\end_inset
+
+ denote the standard simplex in 
+\begin_inset Formula $\mathbb{R}^{n}.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
+ To find the expectation, note that 
+\begin_inset Formula 
+\begin{align*}
+\E[\mu_{j}] & =\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\mu_{j}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu\\
+ & =\begin{cases}
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+1-1}d\mu & \text{if }j=n\\
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{i\geq1,i\neq j}^{n-1}\mu_{j}^{\alpha_{i}-1}\mu_{j}^{\alpha_{j}+1-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu & \text{if }j\in\{1,...,n-1\}
+\end{cases}\\
+ & =\frac{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}\frac{\prod_{i\geq1,i\neq j}^{n-1}\Gamma(\alpha_{i})\Gamma(\alpha_{j}+1)}{\Gamma\left((\sum_{i=1}^{n}\alpha_{i})+1\right)}\\
+ & =\frac{\alpha_{j}}{\sum_{i=1}^{n}\alpha_{i}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To find the variance, note that using the same argument as in part(1), 
+\begin_inset Formula 
+\begin{align*}
+\E[\mu_{j}^{2}] & =\begin{cases}
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+2-1}d\mu & \text{if }j=n\\
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{i\geq1,i\neq j}^{n-1}\mu_{j}^{\alpha_{i}-1}\mu_{j}^{\alpha_{j}+2-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu & \text{if }j\in\{1,...,n-1\}
+\end{cases}\\
+ & =\frac{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}\frac{\prod_{i\geq1,i\neq j}^{n-1}\Gamma(\alpha_{i})\Gamma(\alpha_{j}+2)}{\Gamma\left((\sum_{i=1}^{n}\alpha_{i})+2\right)}\\
+ & =\frac{\alpha_{j}(\alpha_{j}+1)}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})}.
+\end{align*}
+
+\end_inset
+
+Hence, 
+\begin_inset Formula 
+\begin{align*}
+\text{Var}[\mu_{j}] & =\E[\mu_{j}^{2}]-(\E[\mu_{j}])^{2}\\
+ & =\frac{\alpha_{j}(\alpha_{j}+1)}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})}-\frac{\alpha_{j}^{2}}{(\sum_{i=1}^{n}\alpha_{i})^{2}}\\
+ & =\frac{(\sum_{i=1}^{n}\alpha_{i})\alpha_{j}(\alpha_{j}+1)-(\sum_{i=1}^{n}\alpha_{i}+1)\alpha_{j}^{2}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})^{2}}\\
+ & =\frac{\alpha_{j}(\sum_{i=1}^{n}\alpha_{i}-\alpha_{j})}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})^{2}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To find the covariance, note that 
+\begin_inset Formula 
+\begin{align*}
+\E[\mu_{i}\mu_{j}] & =\begin{cases}
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{k\geq1,k\notin\{i,j\}}^{n-1}\mu_{k}^{\alpha_{i}-1}\mu_{i\in\{i,j\}}^{\alpha_{i\in\{i,j\}}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+1-1}d\mu & \text{if }i=n\text{ or }j=n\\
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{k\geq1,k\neq i,j}^{n-1}\mu_{k}^{\alpha_{i}-1}\mu_{i}^{\alpha_{i}+1-1}\mu_{j}^{\alpha_{j}+1-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu & \text{if }i\neq n\text{ and }j\neq n
+\end{cases}\\
+ & =\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\frac{\prod_{k\geq1,k\neq i,j}^{n}\Gamma(\alpha_{k})\Gamma(\alpha_{i}+1)\Gamma(\alpha_{j}+1)}{\Gamma(\sum_{i=k}^{n}\alpha_{k}+2)}\\
+ & =\frac{\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})}.
+\end{align*}
+
+\end_inset
+
+Therefore, it follows that 
+\begin_inset Formula 
+\begin{align*}
+\text{Cov}[\mu_{i},\mu_{j}] & =\E[\mu_{i}\mu_{j}]-\E[\mu_{i}]\E[\mu_{j}]\\
+ & =\frac{\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})}-\frac{\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i})^{2}}\\
+ & =\frac{\alpha_{i}\alpha_{j}(\sum_{i=1}^{n}\alpha_{i})-(\sum_{i=1}^{n}\alpha_{i}+1)\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})^{2}}\\
+ & =-\frac{\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})^{2}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 2.11 - Expression for 
+\begin_inset Formula $\mathbb{E}[\log\mathrm{Dir}(\alpha)]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+In the discussion below, let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensional random vector such that 
+\begin_inset Formula $X\sim\mathrm{Dir}(\alpha).$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\shape default
+Note that for 
+\begin_inset Formula $(\mu_{1},\ldots,\mu_{n})$
+\end_inset
+
+ in the 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensional standard simplex, we have 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial\alpha_{j}}\left[\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}\right] & =\ln\mu_{j}\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}.
+\end{align*}
+
+\end_inset
+
+Then it follows that 
+\begin_inset Formula 
+\begin{align*}
+\E[\ln\mu_{j}] & =\int_{\mathbb{S}_{n}}\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}\ln\mu_{j}\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}d\mu\\
+ & =\int_{\mathbb{S}_{n}}\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}\frac{\partial}{\partial\alpha_{j}}\left[\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}\right]d\mu\\
+ & =\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}\frac{\partial}{\partial\alpha_{j}}\int\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}d\mu\tag{by Leibniz rule}\\
+ & =\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}\frac{\partial}{\partial\alpha_{j}}\left[\frac{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{n}\alpha_{i})}\right]\tag{(1)}.
+\end{align*}
+
+\end_inset
+
+Now we simplify Eq.(1), 
+\begin_inset Formula 
+\begin{align*}
+\text{Eq.(1)} & =\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\prod_{i=1}^{n}\Gamma(\alpha_{i})}\left[\frac{\prod_{i\geq1,i\neq j}^{n}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{n}\alpha_{i})}\frac{\partial\Gamma(\alpha_{j})}{\partial\alpha_{j}}-\frac{1}{\Gamma(\sum_{i=1}^{n}\alpha_{i})^{2}}\frac{\partial\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\partial\alpha_{j}}\right]\\
+ & =\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\prod_{i=1}^{n}\Gamma(\alpha_{i})}\Biggr[\frac{\prod_{i\geq1,i\neq j}^{n}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{n}\alpha_{i})}\frac{\partial\Gamma(\alpha_{j})}{\partial\alpha_{j}}-\frac{1}{\Gamma(\sum_{i=1}^{n}\alpha_{i})^{2}}\frac{\partial\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\partial(\sum_{i=1}^{n}\alpha_{i})}\underbrace{\frac{\partial(\sum_{i=1}^{n}\alpha_{i})}{\partial\alpha_{j}}}_{=1}\Biggr]\\
+ & =\frac{1}{\Gamma(\alpha_{j})}\frac{\partial\Gamma(\alpha_{j})}{\partial\alpha_{j}}-\frac{1}{\Gamma(\sum_{i=1}^{n}\alpha_{i})}\frac{\partial\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\partial(\sum_{i=1}^{n}\alpha_{i})}\\
+ & =\frac{\partial}{\partial\alpha_{j}}\ln\Gamma(\alpha_{j})-\frac{\partial}{\partial(\sum_{i=1}^{n}\alpha_{i})}\ln\Gamma\bigg(\sum_{i=1}^{n}\alpha_{i}\bigg).
+\end{align*}
+
+\end_inset
+
+Hence, 
+\begin_inset Formula $\E[\ln\mu_{j}]=\psi(\alpha_{j})-\psi(\sum_{i=1}^{n}\alpha_{i})$
+\end_inset
+
+ as desired.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 2.12 - Uniform distribution's normalization, expectation, variance
+ 
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \end_body
