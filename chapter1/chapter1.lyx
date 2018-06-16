@@ -12,7 +12,7 @@
 \master ../lyxmain.lyx
 \begin_modules
 theorems-ams-chap-bytype
-jason-extension
+enumitem
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -662,7 +662,7 @@ whence
 Problem 1.10 - Linearity of expectation and variance
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 Note 
 \begin_inset Formula 
 \begin{align*}
@@ -678,7 +678,7 @@ Note
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 Note 
 \begin_inset Formula 
 \begin{align*}
@@ -850,7 +850,7 @@ Problem 1.15 - Independent terms of
 -th order term in polynomial
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 Since by writing the 
 \begin_inset Formula $M$
 \end_inset
@@ -885,7 +885,7 @@ introduces duplicate terms, e.g.
 
 \end_inset
 
-Thus, we have 
+Thus, we have ll
 \begin_inset Formula 
 \begin{align*}
 n(D,M) & =\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{i_{1}}\cdots\sum_{i_{M}=1}^{i_{M-1}}w_{i_{1},i_{2},\cdots,i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}\\
@@ -898,7 +898,7 @@ n(D,M) & =\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{i_{1}}\cdots\sum_{i_{M}=1}^{i_{M-1}}
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 To show the equality holds using induction, we note for the base case of
  
 \begin_inset Formula $D=1,$
@@ -942,7 +942,7 @@ where Eq.
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 We establish the identity by inducting on 
 \begin_inset Formula $M$
 \end_inset
@@ -982,7 +982,16 @@ using part-2.
 Problem 1.16 - Independent terms of high order polynomial
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 The first equality just follows from that summing up all the independent
  terms: 
 \begin_inset Formula 
@@ -995,7 +1004,7 @@ N(D,M)=\sum_{i=0}^{M}n(D,i).
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 We prove this inequality by inducting on 
 \begin_inset Formula $M.$
 \end_inset
@@ -1036,7 +1045,7 @@ proving the inducting step.
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 Now we show that 
 \begin_inset Formula $N(D,M)$
 \end_inset
@@ -1109,7 +1118,16 @@ The case for
 Problem 1.17 - Gamma density warmup
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 Note 
 \begin_inset Formula 
 \begin{align*}
@@ -1123,7 +1141,7 @@ Note
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 We note that 
 \begin_inset Formula 
 \[
@@ -1165,7 +1183,16 @@ To state the problem statement in a clearer manner, we solve this problem
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 First we derive Eq (1.142) in the book.
  We first rewrite the LHS in the following way.
  Let 
@@ -1222,7 +1249,7 @@ Since
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 Consider the function 
 \begin_inset Formula $f:\mathbb{R}^{D}\rightarrow\mathbb{R};x\mapsto e^{-\pi\left\Vert x\right\Vert ^{2}}.$
 \end_inset
@@ -1283,7 +1310,7 @@ This
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 Now we calculate the volume of the ball.
  Let 
 \begin_inset Formula $B_{1}$
@@ -1312,7 +1339,7 @@ as desired.
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 When 
 \begin_inset Formula $D=2,$
 \end_inset
@@ -1351,7 +1378,16 @@ This problem could have been solved heuristically.
 Problem 1.19 - High dimensional cubes concentrate on corners
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 Using the result of the previous problem, and the fact that 
 \begin_inset Formula $m_{d}(rB)=r^{d}m(B),$
 \end_inset
@@ -1387,7 +1423,7 @@ literal "false"
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 On the other hand, we have 
 \begin_inset Formula 
 \begin{align*}
@@ -1429,7 +1465,16 @@ First, note that the density given in the problem is that of a Gaussian
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 To show that the density is of the form exhibited in (1.148), we note that
  again by generalized spherical coordinate we have 
 \begin_inset Formula 
@@ -1450,7 +1495,7 @@ This is the formula in (1.148) if we relabel
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 First, we note 
 \begin_inset Formula 
 \begin{align*}
@@ -1483,7 +1528,7 @@ where the approximation follows since
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 To show (1.149), first we note 
 \begin_inset Formula 
 \begin{align*}
@@ -1529,7 +1574,7 @@ as desired.
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 Note that we have 
 \begin_inset Formula 
 \[
@@ -1570,7 +1615,16 @@ whence
 Problem 1.21 - Upper bound of bayesian classification error
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 Since 
 \begin_inset Formula $x\mapsto\sqrt{x}$
 \end_inset
@@ -1594,7 +1648,7 @@ Since
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 To show the desired inequality, we note (for notation, we let 
 \begin_inset Formula $\mathcal{X}$
 \end_inset
@@ -1720,7 +1774,16 @@ Suppose
 Problem 1.24 - Duality between decision and rejection criterion 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 According to Eq.
  (1.81) in the book, the decision of labels is found by computing 
 \begin_inset Formula $\argmin_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x).$
@@ -1762,7 +1825,7 @@ Note the
  
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 When 
 \begin_inset Formula $L=\mathbbm{1}\mathbbm{1}^{T}-I,$
 \end_inset
@@ -3705,7 +3768,16 @@ as desired.
 Problem 1.39 - Calculation of entropy and mutual information 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 To find 
 \begin_inset Formula $H(X),$
 \end_inset
@@ -3721,7 +3793,7 @@ H(X) & =-\sum_{x\in\{0,1\}}f_{X}(x)\log f_{X}(x)=-\frac{2}{3}\log\frac{2}{3}-\fr
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 To find 
 \begin_inset Formula $H(Y),$
 \end_inset
@@ -3737,7 +3809,7 @@ H(Y)=-\sum_{y\in\{0,1\}}f_{Y}(y)\log f_{Y}(y)=-\frac{2}{3}\log\frac{2}{3}-\frac{
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 To find 
 \begin_inset Formula $H(X\vert Y),$
 \end_inset
@@ -3769,7 +3841,7 @@ H(X\vert Y)-=\sum_{(x,y)\in\{0,1)\times\{0,1\}}f_{X,Y}(x,y)\log f_{X\vert Y}(x\v
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 Similarly, to find 
 \begin_inset Formula $H(Y|X)$
 \end_inset
@@ -3797,7 +3869,7 @@ H(Y\vert X)=-\sum_{(x,y)\in\{0,1\}\times\{0,1\}}f_{X,Y}(x,y)\log f_{Y\vert X}(y\
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 To find 
 \begin_inset Formula $H(X,Y),$
 \end_inset
@@ -3813,7 +3885,7 @@ H(X,Y)=-\sum_{(x,y)\in\{0,1\}\times\{0,1\}}f_{X,Y}(x,y)\log f_{X,Y}(x,y)=\log3.
 
 \end_layout
 
-\begin_layout Enumerate-LeftAlign
+\begin_layout Enumerate
 Finally, to find 
 \begin_inset Formula $I(X,Y),$
 \end_inset
