@@ -12,7 +12,6 @@
 \use_default_options true
 \begin_modules
 theorems-ams-chap-bytype
-jason-extension
 enumitem
 \end_modules
 \maintain_unincluded_children false
@@ -67,9 +66,9 @@ enumitem
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 3.2cm
+\leftmargin 2.5cm
 \topmargin 3cm
-\rightmargin 3.2cm
+\rightmargin 2.5cm
 \bottommargin 3cm
 \secnumdepth 0
 \tocdepth 3
@@ -90,6 +89,10 @@ enumitem
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+
+\end_layout
 
 \begin_layout Standard
 \begin_inset ERT
@@ -136,14 +139,10 @@ filename "chapter2/chapter2.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
-bibfiles "/Users/daqiansun/Box Sync/research/chained-matrix-completion/manuscript/bib/reference"
+bibfiles "/Users/daqiansun/Box Sync/research/chained-matrix-completion/manuscript/bib/reference,/Users/daqiansun/Downloads/My Library"
 options "alpha-letters"
 
 \end_inset
