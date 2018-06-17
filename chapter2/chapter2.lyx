@@ -4057,6 +4057,13 @@ Let
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: matrix left inverse in implies right inverse"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Proof
@@ -4947,6 +4954,13 @@ where
 
 ).
  Then the follow holds:
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: property of gaussian"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -5313,7 +5327,298 @@ Hence, it follows that
 
 \end_deeper
 \begin_layout Standard
+Now we go back to the solution to the problem.
+ Since 
+\begin_inset Formula $(X_{a},X_{b},X_{c})$
+\end_inset
 
+ and 
+\begin_inset Formula $((X_{a},X_{b}),X_{c})$
+\end_inset
+
+ are homeomorphic, it follows from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: property of gaussian"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ that 
+\begin_inset Formula 
+\[
+\begin{bmatrix}X_{a}\\
+X_{b}
+\end{bmatrix}\sim\mathrm{MVN}\left(\mu_{a\cdot b},\Sigma_{a\cdot b}\right),\text{where }\mu_{a\cdot b}=\begin{bmatrix}\mu_{a}\\
+\mu_{b}
+\end{bmatrix},\Sigma_{a\cdot b}=\begin{bmatrix}\Sigma_{aa} & \Sigma_{ab}\\
+\Sigma_{ba} & \Sigma_{bb}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+Another application of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: property of gaussian"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-(3), yields that 
+\begin_inset Formula 
+\[
+f_{X_{a}\vert X_{b}}(x_{a}\vert x_{b})=\frac{1}{(2\pi)^{(\dim X_{a}+\dim X_{b})/2}(\det\Sigma_{aa\cdot2})}\exp\left(-\frac{1}{2}(x-\mu_{a\cdot2})^{T}\Sigma_{aa\cdot2}^{-1}(x-\mu_{a\cdot2})\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu_{a\cdot2}=\mu_{a}+\Sigma_{ab}\Sigma_{bb}^{-1}(x_{b}-\mu_{b}),\text{ and }\Sigma_{aa\cdot2}=\Sigma_{aa}-\Sigma_{ab}\Sigma_{bb}^{-1}\Sigma_{ba}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 2.26 - Woodbury matrix inversion formula
+\end_layout
+
+\begin_layout Standard
+In view of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: matrix left inverse in implies right inverse"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, it suffices to show one of the left and right inverse.
+ We show the left inverse here.
+ Note
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & (A^{-1}-A^{-1}B(C^{-1}+DA^{-1}B)^{-1}DA^{-1})(A+BCD)\\
+=\ \  & I+A^{-1}B(C^{-1}+DA^{-1}B)^{-1}D-A^{-1}BCD-A^{-1}B(C^{-1}+DA^{-1}B)^{-1}DA^{-1}BCD\\
+=\ \  & I+A^{-1}BCD-A^{-1}B(C^{-1}+DA^{-1}B)(DA^{-1}BC+I)D\\
+=\ \  & I+A^{-1}BCD-A^{-1}B(C^{-1}+DA^{-1}B)(DA^{-1}B+C^{-1})CD\\
+=\ \  & I+A^{-1}BCD-A^{-1}BCD\\
+=\ \  & I.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 2.27 - Linearity of expectation and covariance (multivariate case)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
+For expectation, we note that 
+\begin_inset Formula 
+\begin{align*}
+\E[X+Y] & =\int\int(x+y)f_{(X,Y)}(x,y)dxdy\\
+ & =\int\int(x+y)f_{X}(x)f_{Y}(y)dxdy\\
+ & =\int_{\mathrm{supp}(X)}xf(x)\left(\int_{\mathrm{supp}(Y)}f(y)dy\right)dx+\int_{\mathrm{supp}(Y)}yf(y)\left(\int_{\mathrm{supp}(X)}f(x)dx\right)dy\\
+ & =\E[X]+\E[Y].
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For covariance, note that 
+\begin_inset Formula 
+\begin{align*}
+\mathrm{Cov}[X+Y] & =\E[(X+Y-\E[X+Y])(X+Y-\E[X+Y])^{T}]\\
+ & =\E[(X-\E[X]+Y-\E[Y])(X-\E[X]+Y-\E[Y])^{T}]\\
+ & =\mathrm{Cov}[X]+\mathrm{Cov}[Y]+\E[(X-\E[X])(Y-\E[Y])^{T}]+\E[(Y-\E[Y])(X-\E[X])^{T}]\\
+ & =\mathrm{Cov}[X]+\mathrm{Cov}[Y]+\E[(X-\E[X])\E[(Y-\E[Y])^{T}]+\E[(Y-\E[Y]]\E[X-\E[X]]^{T}\tag{since \ensuremath{X\perp Y}}\\
+ & =\mathrm{Cov}[X]+\mathrm{Cov}[Y].
+\end{align*}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Problem 2.28 - Conditional distribution from joint gaussian
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+This problem can be solved using the hint provided by the book which adopts
+ the technique of completing squares.
+ However, here we will solve it using the theory we have developed in a
+ few previous exercises.
+ But first, we would like to rephrase this problem to make things clearer:
+ given a joint normal variable 
+\begin_inset Formula $Z$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+Z=\begin{bmatrix}X\\
+Y
+\end{bmatrix}\sim\mathrm{MVN}\left(\mu_{Z}:=\begin{bmatrix}\mu\\
+A\mu+b
+\end{bmatrix},\Sigma_{Z}:=\begin{bmatrix}\Lambda^{-1} & \Lambda^{-1}A^{T}\\
+A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A^{T}
+\end{bmatrix}\right),
+\]
+
+\end_inset
+
+find the conditional distribution of 
+\begin_inset Formula $Y\vert X,$
+\end_inset
+
+ which we denote as 
+\begin_inset Formula $f_{Y\vert X}(y\vert x).$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\shape italic
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Without loss generality, assume that 
+\begin_inset Formula $X\in\mathbb{R}^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y\in\mathbb{R}^{m}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\begin{bmatrix}0 & I_{m}\\
+I_{n} & 0
+\end{bmatrix}\begin{bmatrix}X\\
+Y
+\end{bmatrix}=\begin{bmatrix}Y\\
+X
+\end{bmatrix},$
+\end_inset
+
+ it follows from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: distribution of linear transformation of gaussian"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ that 
+\begin_inset Formula 
+\begin{align*}
+\begin{bmatrix}Y\\
+X
+\end{bmatrix} & \sim\mathrm{MVN}\left(\widehat{\mu}=\begin{bmatrix}0 & I_{m}\\
+I_{n} & 0
+\end{bmatrix}\begin{bmatrix}\mu\\
+A\mu+b
+\end{bmatrix},\widetilde{\Sigma}=\begin{bmatrix}0 & I_{m}\\
+I_{n} & 0
+\end{bmatrix}\begin{bmatrix}\Lambda^{-1} & \Lambda^{-1}A^{T}\\
+A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A^{T}
+\end{bmatrix}\begin{bmatrix}0 & I_{m}\\
+I_{n} & 0
+\end{bmatrix}^{T}\right)\\
+ & =\mathrm{MVN}\left(\widetilde{\mu}=\begin{bmatrix}A\mu+b\\
+\mu
+\end{bmatrix},\widetilde{\Sigma}=\begin{bmatrix}A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A^{T}\\
+\Lambda^{-1} & \Lambda^{-1}A^{T}
+\end{bmatrix}\begin{bmatrix}0 & I_{n}\\
+I_{m} & 0
+\end{bmatrix}\right)\\
+ & =\mathrm{MVN}\left(\widetilde{\mu}=\begin{bmatrix}A\mu+b\\
+\mu
+\end{bmatrix},\widetilde{\Sigma}=\begin{bmatrix}L^{-1}+A\Lambda^{-1}A^{T} & A\Lambda^{-1}\\
+\Lambda^{-1}A^{T} & \Lambda^{-1}
+\end{bmatrix}\right).
+\end{align*}
+
+\end_inset
+
+Then we can apply 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: property of gaussian"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-(3) and get 
+\begin_inset Formula 
+\begin{align*}
+Y\vert X=x & \sim\mathrm{MVN}(\mu_{Y\vert X=x}=A\mu_{1}+b+(A\Lambda^{-1})\Lambda(x-\mu),\Sigma_{Y\vert X}=L^{-1}+A\Lambda^{-1}A^{T}-A\Lambda^{-1}\Lambda\Lambda^{-1}A^{T})\\
+ & =\mathrm{MVN}(\mu_{Y\vert X=x}=Ax+b,\Sigma_{Y\vert X}=L^{-1}.
+\end{align*}
+
+\end_inset
+
+as desired.
+ 
+\end_layout
+
+\begin_layout Section
+Problem 2.29 - Verify Eq.(2.105) 
+\end_layout
+
+\begin_layout Standard
+Recall from Problem 2.24, for an arbitrary block matrix of the form 
+\begin_inset Formula $\begin{bmatrix}A & B\\
+C & D
+\end{bmatrix}$
+\end_inset
+
+d
 \end_layout
 
 \end_body
