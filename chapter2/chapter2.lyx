@@ -1952,7 +1952,7 @@ The characteristic function for the
  is given by 
 \begin_inset Formula 
 \[
-\varphi(t)=e^{i\theta a}e^{-\frac{1}{2}\sigma^{2}\theta^{2}}.
+\varphi(t)=e^{ita}e^{-\frac{1}{2}\sigma^{2}t^{2}}.
 \]
 
 \end_inset
@@ -5618,7 +5618,79 @@ C & D
 \end{bmatrix}$
 \end_inset
 
-d
+ has inverse of form 
+\begin_inset Formula 
+\[
+\begin{bmatrix}A & B\\
+C & D
+\end{bmatrix}^{-1}=\begin{bmatrix}M & -MBD^{-1}\\
+-D^{-1}CM & D^{-1}+D^{-1}CMBD^{-1}
+\end{bmatrix},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $M=(A-BDC^{-1})^{-1}.$
+\end_inset
+
+ Therefore, we have 
+\begin_inset Formula 
+\[
+\begin{bmatrix}\Lambda+A^{T}LA & -A^{T}L\\
+-LA & L
+\end{bmatrix}^{-1}=\begin{bmatrix}\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\end{bmatrix},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+\Sigma_{11} & =(\Lambda+A^{T}LA-A^{T}LL^{-1}LA)=\Lambda;\\
+\Sigma_{12} & =-\Lambda^{-1}A^{T}LL^{-1}=-\Lambda^{-1}A^{T};\\
+\Sigma_{21} & =-L^{-1}LA\Lambda=A\Lambda;\\
+\Sigma_{22} & =L^{-1}+L^{-1}(-LA)\Lambda(-A^{T}L)L^{-1}=L^{-1}+A\Lambda A^{T}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 2.30 - Verify Eq.(2.108) 
+\end_layout
+
+\begin_layout Standard
+Note that we have 
+\begin_inset Formula 
+\begin{align*}
+\E[Z] & =R^{-1}\begin{bmatrix}\Lambda\mu-A^{T}Lb\\
+Lb
+\end{bmatrix}=\begin{bmatrix}\Lambda^{-1} & \Lambda^{-1}A^{T}\\
+A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A
+\end{bmatrix}\begin{bmatrix}\Lambda\mu-A^{T}Lb\\
+Lb
+\end{bmatrix}\\
+ & =\begin{bmatrix}\Lambda^{-1}\Lambda\mu-\Lambda^{-1}A^{T}Lb+\Lambda^{-1}A^{T}Lb\\
+A\Lambda^{-1}\Lambda\mu-A\Lambda^{-1}A^{T}Lb+L^{-1}Lb+A\Lambda^{-1}ALb
+\end{bmatrix}\\
+ & =\begin{bmatrix}\mu\\
+A\mu+b
+\end{bmatrix}
+\end{align*}
+
+\end_inset
+
+as desired.
+ 
+\end_layout
+
+\begin_layout Section
+Problemn 2.31 - Sum of multivariate gaussian
 \end_layout
 
 \end_body
