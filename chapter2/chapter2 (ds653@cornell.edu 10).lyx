@@ -7451,47 +7451,5 @@ which is the same as what we derived previously.
  
 \end_layout
 
-\begin_layout Section
-Problem 2.40 - Bayesian update for multivariate gaussian 
-\end_layout
-
-\begin_layout Standard
-Note that 
-\begin_inset Formula 
-\begin{align*}
-f(\mu\vert x_{1},...,x_{n}) & \propto f(\mu\vert\mu_{0},\Sigma_{0})\prod_{i=1}^{n}f(x_{i}\vert\mu,\Sigma)\\
- & \propto\exp\left(-\frac{1}{2}(\mu-\mu_{0})^{T}\Sigma_{0}^{-1}(\mu-\mu_{0})-\frac{1}{2}\sum_{i=1}^{n}(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu)\right)\\
- & =\exp\left(-\frac{1}{2}\left(\mu^{T}\Sigma_{0}^{-1}u-2\mu^{T}\Sigma_{0}^{-1}\mu_{0}+\mu_{0}^{T}\Sigma_{0}^{-1}\mu_{0}+\sum_{i=1}^{n}(x_{i}^{T}\Sigma^{-1}x_{i}-2\mu^{T}\Sigma^{-1}x_{i}+\mu^{T}\Sigma^{-1}\mu)\right)\right)\\
- & =\exp\left(-\frac{1}{2}\left(\mu^{T}(\Sigma_{0}^{-1}+n\Sigma^{-1})\mu-2\mu^{T}\bigg(\Sigma_{0}^{-1}\mu_{0}-\Sigma^{-1}\sum_{i=1}^{n}x_{i}\bigg)+\mu_{0}^{T}\Sigma_{0}^{-1}\mu_{0}+\sum_{i=1}^{n}(x_{i}^{T}\Sigma^{-1}x_{i})\right)\right).
-\end{align*}
-
-\end_inset
-
-Therefore, it follows from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem: gaussian completion of squares"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- that 
-\begin_inset Formula 
-\begin{align*}
-\mu\vert x_{1},\ldots,x_{n} & \sim\mathrm{MVN}\bigg((\Sigma_{0}^{-1}+n\Sigma^{-1})^{-1}\bigg(\Sigma_{0}^{-1}\mu_{0}-\Sigma^{-1}\sum_{i=1}^{n}x_{i}\bigg),(\Sigma_{0}^{-1}+n\Sigma^{-1})^{-1}\bigg)\\
- & \sim\mathrm{MVN}\left((\Sigma_{0}^{-1}+n\Sigma^{-1})^{-1}(\Sigma_{0}^{-1}\mu_{0}-n\Sigma^{-1}\mu_{ML}),(\Sigma_{0}^{-1}+n\Sigma^{-1})^{-1}\right),
-\end{align*}
-
-\end_inset
-
-where 
-\begin_inset Formula $\mu_{ML}=\frac{1}{n}\sum_{i=1}^{n}x_{i},$
-\end_inset
-
-
-\end_layout
-
 \end_body
 \end_document
