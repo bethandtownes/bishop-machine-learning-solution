@@ -22,5 +22,15 @@
 \newcommand{\pb}[1]{\section*{Problem #1}}
 
 \usepackage{titlesec}
-\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
-\titlespacing*{\section}{0pt}{7ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% section option 1: somewhat like the standard but with less spacing
+% \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+% \titlespacing*{\section}{0pt}{7ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% scetion option 2: as box titles
+\titleformat{\section}{\normalfont\normalsize\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{0ex}{0ex}
+
+
+% custom box 1: small title is the section title
+\newtcolorbox{cBoxA}[1][]{before skip=15pt,after skip=15pt,title=\protect\section{#1}}

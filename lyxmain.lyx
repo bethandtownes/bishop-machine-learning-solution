@@ -13,6 +13,7 @@
 \begin_modules
 theorems-ams-chap-bytype
 enumitem
+tcolorbox
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -73,7 +74,7 @@ enumitem
 \secnumdepth 0
 \tocdepth 3
 \paragraph_separation indent
-\paragraph_indentation default
+\paragraph_indentation 0bp
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -89,6 +90,22 @@ enumitem
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Standard
 \begin_inset ERT
@@ -131,6 +148,10 @@ filename "chapter2/chapter2.lyx"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 

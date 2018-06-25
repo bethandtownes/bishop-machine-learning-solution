@@ -13,6 +13,7 @@
 \begin_modules
 theorems-ams-chap-bytype
 enumitem
+tcolorbox
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -74,7 +75,7 @@ enumitem
 \secnumdepth -1
 \tocdepth 3
 \paragraph_separation indent
-\paragraph_indentation default
+\paragraph_indentation 0bp
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -6494,12 +6495,23 @@ This problem involves differentiating the log-determinant of a positive
  they are somehow not very rigorous in its presentation.
  Hence, through the solution to this problem we would develop some results
  w.r.t to the determinant of the matrix determinants.
- 
 \end_layout
 
 \begin_layout Standard
-Before we start proving results, we stop and recall the definition of determinan
-t.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+ Before we start proving results, we stop and recall the definition of determina
+nt.
  The most generalized definition of determinant involves the notion of manifold
  and Lie groups.
  For practical purposes it suffices to define determinant in the way that
@@ -7488,6 +7500,475 @@ noprefix "false"
 
 where 
 \begin_inset Formula $\mu_{ML}=\frac{1}{n}\sum_{i=1}^{n}x_{i},$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.41 - Gamma density is normalized
+\end_layout
+
+\end_inset
+
+ Use the definition of the gamma function (1.141) to show that the gamma
+ distribution (2.146) is normalized.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall that the Gamma density with parameter 
+\begin_inset Formula $a,b$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+f(x)=\frac{1}{\Gamma(a)}b^{a}x^{a-1}e^{-bx}\mathbbm{1}_{\{x\geq0\}}.
+\]
+
+\end_inset
+
+Therefore, we have by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm: transformation thm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\int_{[0,\infty)}f(x)dx & =\int_{[0,\infty)}f(T(y))\left|\det J_{T}\right|dy\tag{where \ensuremath{T(y)=\frac{y}{b}}}\\
+ & =\frac{1}{\Gamma(a)}\int_{0}^{\infty}b^{a}\frac{y^{a-1}}{b^{a-1}}e^{-b\frac{1}{b}y}\cdot\frac{1}{b}dy=\frac{1}{\Gamma(a)}\underbrace{\int_{0}^{\infty}y^{a-1}e^{-y}dy}_{=\Gamma(a)}=1.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.42 - Gamma distribution's mean, mode, variance
+\end_layout
+
+\end_inset
+
+ Evaluate the mean, variance, and mode of the gamma distribution (2.146).
+\end_layout
+
+\end_inset
+
+ Thing s
+\end_layout
+
+\begin_layout Standard
+To find the mean, note that 
+\begin_inset Formula 
+\begin{align*}
+\E[X] & =\frac{1}{\Gamma(a)}\int_{0}^{\infty}xb^{a}x^{a-1}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}b^{a}x^{a}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}b^{a}\frac{y^{a}}{b^{a}}e^{-y}\frac{1}{b}dy\\
+ & =\frac{1}{b\Gamma(a)}\int_{0}^{\infty}y^{a+1-1}e^{-y}dy=\frac{\Gamma(a+1)}{b\Gamma(a)}=\frac{a}{b}.
+\end{align*}
+
+\end_inset
+
+To find the variance, we first note find 
+\begin_inset Formula 
+\begin{align*}
+\E[X^{2}] & =\frac{1}{\Gamma(a)}\int_{0}^{\infty}x^{2}b^{a}x^{a-1}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}x^{a+1}b^{a}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}\frac{y^{a+1}}{b^{a+1}}b^{a}e^{-y}\frac{1}{b}dy\\
+ & =\frac{1}{b^{2}\Gamma(a)}\int_{0}^{\infty}y^{a+2-1}e^{-y}dy=\frac{\Gamma(a+2)}{b^{2}\Gamma(a)}=\frac{(a+1)a}{b^{2}}.
+\end{align*}
+
+\end_inset
+
+Hence, we have 
+\begin_inset Formula 
+\[
+\mathrm{Var}[X]=\E[X^{2}]-(\E[X])^{2}=\frac{a^{2}+a}{b^{2}}-\frac{a^{2}}{b^{2}}=\frac{a}{b^{2}}.
+\]
+
+\end_inset
+
+To find the mode, we differentiate the density function and set its derivative
+ to 0: 
+\begin_inset Formula 
+\[
+\frac{d}{dx}f(x)=\frac{d}{dx}\left(\frac{1}{\Gamma(a)}x^{a-1}b^{a}e^{-bx}\right)=(a-1)x^{a-2}e^{-bx}-bx^{a-1}e^{-bx}=0.
+\]
+
+\end_inset
+
+Rearranging it a bit we get 
+\begin_inset Formula $x^{a-1}\left(\frac{a-1}{x}-b\right)e^{-bx}=0$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $x>0$
+\end_inset
+
+ by assumption, we can further reduce to 
+\begin_inset Formula $\frac{a-1}{x}-b=0,$
+\end_inset
+
+ which implies that 
+\begin_inset Formula $x=\frac{a-1}{b}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.43 - Generalized univariate Gaussian distribution 
+\end_layout
+
+\end_inset
+
+The following distribution 
+\begin_inset Formula 
+\[
+p(x\vert\sigma^{2},q)=\frac{q}{2(2\sigma^{2})^{1/q}\Gamma(1/q)}\exp\left(-\frac{\left|x\right|^{q}}{2\sigma^{2}}\right)\tag{1}
+\]
+
+\end_inset
+
+is a generalization of the univariate Gaussian distribution.
+ Show that this distribution is normalized so that 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}p(x\vert\sigma^{2},q)dx=1
+\]
+
+\end_inset
+
+and that it reduces to the Gaussian when 
+\begin_inset Formula $q=2.$
+\end_inset
+
+ Consider a regression model in which the target variable is given by 
+\begin_inset Formula $t=y(x,w)+\varepsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ is a random noise varaible drawn from distribution Eq.(1).
+ Show that the log-likelihood function over 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+, for an observed date set of input vectors 
+\begin_inset Formula $X=(x_{1},\ldots,x_{n})$
+\end_inset
+
+ and corresponding target variables 
+\begin_inset Formula $t=(t_{1},\dots,t_{n})$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+\ln p(t\vert X,w,\sigma^{2})=-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left|y(x_{n},w)-t_{n}\right|^{q}-\frac{n}{q}\ln(2\sigma^{2})+\mathrm{const.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that by change of variable of 
+\begin_inset Formula $u=\frac{x^{q}}{2\sigma^{2}},$
+\end_inset
+
+ which implies that 
+\begin_inset Formula $x=(2\sigma^{2}u)^{1/q}$
+\end_inset
+
+ and 
+\begin_inset Formula $du=\frac{qx^{q-1}}{2\sigma^{2}}dx$
+\end_inset
+
+, we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\int f(x\vert\sigma^{2},q)dx & =\frac{q}{2(2\sigma^{2})^{1/q}\Gamma(1/q)}\int_{\mathbb{R}}\exp\left(-\frac{\left|x\right|^{q}}{2\sigma^{2}}\right)dx\\
+ & =\frac{q}{(2\sigma^{2})^{1/q}\Gamma(1/q)}\int_{0}^{\infty}\exp\left(-\frac{x^{q}}{2\sigma^{2}}\right)dx\\
+ & =\frac{q}{(2\sigma^{2})^{1/q}\Gamma(1/q)}\int_{0}^{\infty}\exp(-u)\frac{2\sigma^{2}}{qx^{q-1}}du\\
+ & =\frac{q}{(2\sigma^{2})^{1/q}\Gamma(1/q)}\int_{0}^{\infty}\exp(-u)\frac{2\sigma^{2}}{q((2\sigma^{2}u)^{1/q})^{q-1}}du\\
+ & =\frac{2\sigma^{2}}{(2\sigma^{2})^{1/q}\Gamma(1/q)}\cdot(2\sigma^{2})^{1/q-1}\cdot\int_{0}^{\infty}\exp(-u)u^{1/q-1}du\\
+ & =(2\sigma^{2})^{1-1/q}(2\sigma^{2})^{1/q-1}\frac{1}{\Gamma(1/q)}\Gamma(1/q)\\
+ & =1.
+\end{align*}
+
+\end_inset
+
+Next, we show that this distribution recovers the normal gaussian distribution
+ when 
+\begin_inset Formula $q=2.$
+\end_inset
+
+ But first, we need a lemma.
+ 
+\end_layout
+
+\begin_layout Lemma
+For all 
+\begin_inset Formula $s\in\mathbb{C},$
+\end_inset
+
+ 
+\begin_inset Formula $\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin\pi s}.$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: gamma function reflection property"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+Hence, we let 
+\begin_inset Formula $s=\frac{1}{2}$
+\end_inset
+
+ in the previous lemma; and we will get 
+\begin_inset Formula $\Gamma(1/2)^{2}=\pi,$
+\end_inset
+
+ which implies that 
+\begin_inset Formula $\Gamma(1/2)=\sqrt{\pi}.$
+\end_inset
+
+ Therefore, we plugin and get 
+\begin_inset Formula 
+\[
+f\left(x\vert\sigma^{2},\frac{1}{2}\right)=\frac{2}{2(2\sigma^{2})^{1/2}\sqrt{\pi}}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)=\frac{1}{(2\pi\sigma^{2})^{1/2}}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the regression model, 
+\begin_inset Formula $t=y(x,w)+\varepsilon$
+\end_inset
+
+ where 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ is a random noise variable drawn from the generalized univariate gaussian
+ distribution, we note that 
+\begin_inset Formula $t-y(x,w)=\varepsilon$
+\end_inset
+
+, which is generalized univariate gaussian.
+ Hence, the likelihood function 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\P(t\vert x,w,\sigma^{2})=\prod_{i=1}^{n}\frac{q}{2(2\sigma^{2})^{1/q}\Gamma(1/q)}\exp\left(-\frac{\left|t_{i}-y(x_{i},w\right|^{q}}{2\sigma^{2}}\right).
+\]
+
+\end_inset
+
+Then we take the logarithm to get the likelihood function: 
+\begin_inset Formula 
+\begin{align*}
+\ell(t\vert x,w,\sigma^{2}) & =\log\P(t\vert x,w,\sigma^{2})=\sum_{i=1}^{n}\log\left(\frac{q}{2(2\sigma^{2})^{1/q}\Gamma(1/q)}\exp\left(-\frac{\left|t_{i}-y(x_{i},w)\right|^{q}}{2\sigma^{2}}\right)\right)\\
+ & =\sum_{i=1}^{n}\frac{\left|t_{i}-y(x_{i},w)\right|^{q}}{2\sigma^{2}}-\log(2\sigma^{2})+\mathrm{const}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.44 - Posterior of Gaussian with Gauss-Gamma is Gauss Gamma
+\end_layout
+
+\end_inset
+
+Consider a univariate Gaussian distribution 
+\begin_inset Formula $N(x|\mu,\lambda^{-1})$
+\end_inset
+
+ having conjugate Gaussian-gamma prior given by (2.154), and a data set 
+\begin_inset Formula $x=\{x_{1},\cdots,x_{n}\}$
+\end_inset
+
+ of i.i.d observations.
+ Show that the posterior distribution is also a Gaussian-gamma distribution
+ of the same functional form as the prior, and write down expressions for
+ the parameters of this posterior distribution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+First, we note that by Eq.(2.152) in the book, 
+\begin_inset Formula 
+\begin{align*}
+\P(X\vert\mu,\lambda) & =\prod_{i=1}^{n}\left(\frac{\lambda}{2\pi}\right)^{1/2}\exp\left(-\frac{\lambda}{2}(x_{n}-\mu)^{2}\right)\propto\left[\lambda^{1/2}\exp\left(-\frac{\lambda\mu^{2}}{2}\right)\right]^{n}\exp\left(\lambda\mu\sum_{i=1}^{n}x_{i}-\frac{\lambda}{2}\sum_{i=1}^{n}x_{i}^{2}\right).
+\end{align*}
+
+\end_inset
+
+And by assumption, 
+\begin_inset Formula 
+\[
+\P(\mu,\lambda)=\mathrm{N}(\mu\vert\mu_{0},(\beta\lambda)^{-1})\mathrm{Gamma}(\lambda\vert a,b)=(\beta\lambda)^{1/2}\exp\left(-\frac{\beta\lambda}{2}(\mu^{2}-\mu_{0})^{2}\right)\lambda^{a-1}\exp(-b\lambda).
+\]
+
+\end_inset
+
+Then it follows that 
+\begin_inset Formula 
+\begin{align*}
+\P(\mu,\lambda\vert X) & \propto\P(X\vert\mu,\lambda)\P(\mu,\lambda)\\
+ & \propto\left[\lambda^{\frac{1}{2}}\exp\left(-\frac{\lambda\mu^{2}}{2}\right)\right]^{n}\exp\left(\lambda\mu\sum_{i=1}^{n}x_{i}-\frac{\lambda}{2}\sum_{i=1}^{n}x_{i}^{2}\right)(\beta\lambda)^{\frac{1}{2}}\exp\left(-\frac{\beta\lambda}{2}(\mu^{2}-\mu_{0})^{2}\right)\lambda^{a-1}\exp(-b\lambda)\\
+ & =\lambda^{\frac{n}{2}}(\beta\lambda)^{\frac{1}{2}}\lambda^{a-1}\exp\bigg(-\frac{n\lambda\mu^{2}}{2}+\lambda\mu\sum_{i=1}^{n}x_{i}-\frac{\lambda}{2}\sum_{i=1}^{n}x_{i}^{2}-\frac{\beta\lambda}{2}(\mu^{2}-2\mu\mu_{0}+\mu_{0})-b\lambda\bigg)\\
+ & =\beta^{\frac{1}{2}}\lambda^{\frac{1}{2}+\frac{n}{2}+a-1}\exp\bigg(\mu^{2}\left(-\frac{n\lambda}{2}-\frac{\beta\lambda}{2}\right)+\mu\bigg(\beta\lambda\mu_{0}+\lambda\sum_{i=1}^{n}x_{i}\bigg)-b\lambda-\frac{\lambda}{2}\sum_{i=1}^{n}x_{i}^{2}-\frac{\beta\lambda}{2}\mu_{0}^{2}\bigg)\\
+ & =\beta^{\frac{1}{2}}\lambda^{\frac{1}{2}+\frac{n}{2}+a-1}\exp\bigg(-\frac{\lambda(n+\beta)}{2}\mu^{2}+\mu\lambda\bigg(\beta\mu_{0}+\sum_{i=1}^{n}x_{i}\bigg)-\lambda\bigg(b+\frac{1}{2}\sum_{i=1}^{n}x_{i}^{2}+\frac{\beta}{2}\mu_{0}^{2}\bigg)\bigg)\\
+ & =\beta^{\frac{1}{2}}\lambda^{\frac{1}{2}+\frac{n}{2}+a-1}\exp\bigg(-\frac{\lambda(n+\beta)}{2}\bigg(\mu^{2}-\frac{\beta\mu_{0}+\sum_{i=1}^{n}x_{i}}{n+\beta}\bigg)^{2}-\lambda\bigg(b+\frac{1}{2}\sum_{i=1}^{n}x_{i}^{2}+\frac{\beta}{2}\mu_{0}^{2}-\frac{(\beta\mu_{0}+\sum_{i=1}^{n}x_{i})^{2}}{2(n+\beta)}\bigg)\bigg)\\
+ & =(\lambda(n+\beta))^{\frac{1}{2}}\exp\bigg(-\frac{\lambda(n+\beta)}{2}\bigg(\mu^{2}-\frac{\beta\mu_{0}+\sum_{i=1}^{n}x_{i}}{n+\beta}\bigg)^{2}\bigg)\\
+ & \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \times\lambda^{a+\frac{n}{2}-1}\exp\bigg(-\bigg(b+\frac{1}{2}\sum_{i=1}^{n}x_{n}^{2}+\frac{\beta}{2}\mu_{0}^{2}-\frac{(\beta\mu_{0}+\sum_{i=1}^{n}x_{i})^{2}}{2(n+\beta)}\bigg)\lambda\bigg).
+\end{align*}
+
+\end_inset
+
+By comparing coefficients, we get that 
+\begin_inset Formula 
+\[
+(\lambda(n+\beta))^{\frac{1}{2}}\exp\bigg(-\frac{\lambda(n+\beta)}{2}\bigg(\mu^{2}-\frac{\beta\mu_{0}+\sum_{i=1}^{n}x_{i}}{n+\beta}\bigg)^{2}\bigg)\sim\mathrm{N}(\mu\vert\mu_{n},\lambda_{n}^{-1}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\mu_{n}=\frac{\beta\mu_{0}+\sum_{i=1}^{n}x_{i}}{n+\beta},\ \ \lambda_{n}=\frac{1}{\lambda(n+\beta)}.
+\]
+
+\end_inset
+
+And that 
+\begin_inset Formula 
+\[
+\lambda^{a+\frac{n}{2}-1}\exp\bigg(-\bigg(b+\frac{1}{2}\sum_{i=1}^{n}x_{n}^{2}+\frac{\beta}{2}\mu_{0}^{2}-\frac{(\beta\mu_{0}+\sum_{i=1}^{n}x_{i})^{2}}{2(n+\beta)}\bigg)\lambda\bigg)\sim\mathrm{Gamma}(\lambda\vert a_{n},b_{n}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+a_{n}=a+\frac{n}{2},\ \ b_{b}=b+\frac{1}{2}\sum_{i=1}^{n}x_{i}^{2}+\frac{\beta}{2}\mu_{0}^{2}-\frac{(\beta\mu_{0}+\sum_{i=1}^{n}x_{n})^{2}}{2(n+\beta)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.45 - Wishart distribution is conjugate prior of Gaussian precision
+\end_layout
+
+\end_inset
+
+ Verify that the Wishart distribution defined by (2.155) is indeed a conjugate
+ prior for the precision matrix of multivariate Gaussian.
+ 
+\end_layout
+
 \end_inset
 
 
