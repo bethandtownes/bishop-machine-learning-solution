@@ -14,6 +14,7 @@
 theorems-ams-chap-bytype
 enumitem
 tcolorbox
+multicol
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -152,14 +153,10 @@ filename "chapter2/chapter2.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
-bibfiles "/Users/daqiansun/Box Sync/research/chained-matrix-completion/manuscript/bib/reference"
+bibfiles "/Users/daqiansun/Box Sync/research/chained-matrix-completion/manuscript/bib/reference,/Users/daqiansun/Box Sync/research/references/bib"
 options "alpha-letters"
 
 \end_inset

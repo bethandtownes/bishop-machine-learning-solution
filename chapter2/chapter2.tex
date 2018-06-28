@@ -1,0 +1,3005 @@
+
+\chapter{Solutions for exercises to chapter 2}
+
+\global\long\def\biggp#1{\bigg( #1 \bigg)}
+
+\begin{cBoxA}[Problem 2.1 - Bernoulli distribution's expectation, variance, normalization,
+entropy]{}
+ Verify that the Bernoulli distribution (2.2) satisfies the following
+properties 
+\begin{align*}
+\sum_{x=0}^{1}f(x\vert\mu) & =1,\\
+\E[X] & =\mu,\\
+\mathrm{Var}[X] & =\mu(1-\mu).
+\end{align*}
+Show that the entropy $H(X)$ of a Bernoulli distributed random binary
+variable $X$ is given by 
+\[
+H(X)=-\mu\ln\mu-(1-\mu)\ln(1-\mu).
+\]
+\end{cBoxA}
+
+In the discussion below, $X$ is a random variable following Bernoulli
+distribution. 
+\begin{enumerate}[leftmargin={*}]
+\item  To ch`eck normalization, we note 
+\[
+\sum_{x=0}^{1}f_{X}(x\vert\mu)=\mu+(1-\mu)=1.
+\]
+\item To find the expectation, note that 
+\[
+\E[X]=\sum_{x=0}^{1}xf_{X}(x\vert\mu)=1\cdot\mu+0\cdot(1-\mu)=\mu.
+\]
+\item To find the variance, we note that 
+\[
+\text{Var}[X]=\E[X^{2}]-(\E X)^{2}=\mu-\mu^{2}=\mu(1-\mu).
+\]
+\item To find the entropy, we note that 
+\[
+H(X)=-\sum_{x=0}^{1}f_{X}(x\vert\mu)f\log f_{X}(x|\mu)=-\mu\log\mu-(1-\mu)\log1-\mu.
+\]
+\end{enumerate}
+%
+\begin{cBoxA}[Problem 2.2 - Symmetric Bernoulli distribution's expectation, variance,
+normalization, entropy]{}
+ The form of the Bernoulli distribution given by (2.2) is not symmetric
+between the two values of $X$. In some situations, it will be more
+convenient to use an equivalent formulation for which $X\in\{-1,1\}$,
+in which case the distribution can be written
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item  To show it's normalized, we note
+\[
+\sum_{x\in\{-1,1\}}f_{X}(x|\mu)=\left(\frac{1-\mu}{2}\right)^{2/2}\left(\frac{1+\mu}{2}\right)^{0}+\left(\frac{1-\mu}{2}\right)^{0}\left(\frac{1+\mu}{2}\right)^{1}=1.
+\]
+\item To find its expectation, we note 
+\[
+\E[X]=\sum_{x\in\{-1,1\}}xf_{X}(x|\mu)=\left(\frac{1+\mu}{2}\right)-\left(\frac{1-\mu}{2}\right)=\mu.
+\]
+\item To find its variance, we note 
+\[
+\text{Var}[X]=\E[X^{2}]-(\E[X])^{2}=\left(\frac{1+\mu}{2}\right)+\left(\frac{1-\mu}{2}\right)-\mu^{2}=1-\mu^{2}.
+\]
+\item To find its entropy, we note 
+\[
+H(X)=-\sum_{x\in\{-1,1\}}f_{X}(x|\mu)\log f_{X}(x|\mu)=-\left(\frac{1-\mu}{2}\right)\log\frac{1-\mu}{2}-\left(\frac{1+\mu}{2}\right)\log\frac{1+\mu}{2}.
+\]
+\end{enumerate}
+\begin{cBoxA}[Problem 2.3 - Binomial distribution is normalized]{}
+ In this exercise, we prove that the binomial distribution (2.9)
+is normalized. First use the definition (2.10) of the number of combinations
+of $m$ identical objects chosen from a total of $N$ to show that
+\[
+\binom{N}{m}+\binom{N}{m-1}=\binom{N+1}{m}.
+\]
+Use this result to prove by induction the following result
+\[
+(1+x)^{N}=\sum_{m=0}^{N}\binom{N}{m}x^{m},
+\]
+which is known as the binomial theorem, and which is valid for all
+real values of $x.$ Finally, show that the binomial distribution
+is normalized, so that 
+\[
+\sum_{m=0}^{N}\binom{N}{m}\mu^{m}(1-\mu)^{N-m}=1,
+\]
+which can be done by first pulling out a factor $(1-\mu)^{N}$ out
+of the summation and then making use of the binomial theorem. 
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item  First, we show Eq.(2.262) holds: note that 
+\begin{align*}
+\binom{N}{m}+\binom{N}{m-1} & =\frac{N!}{m!(N-m)!}+\frac{N!}{(m-1)!(N-m+1)!}\\
+ & =\frac{N!(N-m+1)}{m!(N-m+1)!}+\frac{mN!}{m!(N-m+1)!}\\
+ & =\frac{(N+1)!}{m!((N+1)-m)!}\\
+ & =\binom{N+1}{m}.
+\end{align*}
+\item To prove the binomial theorem, we induce on $N.$ For the base case
+$N=1$ and $0$, it is trivially true:
+\begin{align*}
+(1+x)^{1} & =\binom{1}{0}x^{0}+\binom{1}{1}x^{1}=1+x,\\
+(1+x)^{0} & =\binom{0}{0}x^{0}=1.
+\end{align*}
+Now suppose the claim holds for $N=k.$ Then for $N=k+1$ we have
+\begin{align*}
+(1+x)^{k+1} & =(1+x)(1+x)^{k}=(1+x)\sum_{m=0}^{N}\binom{N}{m}x^{m}\\
+ & =\sum_{m=0}^{M}\binom{N}{m}x^{m}+\sum_{m=0}^{N}\binom{N}{m}x^{m+1}\\
+ & =\binom{N}{0}x^{0}+\sum_{m=1}^{M}\binom{N}{m}x^{m}+\sum_{m=1}^{N}\binom{N}{m-1}x^{m}+\binom{N+1}{N+1}x^{N+1}\\
+ & =\binom{N+1}{0}x^{0}+\sum_{m=1}^{M}\left(\binom{N}{m}+\binom{N}{m-1}\right)x^{m}+\binom{N+1}{N+1}x^{N+1}\\
+ & =\binom{N+1}{0}x^{0}+\sum_{m=1}^{M}\binom{N+1}{m}x^{m}+\binom{N+1}{N+1}x^{N+1}\\
+ & =\sum_{m=0}^{N+1}\binom{N}{m}x^{m}.
+\end{align*}
+\item Now to show that the binomial distribution is normalized, we note
+that 
+\begin{align*}
+\sum_{m=0}^{N}\binom{N}{m}\mu^{m}(1-\mu)^{N-m} & =(1-\mu)^{N}\sum_{m=0}^{N}\binom{N}{m}\mu^{m}(1-\mu)^{-m}\\
+ & =(1-\mu)^{N}\sum_{m=0}^{N}\binom{N}{m}\left(\frac{\mu}{1-\mu}\right)^{m}\\
+ & =(1-\mu)^{N}\left(1+\frac{\mu}{1-\mu}\right)^{N}.\tag{by binomial theorem}\\
+ & =\left[(1-\mu)\left(1+\frac{\mu}{1-\mu}\right)\right]^{N}
+\end{align*}
+Since 
+\begin{align*}
+(1-\mu)\left(1+\frac{\mu}{1-\mu}\right) & =1+\frac{\mu}{1-\mu}-\mu-\frac{\mu^{2}}{1-\mu}\\
+ & =1+\frac{\mu-\mu+\mu^{2}-\mu^{2}}{1-\mu}\\
+ & =1,
+\end{align*}
+it follows that $\sum_{m=0}^{N}\binom{N}{m}\mu^{m}(1-\mu)^{N-m}=1,$
+and thus the result follows. 
+\end{enumerate}
+%
+\begin{cBoxA}[Problem 2.4 - Binomial distribution's expectation and variance ]{}
+ Show that the mean of the binomial distribution is given by (2.11).
+To do this, differentiate both sides of the normalization condition
+(2.264) with respect to $\mu$ and then rearrange to obtain an expression
+for the mean of $n$. Similarly, by differentiating (2.264) twice
+with respect to $\mu$ and making use of the result (2.11) for the
+mean of the binomial distribution prove the result (2.12) for the
+variance of the binomial. 
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item  Following the hint, we differentiate Eq.(2.264) w.r.t $\mu$ once:
+\begin{align*}
+\frac{\partial}{\partial\mu}\left\{ \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right\} = & n\cdot\sum_{n=1}^{N-1}\binom{N}{n}\mu^{n-1}(1-\mu)^{N-n}-(N-n)\cdot\sum_{n=1}^{N-1}\binom{N}{n}\mu^{n}(1-\mu)^{N-n-1}\\
+ & -N(1-\mu)^{N-1}+N\mu^{N-1}\\
+= & n\cdot\sum_{n=1}^{N}\binom{N}{n}\mu^{n-1}(1-\mu)^{N-n}-(N-n)\cdot\sum_{n=0}^{N-1}\binom{N}{n}\mu^{n}(1-\mu)^{N-n-1}\\
+= & n\cdot\sum_{n=0}^{N}\binom{N}{n}\mu^{n-1}(1-\mu)^{N-n}-(N-n)\cdot\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n-1}\\
+= & \frac{n}{\mu}\cdot\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}-\frac{N-n}{1-\mu}\cdot\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\\
+= & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right).
+\end{align*}
+Since $\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}=1,$ it follows
+that 
+\begin{align*}
+\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\frac{n}{\mu}-\frac{N-n}{1-\mu}\right]=0 & \iff\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\frac{n}{\mu}-\frac{N-n}{1-\mu}\right][\mu(1-\mu)]=0\\
+ & \iff\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}[n(1-\mu)-(N-n)\mu]=0\\
+ & \iff\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)=0.\tag{1}
+\end{align*}
+Now we rearrange Eq.(1):
+\[
+\sum_{n=0}^{N}n\cdot\binom{N}{n}\mu^{n}(1-\mu)^{N-n}=N\mu\left(\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right)=N\mu.
+\]
+The result follows by observing that 
+\[
+\E[X]=\sum_{n=0}^{N}n\cdot\binom{N}{n}\mu^{n}(1-\mu)^{N-n}
+\]
+\item To facilitate notation, we let $\varphi(\mu)=\sum_{n=1}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\frac{n}{\mu}-\frac{N-n}{1-\mu}\right].$
+Then following the hint, we differentiate twice Eq.(2.264) w.r.t.
+$\mu$ and get 
+\begin{align*}
+\frac{\partial^{2}}{\partial\mu^{2}}\left\{ \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right\}  & =\frac{\partial\varphi(\mu)}{\partial\mu}\\
+ & =\sum_{n=0}^{N}\underbrace{\frac{\partial}{\partial\mu}\left\{ \binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)\right\} }_{:=H(\mu).}.
+\end{align*}
+Hence, it suffices to evaluate $H(\mu)$
+\begin{align*}
+H(\mu) & =\frac{\partial}{\partial\mu}\left\{ \binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right\} \left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)+\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\frac{\partial}{\partial\mu}\left\{ \frac{n}{\mu}-\frac{N-n}{1-\mu}\right\} \\
+ & =\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}+\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right]\\
+ & =\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right].
+\end{align*}
+Hence, it follows that 
+\[
+\frac{\partial^{2}}{\partial\mu^{2}}\left\{ \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\right\} =\underbrace{\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right]=0}_{(2)}.
+\]
+Now, we arrange Eq.(2) and get 
+\begin{align*}
+ & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right]=0\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[\left(\frac{n}{\mu}-\frac{N-n}{1-\mu}\right)^{2}-\frac{N-n}{(1-\mu)^{2}}-\frac{n}{\mu^{2}}\right](\mu^{2}(1-\mu)^{2})=0\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[(n(1-\mu)-(N-n)\mu)^{2}-(N-n)\mu^{2}-n(1-\mu)^{2}\right]=0\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[(n-N\mu)^{2}-(N-n)\mu^{2}-n(1-\mu)^{2}\right]=0\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)^{2}=\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}\left[(N-n)\mu^{2}+n(1-\mu)^{2}\right]\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)^{2}=\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(N\mu^{2}+n-2n\mu)\\
+\iff & \sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)^{2}=N\mu-N\mu^{2}=N\mu(1-\mu).
+\end{align*}
+The conclusion can be drawn by observing that
+\[
+\text{Var}[X]=\E[(X-\E[X])^{2}]=\sum_{n=0}^{N}\sum_{n=0}^{N}\binom{N}{n}\mu^{n}(1-\mu)^{N-n}(n-N\mu)^{2}.
+\]
+\end{enumerate}
+\begin{cBoxA}[Problem 2.5 - Beta distribution is normalized ]{}
+ In this exercise, we prove that the beta distribution, given by
+(2.13), is correctly normalized, so that (2.14) holds. This is equivalent
+to showing that 
+\[
+\int_{0}^{1}\mu^{a-1}(1-\mu)^{b-1}d\mu=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}.
+\]
+From the definition (1.141) of the gamma function, we have 
+\[
+\Gamma(a)\Gamma(b)=\int_{0}^{\infty}\exp(-x)x^{a-1}dx\int_{0}^{\infty}\exp(-y)y^{b-1}dy.
+\]
+Use this expression to prove (2.265) as follows. First bring the integral
+over $y$ inside the integrand of the integral of $x$, next make
+the change of variable $t=y+x$, where $x$ is fixed, then interchange
+the order of the $x$ and $t$ integrations, and finally make the
+change of variable $x=t\mu$ where $t$ is fixed. 
+\end{cBoxA}
+
+First, we note that 
+\begin{align*}
+\Gamma(a)\Gamma(b) & =\int_{0}^{\infty}e^{-x}x^{a-1}dx\int_{0}^{\infty}e^{-y}y^{b-1}dy\\
+ & =\int_{0}^{\infty}\int_{0}^{\infty}e^{-(x+y)}x^{a-1}y^{b-1}dydx.\tag{1}
+\end{align*}
+Now, we make a change of variable 
+\[
+x+y=t\implies\begin{cases}
+y=t-x\\
+y\geq0\Leftrightarrow t-x\geq0\Leftrightarrow t\geq x\\
+x\geq0\\
+dt=dy
+\end{cases}.
+\]
+Therefore, it follows that 
+\begin{align*}
+\text{Eq.(1)} & =\int_{0}^{\infty}\int_{x}^{\infty}e^{-t}x^{a-1}(t-x)^{b-1}dtdx\\
+ & =\int_{0}^{\infty}\int_{0}^{t}e^{-t}x^{a-1}(t-x)^{b-1}dxdt\tag{by Fubini's theorem}\\
+ & =\int_{0}^{\infty}\int_{0}^{1}e^{-t}(t\mu)^{a-1}(t-t\mu)^{b-1}td\mu dt\tag{2}\\
+ & =\int_{0}^{\infty}e^{-t}t^{a-1}t^{b-1}tdt\int_{0}^{1}\mu^{a-1}(1-\mu)^{b-1}d\mu\\
+ & =\Gamma(a+b)\int_{0}^{1}\mu^{a-1}(1-\mu)^{b-1}d\mu,
+\end{align*}
+where $\text{Eq.(2)}$ follows from a change of variables 
+\[
+x=t\mu\implies\begin{cases}
+0\leq x\leq t\Leftrightarrow0\leq t\mu\leq t\Leftrightarrow0\leq\mu\leq t\\
+dx=td\mu
+\end{cases}.
+\]
+Hence, it follows that 
+\[
+\int_{0}^{1}\mu^{a-1}(1-\mu)^{b-1}d\mu=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)},
+\]
+and as a result the Beta density integrates to 1. \\
+
+\begin{cBoxA}[Problem 2.6 - Beta distribution's expectation, variance, mode ]{}
+ Make use of the result (2.265) to show that the mean, variance,
+and mode of the beta distribution (2.13) are given respectively by
+\begin{align*}
+\E[\mu] & =\frac{a}{a+b},\\
+\mathrm{Var}[\mu] & =\frac{ab}{(a+b)^{2}(a+b+1)},\\
+\mathrm{mode}[\mu] & =\frac{a-1}{a+b-1}.
+\end{align*}
+\end{cBoxA}
+
+\textit{In the discussion below, let $X$ be a random variable that
+follows Beta distribution with parameter $a,b\in\mathbb{R}^{+}.$}
+\begin{enumerate}[leftmargin={*}]
+\item  To find the expectation, note that 
+\begin{align*}
+\E[X] & =\int_{0}^{1}\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}xdx\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\int_{0}^{1}x^{(a+1)-1}(1-x)^{b-1}dx\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\frac{\Gamma(a+1)\Gamma(b)}{\Gamma(a+b+1)}\tag{by Problem 2.5}\\
+ & =\frac{\Gamma(a+b)a\Gamma(a)\Gamma(b)}{\Gamma(a)\Gamma(b)\Gamma(a+b)\Gamma(a+b)}\tag{since \ensuremath{\Gamma(x+1)=x\Gamma(x).}}\\
+ & =\frac{a}{a+b}.
+\end{align*}
+\item To find the variance, we first note 
+\begin{align*}
+\E[X^{2}] & =\int\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}x^{2}dx\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\int_{0}^{1}x^{a+2-1}(1-x)^{b-1}dx\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\frac{\Gamma(a+2)\Gamma(b)}{\Gamma(a+b+2)}\\
+ & =\frac{a(a+1)}{(a+b+1)(a+b)}.
+\end{align*}
+Then it follows that 
+\begin{align*}
+\text{Var}[X] & =\E[X^{2}]-(\E[X])^{2}=\frac{a(a+1)}{(a+b+1)(a+b)}-\left(\frac{a}{a+b}\right)^{2}\\
+ & =\frac{a(a+1)(a+b)-a^{2}(a+b+1)}{(a+b+1)(a+b)^{2}}\\
+ & =\frac{ab}{(a+b+1)(a+b)^{2}}.
+\end{align*}
+\item Since the mode of a continuous probability distribution is defined
+as its density function's critical point, it suffices for us to differentiate
+$f_{X}(x)$ and find the critical points. Note that 
+\begin{align*}
+\frac{\partial f_{X}(x)}{\partial x} & =\frac{\partial}{\partial x}\left[\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}\right]\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\left[(a-1)x^{a-2}(1-x)^{b-1}+(b-1)x^{a-1}(1-x)^{b-2}\right].
+\end{align*}
+Setting it to zero yields 
+\begin{align*}
+ & \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\left[(a-1)x^{a-2}(1-x)^{b-1}+(b-1)x^{a-1}(1-x)^{b-2}\right]=0\\
+\iff & \left[(a-1)x^{a-2}(1-x)^{b-1}+(b-1)x^{a-1}(1-x)^{b-2}\right]=0\\
+\iff & (a-1)(1-x)=(b-1)x\\
+\iff & x=\frac{a-1}{a+b-2}.
+\end{align*}
+\end{enumerate}
+\begin{cBoxA}[Problem 2.7 - Comparison between posterior mean and MLE for Bernoulli
+model ]{}
+ Consider a binomial random variable $X$ given by (2.9), with prior
+distribution for $\mu$ given by the beta distribution (2.13), and
+suppose we have observed m occurrences of $X=1$ and $l$ occurrences
+of $X=0$. Show that the posterior mean value of $X$ lies between
+the prior mean and the maximum likelihood estimate for $\mu$. To
+do this, show that the posterior mean can be written as $\lambda$
+times the prior mean plus $(1-\lambda)$ times the maximum likelihood
+estimate, where $0\leq\lambda\leq1$. This illustrates the concept
+of the posterior distribution being a compromise between the prior
+distribution and the maximum likelihood solution.
+\end{cBoxA}
+
+\textit{The book didn't go through the details of deriving some of
+the calculations. Although these calculations are simple, they are
+worth doing by hand at least once. Hence, we show them here. For notation,
+we let $\mathcal{X}$ denote the sample data, $(x_{1},\ldots x_{N})$.
+\medskip}\\
+First, we find the posterior mean for the Bernoulli model. By assumption,
+the parameter of interest, $\mu,$ follows beta distribution, i.e.
+\[
+f(\mu|a,b)=\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\mu^{a-1}(1-\mu)^{b-1}.
+\]
+And the likelihood function after sampling the data is given by 
+\[
+f(\mathcal{X}\vert\mu)=\mu^{\sum_{i=1}^{N}x_{i}}(1-\mu)^{\sum_{i=1}^{N}(1-x_{i})}=\mu^{n}(1-\mu)^{m}.
+\]
+Therefore, we have the posterior as 
+\begin{align*}
+f(\mu|\vert\mathcal{X}) & \propto f(\mu\vert a,b)\cdot f(x_{1},\ldots,x_{N}\vert\mu)\\
+ & =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\mu^{a-1}(1-\mu)^{b-1}\mu^{n}(1-\mu)^{m}\\
+ & \propto\mu^{a+n-1}(1-\mu)^{b+m-1}.
+\end{align*}
+Since $f(\mu|\mathcal{X})$ should integrates to 1 in order to be
+a valid probability density function, in view of Problem 2.5 we see
+that 
+\[
+f(\mu\vert\mathcal{X})=\frac{\Gamma(a+b+n+m)}{\Gamma(a)\Gamma(b)}\mu^{a+n-1}(1-\mu)^{b+m-1}\sim\text{Beta}(a+n,b+m).
+\]
+Hence, it follows that 
+\[
+\E_{\mu|\mathcal{X}}[\mu]=\frac{a+n}{a+b+n+m}
+\]
+as desired. \medskip\\
+Next, we find $\mu_{MLE}.$ First, we write out the likelihood equation,
+\[
+f(\mathcal{X}|\mu)=\prod_{i=1}^{N}\mu^{x_{i}}(1-\mu)^{1-x_{i}}=\mu^{\sum_{i=1}^{N}x_{i}}(1-\mu)^{\sum_{i=1}^{N}(1-x_{i})},
+\]
+from which we can get the log-likelihood equation as 
+\[
+\ell(\mu)=\log f(\mathcal{X}\vert\mu)=\left(\sum_{i=1}^{N}x_{i}\right)\log\mu+\left(\sum_{i=1}^{N}(1-x_{i})\right)\log(1-\mu).
+\]
+Now we differentiate and set to zero 
+\begin{align*}
+ & \frac{\partial\ell(\mu)}{\partial\mu}=\left(\sum_{i=1}^{N}x_{i}\right)\frac{1}{\mu}-\left(\sum_{i=1}^{N}(1-x_{i})\right)\frac{1}{1-\mu}=0\\
+\iff & \left(\sum_{i=1}^{N}x_{i}\right)(1-\mu)-\left(\sum_{i=1}^{N}(1-x_{i})\right)\mu=0\\
+\iff & \frac{1}{\mu}=\frac{\sum_{i=1}^{N}(1-x_{i})}{\sum_{i=1}^{N}x_{i}}+1=\frac{\sum_{i=1}^{N}1-\sum_{i=1}^{N}x_{i}+\sum_{i=1}^{N}x_{i}}{\sum_{i=1}^{N}x_{i}}\\
+\iff & \mu_{MLE}=\frac{n}{n+m}.
+\end{align*}
+Now it suffices to show that 
+\[
+\frac{a+n}{a+b+n+m}\in\text{Seg}\left(\frac{a}{a+b},\frac{n}{n+m}\right),
+\]
+where Seg means the line segment whose endpoints are $a/(a+b)$ and
+$n/(n+m)$. To show this, it suffices to show that the solution, denoted
+as $\lambda_{*}$, to the equation 
+\[
+\lambda\left(\frac{a}{a+b}\right)+(1-\lambda)\frac{n}{n+m}=\frac{a+n}{a+b+n+m}
+\]
+lies in $(0,1).$ Solving the equation yields 
+\[
+\lambda_{*}=\frac{a+b}{a+b+m+n}.
+\]
+Then the claim is true since $a,b,n,m>0$ by assumption. \\
+
+\begin{cBoxA}[Problem 2.9 - Dirichlet distribution is normalized ]{}
+ In this exercise, we prove the normalization of the Dirichlet distribution
+(2.38) using induction. We have already shown in Exercise 2.5 that
+the beta distribution, which is a special case of the Dirichlet for
+$M=2$, is normalized. We now assume that the Dirichlet distribution
+is normalized for $M-1$ variables and prove that it is normalized
+for $M$ variables. To do this, consider the Dirichlet distribution
+over $M$ variables, and take account of the constraint $\sum_{k=1}^{M}\mu_{k}$
+by eliminating $\mu_{m}$ , so that the Dirichlet is written 
+\[
+p_{M}(\mu_{1},\ldots,\mu_{M-1})=C_{M}\prod_{k=1}^{M-1}\mu_{k}^{\alpha_{k}-1}\bigg(1-\sum_{j=1}^{M-1}\mu_{j}\bigg)^{\alpha_{M}-1}
+\]
+and out goal is to find an expression for $C_{M}.$ To do this, integrate
+over $\mu_{M-1}$, taking care over the limits of integration, and
+then make a change of variable so that this integral has limits 0
+and 1. By assuming the correct result for $C_{M-1}$ and making use
+of (2.265), derive the expression for $C_{M}$ .
+\end{cBoxA}
+
+\textit{In the discussion below, we let $f_{D}(\mu)$ denote the density
+function for a Dirichlet distribution whose parameter $\mu$ is in
+$K$ dimensional Euclidean space. We will use a slightly different
+approach from the one derived from the hint from the book.\medskip}\\
+We need to show that 
+\[
+\int_{\mathbb{S}_{K}}f_{D}(\mu)d\mu=\int_{\mathbb{S}_{K}}\frac{\Gamma(\sum_{i=1}^{K}\alpha_{i})}{\prod_{i=1}^{K}\Gamma(\alpha_{i})}\prod_{i=1}^{K-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{K-1}\mu_{i}\right)^{\alpha_{K}-1}d\mu=1,
+\]
+where $\mathbb{S}_{k}:=\{x\in\mathbb{R}^{k}:\sum_{i=1}^{k}x_{k}=1,x_{i}\geq0,i=0,...,k\}$
+is the $k$-simplex in Euclidean space. Following the idea in Problem
+2.5, it suffices for us to show that 
+\[
+I_{\mu}(k):=\int_{\mathbb{S}_{k}}\prod_{i=1}^{k-1}\mu_{i}^{\alpha_{i}}\left(1-\sum_{i=1}^{k-1}\mu_{i}\right)^{\alpha_{k}-1}d\mu=\frac{\prod_{i=1}^{k}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{k}\alpha_{i})},
+\]
+for any $\mathbb{N}\ni k\geq2.$ We prove this using inducting on
+$k$. For the base case $k=2$, note 
+\begin{align*}
+I_{\mu}(2) & =\int_{\{\mu\in\mathbb{R}^{2}:\mu_{1}+\mu_{2}=1,\mu_{1}\geq0,\mu\geq0\}}\mu_{1}^{\alpha_{1}-1}(1-\mu_{1})^{\alpha_{2}-1}d\mu\\
+ & =\int_{\{\mu\in\mathbb{R}^{2}:\mu_{1}\times\mu_{2}\in[0.1]\times[0,1]\}}\mu_{1}^{\alpha_{1}-1}(1-\mu_{1})^{\alpha_{2}-1}d\mu\tag{1}\\
+ & =\int_{0}^{1}d\mu_{2}\int_{0}^{1}\mu_{1}^{\alpha_{1}-1}(1-\mu_{1})^{\alpha_{2}-1}d\mu_{1}\tag{by Fubini's theorem }\\
+ & =\frac{\Gamma(a_{1})\Gamma(\alpha_{2})}{\Gamma(\alpha_{1}+\alpha_{2})}.
+\end{align*}
+where Eq.(1) follows from the observation that for any $\mathbb{N}\ni k\geq2$
+\begin{align*}
+\mathbb{S}_{k} & =\left\{ x\in\mathbb{R}^{k}:\sum_{i=1}^{k-1}x_{i}=1-x_{k},x_{k}\in[0,1],x_{i}\geq0,i=1,...,k\right\} \\
+ & =\left\{ x\in\mathbb{R}^{k}:\sum_{i=1}^{k-1}x_{i}\leq1,x_{k}\in[0,1],x_{i}\geq0,i=1,...,k-1\right\} ,
+\end{align*}
+where the equality can be verified by an element trace. Now assume
+the claim is true for $k=n.$ Before going into the inductive step,
+we carefully formulate the inductive hypothesis: note that 
+\begin{align*}
+I_{\mu}(n) & =\int_{\mathbb{S}_{n}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu\\
+ & =\int_{\left\{ \mu\in\mathbb{R}^{n}:\sum_{i=1}^{n-1}\mu_{i}\leq1,\mu_{n}\in[0,1],\mu_{1\leq i\leq n-1}\geq0\right\} }\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu\\
+ & =\int_{\{\mu\in\mathbb{R}^{n}:\sum_{i=1}^{n-1}\mu_{i}\leq1,\mu_{1\leq i\leq n-1}\in[0,1]\}}\int_{0}^{1}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d\mu_{n}d(\times_{i=1}^{n-1}\mu_{i})\\
+ & =\int_{\{\mu\in\mathbb{R}^{n}:\sum_{i=1}^{n-1}\mu_{i}\leq1,\mu_{1\leq i\leq n-1}\in[0,1]\}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=1}^{n-1}\mu_{i})\int_{0}^{1}d\mu_{n}\\
+ & =\int_{\{\mu\in\mathbb{R}^{n}:\sum_{i=1}^{n-1}\mu_{i}\leq1,\mu_{1\leq i\leq n-1}\in[0,1]\}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=1}^{n-1}\mu_{i})\\
+ & =\int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{0}^{1-\mu_{i}}\mu_{2}^{\alpha_{2}-1}\cdots\int_{0}^{1-\sum_{i=1}^{n-2}\mu_{i}}\mu_{n-1}^{\alpha_{n-1}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu_{n-1}d\mu_{n-2}\cdots d\mu_{1}\tag{2}\\
+ & =\frac{\prod_{i=1}^{n}\Gamma(\alpha_{i})}{\Gamma\left(\sum_{i=1}^{n}\alpha_{i}\right)}
+\end{align*}
+for any $\{\alpha_{1},\ldots,\alpha_{n}\}$ s.t. $\sum_{i=1}^{n}\alpha_{i}=1.$
+Also note that Eq.(2) follows from repeated application of Fubini's
+theorem in the following way: 
+\begin{align*}
+ & \text{Eq.(2)}\\
+= & \int_{\{\mu\in\mathbb{R}^{n}:\sum_{i=2}^{n-1}\mu_{i}\leq1-\mu_{1},\mu_{1}\in[0,1],\mu_{2\leq i\leq n-1}\geq0\}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=1}^{n-1}\mu_{i})\\
+= & \int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{\{(\mu_{2},\dots,\mu_{n})\in\mathbb{R}^{n-1}:\sum_{i=2}^{n-1}\mu_{i}\leq1-\mu_{1},\mu_{2\leq n-1}\geq0\}}\prod_{i=2}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=1}^{n-1}\mu_{i})\\
+= & \int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{\big\{\stackrel{(\mu_{2},\dots,\mu_{n})\in\mathbb{R}^{n-1}:\sum_{i=3}^{n-1}\mu_{i}\leq1-\mu_{1}-\mu_{2}}{\mu_{3\leq i\leq n-1}\geq0,\mu_{2}\in[0,1-\mu_{1}]}\big\}}\prod_{i=2}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=2}^{n-1}\mu_{i})d\mu_{1}\\
+= & \int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{0}^{1-\mu_{1}}\mu_{2}^{\alpha_{2}-1}\int_{\big\{\stackrel{(\mu_{3},\dots,\mu_{n})\in\mathbb{R}^{n-2}:\sum_{i=3}^{n-1}\mu_{i}\leq1-\mu_{1}-\mu_{2},}{\mu_{3\leq i\leq n-1}\geq0}\big\}}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}}d(\times_{i=3}^{n-1}\mu_{i})d\mu_{2}d\mu_{1}\\
+\cdots\\
+= & \int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{0}^{1-\mu_{i}}\mu_{2}^{\alpha_{2}-2}\cdots\int_{0}^{1-\sum_{i=1}^{n-2}\mu_{i}}\mu_{n-1}^{\alpha_{n-1}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu_{n-1}d\mu_{n-2}\cdots d\mu_{1}\tag{2}
+\end{align*}
+We also prove a lemma to facilitate the inductive step. 
+\begin{lem}
+For any $a\in\mathbb{R}-\{0\}$ and $m,n>0,$ the following integral
+identity holds: \label{lem: problem2.9 lem1}
+\[
+\int_{0}^{1}x^{m-1}(1-x)^{n-1}dx=\frac{1}{a^{m+n-1}}\int_{0}^{a}y^{m-1}(a-y)^{n-1}dy,
+\]
+and as a result 
+\[
+\int_{0}^{a}y^{m-1}(a-y)^{n-1}=a^{m+n-1}\frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}
+\]
+\end{lem}
+\begin{proof}
+By change of variable $x=y/a,$ 
+\begin{align*}
+\int_{0}^{1}x^{m-1}(1-x)^{n-1}dx & =\frac{1}{a}\int_{0}^{a}\left(\frac{y}{a}\right)^{m-1}\left(1-\frac{y}{a}\right)^{n-1}dy\\
+ & =\frac{1}{a^{m+n-1}}\int_{0}^{a}a^{m+n-2}\left(\frac{y}{a}\right)^{m-1}\left(1-\frac{y}{a}\right)^{n-1}dy\\
+ & =\frac{1}{a^{m+n-1}}\int_{0}^{a}a^{m-1}\left(\frac{y}{a}\right)^{m-1}a^{n-1}\left(\frac{a-y}{a}\right)^{n-1}dy\\
+ & =\frac{1}{a^{m+n-1}}\int_{0}^{a}y^{m-1}(a-y)^{n-1}dy.
+\end{align*}
+That $\int_{0}^{a}y^{m-1}(a-y)^{n-1}=\frac{1}{a^{m+n-1}}\frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}$
+then directly follows from Problem 2.5. 
+\end{proof}
+\noindent Then for $k=n+1,$ again by repeated application of Fubini's
+theorem we have 
+\begin{align*}
+I_{\mu}(n+1) & =\int_{\mathbb{S}_{n+1}}\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n}\mu_{i}\right)^{\alpha_{n+1}-1}d\mu\\
+ & =\int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\int_{0}^{1-\mu_{1}}\mu_{2}^{\alpha_{2}-1}\cdots\int_{0}^{1-\sum_{i=1}^{n-1}\mu_{i}}\mu_{n}^{\alpha_{n}-1}\left(1-\sum_{i=1}^{n}\mu_{i}\right)^{\alpha_{n+1}-1}d\mu_{n}d\mu_{n-1}\cdots d\mu_{1}.\tag{3}
+\end{align*}
+Note that by \ref{lem: problem2.9 lem1}
+\begin{align*}
+ & \int_{0}^{1-\sum_{i=1}^{n-1}\mu_{i}}\mu_{n}^{\alpha_{n}-1}\left(1-\sum_{i=1}^{n}\mu_{i}\right)^{\alpha_{n+1}-1}d\mu_{n}\\
+=\ \  & \int_{0}^{1-\sum_{i=1}^{n-1}\mu_{i}}\mu_{n}^{\alpha_{n}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}-\mu_{n}\right)^{\alpha_{n+1}-1}d\mu_{n}\\
+=\ \  & \frac{\Gamma(\alpha_{n})\Gamma(\alpha_{n+1})}{\Gamma(\alpha_{n}+\alpha_{n+1})}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+\alpha_{n+1}-1}.
+\end{align*}
+Therefore, 
+\begin{align*}
+\text{Eq.(3)} & =\frac{\Gamma(\alpha_{n})\Gamma(\alpha_{n+1})}{\Gamma(\alpha_{n}+\alpha_{n+1})}\int_{0}^{1}\mu_{1}^{\alpha_{1}-1}\cdots\int_{0}^{1-\sum_{i=1}^{n-2}\mu_{i}}\mu_{n-1}^{\alpha_{n-1}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+\alpha_{n+1}-1}d\mu_{n-1}\cdots d\mu_{1}\\
+ & =\frac{\Gamma(\alpha_{n})\Gamma(\alpha_{n+1})}{\Gamma(\alpha_{n}+\alpha_{n+1})}\frac{\Gamma(\alpha_{1})\Gamma(\alpha_{2})\cdots\Gamma(\alpha_{n}+\alpha_{n+1})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n+1})}\tag{by inductive hypothesis}\\
+ & =\frac{\prod_{i=1}^{n}\Gamma(\alpha_{i})}{\Gamma\left(\sum_{i=1}^{n}\alpha_{i}\right)}
+\end{align*}
+as desired.\\
+
+\begin{cBoxA}[Problem 2.10 - Dirichlet distribution's expectation, variance and
+covariance]{}
+ Using the property $\Gamma(x+1)=x\Gamma(x)$ of the gamma function,
+derive the following results for the mean, and covariance of the Dirichlet
+distribution given by (2.38) 
+\begin{align*}
+ & \E[\mu_{j}]=\frac{\alpha_{j}}{\alpha_{0}},\\
+ & \mathrm{Var}[\mu_{j}]=\frac{\alpha_{j}(\alpha_{0}-\alpha_{j})}{\alpha_{0}^{2}(\alpha_{0}+1)},\\
+ & \mathrm{Cov}[\mu_{j}\mu_{l}]=-\frac{\alpha_{j}\alpha_{l}}{\alpha_{0}^{2}(\alpha_{0}+1)},\ \ j\neq l,
+\end{align*}
+where $\alpha_{0}$ is defined by $(2.39)$
+\end{cBoxA}
+
+In the discussion below, we let $\mu$ be a $n$-dimensional random
+vector s.t $\mu\sim\mathrm{Dir}(\alpha)$ and $\mathbb{S}_{n}$ denote
+the standard simplex in $\mathbb{R}^{n}.$ 
+\begin{enumerate}[leftmargin={*}]
+\item  To find the expectation, note that 
+\begin{align*}
+\E[\mu_{j}] & =\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\mu_{j}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu\\
+ & =\begin{cases}
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+1-1}d\mu & \text{if }j=n\\
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{i\geq1,i\neq j}^{n-1}\mu_{j}^{\alpha_{i}-1}\mu_{j}^{\alpha_{j}+1-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu & \text{if }j\in\{1,...,n-1\}
+\end{cases}\\
+ & =\frac{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}\frac{\prod_{i\geq1,i\neq j}^{n-1}\Gamma(\alpha_{i})\Gamma(\alpha_{j}+1)}{\Gamma\left((\sum_{i=1}^{n}\alpha_{i})+1\right)}\\
+ & =\frac{\alpha_{j}}{\sum_{i=1}^{n}\alpha_{i}}.
+\end{align*}
+\item To find the variance, note that using the same argument as in part(1),
+\begin{align*}
+\E[\mu_{j}^{2}] & =\begin{cases}
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{i=1}^{n-1}\mu_{i}^{\alpha_{i}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+2-1}d\mu & \text{if }j=n\\
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{i\geq1,i\neq j}^{n-1}\mu_{j}^{\alpha_{i}-1}\mu_{j}^{\alpha_{j}+2-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu & \text{if }j\in\{1,...,n-1\}
+\end{cases}\\
+ & =\frac{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}\frac{\prod_{i\geq1,i\neq j}^{n-1}\Gamma(\alpha_{i})\Gamma(\alpha_{j}+2)}{\Gamma\left((\sum_{i=1}^{n}\alpha_{i})+2\right)}\\
+ & =\frac{\alpha_{j}(\alpha_{j}+1)}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})}.
+\end{align*}
+Hence, 
+\begin{align*}
+\text{Var}[\mu_{j}] & =\E[\mu_{j}^{2}]-(\E[\mu_{j}])^{2}\\
+ & =\frac{\alpha_{j}(\alpha_{j}+1)}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})}-\frac{\alpha_{j}^{2}}{(\sum_{i=1}^{n}\alpha_{i})^{2}}\\
+ & =\frac{(\sum_{i=1}^{n}\alpha_{i})\alpha_{j}(\alpha_{j}+1)-(\sum_{i=1}^{n}\alpha_{i}+1)\alpha_{j}^{2}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})^{2}}\\
+ & =\frac{\alpha_{j}(\sum_{i=1}^{n}\alpha_{i}-\alpha_{j})}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})^{2}}.
+\end{align*}
+\item To find the covariance, note that 
+\begin{align*}
+\E[\mu_{i}\mu_{j}] & =\begin{cases}
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{k\geq1,k\notin\{i,j\}}^{n-1}\mu_{k}^{\alpha_{i}-1}\mu_{i\in\{i,j\}}^{\alpha_{i\in\{i,j\}}-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}+1-1}d\mu & \text{if }i=n\text{ or }j=n\\
+\int_{\mathbb{S}_{n}}\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\prod_{k\geq1,k\neq i,j}^{n-1}\mu_{k}^{\alpha_{i}-1}\mu_{i}^{\alpha_{i}+1-1}\mu_{j}^{\alpha_{j}+1-1}\left(1-\sum_{i=1}^{n-1}\mu_{i}\right)^{\alpha_{n}-1}d\mu & \text{if }i\neq n\text{ and }j\neq n
+\end{cases}\\
+ & =\frac{\Gamma(\alpha_{1})\cdots\Gamma(\alpha_{n})}{\Gamma(\alpha_{1}+\cdots+\alpha_{n})}\frac{\prod_{k\geq1,k\neq i,j}^{n}\Gamma(\alpha_{k})\Gamma(\alpha_{i}+1)\Gamma(\alpha_{j}+1)}{\Gamma(\sum_{i=k}^{n}\alpha_{k}+2)}\\
+ & =\frac{\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})}.
+\end{align*}
+Therefore, it follows that 
+\begin{align*}
+\text{Cov}[\mu_{i},\mu_{j}] & =\E[\mu_{i}\mu_{j}]-\E[\mu_{i}]\E[\mu_{j}]\\
+ & =\frac{\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})}-\frac{\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i})^{2}}\\
+ & =\frac{\alpha_{i}\alpha_{j}(\sum_{i=1}^{n}\alpha_{i})-(\sum_{i=1}^{n}\alpha_{i}+1)\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})^{2}}\\
+ & =-\frac{\alpha_{i}\alpha_{j}}{(\sum_{i=1}^{n}\alpha_{i}+1)(\sum_{i=1}^{n}\alpha_{i})^{2}}.
+\end{align*}
+\\
+\end{enumerate}
+\begin{cBoxA}[{Problem 2.11 - Expression for $\mathbb{E}[\log\mathrm{Dir}(\alpha)]$}]{}
+ By expressing the expectation of $\ln\mu_{j}$ under the Dirichlet
+distribution (2.38) as a derivative with respect to $\alpha_{j}$,
+show that 
+\[
+\E[\ln\mu_{j}]=\psi(\alpha_{j})-\psi(\alpha_{0})
+\]
+where $\alpha_{0}$ is given by (2.39) and 
+\[
+\psi(a)\equiv\frac{d}{da}\ln\Gamma(a)
+\]
+is the digamma function. 
+\end{cBoxA}
+
+\textit{In the discussion below, let $X$ be a $n$-dimensional random
+vector such that $X\sim\mathrm{Dir}(\alpha).$\medskip}\\
+Note that for $(\mu_{1},\ldots,\mu_{n})$ in the $n$-dimensional
+standard simplex, we have 
+\begin{align*}
+\frac{\partial}{\partial\alpha_{j}}\left[\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}\right] & =\ln\mu_{j}\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}.
+\end{align*}
+Then it follows that 
+\begin{align*}
+\E[\ln\mu_{j}] & =\int_{\mathbb{S}_{n}}\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}\ln\mu_{j}\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}d\mu\\
+ & =\int_{\mathbb{S}_{n}}\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}\frac{\partial}{\partial\alpha_{j}}\left[\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}\right]d\mu\\
+ & =\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}\frac{\partial}{\partial\alpha_{j}}\int\prod_{i=1}^{n}\mu_{i}^{\alpha_{i}-1}d\mu\tag{by Leibniz rule}\\
+ & =\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}\frac{\partial}{\partial\alpha_{j}}\left[\frac{\Pi_{i=1}^{n}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{n}\alpha_{i})}\right]\tag{(1)}.
+\end{align*}
+Now we simplify Eq.(1), 
+\begin{align*}
+\text{Eq.(1)} & =\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\prod_{i=1}^{n}\Gamma(\alpha_{i})}\left[\frac{\prod_{i\geq1,i\neq j}^{n}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{n}\alpha_{i})}\frac{\partial\Gamma(\alpha_{j})}{\partial\alpha_{j}}-\frac{1}{\Gamma(\sum_{i=1}^{n}\alpha_{i})^{2}}\frac{\partial\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\partial\alpha_{j}}\right]\\
+ & =\frac{\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\prod_{i=1}^{n}\Gamma(\alpha_{i})}\Biggr[\frac{\prod_{i\geq1,i\neq j}^{n}\Gamma(\alpha_{i})}{\Gamma(\sum_{i=1}^{n}\alpha_{i})}\frac{\partial\Gamma(\alpha_{j})}{\partial\alpha_{j}}-\frac{1}{\Gamma(\sum_{i=1}^{n}\alpha_{i})^{2}}\frac{\partial\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\partial(\sum_{i=1}^{n}\alpha_{i})}\underbrace{\frac{\partial(\sum_{i=1}^{n}\alpha_{i})}{\partial\alpha_{j}}}_{=1}\Biggr]\\
+ & =\frac{1}{\Gamma(\alpha_{j})}\frac{\partial\Gamma(\alpha_{j})}{\partial\alpha_{j}}-\frac{1}{\Gamma(\sum_{i=1}^{n}\alpha_{i})}\frac{\partial\Gamma(\sum_{i=1}^{n}\alpha_{i})}{\partial(\sum_{i=1}^{n}\alpha_{i})}\\
+ & =\frac{\partial}{\partial\alpha_{j}}\ln\Gamma(\alpha_{j})-\frac{\partial}{\partial(\sum_{i=1}^{n}\alpha_{i})}\ln\Gamma\bigg(\sum_{i=1}^{n}\alpha_{i}\bigg).
+\end{align*}
+Hence, $\E[\ln\mu_{j}]=\psi(\alpha_{j})-\psi(\sum_{i=1}^{n}\alpha_{i})$
+as desired. \\
+
+\begin{cBoxA}[Problem 2.12 - Uniform distribution's normalization, expectation,
+variance ]{}
+ The uniform distribution for a continuous variable $X$ is defined
+by 
+\[
+\mathrm{U}(x\vert a,b)=\frac{1}{b-a},\ a\leq x\leq b.
+\]
+Verify that this distribution is normalized, and find expressions
+for its mean and variance.
+\end{cBoxA}
+
+\textit{In the discussion below, the $X$ be a random variable such
+that $X\sim\text{Uniform}(a,b)$ with $f_{X}(x)=\frac{1}{b-a}\mathbbm{1}_{[a,b]}.$}
+\begin{enumerate}[leftmargin={*}]
+\item  To see the normalization, note that 
+\[
+\int\frac{1}{b-a}\mathbbm{1}_{[a,b]}dx=\frac{1}{b-a}(b-a)=1.
+\]
+\item To find the expectation, note 
+\[
+\E[X]=\int_{a}^{b}x\frac{1}{b-a}dx=\left[\frac{x^{2}}{2}\right]_{a}^{b}(b-a)=\frac{b^{2}-a^{2}}{2}\frac{1}{(b-a)}=\frac{a+b}{2}.
+\]
+\item To find the variance, first we note that 
+\begin{align*}
+\E[X^{2}] & =\int_{a}^{b}x^{2}\frac{1}{b-a}dx=\left[\frac{x^{3}}{3}\right]_{a}^{b}(b-a)=\frac{b^{3}-a^{3}}{3}\frac{1}{(b-a)}\\
+ & =\frac{(b-a)(a^{2}+b^{2}+ab)}{3(b-a)}=\frac{a^{2}+b^{2}+ab}{3}.
+\end{align*}
+ And thus 
+\begin{align*}
+\text{Var}[X] & =\E[X^{2}]-(\E[X])^{2}=\frac{a^{2}+b^{2}+ab}{3}-\left(\frac{a+b}{2}\right)^{2}\\
+ & =\frac{4a^{2}+4b^{2}+4ab-3a^{2}-3b^{2}-6ab}{12}\\
+ & =\frac{a^{2}+b^{2}-2ab}{12}\\
+ & =\frac{(a-b)^{2}}{12}
+\end{align*}
+as desired. \\
+\end{enumerate}
+\begin{cBoxA}[Problem 2.14 - Multidimensional gaussian maximizes entropy ]{}
+ This exercise demonstrates that the multivariate distribution with
+maximum entropy, for a given covariance, is a Gaussian. The entropy
+of a distribution $p(x)$ is given by 
+\[
+H(X)=-\int p(x)\ln p(x)dx.
+\]
+We with to maximize $H(X)$ over all distribution $p(x)$ subject
+to the constraints that $p(x)$ be normalized and that it have specific
+mean and covariance, so that 
+\begin{align*}
+ & \int p(x)dx=1,\\
+ & \int p(x)xdx=\mu,\\
+ & \int p(x)(x-\mu)(x-\mu)^{T}dx=\Sigma.
+\end{align*}
+By performing a variational maximization of (2.279) and using Lagrange
+multipliers to enforce the constraints (2.280), (2.281), and (2.282),
+show that the maximum likelihood distribution is given by the Gaussian
+(2.43).
+\end{cBoxA}
+
+First, we write out the Lagrangian 
+\begin{align*}
+\mathcal{L}(p(x))= & -\int p(x)\ln p(x)dx+\left\langle \begin{bmatrix}\lambda_{1}\\
+\lambda_{2}\\
+\lambda_{3}
+\end{bmatrix},\begin{bmatrix}\int p(x)dx-1\\
+\int p(x)xdx-\mu\\
+\int p(x)(x-\mu)(x-\mu)^{T}dx-\Sigma
+\end{bmatrix}\right\rangle _{\text{prod}}\\
+= & \int-p(x)\ln p(x)dx\\
+ & +\left\langle \lambda_{1},\int p(x)dx-1\right\rangle +\left\langle \lambda_{2},\int p(x)xdx-\mu\right\rangle +\left\langle \lambda_{3},\int p(x)(x-\mu)(x-\mu)^{T}dx-\Sigma\right\rangle \\
+= & \int-p(x)\ln p(x)dx\\
+ & +\lambda_{1}\left(\int p(x)dx-1\right)+\lambda_{2}^{T}\left(\int p(x)xdx-\mu\right)+\text{tr}\left(\lambda_{3}^{T}\left(\int p(x)(x-\mu)(x-\mu)^{T}dx-\Sigma\right)\right)\\
+= & \int-p(x)\ln p(x)dx\\
+ & +\lambda_{1}\left(\int p(x)dx-1\right)+\lambda_{2}^{T}\left(\int p(x)xdx-\mu\right)+\text{tr}\left(\lambda_{3}\left(\int p(x)(x-\mu)(x-\mu)^{T}dx-\Sigma\right)\right)\tag{1}\\
+= & \int-p(x)\ln p(x)+\lambda_{1}p(x)+\lambda_{2}^{T}p(x)x+\text{tr}((x-\mu)^{T}\lambda_{3}p(x)(x-\mu))dx-(\lambda_{1}+\lambda_{2}^{T}\mu+\lambda_{3}\Sigma)\\
+:= & \int F(p(x)dx+C,\tag{by relabeling}
+\end{align*}
+where Eq.(1) follow can be justified as follows. Note that 
+\begin{align*}
+ & \int p(x)(x-\mu)(x-\mu)^{T}dx\\
+=\ \  & \int\begin{bmatrix}p(x)(x_{1}-\mu)(x_{1}-\mu) & p(x)(x_{1}-\mu)(x_{2}-\mu) & \cdots & p(x)(x_{1}-\mu)(x_{n}-\mu)\\
+p(x)(x_{2}-\mu)(x_{1}-\mu) & \ddots & \cdots & p(x)(x_{2}-\mu)(x_{n}-\mu)\\
+\vdots & \vdots & \cdots & \vdots\\
+p(x)(x_{n}-\mu)(x_{1}-\mu) & p(x)(x_{n}-\mu)(x_{2}-\mu) & \cdots & p(x)(x_{n}-\mu)(x_{n}-\mu)
+\end{bmatrix}dx\\
+=\ \  & \begin{bmatrix}\int p(x)(x_{1}-\mu)(x_{1}-\mu)dx & \int p(x)(x_{1}-\mu)(x_{2}-\mu)dx & \cdots & \int p(x)(x_{1}-\mu)(x_{n}-\mu)dx\\
+\int p(x)(x_{2}-\mu)(x_{1}-\mu)dx & \ddots & \cdots & \int p(x)(x_{2}-\mu)(x_{n}-\mu)dx\\
+\vdots & \vdots & \cdots & \vdots\\
+\int p(x)(x_{n}-\mu)(x_{1}-\mu)dx & \int p(x)(x_{n}-\mu)(x_{2}-\mu)dx & \cdots & \int p(x)(x_{n}-\mu)(x_{n}-\mu)dx
+\end{bmatrix},
+\end{align*}
+which is symmetric, whence by cyclic property of trace it follows
+that 
+\begin{align*}
+\text{tr}\left(\lambda_{3}^{T}\left(\int p(x)(x-\mu)(x-\mu)^{T}dx-\Sigma\right)\right) & =\text{tr}\left(\lambda_{3}\left(\int p(x)(x-\mu)(x-\mu)^{T}dx-\Sigma\right)^{T}\right)\\
+ & =\text{tr}\left(\lambda_{3}\left(\int p(x)(x-\mu)(x-\mu)^{T}dx-\Sigma\right)\right)
+\end{align*}
+To maximize, we take the functional derivative and set it to zero:
+\begin{align*}
+ & \frac{\delta L(p(x)}{\delta p(x)}=\frac{\partial F(p(x))}{\partial p(x)}=-\ln p(x)-1+\lambda_{1}+\lambda_{2}^{T}x+(x-\mu)^{T}\lambda_{3}(x-\mu)=0\\
+\implies & p(x)=\exp\{\lambda_{1}-1+\lambda_{2}^{T}x+(x-\mu)^{T}\lambda_{3}(x-\mu)\}.
+\end{align*}
+Now we substitute $p(x)$ into the constraints:
+\begin{align*}
+\int p(x)xdx= & \int\exp\{\lambda_{1}-1+\lambda_{2}^{T}x+(x-\mu)^{T}\lambda_{3}(x-\mu)\}xdx\\
+= & \int\exp\left\{ \left(x-\mu+\frac{1}{2}\lambda_{3}^{-1}\lambda_{2}\right)^{T}\lambda_{3}\left(x-\mu+\frac{1}{2}\lambda_{3}^{-1}\lambda_{2}\right)-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}+\lambda_{2}^{T}\mu+\lambda_{1}-1\right\} dx\\
+= & \int\exp\left\{ y^{T}\lambda_{3}y-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}+\lambda_{2}^{T}\mu+\lambda_{1}-1\right\} \left(y+\mu-\frac{1}{2}\lambda_{3}^{-1}\lambda_{2}\right)dy\tag{2}\\
+= & \int\exp\left\{ y^{T}\lambda_{3}y-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}+\lambda_{2}^{T}\mu+\lambda_{1}-1\right\} ydy\tag{3}\\
+ & +\int\exp\left\{ y^{T}\lambda_{3}y-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}+\lambda_{2}^{T}\mu+\lambda_{1}-1\right\} \left(\mu-\frac{1}{2}\lambda_{3}^{-1}\lambda_{2}\right)dy\tag{4}\\
+= & \mu,
+\end{align*}
+where Eq.(2) follows from change of variable $y=x-\mu+\frac{1}{2}\lambda_{3}^{-1}\lambda_{2}.$
+We take a closer look at Eq.(2). A couple of claims are in order. 
+\begin{lem}
+The following identity holds:
+\[
+\int_{\mathbb{R}^{n}}\exp\left\{ y^{T}\lambda_{3}y-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}+\lambda_{2}^{T}\mu+\lambda_{1}-1\right\} ydy=0,
+\]
+where $y\in\mathbb{R}^{n}.$ 
+\end{lem}
+\begin{proof}
+The key to proving it is that the integrand, denoted as $\varphi(y),$
+is a \textquotedbl odd\textquotedbl{} function in multidimensional
+space: 
+\begin{align*}
+\varphi(-y) & =\exp\left\{ (-y^{T})\lambda_{3}(-y)-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}+\lambda_{2}^{T}\mu+\lambda_{1}-1\right\} (-y)\\
+ & =-\exp\left\{ y^{T}\lambda_{3}y-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}+\lambda_{2}^{T}\mu+\lambda_{1}-1\right\} y\\
+ & =-\varphi(y).
+\end{align*}
+Then note that 
+\[
+\mathbb{R}^{n}=\underbrace{\left(\bigcup_{(\#_{1},\#_{2},\cdots,\#_{n})\in\prod_{i=1}^{n}\{+,-\}}\prod_{i=1}^{n}\mathbb{R}^{\#_{i}}\right)}_{:=P}\bigcup\underbrace{\left(\bigcup_{(\#_{1},\#_{2},\cdots,\#_{n})\in\prod_{i=1}^{n}\{0,1\},\exists\#_{i}=0\ \text{for some}\ i}\prod_{i=1}^{n}\mathbb{R}^{\#_{i}}\right)}_{:=N},
+\]
+where $\mathbb{R}^{+}:=\{x\in\mathbb{R}|x>0\}$, $\mathbb{R}^{-}:=\{x\in\mathbb{R}|x<0\}$,
+$\mathbb{R}^{0}:=\{0\},$and $\mathbb{R}^{1}:=\mathbb{R}$. Now we
+can rewrite the integral of interest as 
+\[
+\int_{P\cup N}\exp\left\{ y^{T}\lambda_{3}y-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}+\lambda_{2}^{T}\mu+\lambda_{1}-1\right\} ydy=\int_{N}\varphi(y)dy+\int_{P}\varphi(y)dy.
+\]
+Since $m(N)=0,$ (c.f. \cite[ Lemma 3.5]{stein2005real}), $\int_{N}\varphi(y)dy=0.$
+On the other hand, since $P$ can be written as $2^{n}$ disjoint
+unions by definition (note that for $(\#_{1},\ldots,\#_{n})\neq(\tilde{\#}_{1},\ldots,\tilde{\#}_{2}),$
+we have ($\prod_{i=1}^{n}\mathbb{R}^{\#_{i}})\cap(\prod_{i=1}^{n}\mathbb{R}^{\tilde{\#}_{i}})=\emptyset$),
+we have that 
+\[
+\int_{P}\varphi(y)dy=\int_{\sqcup_{i=1}^{2^{n}}P_{i}}\varphi(y)dy=\sum_{i=1}^{2^{n}}\int_{P_{i}}\varphi(y)dy.
+\]
+Since for any $i\in\{1,...,2^{n}\},$ there exists some $j\neq i\in\{1,...,2^{n}\}$
+such that $P_{i}=(-1)\cdot P_{j}$, we can rewrite the last term in
+the previous term as the sum over pairs
+\begin{align*}
+\sum_{i=1}^{2^{n}}\int_{P_{i}}\varphi(y)dy & =\sum_{(i,j)}\left(\int_{P_{i}}\varphi(y)dy+\int_{P_{j}}\varphi(y)dy\right)=\sum_{(i,j)}\left(\int_{P_{i}}-\varphi(-y)dy+\int_{P_{j}}\varphi(y)dy\right)\\
+ & =\sum_{(i,j)}\left(\int_{-P_{i}}\varphi(-(-x))dx+\int_{P_{j}}\varphi(y)dy\right)\tag{by \ref{thm: transformation thm}}\\
+ & =\sum_{(i,j)}\left(-\int_{P_{j}}\varphi(x)dx+\int_{P_{j}}\varphi(y)dy\right)\\
+ & =0.
+\end{align*}
+Therefore, it follows that the desired integral is zero. \label{lem: problem-2.14-lem1}
+\end{proof}
+\noindent Therefore, we have 
+\begin{align*}
+\text{Eq.(2)} & =\int\exp\left\{ y^{T}\lambda_{3}y-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}+\lambda_{2}^{T}\mu+\lambda_{2}-1\right\} \left(\mu-\frac{1}{2}\lambda_{3}^{-1}\lambda_{2}\right)dy.\tag{5}
+\end{align*}
+Now we break it down and evaluate Eq.(3) term by term, note that 
+\[
+1=\int\exp\left\{ \lambda_{1}-1+\lambda_{2}^{T}x+(x-\mu)^{T}\lambda_{3}(x-\mu)\right\} dx=\int\exp\left\{ \lambda_{1}-1+\lambda_{2}^{T}\mu+y^{T}\lambda_{3}y-\frac{1}{4}\lambda_{2}\lambda_{3}^{-1}\lambda_{2}\right\} dy,
+\]
+by change of variable $y=x-\mu+\frac{1}{2}\lambda_{3}^{-1}\lambda_{2}.$
+Hence, substituting these results back, we get 
+\[
+\text{Eq.(2)}=\mu-\frac{1}{2}\lambda_{3}^{-1}\lambda_{2}=\mu\iff\lambda_{3}^{-1}\lambda_{2}=0\implies\lambda_{2}=0,
+\]
+where the last implication can be justified as follows: suppose $\lambda_{3}=0,$
+then $p(x)=\exp\{\lambda_{1}-1+\lambda_{2}^{T}x\}$ is a constant.
+And thus $\int_{\mathbb{R}^{n}}p(x)dx=\infty$ unless $p(x)=0,$ in
+which case the integral evaluates to 0, which does not satisfy Eq.(2.280).
+Hence, it follows that 
+\[
+p(x)=\exp\left\{ \lambda_{1}-1+(x-\mu)^{T}\lambda_{3}(x-\mu)\right\} .
+\]
+Now, we substitute back into the last constraint: 
+\[
+\int\exp\left\{ \lambda_{1}-1+(x-\mu)^{T}\lambda_{3}(x-\mu)\right\} (x-\mu)(x-\mu)^{T}dx=\Sigma.
+\]
+In order to find a solution, we recall that 
+\[
+\int\frac{1}{(2\pi)^{D/2}\left|\Sigma\right|^{1/2}}\exp\left\{ -\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu)\right\} (x-\mu)(x-\mu)^{T}dx=\Sigma.
+\]
+Hence, by comparison of the coefficients, we see that $\lambda_{3}=-\frac{1}{2}\Sigma^{-1}$
+and 
+\[
+\exp\left\{ \lambda_{1}-1\right\} =\frac{1}{(2\pi)^{D/2}\left|\Sigma\right|^{1/2}}\implies\lambda_{1}=\log\left(\frac{1}{(2\pi)^{D/2}\left|\Sigma\right|^{1/2}}\right)+1
+\]
+forms a set of admissible solution. With this set of $\lambda$'s,
+we see that the $p(x)$ is the Gaussian density and thus it follows
+that multivariate Gaussian distribution is a minimizer of the calculus
+of variation program proposed in this problem. \\
+
+\begin{cBoxA}[Problem 2.15 - Entropy of multivariate gaussian]{}
+ Show that the entropy of the multivariate Gaussian $\mathrm{N}(x\vert\mu,\Sigma)$
+is given by 
+\[
+H(X)=\frac{1}{2}\ln\left|\Sigma\right|+\frac{D}{2}(1+\ln(2\pi))
+\]
+where $D$ is the dimensionality of $X$
+\end{cBoxA}
+
+In the discussion below, let $X$ be a random vector such that $X\sim\mathrm{MVN}(\mu,\Sigma)$
+with density $\varphi(x\vert\mu,\Sigma)$. First, we give a lemma
+to be used later. 
+\begin{lem}
+Let $A\in\mathrm{Mat}_{\mathbb{R}}(n,m)$ and $B(x)\in\mathrm{Mat}_{\mathbb{R}}(m,n)$.
+Then the following identity holds:\label{lem: problem 2.15 lem1}
+\[
+\mathrm{tr}\left(\int AB(x)dx\right)=\int\mathrm{tr}(AB(x))dx.
+\]
+\end{lem}
+\begin{proof}
+Just write out the equation and follow definitions: 
+\begin{align*}
+\text{tr}\left(\int AB(x)dx\right) & =\sum_{i=1}^{n}\left(\int AB(x)dx\right)_{ii}=\sum_{i=1}^{n}\left(\int\sum_{j=1}^{n}A_{ij}B_{ij}(x)dx\right)\\
+ & =\int\sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij}B_{ij}(x)dx=\int\text{tr}(AB(x))dx
+\end{align*}
+as desired.
+\end{proof}
+\noindent Now, we go back to the proof. Note that 
+\begin{align*}
+H(X) & =-\int\varphi(x|\mu,\Sigma)\ln\varphi(x|\mu,\Sigma)\\
+ & =\int\varphi(x|\mu,\Sigma)\left(\log\frac{1}{(2\pi)^{D/2}\left|\Sigma\right|^{1/2}}+\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu)\right)d\mu\\
+ & =\log(2\pi)^{D/2}+\log\left|\Sigma\right|^{1/2}+\frac{1}{2}\int\varphi(x|\mu,\Sigma)(x-\mu)^{T}\Sigma^{-1}(x-\mu)d\mu\\
+ & =\log(2\pi)^{D/2}+\log\left|\Sigma\right|^{1/2}+\frac{1}{2}\int\varphi(x|\mu,\Sigma)\text{tr}((x-\mu)^{T}\Sigma^{-1}(x-\mu))d\mu\\
+ & =\log(2\pi)^{D/2}+\log\left|\Sigma\right|^{1/2}+\frac{1}{2}\int\varphi(x|\mu,\Sigma)\text{tr}(\Sigma^{-1}(x-\mu)(x-\mu)^{T})d\mu\\
+ & =\log(2\pi)^{D/2}+\log\left|\Sigma\right|^{1/2}+\frac{1}{2}\text{tr}\left(\Sigma^{-1}\int\varphi(x|\mu,\Sigma)(x-\mu)(x-\mu)^{T}d\mu\right)\tag{by \ref{lem: problem 2.15 lem1}}\\
+ & =\log(2\pi)^{D/2}+\log\left|\Sigma\right|^{1/2}+\frac{1}{2}\text{tr}(\Sigma^{-1}\Sigma)\\
+ & =\log(2\pi)^{D/2}+\log\left|\Sigma\right|^{1/2}+\frac{1}{2}\text{tr}(I_{D})\\
+ & =\frac{D}{2}(\log2\pi+1)+\frac{1}{2}\log\left|\Sigma\right|.
+\end{align*}
+as desired.\\
+
+\begin{cBoxA}[Problem 2.16 - Entropy of sum of two gaussians]{}
+ Consider two random variables $X_{1}$ and $X_{2}$ having Gaussian
+distribution with means $\mu_{1},\mu_{2}$ and precisions $\tau_{1},\tau_{2}$
+respectively. Derive an expression for the differential entropy of
+the variable $X=X_{1}+X_{2}.$ To do this, first find the distribution
+of $X$ by using the relation 
+\[
+f(x)=\int_{-\infty}^{\infty}f(x\vert x_{2})f(x_{2})dx_{2}
+\]
+and completing the square in the exponent. Then observe that this
+represents the convolution of two Gaussian distributions, which itself
+will be Gaussian, and finally make use of the result (1.110) for the
+entropy of the univariate Gaussian. 
+\end{cBoxA}
+
+\textit{This problem can be solved in various ways. The method proposed
+by hint given in the problem is limited in the sense that it is hard
+to generalized to arbitrary transformations and requires a lot of
+computation, which is error prone. We shall take a different approach
+here. }
+
+\noindent  First, we give a lemma. 
+\begin{lem}
+Let $X$ be a $\mathbb{R}^{n}$-valued random vector such that $X\sim\mathrm{MVN}(\mu,\Sigma).$
+Then $Y=AX+b\sim\mathrm{MVN}(A\mu+b,A\Sigma A^{*})$ for $A\in\mathrm{Mat}_{\mathbb{R}}(m,n)$
+and $b\in\mathbb{R}^{m}.$ \label{lem: distribution of linear transformation of gaussian}
+\end{lem}
+To prove this lemma, we need to develop more theory and give more
+background knowledge about multivariate Gaussian distribution, which
+we present below.
+
+\subsubsection*{Supplement knowledge }
+
+In the book, the notion of a Gaussian distribution was mainly introduced
+as a maximizer of a calculus of variation problem under some constraint.
+This is completely valid and useful. But the addition of some more
+auxiliary definitions and results will help us gain a more through
+understanding of this distribution. \medskip\\
+In the discussion below, assume we have derived the univariate normal
+distribution using the book's view point. But now we use another route
+to push the result to the general setting. First, a few lemmas. 
+\begin{lem}
+The characteristic function for the $\mathrm{N}(\mu,\sigma^{2})$
+is given by 
+\[
+\varphi(t)=e^{it\mu}e^{-\frac{1}{2}\sigma^{2}t^{2}}.
+\]
+\end{lem}
+\begin{proof}
+Following the definition, we have 
+\begin{align*}
+\varphi(t) & =\E[\exp(ity)]=\int_{\mathbb{R}}\exp(itx)\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right)dx\\
+ & =\frac{1}{\sqrt{2\pi}\sigma}\int_{\mathbb{R}}\exp(it(y+\mu))\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)dy\tag{by letting \ensuremath{y=x-\mu}}\\
+ & =\frac{1}{\sqrt{2\pi}\sigma}e^{it\mu}\underbrace{\int_{\mathbb{R}}\exp(ity)\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)dy}_{:=\phi(t)}.
+\end{align*}
+In order to find a more explicit form of $\widehat{\mu}(t)$, we evaluate
+$\phi(t).$ Now note that 
+\begin{align*}
+\left|\frac{\partial}{\partial t}\left(\exp(ity)\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)\right)\right| & =\left|iy\exp(ity)\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)\right|\leq y\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)\in L^{1}(\mathbb{R}).
+\end{align*}
+Then a corollary of DCT, we have 
+\begin{align*}
+\frac{\partial}{\partial t}\phi(t) & =\int\frac{\partial}{\partial t}\left\{ \exp(ity)\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)\right\} dy=\int iy\exp(ity)\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)dy\\
+ & =\left[-(i\sigma^{2})^{2}\exp(ity)\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)\right]_{-\infty}^{\infty}-\sigma^{2}t\int_{-\infty}^{\infty}\exp(ity)\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)dy=-\sigma^{2}t\phi(t).
+\end{align*}
+Note that this is a first order differential equation. Moreover, observe
+that we also have following initial condition: 
+\[
+\phi(0)=\int_{\mathbb{R}}\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)dy=\sqrt{2\pi}\sigma\underbrace{\frac{1}{\sqrt{2\pi}\sigma}\int_{\mathbb{R}}\exp\left(-\frac{y^{2}}{2\sigma^{2}}\right)dy}_{=1\text{ since it's gaussian density}}=\sqrt{2\pi}\sigma.
+\]
+Using integrating factor, we find its general solution if $\phi(t)=ce^{-\frac{1}{2}\sigma^{2}t^{2}}.$
+Substituting back into the initial condition, we get that $c=\sqrt{2\pi}\sigma$
+and as a result $\phi(t)=ce^{-\frac{1}{2}\sigma^{2}t^{2}}.$ Hence,
+it follows that $\varphi(t)=e^{it\mu}e^{-\frac{1}{2}\sigma^{2}t^{2}}$
+as desired. 
+\end{proof}
+\begin{lem}
+The characteristic function for $\mathrm{MVN}(\mu,\Sigma)$ in $n$-dimensional
+Euclidean space is given by \label{lem: cf of gaussian}
+\[
+\varphi(t)=\exp(i\left\langle t,\mu\right\rangle )\exp\left(-\frac{1}{2}\left\langle \Sigma t,t\right\rangle \right)
+\]
+\end{lem}
+\begin{proof}
+First, we follow the definition of multivariate characteristic function
+to write 
+\begin{align*}
+\varphi(t) & =\int_{\mathbb{R}^{n}}\exp(i\left\langle t,x\right\rangle )\frac{1}{(2\pi)^{n/2}(\det\Sigma)^{1/2}}\exp\left(-\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu\right)\\
+ & =\int_{\mathbb{R}^{n}}\exp(i\left\langle t,y+\mu\right\rangle )\frac{1}{(2\pi)^{n/2}(\det\Sigma)^{1/2}}\exp\left(-\frac{1}{2}y^{T}\Sigma^{-1}y\right)\left|\det(J_{\varphi}(y))\right|dy\tag{let \ensuremath{x=\varphi(y)=y+\mu}}\\
+ & =\frac{\exp(i\left\langle t,\mu\right\rangle )}{(2\pi)^{n/2}(\det\Sigma)^{1/2}}\underbrace{\int_{\mathbb{R}^{n}}\exp\left(i\left\langle t,y\right\rangle -\frac{1}{2}y^{T}\Sigma^{-1}y\right)}_{:=I_{1}(t)}dy\tag{1}.
+\end{align*}
+Note that since $\Sigma^{-1}$ is symmetric (by Problem 2.22), it
+follows that $\Sigma^{-1}$ has an eigen-decomposition in the form
+of $\Sigma^{-1}=V\Lambda V^{*}$ and $\Lambda=V^{*}\Sigma^{-1}V$,
+where $\Lambda$ is a diagonal matrix containing eigen values which
+are real and $V\in\mathrm{O}(n)$ according to Problem 2.18. Now we
+make a change of variable as follows: 
+\[
+\varphi(x):\mathbb{R}^{n}\rightarrow\mathbb{R}^{n},x\mapsto Vx.\implies\left|\det J_{\varphi}(g)\right|=\left|\det V\right|=1.
+\]
+Then apply this change of variable to the $I_{1}(t)$ and we get 
+\begin{align*}
+I_{1}(t) & =\int_{\mathbb{R}^{n}}\exp\left(i\left\langle t,Vx\right\rangle -\frac{1}{2}x^{T}V^{T}\Sigma^{-1}Vx\right)dx=\int_{\mathbb{R}^{n}}\exp\left(i\left\langle V^{*}t,x\right\rangle -\frac{1}{2}x^{T}\Lambda x\right)dx.
+\end{align*}
+Now, we bring this result back to Eq.(1) and get 
+\begin{align*}
+\varphi(t) & =\frac{\exp(i\left\langle t,\mu\right\rangle )}{(2\pi)^{n/2}(\det\Sigma)^{1/2}}\int_{\mathbb{R}^{n}}\exp\left(i\left\langle s,x\right\rangle -\frac{1}{2}x^{T}\Lambda x\right)dx\tag{where \ensuremath{s=V^{*}t}}\\
+ & =\frac{\exp(i\left\langle t,\mu\right\rangle )}{(2\pi)^{n/2}(\det\Sigma)^{1/2}}\int_{\mathbb{R}^{n}}\exp\left(i\sum_{i=1}^{n}s_{i}x_{i}-\frac{1}{2}\sum_{i=1}^{n}\frac{x_{i}^{2}}{\lambda_{i}}\right)dx\\
+ & =\frac{\exp(i\left\langle t,u\right\rangle )}{(2\pi)^{n/2}(\det\Sigma)^{1/2}}\prod_{i=1}^{n}\int_{\mathbb{R}^{n}}\exp\left(is_{i}x_{i}-\frac{1}{2}\frac{x_{i}^{2}}{\lambda_{i}}\right)dx_{i}\tag{by Fubini's theroem}\\
+ & =\exp(i\left\langle t,u\right\rangle )\prod_{i=1}^{n}\int_{\mathbb{R}^{n}}\exp(its_{i})\frac{1}{\sqrt{2\pi}\lambda_{i}^{1/2}}\exp\left(-\frac{1}{2}\frac{x_{i}^{2}}{\lambda_{i}}\right)dx_{i}\\
+ & =\exp(i\left\langle t,u\right\rangle )\prod_{i=1}^{n}\varphi_{X_{i}\sim\mathrm{N}(0,\lambda_{i})}(s_{i})=\exp(i\left\langle t,\mu\right\rangle )\exp\left(\sum_{i=1}^{n}-\frac{\lambda_{i}s_{i}^{2}}{2_{i}}\right)\\
+ & =\exp(i\left\langle t,\mu\right\rangle )\exp\left(-\frac{1}{2}t^{*}\Sigma t\right)=\exp(i\left\langle t,\mu\right\rangle )\exp\left(-\frac{1}{2}\left\langle \Sigma t,t\right\rangle \right),
+\end{align*}
+as desired. 
+\end{proof}
+Now since set of characteristic functions is an isomorphic to the
+set of probability distributions (cf.???), we can alternatively define
+Gaussian distribution using it's characteristic function. One advantage
+of this characterization is the following lemma. 
+\begin{lem}
+Let $X$ be an $\mathbb{R}^{n}$-valued random variable such that
+$X\sim\mathrm{MVN}(\mu,\Sigma).$ Then $X=_{d}\Sigma^{1/2}Z+\mu,$
+where $Z\sim\mathrm{MVN}(0,I).$
+\end{lem}
+\begin{proof}
+This is a standard result. For the sake of completeness, we provide
+a complete proof here. Recall a useful lemma: 
+\begin{lem}
+Let $X$ be an $\mathbb{R}^{n}$-valued random variable. Then the
+characteristic function for $AX+b$ where $A\in\mathrm{Mat_{\mathbb{K}}}(n,m)$
+and $b\in\mathbb{R}^{m}$ can be characterized as $\varphi_{AX+b}=e^{i\left\langle t,b\right\rangle }\varphi_{X}(A^{*}t).$\label{lem: characteristic function of AX+b}
+\end{lem}
+\begin{proof}[Proof of \ref{lem: characteristic function of AX+b}]
+ Following the definition, we have 
+\begin{align*}
+\varphi_{AX+b}(t) & =\int\exp\left(i\left\langle t,AX+b\right\rangle \right)d\Omega=\exp(i\left\langle t,b\right\rangle )\int\exp(i\left\langle t,Ax\right\rangle )d\Omega=\exp(i\left\langle t,b\right\rangle )\int\exp(i\left\langle A^{*}t,x\right\rangle )d\Omega\\
+ & =\exp(i\left\langle t,b\right\rangle \varphi_{X}(A^{*}t),
+\end{align*}
+as desired. 
+\end{proof}
+Now in view of \ref{lem: characteristic function of AX+b} we have
+\begin{align*}
+\varphi_{\Sigma^{1/2}Z+\mu} & =\exp(i\left\langle t,b\right\rangle )\varphi_{Z}(\Sigma^{1/2}t)=\exp(i\left\langle t,b\right\rangle )\exp\left(-\frac{1}{2}\left\langle \Sigma^{1/2}t,\Sigma^{1/2}t\right\rangle \right)\\
+ & =\exp(i\left\langle t,b\right\rangle )\exp\left(-\frac{1}{2}\left\langle \Sigma^{1/2}\Sigma^{1/2}t,t\right\rangle \right)=\exp(i\left\langle t,b\right\rangle )\exp\left(-\frac{1}{2}\left\langle \Sigma t,t\right\rangle \right)\\
+ & =\varphi_{X}(t).
+\end{align*}
+Hence, it follows that $X=_{d}\Sigma^{1/2}Z+\mu$ as desired. 
+%
+\end{proof}
+%
+\begin{proof}[Proof of \ref{lem: distribution of linear transformation of gaussian}]
+ In view of \ref{lem: cf of gaussian}, \ref{lem: characteristic function of AX+b},
+we have 
+\begin{align*}
+\varphi_{AX+b}(t) & =\exp(i\left\langle t,b\right\rangle )\varphi_{X}(A^{*}t)\\
+ & =\exp(i\left\langle t,b\right\rangle )\exp(i\left\langle A^{*}t,\mu\right\rangle )\exp\left(-\frac{1}{2}\left\langle \Sigma A^{*}t,A^{*}t\right\rangle \right)\\
+ & =\exp(i\left\langle t,A\mu,b\right\rangle )\exp\left(-\frac{1}{2}\left\langle A\Sigma A^{*}t,t\right\rangle \right)\\
+ & =\varphi_{Y\sim\mathrm{MVN}(A\mu+b,A\Sigma A^{*})}(t).
+\end{align*}
+Hence, it follows that $AX+b=_{d}\mathrm{MVN}(A\mu+b,A\Sigma A^{*})$. 
+\end{proof}
+%
+Now we go back to the problem itself. Instead of $x_{1},x_{2}$, we
+use $X_{1},X_{2}$ to denote the designated r.v, i.e., $X_{1}\sim\mathrm{N}(\mu_{1},\tau_{1}^{-1})$
+and $X_{2}\sim\mathrm{N}(\mu_{2},\tau_{2}^{-1})$ and $X_{1}\perp X_{2}.$
+Then it follows that the random vector $\widetilde{X}=\begin{bmatrix}X_{1}\\
+X_{2}
+\end{bmatrix}\sim\mathrm{MVN}\left(\begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix},\begin{bmatrix}\tau_{1}^{-1} & 0\\
+0 & \tau_{2}^{-1}
+\end{bmatrix}\right)$. Note that since $X=\mathbf{1}^{T}\widetilde{X}$ , an application
+of \ref{lem: distribution of linear transformation of gaussian} we
+have that 
+\[
+X\sim\mathrm{N}\left(\mathbf{1}^{T}\begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix},\mathbf{1}^{T}\Sigma\mathbf{1}\right)=\mathrm{N}(\mu_{1}+\mu_{2},\tau_{1}^{-1}+\tau_{2}^{-1}).
+\]
+Then, by Problem 1.35, it follows that $H(X_{1}+X_{2})=\frac{1}{2}(1+\ln(2\pi(\tau_{1}^{-1}+\tau_{2}^{-1}))).$
+
+\paragraph{Alternative derivation of gaussian mean, covariance}
+
+In the textbook, the mean and covariance matrix of MVN are derived
+using change of variables techniques when evaluating the integral.
+Since we have mentioned that we can characterize a distribution using
+its characteristic function. Naturally it comes the question of deriving
+moments of random variables from their characteristic function. Here,
+we provide a general solution to this problem and apply it to the
+Gaussian case. 
+\begin{lem}
+Let $X$ be a $\mathbb{R}^{n}$-valued random variable with $\E[\left\Vert X\right\Vert ^{N}]<\infty.$
+Then 
+\[
+\mathrm{D}^{\alpha}\varphi_{X}(t)=i^{\left|\alpha\right|}\int X^{\alpha}e^{i\left\langle t,X\right\rangle }d\Omega,
+\]
+where $\alpha=(\alpha_{1},\alpha_{2},...,\alpha_{n})$ denote the
+multi-index such that $\left|\alpha\right|:=\sum_{i=1}^{n}\alpha_{i}\leq N$
+and $X^{\alpha}:=X_{1}^{\alpha_{1}}X_{2}^{\alpha_{2}}\cdots X_{n}^{\alpha_{n}}.$
+As a result, 
+\[
+i^{\left|\alpha\right|}\E[X^{\alpha}]=\mathrm{D}^{\alpha}\varphi_{X}(0).
+\]
+\end{lem}
+\begin{proof}
+To prove this, we induct on $N$. Now for the base of $N=1,$ we note
+that $\mathrm{D}^{\alpha}\varphi_{X}(t)$ then is reduces to $\frac{\partial}{\partial t_{i}}\varphi_{X}(t)$
+for some $i\in\{1,...,n\}.$ Note $\frac{\partial}{\partial t_{i}}\varphi_{X}(t)=\frac{\partial}{\partial t_{i}}\int e^{i\left\langle t,X\right\rangle }d\Omega$
+and that 
+\[
+\left|\frac{\partial}{\partial t_{i}}\left(\exp(i\left\langle t,X\right\rangle \right)\right|=\left|iX_{i}\exp\left(i\left\langle t,X\right\rangle \right)\right|\leq\left|X_{i}\right|.
+\]
+We claim that $\left|X_{i}\right|\in L^{1}(\Omega).$ To see this,
+first we note that by Jensen's inequality $(\E[\left\Vert X\right\Vert ])^{N}\leq\E[\left\Vert X\right\Vert ^{N}]<\infty.$
+Take the $N$-th root, we see that $\left\Vert X\right\Vert \in L^{1}.$
+Clearly, we have $|X_{i}|\leq(\sum_{i=1}^{n}X_{i}^{2})^{1/2}$. Hence,
+chaining these inequalities shows that $\left|X_{i}\right|\in L^{1}(\Omega).$
+Then by a variant of DCT, we can move the differentiation inside and
+get 
+\[
+\frac{\partial}{\partial t_{i}}\varphi_{X}(t)=\int\frac{\partial}{\partial t_{i}}\exp(i\left\langle t,X\right\rangle )d\Omega=i\int X_{i}\exp(i\left\langle t,X\right\rangle )d\Omega.
+\]
+Now assume that the claim holds for $N=n-1.$ Then for $N=n,$ we
+first note that for some $\alpha$ with $\left|\alpha\right|=n,$
+$\mathrm{D}^{\alpha}\varphi_{X}(t)=\frac{\partial}{\partial t_{i}}(\mathrm{D}^{\beta}\varphi_{X}(t))$
+for some multi-index $\beta$ such that $\left|\beta\right|=n-1,$
+and some $i\in\{1,...,n\}.$ Then, we note that first by inductive
+hypothesis, $\mathrm{D}\beta\varphi_{X}(t)=i^{\left|\beta\right|}\int X^{\beta}\exp^{i\left\langle t,X\right\rangle }d\Omega$
+and second, 
+\[
+\left|\frac{\partial}{\partial t_{i}}X^{\beta}\exp(i\left\langle t,X\right\rangle )\right|=\left|iX_{i}X^{\beta}\exp(i\left\langle t,X\right\rangle )\right|\leq\left|X^{\alpha}\right|=\prod_{i=1}^{n}\left|X_{i}\right|^{\alpha_{i}}.
+\]
+Now, we claim that $\prod_{i=1}^{n}\left|X_{i}\right|^{\alpha_{i}}\in L^{1}(\Omega)$.
+To see this we note that for since $\sum_{i=1}^{n}\alpha_{i}=N,$
+it follows that $\alpha_{i}\leq N.$ As a result, $\left|X_{i}\right|^{\alpha_{i}}\leq\left\Vert X\right\Vert ^{\alpha_{i}}.$
+Therefore, $\prod_{i=1}^{n}\left|X_{i}\right|^{\alpha_{i}}\leq\prod_{i=1}^{n}\left\Vert X\right\Vert ^{\alpha_{i}}=\left\Vert X\right\Vert ^{\sum_{i=1}^{n}\alpha_{i}}=\left\Vert X\right\Vert ^{N}\in L^{1}(\Omega).$
+Again, by the variant of DCT, we have 
+\begin{align*}
+\mathrm{D}^{\alpha}\varphi_{X}(t) & =\frac{\partial}{\partial t_{i}}i^{\left|\beta\right|}\int X^{\beta}\exp(i\left\langle t,X\right\rangle )d\Omega=i^{\left|\beta\right|}\int\frac{\partial}{\partial t_{i}}\left(X^{\beta}\exp(i\left\langle t,X\right\rangle )\right)d\Omega\\
+ & =i^{\left|\beta\right|}\int iX^{\alpha}\exp(i\left\langle t,X\right\rangle )d\Omega=i^{\left|\beta\right|+1}\int X^{\alpha}\exp(i\left\langle t,X\right\rangle )d\Omega\\
+ & =i^{\left|\alpha\right|}\int X^{\alpha}\exp(i\left\langle t,X\right\rangle )d\Omega,
+\end{align*}
+as desired. 
+\end{proof}
+Now we use this result to derive the mean and covariance of a MVN
+random variable, which we denote as $X\sim\mathrm{MVN}(\mu,\Sigma).$
+Recall that by \ref{lem: cf of gaussian}, $\varphi_{X}(t)=\exp(i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle ).$
+Now we find the Frechet derivative w.r.t $t$: note that by the chain
+rule:
+\begin{align*}
+\mathrm{D}\varphi_{X}(t) & =\mathrm{D}\left(\exp(t)\right)\circ\left(t\mapsto i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle \right)\circ\mathrm{D}\bigg(\underbrace{i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle }_{:=H_{1}(t)}\bigg).
+\end{align*}
+Note that 
+\begin{align*}
+H_{1}(t+h) & =i\left\langle t+h,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma(t+h),t+h\right\rangle \\
+ & =H_{1}(t)+i\left\langle h,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma h,t\right\rangle -\frac{1}{2}\left\langle \Sigma t,h\right\rangle -\frac{1}{2}\left\langle \Sigma h,h\right\rangle \\
+ & =H_{1}(t)+i\left\langle h,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma h,t\right\rangle -\frac{1}{2}\left\langle t,\Sigma^{*}h\right\rangle -\frac{1}{2}\left\langle \Sigma h,h\right\rangle \\
+ & =H_{1}(t)+i\left\langle h,\mu\right\rangle -\left\langle \Sigma h,t\right\rangle -\frac{1}{2}\left\langle \Sigma h,h\right\rangle \\
+ & =H_{1}(t)+\left\langle i\mu-\Sigma t,h\right\rangle -\frac{1}{2}\left\langle \Sigma h,h\right\rangle .
+\end{align*}
+Since $\left\langle \Sigma h,h\right\rangle \leq\left\Vert \Sigma\right\Vert _{\infty}\left\Vert h\right\Vert ^{2}\rightarrow0$
+at $\left\Vert h\right\Vert \rightarrow0,$ it follows that $\frac{1}{2}\left\langle \Sigma h,h\right\rangle =o(\left\Vert h\right\Vert ).$
+As $h\mapsto\left\langle i\mu-\Sigma t,h\right\rangle \in\text{Hom}(\mathbb{R}^{n},\mathbb{R}),$
+it follows that $\mathrm{D}H_{1}(t)=i\mu-\Sigma t.$ Since $\mathrm{D}(\exp(t))=\exp(t)$
+by elementary calculus, it follows that 
+\[
+\mathrm{D}\varphi_{X}(t)=\exp(i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle )(i\mu-\Sigma t).
+\]
+Therefore, $\E[X]=\mathrm{D}\varphi_{X}(0)=i^{-1}i\mu=\mu.$ \medskip\\
+Now to find the covariance, we can either partial differentiate term
+by term or use the same notion of Frechet derivative. We adopt the
+second method since it is consistent with our previous method, and
+also yields the total derivative in its matrix form directly, which
+is more elegant than piecing together terms. Before we go into the
+calculation, we prepare ourselves with a tool to facilitate the calculation
+- generalized product rule. 
+\begin{lem}
+Suppose the mapping $B:X_{1}\times X_{2}\rightarrow Y$ is bilinear
+and bounded, i.e., 
+\[
+\left\Vert B(x_{1},x_{2})\right\Vert \leq C\left\Vert x_{1}\right\Vert \left\Vert x_{2}\right\Vert \text{ for all }x_{1}\in X_{1},x_{2}\in X_{2}
+\]
+where $C$ is fixed and $B$ linear in each argument. Suppose further
+that the maps $f_{i}:X\rightarrow X_{i},$ $i=1,2$ are Frechet differentiable
+at $x$, and there exist and open set $U$ such that $x\in U$ and
+$U\subseteq\mathcal{D}_{f_{i}}.$ Then the function $H(x)=B(f_{1}(x),f_{2}(x))$
+is differentiable at $x$, and \label{lem: prod rule}
+\[
+\mathrm{D}H(x)(h)=B(\mathrm{D}f_{1}(x)(h),f_{2}(x))+B(f_{1}(x),\mathrm{D}f_{2}'(x)(h)).
+\]
+Note: $X_{1},X_{2},X,Y$ are all assumed to be Banach spaces. 
+\end{lem}
+\begin{proof}
+We follow the definition and write out $H(x+h)-H(x)$ for later analysis.
+To facilitate notation, we let $f_{i}^{x}:=f_{i}(x)$ for $i=1,2.$
+\begin{align*}
+H(x+h)-H(x) & =B(f_{1}^{x+h},f_{2}^{x+h})-B(f_{1}^{x},f_{2}^{x})\\
+ & =B(f_{1}^{x+h},f_{2}^{x+h})-B(f_{1}^{x+h},f_{2}^{x})+B(f_{1}^{x+h},f_{2}^{x})-B(f_{1}^{x},f_{2}^{x})\\
+ & =B(f_{1}^{x+h},f_{2}^{x+h}-f_{2}^{x})+B(f_{1}^{x+h}-f_{1}^{x},f_{2}^{x})\\
+ & =B(f_{1}^{x}+\mathrm{D}f_{1}^{x}(h)+\left\Vert h\right\Vert r_{1}(h),\mathrm{D}f_{2}^{x}(h)+\left\Vert h\right\Vert r_{2}(h))+B(\mathrm{D}f_{1}^{x}(h)+\left\Vert h\right\Vert r_{1}(h),f_{2}^{x})\\
+ & =T_{x}(h)+R_{x}(h),
+\end{align*}
+where 
+\[
+\begin{cases}
+\begin{split}T_{x}(h)= & B(f_{1}^{x},\mathrm{D}f_{2}^{x}(h))+B(\mathrm{D}f_{1}^{x}(h),f_{2}^{x})\\
+R_{x}(h)= & B(f_{1}^{x},\left\Vert h\right\Vert r_{2}(h))+B(\mathrm{D}f_{1}^{x}(h),\mathrm{D}f_{2}^{x}(h))+B(\mathrm{D}f_{1}^{x}(h),\left\Vert h\right\Vert \\
+ & +B(\left\Vert h\right\Vert r_{1}(h),\left\Vert h\right\Vert r_{2}(h))+B(\left\Vert h\right\Vert r_{1}(h),f_{2}^{x}).
+\end{split}
+r_{2}(h))+B(\left\Vert h\right\Vert _{1}r_{1}(h),\mathrm{D}f_{2}^{x}(h))\end{cases}
+\]
+In order to show that $T_{x}(h)=\mathrm{D}H(x)\circ h.$ We first
+need to show that $T(h)\in\mathrm{Hom}(X,Y).$ Indeed, 
+\begin{align*}
+T_{x}(\alpha h+\beta g) & =B(f_{1}^{x},\mathrm{D}f_{2}(\alpha h+\beta g))+B(\mathrm{D}f_{1}^{x}(\alpha h+\beta g),f_{2}^{x})\\
+ & =\alpha B(f_{1}^{x},\mathrm{D}f_{2}(h))+\beta B(f_{1}^{x},\mathrm{D}f_{2}(g))+\alpha B(\mathrm{D}f_{1}^{x}(h),f_{2}^{x})+\beta B(\mathrm{D}f_{1}^{x}(g),f_{2}^{x})\\
+ & =\alpha T_{x}(h)+\beta T_{x}(g).
+\end{align*}
+Next, we need to show that $R_{x}(h)=o(\left\Vert h\right\Vert ).$
+We analyze $R_{x}(h)$ term by term as follows 
+\[
+\begin{cases}
+\begin{alignedat}{1} & B(f_{1}^{x},\left\Vert h\right\Vert r_{2}(h))\leq C\left\Vert f_{1}^{x}\right\Vert \left\Vert h\right\Vert \left\Vert r_{2}(h)\right\Vert =o(\left\Vert h\right\Vert )\\
+ & B(\mathrm{D}f_{1}^{x}(h),\mathrm{D}f_{2}^{x}(h))\leq C\left\Vert \mathrm{D}f_{1}^{x}\right\Vert \left\Vert \mathrm{D}f_{2}^{x}\right\Vert \left\Vert h\right\Vert ^{2}=o(\left\Vert h\right\Vert )\\
+ & B(\mathrm{D}f_{1}^{x}(h),\left\Vert h\right\Vert r_{2}(h)\leq C\left\Vert \mathrm{D}f_{1}^{x}\right\Vert \left\Vert h\right\Vert ^{2}\left\Vert r_{2}(h)\right\Vert =o(\left\Vert h\right\Vert )\\
+ & B(\left\Vert h\right\Vert _{1}r_{1}(h),\mathrm{D}f_{2}^{x}(h))\leq C\left\Vert \mathrm{D}f_{2}^{x}\right\Vert \left\Vert h\right\Vert ^{2}\left\Vert r_{1}(h)\right\Vert =o(\left\Vert h\right\Vert )\\
+ & B(\left\Vert h\right\Vert r_{1}(h),\left\Vert h\right\Vert r_{2}(h))\leq C\left\Vert h\right\Vert ^{2}\left\Vert r_{1}(h)\right\Vert \left\Vert r_{2}(h)\right\Vert =o(\left\Vert h\right\Vert )\\
+ & B(\left\Vert h\right\Vert r_{1}(h),f_{2}^{x})\leq C\left\Vert f_{2}^{x}\right\Vert \left\Vert h\right\Vert \left\Vert r_{1}(h)\right\Vert =o(\left\Vert h\right\Vert ).
+\end{alignedat}
+.\end{cases}
+\]
+Since $R_{x}(h)$ is the sum of these terms, it follows that $R_{x}(h)=o(\left\Vert h\right\Vert )$.
+Hence, it follows that $T_{x}(h)=\mathrm{D}H(x)\circ h.$ 
+\end{proof}
+%
+Now, observe that $\mathrm{D}\varphi_{X}(t)=\exp(i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle )(i\mu-\Sigma t)=B(\exp(i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle ),i\mu-\Sigma t),$
+where $B\in\mathrm{Hom}(\mathbb{R},\mathbb{R}^{n};\mathbb{R}^{n})$
+is defined by $(x,y)\mapsto xy.$ Hence, by \ref{lem: prod rule},
+it follows that 
+\begin{align*}
+\mathrm{D}^{2}\varphi_{X}(t)(h) & =B\left(\left\langle \exp\left(i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle \right)(i\mu-\Sigma t),h\right\rangle ,i\mu-\Sigma t\right)+B\left(\exp\left(i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle \right),-\Sigma h\right)\\
+ & =\exp\left(i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle \right)(i\mu-\Sigma t)(i\mu-\Sigma t)^{T}h-\exp\left(i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle \right)\Sigma h\\
+ & =\exp\left(i\left\langle t,\mu\right\rangle -\frac{1}{2}\left\langle \Sigma t,t\right\rangle \right)((i\mu-\Sigma t)(i\mu-\Sigma t)^{T}h-\Sigma h).
+\end{align*}
+Therefore, 
+\[
+\mathrm{D}\varphi_{X}(0)h=(i^{2}\mu\mu^{T}-\Sigma)h=(-\mu\mu^{T}-\Sigma)h\implies\E[XX^{T}]=-\mathrm{D}^{2}\varphi_{X}(0)=\mu\mu^{T}+\Sigma.
+\]
+ As a result, we have according to definition the covariance matrix
+is $\E[XX^{T}]-\mu\mu^{T}=\Sigma.$\\
+
+\begin{cBoxA}[Problem 2.17 - Suffices to assume the parameter $\Sigma$ in Gaussian
+to be symmetric]{}
+ Consider the multivariate Gaussian distribution given by (2.43).
+By writing the precision matrix (inverse covariance matrix) $\Sigma^{-1}$
+as the sum of a symmetric and an anti-symmetric matrix, show that
+the anti-symmetric term does not appear in the exponent of the Gaussian,
+and hence that the precision matrix may be taken to be symmetric without
+loss of generality. Because the inverse of a symmetric matrix is also
+symmetric (see Exercise 2.22), it follows that the covariance matrix
+may also be chosen to be symmetric without loss of generality. 
+\end{cBoxA}
+
+This is an direct application of Problem 1.14. Recall the MVN in $n$-dimensional
+space has density in the following form:
+\[
+\frac{1}{(2\pi)^{n/2}(\det\Sigma)^{1/2}}\exp\left(-\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu)\right).
+\]
+Since $(x-\mu)^{T}\Sigma(x-\mu)$ is a bilinear form. In problem 1.14,
+we showed that it suffices to assume $\Sigma^{-1}=\Sigma_{S}^{^{-1}}=\frac{1}{2}(\Sigma^{-1}+(\Sigma^{-1})^{T}),$
+which is symmetric since $(x-\mu)^{T}\Sigma^{-1}(x-\mu)=(x-\mu)^{T}\Sigma_{S}^{-1}(x-\mu)$
+for all $x\in\mathbb{R}^{n}.$\\
+
+\begin{cBoxA}[Problem 2.18 - Eigen-decomposition for symmetric matrices ]{}
+ Consider a real, symmetric matrix \textgreek{S} whose eigenvalue
+equation is given by (2.45). By taking the complex conjugate of this
+equation and subtracting the original equation, and then forming the
+inner product with eigenvector ui, show that the eigenvalues \textgreek{l}i
+are real. Similarly, use the symmetry property of \textgreek{S} to
+show that two eigenvectors ui and uj will be orthogonal provided \textgreek{l}j
+à= \textgreek{l}i. Finally, show that without loss of generality,
+the set of eigenvectors can be chosen to be orthonormal, so that they
+satisfy (2.46), even if some of the eigenvalues are zero. 
+\end{cBoxA}
+
+Before go into the proof, a lemma. This lemma is usually known as
+Gram-Schmidt orthogonalization. We prove it in the context of Hilbert
+space. Proof of this result at various level of generality can be
+found in any standard linear algebra textbook. 
+\begin{lem}
+Let $\mathcal{H}$ be an Hilbert space. Suppose $\mathcal{U}=\{u_{1},u_{2},\ldots,u_{n}\}$
+is a set of linearly independent vectors of $V.$ Then there exists
+a set $\mathcal{V=}\{v_{1},v_{2},\ldots,v_{n}\}$ of elements of $\mathcal{H}$
+such that \label{lem: gram schimt}
+\begin{enumerate}
+\item $\left\Vert v_{i}\right\Vert =1$ for $1\leq i\leq n.$
+\item $\left\langle v_{i},v_{j}\right\rangle =0$ for $1\leq i,j,\leq n$
+with $i\neq j$. 
+\item $\mathrm{span}(\mathcal{V})=\mathrm{span}(\mathcal{U}).$
+\end{enumerate}
+\end{lem}
+\begin{proof}
+We prove this constructively. The construction goes as follows: first
+we let $v_{1}=\frac{u_{1}}{\left\Vert u_{1}\right\Vert }$ and $v_{2}=\frac{w_{2}}{\left\Vert w_{2}\right\Vert },$
+where $w_{2}=u_{2}-\left\langle u_{2},v_{1}\right\rangle v_{1}$ ,
+and inductively $v_{i}=\frac{w_{i}}{\left\Vert w_{i}\right\Vert },$
+where $w_{i}=u_{i}-\sum_{j=1}^{i-1}\left\langle u_{i},v_{j}\right\rangle v_{j},$
+assuming $v_{1},...,v_{i-1}$ have already been defined. \medskip\\
+To prove the correctness of our construction, we induct on $n.$ For
+the base case where $k=1.$ We see that (2) and (3) is trivially satisfied
+for $v_{1}=u_{1}/\left\Vert u_{1}\right\Vert .$ Also, we have $\left\Vert v_{1}\right\Vert =\left\Vert v_{1}\right\Vert /\left\Vert v_{1}\right\Vert =1.$
+Now suppose, the construction yields the desired set of vectors $\mathcal{V}_{k=n-1}$
+that satisfies condition (1)-(3) for a given set of vectors $\mathcal{U}_{n-1}$.
+Then for $k=n,$we are given a set of elements in $\mathcal{H}$,
+$\mathcal{U}_{n}=\{u_{1},\ldots,u_{n}\}$. By induction hypothesis,
+we can construct a set of vectors $\mathcal{V}_{n-1}=\{v_{1},\ldots,v_{n-1}\}$
+from the set $\mathcal{U}_{n}-\{u_{n}\}$ that satisfies the conditions
+(1)-(3) stipulated above with $\mathcal{V}=\mathcal{V}_{n-1}$ and
+$\mathcal{U}=\mathcal{U}_{n-1}$. Now let $v_{n}=w_{n}/\left\Vert w_{n}\right\Vert ,$
+where $w_{n}=u_{n}-\sum_{i=1}^{n-1}\left\langle u_{n},v_{i}\right\rangle v_{i}.$
+First, we show that $v_{n}$ is well-defined. To prove this, we show
+that $w_{n}\notin\mathrm{span}(\mathcal{V}_{n-1}).$ Suppose otherwise,
+then $w_{n}=\sum_{i=1}^{n-1}\alpha_{i}v_{n}$ for some scalars $\{\alpha_{i}\}_{i=1}^{n-1}.$
+Then we have 
+\[
+w_{n}=\sum_{i=1}^{n-1}\alpha_{i}v_{i}=u_{n}-\sum_{i=1}^{n-1}\left\langle u_{n},v_{i}\right\rangle v_{i}\implies u_{n}=\sum_{i=1}^{n-1}(\alpha_{i}+\left\langle u_{n},v_{i}\right\rangle )v_{i}\in\mathrm{span}(\mathcal{V}_{n-1}).
+\]
+Since $\mathrm{span}(\mathcal{V}_{n-1})=\mathrm{span}(\mathcal{U}_{n-1})$,
+it follows that $u_{n}\in\mathrm{span}(\mathcal{U}_{n-1}).$ This
+is a contradiction since then $u_{n}$ are independent of $u_{1},...,u_{n-1}$
+by assumption. We claim that $\mathcal{V}_{n-1}\cup\{v_{n}\}$ satisfies
+conditions (1)-(3) with $\mathcal{U}=\mathcal{U}_{n}$ and $\mathcal{V}=\mathcal{V}_{n-1}\cup\{v_{n}\}$.
+Note that by construction $\left\Vert v_{n}\right\Vert =1.$ And since
+for $j\in\{1,...,n-1\}$
+\begin{align*}
+\left\langle w_{n},v_{j}\right\rangle  & =\left\langle u_{n}-\sum_{i=1}^{n-1}\left\langle u_{n},v_{i}\right\rangle v_{i},v_{j}\right\rangle \\
+ & =\left\langle u_{n},v_{j}\right\rangle -\sum_{i=1}^{n-1}(\left\langle u_{n},v_{i}\right\rangle \left\langle v_{i},v_{j}\right\rangle )\\
+ & =\left\langle u_{n}-v_{j}\right\rangle -\left\langle u_{n}-v_{j}\right\rangle =0,
+\end{align*}
+it follows that $\left\langle w_{n}/\left\Vert w_{n}\right\Vert ,v_{j}\right\rangle =\left\langle v_{n},v_{j}\right\rangle =0$
+for all $j=1,...,n$. What's left to prove is that $\mathrm{span}(\mathcal{V}_{n-1}\cup\{v_{n}\}\}=\mathrm{span}(\mathcal{U}_{n}).$
+Pick $\mathrm{span}(\mathcal{V}_{n-1}\cup\{v_{n}\})\ni x=\sum_{i=1}^{n}\alpha_{i}v_{i}.$
+If $\alpha_{n}=0,$ then $x\in\mathrm{span}(\mathcal{V}_{n-1})=\mathrm{span}(\mathcal{U}_{n-1})\subset\mathrm{span}(\mathcal{U}_{n}).$
+If $\alpha_{n}\neq0,$ then 
+\begin{align*}
+x & =\sum_{i=1}^{n-1}\alpha_{i}v_{i}+\frac{\alpha_{n}}{\left\Vert u_{n}-\sum_{i=1}^{n-1}\left\langle u_{n},v_{i}\right\rangle v_{i}\right\Vert }\left(u_{n}-\sum_{i=1}^{n-1}\left\langle u_{n},v_{i}\right\rangle v_{i}\right)\\
+ & =\sum_{i=1}^{n-1}(\alpha_{i}-\left\langle u_{i},v_{i}\right\rangle )v_{i}+\frac{\alpha_{n}}{\left\Vert u_{n}-\sum_{i=1}^{n-1}\left\langle u_{n},v_{i}\right\rangle v_{i}\right\Vert }u_{n}\tag{combining coefficients}\\
+ & =\sum_{i=1}^{n-1}\beta_{i}u_{i}+\frac{\alpha_{n}}{\left\Vert u_{n}-\sum_{i=1}^{n-1}\left\langle u_{n},v_{i}\right\rangle v_{i}\right\Vert }u_{n}.
+\end{align*}
+Therefore, $x\in\mathrm{span}(\mathcal{U}_{n})$. On the other hand,
+suppose $x\in\mathrm{span}(\mathcal{U}_{n}),$ i.e. $x=\sum_{i=1}^{n}\alpha_{i}u_{i}$.
+If $\alpha_{n}=0,$ then $x\in\mathrm{span}(\mathcal{U}_{n-1})=\mathrm{span}(\mathcal{V}_{n-1})$
+by induction hypothesis. If $\alpha_{n}\neq0,$ then we have 
+\begin{align*}
+x & =\sum_{i=1}^{n-1}\alpha_{i}u_{i}+u_{n}=\sum_{i=1}^{n-1}\beta_{i}v_{i}+u_{n}-\sum_{i=1}^{n-1}\left\langle u_{n},v_{i}\right\rangle v_{i}+\sum_{i=1}^{n-1}\left\langle u_{n},v_{i}\right\rangle v_{i}\\
+ & =\sum_{i=1}^{n-1}(\beta_{i}+\left\langle u_{n},v_{i}\right\rangle )v_{i}+v_{n},
+\end{align*}
+whence $x\in\mathrm{span}(\mathcal{V}_{n-1}\cup\{v_{n}\}).$ 
+\end{proof}
+\begin{enumerate}[leftmargin={*}]
+\item  We first show that the eigenvalues are real. First, we note that
+by definition, the pair $(\lambda_{i},\mu_{i})$ is an eigenvector,
+eigenvalue pair iff $\Sigma\mu_{i}=\lambda_{i}\mu.$ Now we fix one
+such pair $(\mu_{i},\lambda_{i})$. Multiplying $\mu_{i}^{*}$ on
+the left on both side of the equation yields $\mu^{*}\Sigma\mu_{i}=\lambda_{i}\mu_{i}^{*}\mu_{i}.$
+Now since $\Sigma$ is symmetric, it follows that $(\mu^{*}\Sigma\mu)^{*}=\mu^{*}\Sigma\mu=\lambda_{i}^{*}\mu_{i}^{*}\mu_{i}.$
+Hence, it follows that 
+\[
+\lambda_{i}^{*}\mu_{i}^{*}\mu_{i}=\lambda_{i}\mu_{i}^{*}\mu_{i}\iff(\lambda_{i}^{*}-\lambda_{i})\mu_{i}^{*}\mu_{i}=0\iff\lambda_{i}^{*}=\lambda_{i},
+\]
+since we assume $\mu_{i}\neq0.$ Therefore, $\lambda_{i}$ is real.
+Since $(\mu_{i},\lambda_{i})$ is chosen to be arbitrary, it follows
+that all eigen values in this case are real. 
+\item Next, we show that for eigen-pair $(\lambda_{i},\mu_{i}),(\lambda_{j},\mu_{j})$
+with $\lambda_{i}\neq\lambda_{j},$ and $\lambda_{i},\lambda_{j}\neq0$,
+we have $\left\langle \mu_{i},\mu_{j}\right\rangle =0.$ First, note
+the following identity: 
+\[
+\lambda_{j}\mu_{j}^{*}\mu_{i}=(\Sigma\mu_{j})^{*}\mu_{i}=(\Sigma^{*}\mu_{j})^{*}\mu_{i}=\mu_{j}^{*}\Sigma\mu_{i}=\mu_{j}^{*}\lambda_{i}\mu_{i}=\lambda_{i}\mu_{j}^{*}\mu_{i},
+\]
+which implies $\lambda_{i}\mu_{j}^{*}\mu_{i}=\lambda_{j}\mu_{j}^{*}\mu_{i}\Leftrightarrow\mu_{j}^{*}\mu_{i}(\lambda_{i}-\lambda_{j})=0.$
+Since $\lambda_{i}\neq\lambda_{j}$ by assumption, it follows that
+$\left\langle \mu_{j},\mu_{i}\right\rangle =\mu_{j}^{*}\mu_{i}=0$,
+as desired. 
+\item Now we show that for eigen-pair $(\lambda_{i},\mu_{i}),(\lambda_{j},\mu_{j})$
+with $\lambda_{i}=\lambda_{j}$ and $\lambda_{i},\lambda_{j}\neq0,$
+we can still have $\left\langle \mu_{i},\mu_{j}\right\rangle =0$.
+For better notation, suppose $\lambda_{1}=\lambda_{2}:=\lambda\in\mathbb{R}.$
+First, we show that any linear combination of $\mu_{i}$ and $\mu_{j}$
+is also an eigen vector with the same eigen value, i.e., $(\lambda,\alpha\mu_{i}+\beta\mu_{2})$
+is a valid eigen pair as well for any $\alpha,\beta\in\mathbb{R}-\{0\}.$
+Indeed, we have 
+\[
+\Sigma(\alpha\mu_{i}+\beta\mu_{j})=\alpha\Sigma\mu_{i}+\beta\Sigma\mu_{j}=\lambda\alpha\mu_{i}+\lambda\beta\mu_{j}=\lambda(\alpha\mu_{i}+\beta\mu_{j}).
+\]
+Therefore, in view of \ref{lem: gram schimt}, we can orthonormalize
+$\mu_{i}$ and $\mu_{j}$ to $\widetilde{\mu}_{i}$ and $\widetilde{\mu}_{j}$
+such that $(\lambda,\tilde{\mu}_{i})$ and $(\lambda,\widetilde{\mu}_{j})$
+are eigen-pairs as well ($\widetilde{\mu}_{1},\widetilde{\mu}_{2}$
+are linear combination of $\mu_{1}$ and $\mu_{2}$). 
+\item Now we show that for eigen-pair $(\lambda_{i},\mu_{i}),(\lambda_{j},\mu_{j})$
+with at least one of $\lambda_{i}$ and $\lambda_{j}$ being equal
+to 0, we can still have $\left\langle \mu_{i},\mu_{j}\right\rangle =0$.
+Without loss of generality, suppose $\lambda_{i}=0.$ Then, this means
+that $\Sigma\mu_{i}=0.$ Now suppose $\lambda_{j}\neq0,$ then we
+have that $\Sigma\mu_{j}=\lambda_{j}\mu_{j}\implies\mu_{j}=\Sigma\mu_{j}/\lambda_{j}.$
+Then it follows that 
+\[
+\left\langle \mu_{i},\mu_{j}\right\rangle =\frac{1}{\lambda_{j}}\mu_{i}^{T}\Sigma\mu_{j}=\frac{1}{\lambda_{j}}(\Sigma\mu_{i})^{T}\mu_{j}=0.
+\]
+Suppose otherwise that $\lambda_{j}=0.$ Then $\mu_{i},\mu_{j}\in\ker(\Sigma),$
+which is a subspace. Therefore, we can orthonormalize $\mu_{i},\mu_{j}$
+by applying \ref{lem: gram schimt}.\\
+\end{enumerate}
+\begin{cBoxA}[Problem 2.19 - Characterization of $\Sigma,\Sigma^{-1}$ in Gaussian
+distribution]{}
+ Show that a real, symmetric matrix $\Sigma$ having the eigenvector
+equation (2.45) can be expressed as an expansion in the eigenvectors,
+with coefficients given by the eigenvalues, of the form (2.48). Similarly,
+show that the inverse matrix $\Sigma^{-1}$ has a representation of
+the form (2.49). 
+\end{cBoxA}
+
+Note that $\text{Eq.(2.45)}=\sum_{i=1}^{n}\lambda_{i}u_{i}u_{i}^{*}=U\Lambda U^{*},$
+where $U=[u_{i}]$ are vertical stack of eigen vectors of $\Sigma.$
+On the other hand, note that $\Sigma U=U\Lambda,$ which implies $\Lambda=U^{*}\Sigma U.$
+Therefore, substitute back we get $U\Lambda U^{*}=UU^{*}\Sigma UU^{*}=\Sigma$
+as desired. \\
+
+\begin{cBoxA}[Problem 2.20 - Positive definite has positive eigenvalues]{}
+ A positive definite matrix $\Sigma$ can be defined as one for which
+the quadratic form 
+\[
+a^{T}\Sigma a
+\]
+is positive for any real value of the vector a. Show that a necessary
+and sufficient condition for $\Sigma$ to be positive definite is
+that all of the eigenvalues $\lambda_{i}$ of $\Sigma$, defined by
+(2.45), are positive.
+\end{cBoxA}
+
+This is an important result. Hence, we will prove a stronger version
+by extending the matrix to the $\mathbb{C}.$ For later use, we pack
+the result in the following lemma.
+\begin{lem}
+A matrix $M\in\mathrm{Mat}_{\mathbb{C}}(n,n)$ for some $n\in\mathbb{N}$
+is symmetric positive definite\footnote{Although there are matrices that are postivie definite but not symmetric.
+It suffices for us to assume that $M$ is symmetric in view of Problem
+1.14. } if and only if all of the eigen values of $M_{i}$ are positive. 
+\end{lem}
+\begin{proof}
+$\Leftarrow$ Suppose all of the eigen values of $M$, denoted by
+$\{\lambda_{i}\}_{i=1}^{n}$ are positive. Note that in view of Problem
+2.18, we have $M=V\Lambda V^{*},$ where $V$ is the matrix containing
+eigen vectors and $\Lambda$ is the diagonal matrix of eigen values.
+So we have for any $x\in\mathbb{C}^{n}$ that $x^{*}Mx=(x^{*}V)\Lambda(V^{*}x)=\sum_{i=1}^{n}s_{i}^{2}/\lambda_{i},$
+where $s_{i}$ is the $i$-th term in the vector $V^{*}x.$ Sicne
+$\lambda_{i}>0$ for all $i\in\{1,...,n\},$ it follows that $x^{*}Mx>0$
+as desired. \medskip\\
+$\Rightarrow$ On the other hand, suppose $M$ is positive definite,
+i.e. $x^{*}Mx>0$ for all $x\in\mathbb{C}^{n}$.\footnote{One detail we left out here is to show that $x^{*}Mx$ is real for
+any $x\in\mathbb{C}^{n}.$ To see this, we observe that $(x^{*}Mx)^{*}=x^{*}M^{*}x=x^{*}Mx,$
+whence is real since its complex conjugate is equal to itself. } Let $(\lambda,v)$ be an eigen-pair of $M$. We show that $\lambda>0$
+by case analysis. Suppose $\lambda\leq0,$ then we have $v^{*}Mv=v^{*}\lambda v=\lambda\left|v\right|^{2}\leq0,$
+which is a contradiction to the fact that $M$ is positive definite.
+As a result, $\lambda>0$. Since $\lambda$ is chosen arbitrarily,
+we have shown that any eigen value of $M$ is positive as desired.
+\\
+\end{proof}
+%
+\begin{cBoxA}[Problem 2.21 - Independent parameter for symmetric matrix ]{}
+Show that a real, symmetric matrix of size $D\times D$ has $D(D+1)/2$
+independent parameters.
+\end{cBoxA}
+
+Clearly, once we have known the upper triangular part of the matrix
+plus the diagonal, we will have known the whole matrix. As a result,
+the number of independent parameters for symmetric matrix is $\sum_{i=1}^{D}i=D(D+1)/2.$\\
+
+\begin{cBoxA}[Problem 2.22 - Inverse of symmetric matrix is symmetric]{}
+ Show that the inverse of a symmetric matrix is itself symmetric.
+\end{cBoxA}
+
+First, we fix some notations. Let $M\in\mathrm{GL}_{\mathbb{R}}(n)$
+be a symmetric matrix. It suffices to show that $(M^{-1})^{T}=M^{-1}.$
+Since $M^{-1}M=MM^{-1}=I,$ it follows that 
+\[
+(MM^{-1})^{T}=((M^{-1})^{T}M^{T})=(M^{-1})^{T}M=I.
+\]
+Hence, it follows that $(M^{-1})^{T}M=M^{-1}M.$ Now multiplying both
+sides of the previous expression by $M^{-1},$ we get $(M^{-1})^{T}MM^{-1}=M^{-1}MM^{-t},$
+which implies that $(M^{-1})^{T}=M^{-1}.$\\
+
+\begin{cBoxA}[Problem 2.23 - Volume of hyperellipsoid in $n$-dimensional space ]{}
+ By diagonalizing the coordinate system using the eigenvector expansion
+(2.45), show that the volume contained within the hyperellipsoid corresponding
+to a constant Mahalanobis distance $\Delta$ is given by 
+\[
+V_{D}\left|\Sigma\right|^{1/2}\Delta^{D}
+\]
+where $V_{D}$ is the volume of the unit sphere in $D$ dimensions,
+and the Mahalanobis distance is defined by (2.44). 
+\end{cBoxA}
+
+The wording of this problem is a bit confusing. Here, we give a clarification:
+recall that the unit sphere in $n$-dimensional Euclidean space is
+given by 
+\[
+V_{D}:=\int_{\mathbb{R}^{n}}\mathbbm{1}(\left\Vert x\right\Vert \leq1)dx=\int_{\mathbb{R}^{n}}\mathbbm{1}(x^{T}x\leq1)dx.
+\]
+Also recall that the solution to this integral has been worked out
+in Problem 1.18. In the textbook, the hyperellipsoid with Mahalanobis
+distance $\Delta$ is defined to be the set of the form $\{x\in\mathbb{R}^{n}:(x-\mu)^{T}\Sigma^{-1}(x-\mu)\leq\Delta^{2},\Sigma^{-1}\text{ is positive (semi)definite}\}.$
+So to show that the volumne of hyperellipsoid with Mahalanobis distance
+$\Delta$ is equal to $V_{D}\det\left|\Sigma\right|^{1/2}\Delta^{D}$
+is equivalent to showing the following: 
+\[
+\int_{\mathbb{R}^{n}}\mathbbm{1}((x-\mu)^{T}\Sigma^{-1}(x-\mu))dx=V_{D}\det\left|\Sigma\right|^{1/2}\Delta^{D}.
+\]
+We show this using a series of change of variables(c.f. \ref{thm: transformation thm})
+: note that 
+\begin{align*}
+\int_{\mathbb{R}^{n}}\mathbbm{1}((x-\mu)^{T}\Sigma^{-1}(x-\mu)\leq\Delta^{2})dx & =\int_{\mathbb{R}^{n}}\mathbbm{1}(y^{T}\Sigma^{-1}y\leq\Delta^{2})dy\tag{by letting \ensuremath{x=y+\mu}}\\
+ & =\int_{\mathbb{R}^{n}}\mathbbm{1}(y^{T}\Sigma^{-1/2}\Sigma^{-1/2}y\leq\Delta^{2})dy\tag{since \ensuremath{\Sigma^{-1}} is p.d.}\\
+ & =\int_{\mathbb{R}^{n}}\mathbbm{1}(w^{T}w\leq\Delta^{2})\left|\det\Sigma^{1/2}\right|dw\tag{by letting \ensuremath{y=\Sigma^{1/2}w}}\\
+ & =\int_{\mathbb{R}^{n}}\mathbbm{1}(z^{T}z\leq1)\left|\det\Sigma^{1/2}\right|\left|\det\Delta I\right|dz\tag{by letting \ensuremath{w=(\Delta I)z}}\\
+ & =\left|\det\Sigma^{1/2}\right|\det\left|\Delta I\right|V_{D}\\
+ & =\det\left|\Sigma\right|^{1/2}\Delta^{D}V_{D},
+\end{align*}
+where the last equality follows since $\det(\Sigma^{1/2}\Sigma^{1/2})=\det(\Sigma^{1/2})\det(\Sigma^{1/2})=\det(\Sigma),$
+which implies that $\det(\Sigma^{1/2})=(\det\Sigma)^{1/2}$. \\
+
+\begin{cBoxA}[Problem 2.24 - Block matrix inversion formula]{}
+ Prove the identity (2.76) by multiplying both sides by the matrix
+\[
+\begin{bmatrix}A & B\\
+C & D
+\end{bmatrix}
+\]
+and making use of the definition $(2.77).$ 
+\end{cBoxA}
+
+To facilitate notation, we use $F$ to denote the matrix defined in
+the RHS of Eq.(2.76) and $F$ the LHS. To show the identity claimed
+in Eq.(2.76) holds, we need to show that $FE=EF=I$(we assume the
+dimensions match in all the partitions and parts of the parition in
+$F$ are necessarily invertible). Note that the following lemma shows
+that it suffices for us to show either $FE=I$ or $EF=I$.\\
+
+\begin{lem}
+Let $A\in\mathrm{Mat}_{\mathbb{C}}(n,m)$ and $B\in\mathrm{Mat}_{\mathbb{C}}(m,n).$
+Then if $AB=I$, it follows that $BA=I.$\label{lem: matrix left inverse in implies right inverse}
+\end{lem}
+\begin{proof}
+By assumption we have $AB-I=0.$ We multiply on the left by $B$ to
+get $BAB-B=(BA-I)B=0.$ Now we let $\{e_{i}\}_{i=1}^{n}$ be the standard
+basis of $\mathbb{R}^{n}.$ We claim that $\{Be_{i}\}_{i=1}^{n}$
+is also a standard basis. To see this, suppose $\sum_{i=1}^{n}\alpha_{i}Be_{i}=0.$
+Multiplying both sides on the left by $A$ and we get $\sum_{i=1}^{n}\alpha_{i}ABe_{i}=0,$
+which reduces to $\sum_{i=1}^{n}\alpha_{i}e_{i}=0$ since $AB=I$
+by assumption. Since $\{e_{i}\}_{i=1}^{n}$ is the standard basis,
+it follows that $\alpha_{i}=0$ for all $i\in\{1,...,n\}.$ As a result
+$\{Be_{i}\}_{i=1}^{n}$ is a set of basis in $\mathbb{R}^{n}$ as
+desired. Now we come back to the $(BA-I)B=0.$ Note that from which
+we can see that $(BA-I)Be_{i}$ for all $i=1,...,n.$ Since $\{Be_{i}\}_{i=1}^{n}$
+is a set of basis, it follows that for any $v\in\mathbb{R}^{n},$
+we have 
+\[
+(BA-I)v=(BA-I)\left(\sum_{i=1}^{n}\alpha_{i}Be_{i}\right)=\sum_{i=1}^{n}\alpha_{i}(BA-I)Be_{i}=0,
+\]
+whence $BA=I$ as desired. 
+\end{proof}
+In view of previous lemma, we go ahead and show that $FE=I.$ Writing
+the terms out explicitly yields: 
+\begin{align*}
+FE & =\begin{bmatrix}A & B\\
+C & D
+\end{bmatrix}\begin{bmatrix}M & -MBD^{-1}\\
+-D^{-1}CM & D^{-1}+D^{-1}CMBD^{-1}
+\end{bmatrix}\\
+ & =\begin{bmatrix}AM-B(D^{-1}CM) & -AMBD^{-1}+BD^{-1}+BD^{-1}CMBD^{-1}\\
+CM-DD^{-1}CM & -CMBD^{-1}+I+CMBD^{-1}
+\end{bmatrix}\\
+ & :=\begin{bmatrix}P_{11} & P_{12}\\
+P_{21} & P_{22}
+\end{bmatrix}.
+\end{align*}
+Now we evaluate the blocks $P_{ij}$ term by term: 
+\begin{align*}
+P_{11} & =A(A-BD^{-1}C)^{-1}-BD^{-1}C(A-BD^{-1}C)^{-1}=(A-BD^{-1}C)(A-BD^{-1}C)^{-1}=I;\\
+P_{12} & =(-AM+I+BD^{-1}CM)BD^{-1}=(-\underbrace{(A-BD^{-1}C)M}_{=I}+I)BD^{-1}=0;\\
+P_{21} & =CM-CM=0;\\
+P_{22} & =I.
+\end{align*}
+Therefore, the results follows. \\
+
+\begin{cBoxA}[Problem 2.25 - Marginal and conditional expectation of multivariate
+gaussian ]{}
+ In Sections 2.3.1 and 2.3.2, we considered the conditional and marginal
+distributions for a multivariate Gaussian. More generally, we can
+consider a partitioning of the components of $X$ into three groups
+$X_{a}$, $B_{b}$, and $X_{c}$, with a corresponding partitioning
+of the mean vector $\mu$ and of the covariance matrix $\Sigma$ in
+the form 
+\[
+\mu=\begin{bmatrix}\mu_{a}\\
+\mu_{b}\\
+\mu_{c}
+\end{bmatrix},\ \ \Sigma=\begin{bmatrix}\Sigma_{aa} & \Sigma_{ab} & \Sigma_{ac}\\
+\Sigma_{ba} & \Sigma_{bb} & \Sigma_{bc}\\
+\Sigma_{ca} & \Sigma_{cb} & \Sigma_{cc}
+\end{bmatrix}
+\]
+By making use of the results of Section 2.3, find an expression for
+the conditional distribution $\P(X_{a}\vert X_{b})$ in which $X_{c}$
+has been marginalized out.
+\begin{rem}
+\textit{Although this textbook has derived the result for marginal
+and conditional distribution for multivariate gaussian distributions
+using completing squares. It is not done in the most rigiorous manner
+and left out many of the calculations. Hence, we rederive the results
+here. However, we will be using a slightly different approach in the
+derivation, which is more rigorous and slightly more general. Details
+of the derivation proposed by the book will also be discussed in the
+reading notes. }
+\end{rem}
+\end{cBoxA}
+
+To begin with, we introduce a few auxiliary lemmas to help proving
+later results.
+\begin{lem}
+Suppose $A\in\mathrm{Mat}_{\mathbb{R}}(n,n)$ is positive definite(symmetric)
+and partitioned as $A=\begin{bmatrix}A_{11} & A_{12}\\
+A_{21} & A_{22}
+\end{bmatrix},$ then $A_{11}$ and $A_{22}$ are positive definite as well. 
+\end{lem}
+\begin{proof}
+It suffices to show that $A_{11}$ and $A_{22}$ are p.d since p.d.
+matrices are invertible. Without loss of generality, we assume $A_{11}$
+is of dimension $n_{1}\times n_{1}$ and $A_{22}$ of $n_{2}\times n_{2}$
+such that $n_{1}+n_{2}=n.$ Note that since $A$ is p.d., $x^{T}Ax>0$
+for all $x\in\mathbb{R}^{n}.$ Then for $x=\begin{bmatrix}x_{1}\\
+0
+\end{bmatrix}$ in block form, where $x_{1}\in\mathbb{R}^{n_{1}}$ is arbitrarily
+chosen, it follows that $x^{T}Ax=x_{11}^{T}A_{11}x_{11}>0$. Therefore,
+$A_{11}$ is p.d. as well. On the other hand, if we let $x=\begin{bmatrix}0\\
+x_{2}
+\end{bmatrix}$ for some arbitrarily chosen $x_{2}\in\mathbb{R}^{n_{2}},$ it also
+follows that $x^{T}Ax=x_{2}^{T}A_{22}x_{2}>0.$ Since $x_{2}$ is
+arbitrarily, $A_{22}$ is p.d. as well. 
+\end{proof}
+%
+\begin{lem}
+Let $A\in\mathrm{Mat}_{\mathbb{\mathbb{C}}}(n,n)$, $D\in\mathrm{Mat}_{\mathbb{C}}(m,m),B\in\mathrm{Mat}_{\mathbb{C}}(n,m)$
+for arbitrary $n,m\in\mathbb{N}$. Then it follows that \label{lem: block determinant}
+\[
+\det\begin{bmatrix}A & B\\
+0 & D
+\end{bmatrix}=\det(A)\det(D).
+\]
+\end{lem}
+\begin{proof}
+We layout our proof in several steps as below. 
+\begin{enumerate}[leftmargin={*}]
+\item We first prove the basic case where $D=I.$ We claim that $\det\begin{bmatrix}A & B\\
+0 & I
+\end{bmatrix}=\det A.$ To prove this claim, we induct on $I'$s size, denoted as $m$. For
+the base case where $m=1$, we have by Laplace expansion on the last
+row that 
+\[
+\det\begin{bmatrix}A & B\\
+0 & 1
+\end{bmatrix}=(-1)^{(n+1)+(n+1)}\det(A)=\det A.
+\]
+Now suppose $m=k$ holds. Then we have that 
+\[
+\det\begin{bmatrix}A & B\\
+0 & I_{k+1}
+\end{bmatrix}=\det\begin{bmatrix}A & B_{1} & B_{2}\\
+0 & I_{k} & 0\\
+0 & 0 & 1
+\end{bmatrix}=(-1)^{(n+m+1)+(n+m+1)}\det\begin{bmatrix}A & B\\
+0 & I_{k}
+\end{bmatrix}=\det(A),
+\]
+where $B_{1}\in\mathrm{Mat}_{\mathbb{C}}(n,m)$ and that $B_{2}\in\mathrm{Mat}_{\mathbb{C}}(n,1)$
+and the last equality follows from inductive hypoethesis. We also
+note that using the same argument we can also show that 
+\[
+\det\begin{bmatrix}I & B\\
+0 & D
+\end{bmatrix}=\det(D).
+\]
+\item Now we go back to the proof of the lemma. We first deal the case where
+$A$ is inverstible, i.e. $\det A\neq0.$ Recall that $\det(MN)=\det(M)\det(N)$
+for abitrary compatible matrices $M$ and $N$. Therefore, it follows
+that 
+\[
+\det\begin{bmatrix}A & B\\
+0 & D
+\end{bmatrix}=\det\left(\begin{bmatrix}A & 0\\
+0 & I_{m}
+\end{bmatrix}\begin{bmatrix}I_{n} & A^{-1}B\\
+0 & D
+\end{bmatrix}\right)=\det\begin{bmatrix}A & 0\\
+0 & I_{m}
+\end{bmatrix}\det\begin{bmatrix}I_{n} & A^{-1}B\\
+0 & D
+\end{bmatrix}=\det(A)\det(D),
+\]
+where the last equality follows from step-1. 
+\item It remains to deal with the case where $A$ is not invertible. Note
+that if $A$ is not invertible, then the columns of $A$ are not linearly
+independent. From this we see that the first $n$ columns of $\begin{bmatrix}A & B\\
+0 & D
+\end{bmatrix}$ are not linearly independent as well since we are stacking $0$'s
+under $A$ and as a result the spanning set of first $n$ columns
+is thus homeomorphic to that of $A.$ Therefore, $\begin{bmatrix}A & B\\
+0 & D
+\end{bmatrix}$ is not invertible. 
+\end{enumerate}
+\end{proof}
+%
+The following result is a classical theorem, whose proof can be easily
+found in any measure theoretic probability books. We state without
+proof.
+\begin{thm}[Uniqueness of fourier transform]
+The Fourier transform of a probability measure on $\mathbb{R}^{n}$
+characterizes $\mu,$ that is if two probabilty measures on $\mathbb{R}^{n}$
+admit the same Fourier transform, they are equal. \label{thm: uniqueness of cf}
+\end{thm}
+%
+In later results, we will construct some independent variables from
+family of distributions decided by random variables that are not necessarily
+independent. The proof of this theorem is quite complicated. It's
+closely related to the Kolmogrov extension theorem. 
+\begin{thm}[Creation of new, independent random variables]
+Let $(X_{\alpha})_{\alpha\in A}$ be a family of random variabels(not
+necessarily independent or finite), and let $(\mu_{\beta})_{\beta\in B}$
+be a collection (not necessarily finite) of probability measures on
+measurable spaces $(R_{\beta})_{\beta\in B}.$ Then after extending
+the sample spaces if necessary, one can find a family $(Y_{\beta})_{\beta\in B}$
+of independent random variables such that each $Y_{\beta}$ has distribution
+$\mu_{\beta}$, and the two families $(X_{\alpha})_{\alpha\in A}$
+and $(Y_{\beta})_{\beta\in B}$ are independent of each other.\label{thm: construct independent r.v. } 
+\end{thm}
+One direct application of \ref{thm: uniqueness of cf} is the following
+lemma. 
+\begin{lem}
+Let $X$ be an $\mathbb{R}^{n}$ valued random variable that has partition
+of the form $\begin{bmatrix}X_{1};X_{2}\end{bmatrix}$, where $X_{1}\in\mathbb{R}^{k}$
+and $X_{2}\in\mathbb{R}^{n-k}.$ Then $X_{1}\perp X_{2}$ iff $\varphi_{X}(t)=\varphi_{X_{1}}(t_{1})\varphi_{X_{2}}(t_{2}).$\label{lem: cf independence}
+\end{lem}
+\begin{proof}
+$\Rightarrow$ Suppose $X_{1}\perp X_{2}.$ Then by a well known result
+(cf. \cite[Exercise 4.15]{resnickProbabilityPath2014}), we have that
+\[
+\varphi_{X}(t)=\E[e^{i\left\langle t,X\right\rangle }]=\E[e^{i\left\langle t_{1},X_{1}\right\rangle }e^{i\left\langle t_{2},X_{2}\right\rangle }]=\E[e^{i\left\langle t_{1},X_{1}\right\rangle }]\E[e^{i\left\langle t_{2},X_{2}\right\rangle }]=\varphi_{X_{1}}(t_{1})\varphi_{X_{2}}(t_{2}).
+\]
+
+\noindent $\Leftarrow$ We first construct $\widetilde{X}_{1}$ and
+$\widetilde{X}_{2}$ such that $X_{1}=_{d}\widetilde{X}_{1}$ and
+$X_{2}=_{d}\widetilde{X}_{1}$, as well as $\widetilde{X}_{1}\perp\widetilde{X}_{2}$
+(the existence of $\widetilde{X}_{1}$ and $\widetilde{X}_{2}$ is
+guaranteed by \ref{thm: construct independent r.v. }). Then we have
+\begin{align*}
+\varphi_{(X_{1},X_{2})}((t_{1},t_{2})) & =\varphi_{X_{1}}(t_{1})\varphi_{X_{2}}(t_{2})\\
+ & =\varphi_{\tilde{X}_{1}}(t_{1})\varphi_{\tilde{X}_{2}}(t_{2})\tag{by definition of characteristic functions}\\
+ & =\varphi_{(\widetilde{X}_{1},\widetilde{X}_{2})}((t_{1},t_{2})).
+\end{align*}
+Therefore, $\P_{(X_{1},X_{2})}=\P_{(\widetilde{X}_{1},\widetilde{X}_{2})}.$
+Hence, as a result, for any $A\in\mathcal{B}(\mathbb{R}^{k}),B\in\mathcal{B}(\mathbb{R}^{n-k}),$
+we have 
+\begin{align*}
+\P_{(X_{1},X_{2})}(X_{1}\in A,X_{2}\in B) & =\P_{(\widetilde{X}_{1},\widetilde{X}_{2})}(\widetilde{X}_{1}\in A,\widetilde{X}_{2}\in B)=\P(\tilde{X}_{1}\in A)\P(\tilde{X}_{2}\in B)\\
+ & =\P(X_{1}\in A)\P(X_{2}\in B).
+\end{align*}
+Hence, $X$ and $Y$ are independent. 
+\end{proof}
+Now, we state and prove some useful result of multivariate gaussian
+distribution for later use. 
+\begin{lem}
+Let $X$ be a $\mathbb{R}^{n}$ valued random variable such that $X\sim\mathrm{MVN}(\mu,\Sigma)$
+and $X$ is paritioned as (for some fixed $k$)
+\[
+X=\begin{bmatrix}X_{1}\\
+X_{2}
+\end{bmatrix},\ \ \mu=\begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix}\text{ and }\Sigma=\begin{bmatrix}\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\end{bmatrix},
+\]
+where $X_{1},\mu_{1}\in\mathbb{R}^{k}$ and $X_{2},\mu_{2}\in\mathbb{R}^{n-k}$,
+for $k=1,...,n-1$ ($\Sigma_{11},\Sigma_{12},\Sigma_{21},\Sigma_{22}$
+are of dimension $k\times k,k\times(n-k),(n-k)\times k,(n-k)\times(n-k)$).
+Then the follow holds:\label{lem: property of gaussian}
+\begin{enumerate}
+\item $X_{1}\sim\mathrm{MVN}(\mu_{1},\Sigma_{11})$ and $X_{2}\sim\mathrm{MVN}(\mu_{2},\Sigma_{22});$
+\item $X_{1}\perp X_{2}$ iff $\Sigma_{12}=0;$ 
+\item the conditional distribution of $X_{1}$ given that $X_{2}=x_{2}$
+is $\mathrm{MVN}(\mu_{1\cdot2},\Sigma_{11\cdot2}),$ where $\mu_{1\cdot2}=\mu_{1}+\Sigma_{12}\Sigma_{22}^{-1}(x_{2}-\mu_{2})$,
+and $\Sigma_{11\cdot2}=\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}.$ 
+\end{enumerate}
+\end{lem}
+%
+\begin{proof}
+\begin{enumerate}[leftmargin={*}]
+\item To prove this, we take the characteristic function approach. We fist
+talk about the general case. If we don't make any distributional assumption
+about $X$ and only assume that it has some density function which
+we denote as $f_{X}(x).$ Then we have that 
+\begin{align*}
+\varphi_{X_{1}}(t) & =\int_{\mathbb{R}}\cdots\int_{\mathbb{R}}\exp\bigg(i\bigg(\sum_{i=1}^{n_{1}}t_{i}x_{i}\bigg)\bigg)f(x_{1},...,x_{n_{1}})dx_{1}dx_{2}\cdots dx_{n_{1}}\\
+ & =\int_{\mathbb{R}}\cdots\int_{\mathbb{R}}\exp\bigg(i\bigg(\sum_{i=1}^{n_{1}}t_{i}x_{i}\bigg)\left(\int_{\mathbb{R}}\cdots\int_{\mathbb{R}}f(x_{1},\ldots,x_{n})dx_{n_{1}+1}\cdots dx_{n}\right)dx_{1}\cdots dx_{n}\\
+ & =\int_{\mathbb{R}}\cdots\int_{\mathbb{R}}\exp\bigg(i\bigg(\sum_{i=1}^{n_{1}}t_{i}x_{i}+\sum_{i=n_{1+1}}^{n}0x_{i}\bigg)\bigg)f(x_{1},\ldots,x_{n})dx_{1}\cdots dx_{n}\\
+ & =\varphi_{X}(t,0),
+\end{align*}
+where $t\in\mathbb{R}^{n_{1}}.$ Hence, by applying this fact to the
+gaussian case along with \ref{lem: cf of gaussian} we see that 
+\begin{align*}
+\varphi_{X_{1}}(t) & =\varphi_{X}\bigg(\begin{bmatrix}t\\
+0
+\end{bmatrix}\bigg)\\
+ & =\exp\bigg((i\left\langle \begin{bmatrix}t\\
+0
+\end{bmatrix},\begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix}\right\rangle \bigg)\exp\bigg(-\frac{1}{2}\begin{bmatrix}t\\
+0
+\end{bmatrix}^{T}\begin{bmatrix}\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\end{bmatrix}\begin{bmatrix}t\\
+0
+\end{bmatrix}\bigg)\\
+ & =\exp(i\left\langle t,x\right\rangle )\exp\left(-\frac{1}{2}t^{T}\Sigma_{11}t\right).
+\end{align*}
+Hence, $X_{1}\sim\mathrm{MVN}(\mu_{1},\Sigma_{11}).$ That $X_{2}\sim\mathrm{MVN}(\mu_{2},\Sigma_{22})$
+follows from a similar argument. 
+\item To prove this, note that 
+\[
+\Sigma_{12}=0\iff t^{T}\Sigma t\iff t_{1}^{T}\Sigma_{11}t_{1}+t_{2}^{T}\Sigma_{22}t_{2},
+\]
+for any $t\in\mathbb{R}^{n}$ and $t_{1}\in\mathbb{R}^{k},t_{2}\in\mathbb{R}^{n-k}.$
+Then it follows that 
+\begin{align*}
+\varphi_{X}(t) & =\exp(i\left\langle t,x\right\rangle )\exp\left(-\frac{1}{2}t^{T}\Sigma_{11}t\right)\\
+ & =\exp(i\left\langle t_{1},x_{1}\right\rangle )\exp\left(-\frac{1}{2}t_{1}^{T}\Sigma_{11}t_{1}\right)\exp(i\left\langle t_{2},x_{2}\right\rangle )\exp\left(-\frac{1}{2}t_{2}^{T}\Sigma_{22}t_{2}\right)\\
+ & =\varphi_{X_{1}}(t_{1})\varphi_{X_{2}}(t_{2}).
+\end{align*}
+Then the result follows by an application of \ref{lem: cf independence}
+\item First, we consider a linear transformation of $X$ in the form as
+\[
+CX=\begin{bmatrix}I_{k} & -B\\
+0 & I_{n-k}
+\end{bmatrix}\begin{bmatrix}X_{1}\\
+X_{2}
+\end{bmatrix}=\begin{bmatrix}X_{1}-BX_{2}\\
+X_{2}
+\end{bmatrix}:=\begin{bmatrix}Y_{1}\\
+Y_{2}
+\end{bmatrix}:=Y
+\]
+Then by \ref{lem: distribution of linear transformation of gaussian},
+it follows that $Y\sim\mathrm{MVN}(\mu_{Y},\Sigma_{Y}),$ where 
+\begin{align*}
+\mu_{Y} & =\begin{bmatrix}I_{k} & -B\\
+0 & I_{n-k}
+\end{bmatrix}\begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix}=\begin{bmatrix}\mu_{1}-B\mu_{2}\\
+\mu_{2}
+\end{bmatrix};\\
+\Sigma_{Y} & =\begin{bmatrix}I_{k} & -B\\
+0 & I_{n-k}
+\end{bmatrix}\begin{bmatrix}\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\end{bmatrix}\begin{bmatrix}I_{k} & -B^{T}\\
+0 & I_{n-k}
+\end{bmatrix}=\begin{bmatrix}\Sigma_{11}-B\Sigma_{12}+\Sigma_{12}B^{T}-B\Sigma_{22}B^{T} & \Sigma_{12}-B\Sigma_{22}\\
+\Sigma_{12}-B^{T}\Sigma_{22} & \Sigma_{22}
+\end{bmatrix}.
+\end{align*}
+ In view of part-2, if we let $B=\Sigma_{12}\Sigma_{22}^{-1}$, we
+have that 
+\begin{align*}
+Y & \sim\mathrm{MVN}\left(\begin{bmatrix}\mu_{1}-\Sigma_{12}\Sigma_{22}^{-1}\mu_{2}\\
+\mu_{2}
+\end{bmatrix},\begin{bmatrix}\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21} & 0\\
+0 & \Sigma_{22}
+\end{bmatrix}\right)=\mathrm{MVN}\left(\widetilde{\mu}=\begin{bmatrix}\mu_{1\cdot2}\\
+\mu_{2}
+\end{bmatrix},\widetilde{\Sigma}=\begin{bmatrix}\Sigma_{11\cdot2} & 0\\
+0 & \Sigma_{22}
+\end{bmatrix}\right)
+\end{align*}
+Then in view of part 1 and 2, it follows that $Y_{1}\sim\mathrm{MVN}(\mu_{11\cdot2},\Sigma_{11\cdot2})\text{ and }Y_{2}\sim\mathrm{MVN}(\mu_{2},\Sigma_{22}),$
+and moreover $Y_{1}\perp Y_{2}.$ Therefore, $Y$ has the density
+function in the following form 
+\begin{align*}
+f_{Y}(y) & =f_{(Y_{1},Y_{2})}((y_{1},y_{2}))\\
+ & =\frac{1}{(2\pi)^{n/2}(\det\widetilde{\Sigma})^{1/2}}\exp\left(-\frac{1}{2}(y-\mu)^{T}\Sigma^{-1}(y-\mu)\right)\\
+ & =\frac{1}{(2\pi)^{k/2}(\det\Sigma_{11\cdot2})}\exp\left(-\frac{1}{2}(y_{1}-\mu_{1\cdot2})^{T}\Sigma_{11\cdot2}^{-1}(y_{1}-\mu_{1\cdot2})\right)\tag{by \ref{lem: block determinant} }\\
+ & \ \ \times\frac{1}{(2\pi)^{(n-k)/2}\det(\Sigma_{22})}\exp\left(-\frac{1}{2}(y_{2}-\mu_{2})^{T}\Sigma_{22}^{-1}(y_{2}-\mu_{2})\right)\\
+ & =f_{Y_{1}}(y_{1})f_{Y_{2}}(y_{2}).
+\end{align*}
+Now note that since 
+\[
+\begin{bmatrix}I_{k} & \Sigma_{12}\Sigma_{22}\\
+0 & I_{n-k}
+\end{bmatrix}Y=\begin{bmatrix}X_{1}\\
+X_{2}
+\end{bmatrix},\text{ and }\begin{bmatrix}I_{k} & \Sigma_{12}\Sigma_{22}\\
+0 & I_{n-k}
+\end{bmatrix}^{-1}=\begin{bmatrix}I_{k} & -\Sigma_{12}\Sigma_{22}^{-1}\\
+0 & I_{n-k}
+\end{bmatrix}:=M,
+\]
+it follows from \ref{thm: transformation thm} 
+\begin{align*}
+f_{(X_{1},X_{2})}(x_{1},x_{2}) & =f_{(Y_{1},Y_{2})}\left(\begin{bmatrix}I_{k} & -\Sigma_{12}\Sigma_{22}^{-1}\\
+0 & I_{n-k}
+\end{bmatrix}\begin{bmatrix}x_{1}\\
+x_{2}
+\end{bmatrix}\right)=f_{(Y_{1},Y_{2})}(x_{1}-\Sigma_{12}\Sigma_{22}^{-1}x_{2},x_{2})\\
+ & =f_{Y_{1}}(x_{1}-\Sigma_{12}\Sigma_{22}^{-1}x_{2})f_{X_{2}}(x_{2}).
+\end{align*}
+On the other hand, since $f_{(X_{1},X_{2})}(x_{1},x_{2})=f_{X_{1}\vert X_{2}}(x_{1}\vert x_{2})f_{X_{2}}(x_{2}),$
+the follows that $f_{Y_{1}}(x_{1}-\Sigma_{12}\Sigma_{22}^{-1}x_{2})=f_{X_{1}\vert X_{2}}(x_{1}\vert x_{2}).$
+Since 
+\[
+x_{1}-\Sigma_{12}\Sigma_{22}^{-1}x_{2}-\mu_{1}+\Sigma_{12}\Sigma_{22}\mu_{2}=x_{1}-(\mu_{1}+\Sigma_{12}\Sigma_{22}^{-1}(x_{2}-\mu_{2})=\mu_{1\cdot2},
+\]
+we further expand the expression and get 
+\begin{align*}
+f_{Y_{1}}(x_{1}-\Sigma_{12}\Sigma_{22}^{-1}x_{2}) & =\frac{1}{(2\pi)^{k/2}\left|\det\Sigma_{11\cdot2}\right|^{1/2}}\exp\bigg(-\frac{1}{2}(x_{1}-\mu_{1\cdot2})^{T}\Sigma_{11\cdot2}^{-1}(x_{1}-\mu_{1\cdot2})\bigg)\\
+ & =f_{\mathrm{MVN}(\mu_{1\cdot2},\Sigma_{11\cdot2})}(x_{1}).
+\end{align*}
+Hence, it follows that $X_{1}\vert X_{2}=x_{2}\sim\mathrm{MVN}(\mu_{1\cdot2},\Sigma_{11\cdot2})$
+as desired. 
+\end{enumerate}
+\end{proof}
+Now we go back to the solution to the problem. Since $(X_{a},X_{b},X_{c})$
+and $((X_{a},X_{b}),X_{c})$ are homeomorphic, it follows from \ref{lem: property of gaussian}
+that 
+\[
+\begin{bmatrix}X_{a}\\
+X_{b}
+\end{bmatrix}\sim\mathrm{MVN}\left(\mu_{a\cdot b},\Sigma_{a\cdot b}\right),\text{where }\mu_{a\cdot b}=\begin{bmatrix}\mu_{a}\\
+\mu_{b}
+\end{bmatrix},\Sigma_{a\cdot b}=\begin{bmatrix}\Sigma_{aa} & \Sigma_{ab}\\
+\Sigma_{ba} & \Sigma_{bb}
+\end{bmatrix}.
+\]
+Another application of \ref{lem: property of gaussian}-(3), yields
+that 
+\[
+f_{X_{a}\vert X_{b}}(x_{a}\vert x_{b})=\frac{1}{(2\pi)^{(\dim X_{a}+\dim X_{b})/2}(\det\Sigma_{aa\cdot2})}\exp\left(-\frac{1}{2}(x-\mu_{a\cdot2})^{T}\Sigma_{aa\cdot2}^{-1}(x-\mu_{a\cdot2})\right),
+\]
+where $\mu_{a\cdot2}=\mu_{a}+\Sigma_{ab}\Sigma_{bb}^{-1}(x_{b}-\mu_{b}),\text{ and }\Sigma_{aa\cdot2}=\Sigma_{aa}-\Sigma_{ab}\Sigma_{bb}^{-1}\Sigma_{ba}.$\\
+
+\begin{cBoxA}[Problem 2.26 - Woodbury matrix inversion formula]{}
+ A very useful result from linear algebra is the Woodbury matrix
+inversion formula given by 
+\[
+(A+BCD)^{-1}=A^{-1}-A^{-1}B(C^{-1}+DA^{-1}B)^{-1}DA^{-1}.
+\]
+By multiplying both sides by $(A+BCD)$ prove the correctness of this
+result.
+\end{cBoxA}
+
+In view of \ref{lem: matrix left inverse in implies right inverse},
+it suffices to show one of the left and right inverse. We show the
+left inverse here. Note
+
+\begin{align*}
+ & (A^{-1}-A^{-1}B(C^{-1}+DA^{-1}B)^{-1}DA^{-1})(A+BCD)\\
+=\ \  & I+A^{-1}B(C^{-1}+DA^{-1}B)^{-1}D-A^{-1}BCD-A^{-1}B(C^{-1}+DA^{-1}B)^{-1}DA^{-1}BCD\\
+=\ \  & I+A^{-1}BCD-A^{-1}B(C^{-1}+DA^{-1}B)(DA^{-1}BC+I)D\\
+=\ \  & I+A^{-1}BCD-A^{-1}B(C^{-1}+DA^{-1}B)(DA^{-1}B+C^{-1})CD\\
+=\ \  & I+A^{-1}BCD-A^{-1}BCD\\
+=\ \  & I.
+\end{align*}
+\\
+
+\begin{cBoxA}[Problem 2.27 - Linearity of expectation and covariance (multivariate
+case)]{}
+ Let $X$ and $Z$ be two independent random vectors, so that $f(x,z)=f(x)f(z)$.
+Show that the mean of their sum $Y=X+Z$ is given by the sum of the
+means of each of the variable separately. Similarly, show that the
+covariance matrix of $Y$ is given by the sum of the covariance matrices
+of $X$ and $Z$. Confirm that this result agrees with that of Exercise
+1.10.
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item For expectation, we note that 
+\begin{align*}
+\E[X+Y] & =\int\int(x+y)f_{(X,Y)}(x,y)dxdy\\
+ & =\int\int(x+y)f_{X}(x)f_{Y}(y)dxdy\\
+ & =\int_{\mathrm{supp}(X)}xf(x)\left(\int_{\mathrm{supp}(Y)}f(y)dy\right)dx+\int_{\mathrm{supp}(Y)}yf(y)\left(\int_{\mathrm{supp}(X)}f(x)dx\right)dy\\
+ & =\E[X]+\E[Y].
+\end{align*}
+\item For covariance, note that 
+\begin{align*}
+\mathrm{Cov}[X+Y] & =\E[(X+Y-\E[X+Y])(X+Y-\E[X+Y])^{T}]\\
+ & =\E[(X-\E[X]+Y-\E[Y])(X-\E[X]+Y-\E[Y])^{T}]\\
+ & =\mathrm{Cov}[X]+\mathrm{Cov}[Y]+\E[(X-\E[X])(Y-\E[Y])^{T}]+\E[(Y-\E[Y])(X-\E[X])^{T}]\\
+ & =\mathrm{Cov}[X]+\mathrm{Cov}[Y]+\E[(X-\E[X])\E[(Y-\E[Y])^{T}]+\E[(Y-\E[Y]]\E[X-\E[X]]^{T}\tag{since \ensuremath{X\perp Y}}\\
+ & =\mathrm{Cov}[X]+\mathrm{Cov}[Y].
+\end{align*}
+\\
+\end{enumerate}
+\begin{cBoxA}[Problem 2.28 - Conditional distribution from joint gaussian]{}
+ Consider a joint distribution over the variable 
+\[
+z=\begin{bmatrix}x\\
+y
+\end{bmatrix}
+\]
+whose mean and covariance are given by (2.108) and (2.105) respectively.
+By making use of the results (2.92) and (2.93) show that the marginal
+distribution $f(x)$ is given (2.99). Similarly, by making use of
+the results (2.81) and (2.82) show that the conditional distribution
+$f(y\vert x)$ is given by (2.100).
+\end{cBoxA}
+
+\textit{This problem can be solved using the hint provided by the
+book which adopts the technique of completing squares. However, here
+we will solve it using the theory we have developed in a few previous
+exercises. But first, we would like to rephrase this problem to make
+things clearer: given a joint normal variable $Z$ such that 
+\[
+Z=\begin{bmatrix}X\\
+Y
+\end{bmatrix}\sim\mathrm{MVN}\left(\mu_{Z}:=\begin{bmatrix}\mu\\
+A\mu+b
+\end{bmatrix},\Sigma_{Z}:=\begin{bmatrix}\Lambda^{-1} & \Lambda^{-1}A^{T}\\
+A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A^{T}
+\end{bmatrix}\right),
+\]
+find the conditional distribution of $Y\vert X,$ which we denote
+as $f_{Y\vert X}(y\vert x).$\medskip}\\
+Without loss generality, assume that $X\in\mathbb{R}^{n}$ and $Y\in\mathbb{R}^{m}$.
+Since $\begin{bmatrix}0 & I_{m}\\
+I_{n} & 0
+\end{bmatrix}\begin{bmatrix}X\\
+Y
+\end{bmatrix}=\begin{bmatrix}Y\\
+X
+\end{bmatrix},$ it follows from \ref{lem: distribution of linear transformation of gaussian}
+that 
+\begin{align*}
+\begin{bmatrix}Y\\
+X
+\end{bmatrix} & \sim\mathrm{MVN}\left(\widehat{\mu}=\begin{bmatrix}0 & I_{m}\\
+I_{n} & 0
+\end{bmatrix}\begin{bmatrix}\mu\\
+A\mu+b
+\end{bmatrix},\widetilde{\Sigma}=\begin{bmatrix}0 & I_{m}\\
+I_{n} & 0
+\end{bmatrix}\begin{bmatrix}\Lambda^{-1} & \Lambda^{-1}A^{T}\\
+A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A^{T}
+\end{bmatrix}\begin{bmatrix}0 & I_{m}\\
+I_{n} & 0
+\end{bmatrix}^{T}\right)\\
+ & =\mathrm{MVN}\left(\widetilde{\mu}=\begin{bmatrix}A\mu+b\\
+\mu
+\end{bmatrix},\widetilde{\Sigma}=\begin{bmatrix}A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A^{T}\\
+\Lambda^{-1} & \Lambda^{-1}A^{T}
+\end{bmatrix}\begin{bmatrix}0 & I_{n}\\
+I_{m} & 0
+\end{bmatrix}\right)\\
+ & =\mathrm{MVN}\left(\widetilde{\mu}=\begin{bmatrix}A\mu+b\\
+\mu
+\end{bmatrix},\widetilde{\Sigma}=\begin{bmatrix}L^{-1}+A\Lambda^{-1}A^{T} & A\Lambda^{-1}\\
+\Lambda^{-1}A^{T} & \Lambda^{-1}
+\end{bmatrix}\right).
+\end{align*}
+Then we can apply \ref{lem: property of gaussian}-(3) and get 
+\begin{align*}
+Y\vert X=x & \sim\mathrm{MVN}(\mu_{Y\vert X=x}=A\mu_{1}+b+(A\Lambda^{-1})\Lambda(x-\mu),\Sigma_{Y\vert X}=L^{-1}+A\Lambda^{-1}A^{T}-A\Lambda^{-1}\Lambda\Lambda^{-1}A^{T})\\
+ & =\mathrm{MVN}(\mu_{Y\vert X=x}=Ax+b,\Sigma_{Y\vert X}=L^{-1}.
+\end{align*}
+as desired. \\
+
+\begin{cBoxA}[Problem 2.29 - Verify Eq.(2.105) ]{}
+ Using the partitioned matrix inversion formula (2.76), show that
+the inverse of the precision matrix (2.104) is given by the covariance
+matrix (2.105).
+\end{cBoxA}
+
+Recall from Problem 2.24, for an arbitrary block matrix of the form
+$\begin{bmatrix}A & B\\
+C & D
+\end{bmatrix}$ has inverse of form 
+\[
+\begin{bmatrix}A & B\\
+C & D
+\end{bmatrix}^{-1}=\begin{bmatrix}M & -MBD^{-1}\\
+-D^{-1}CM & D^{-1}+D^{-1}CMBD^{-1}
+\end{bmatrix},
+\]
+where $M=(A-BDC^{-1})^{-1}.$ Therefore, we have 
+\[
+\begin{bmatrix}\Lambda+A^{T}LA & -A^{T}L\\
+-LA & L
+\end{bmatrix}^{-1}=\begin{bmatrix}\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\end{bmatrix},
+\]
+where 
+\begin{align*}
+\Sigma_{11} & =(\Lambda+A^{T}LA-A^{T}LL^{-1}LA)=\Lambda;\\
+\Sigma_{12} & =-\Lambda^{-1}A^{T}LL^{-1}=-\Lambda^{-1}A^{T};\\
+\Sigma_{21} & =-L^{-1}LA\Lambda=A\Lambda;\\
+\Sigma_{22} & =L^{-1}+L^{-1}(-LA)\Lambda(-A^{T}L)L^{-1}=L^{-1}+A\Lambda A^{T}.
+\end{align*}
+\\
+
+\begin{cBoxA}[Problem 2.30 - Verify Eq.(2.108) ]{}
+ By starting from (2.107) and making use of the result (2.105), verify
+the result (2.108).
+\end{cBoxA}
+
+Note that we have 
+\begin{align*}
+\E[Z] & =R^{-1}\begin{bmatrix}\Lambda\mu-A^{T}Lb\\
+Lb
+\end{bmatrix}=\begin{bmatrix}\Lambda^{-1} & \Lambda^{-1}A^{T}\\
+A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A
+\end{bmatrix}\begin{bmatrix}\Lambda\mu-A^{T}Lb\\
+Lb
+\end{bmatrix}\\
+ & =\begin{bmatrix}\Lambda^{-1}\Lambda\mu-\Lambda^{-1}A^{T}Lb+\Lambda^{-1}A^{T}Lb\\
+A\Lambda^{-1}\Lambda\mu-A\Lambda^{-1}A^{T}Lb+L^{-1}Lb+A\Lambda^{-1}ALb
+\end{bmatrix}\\
+ & =\begin{bmatrix}\mu\\
+A\mu+b
+\end{bmatrix}
+\end{align*}
+as desired. \\
+
+\begin{cBoxA}[Problem 2.31 - Sum of multivariate gaussian]{}
+ Consider two multidimensional random vectors x and z having Gaussian
+distributions $f(x)=\mathrm{N}(x\vert\mu_{x},\Sigma_{x})$ and $f(z)=\mathrm{N}(z\vert\mu_{z},\Sigma_{z})$
+respectively, together with their sum $y=x+z$. Use the results (2.109)
+and (2.110) to find an expression for the marginal distribution $f(y)$
+by considering the linear-Gaussian model comprising the product of
+the marginal distribution $f(x)$ and the conditional distribution
+$f(y\vert x)$.
+\end{cBoxA}
+
+First, we give a lemma. 
+\begin{lem}
+Let $X_{1},X_{2}$ be two independent $\mathbb{R}^{n}$-valued random
+variables. The characteristic function of $X_{1}+X_{2}$ can be represented
+as \label{lem: cf of two independent r.v.}
+\[
+\varphi_{X_{1}+X_{2}}(t)=\varphi_{X_{1}}(t)\varphi_{X_{2}}(t).
+\]
+\end{lem}
+\begin{proof}
+We follow the definition and write 
+\[
+\varphi_{X_{1}+X_{2}}(t)=\E[e^{i\left\langle t,X_{1}+X_{2}\right\rangle }]=\E[e^{i\left\langle t,X_{1}\right\rangle }e^{i\left\langle t,X_{2}\right\rangle }]=\E[e^{i\left\langle t,X_{1}\right\rangle }]\E[e^{i\left\langle t,X_{2}\right\rangle }]=\varphi_{X_{1}}(t)\varphi_{X_{2}}(t)
+\]
+as desired. 
+\end{proof}
+The solution to this problem is an direct application of this lemma.
+Since this is an important property, we pack it in a lemma below.
+In addition to having only two r.v., we also generalize it to an arbitrary
+number of r.v.s. 
+\begin{lem}
+Let $\{X_{i}\}_{i=1}^{m}$ be $\mathbb{R}^{n}$-valued independent
+random variables with $X_{i}\sim\mathrm{MVN}(\mu_{i},\Sigma_{i})$.
+Then it follows that $\sum_{i=1}^{m}X_{i}\sim\mathrm{MVN}(\sum_{i=1}^{m}\mu_{i},\sum_{i=1}^{m}\Sigma_{i})$.
+\label{lem: sum of independent MVN}
+\end{lem}
+\begin{proof}
+To prove the claim, we induct on $m.$ For the base case $m=2,$ we
+note that since $X_{1},X_{2}$ are independent, it follows from \ref{lem: cf of two independent r.v.}
+that 
+\begin{align*}
+\varphi_{X_{1}+X_{2}}(t) & =\varphi_{X_{1}}(t)\varphi_{X_{2}}(t)\\
+ & =\exp(i\left\langle t,\mu_{1}\right\rangle )\exp\left(-\frac{1}{2}\left\langle \Sigma_{1}t,t\right\rangle \right)\exp(i\left\langle t,\mu_{2}\right\rangle )\exp\left(-\frac{1}{2}\left\langle \Sigma_{2}t,t\right\rangle \right)\\
+ & =\exp(i\left\langle t,\mu_{1}+\mu_{2}\right\rangle )\exp\left(-\frac{1}{2}\left\langle (\Sigma_{1}+\Sigma_{2})t,t\right\rangle \right).
+\end{align*}
+Hence, it follows that $X_{1}+X_{2}\sim\mathrm{MVN}(\mu_{1}+\mu_{2},\Sigma_{1}+\Sigma_{2}).$
+Now suppose the claim holds for $m=k.$ Then for $m=k+1,$ we first
+note that by inductive hypothesis $\sum_{i=1}^{k}X_{i}\sim\mathrm{MVN}(\sum_{i=1}^{k}\mu_{i},\sum_{i=1}^{k}\Sigma_{i}).$
+By (??QUOTE), $(\sum_{i=1}^{k}X_{i})\perp X_{k+1},$ and as a result
+\begin{align*}
+\varphi_{\sum_{i=1}^{k+1}X_{i}}(t) & =\varphi_{\sum_{i=1}^{k}X_{i}}(t)\varphi_{X_{k+1}}(t)\\
+ & =\exp\left(i\left\langle t,\sum_{i=1}^{k}\mu_{i}\right\rangle \right)\exp\left(-\frac{1}{2}\left\langle \left(\sum_{i=1}^{k}\Sigma_{k}\right)t,t\right\rangle \right)\exp(i\left\langle t,\mu_{k+1}\right\rangle )\exp\left(-\frac{1}{2}\left\langle \Sigma_{k+1}t,t\right\rangle \right)\\
+ & =\exp\left(i\left\langle t,\sum_{i=1}^{k+1}\mu_{i}\right\rangle \right)\exp\left(-\frac{1}{2}\left\langle \left(\sum_{i=1}^{k+1}\Sigma_{k}t,t\right)\right\rangle \right)
+\end{align*}
+and as a result $\sum_{i=1}^{k+1}X_{i}\sim\mathrm{MVN}(\sum_{i=1}^{k+1}\mu_{i},\sum_{i=1}^{k+1}\Sigma_{i}).$
+By the principle of mathematical induction, we conclude that the desired
+result follows.
+
+Therefore, by \ref{lem: sum of independent MVN}, $X+Z\sim\mathrm{MVN}(\mu_{x}+\mu_{z},\Sigma_{x}+\Sigma_{z}).$ 
+\end{proof}
+
+\subsection*{Extensions }
+
+From this problem, we have shown that sum of independent Gaussians
+is also Gaussian. There are some further implications can be derived,
+which are also useful. The first result is a necessary and sufficient
+condition for a random vector to be multivariate gaussian. 
+\begin{lem}
+Let $X=(X_{1},X_{2},\ldots,X_{n})$ be a $\mathbb{R}^{n}$-valued
+random variable. Then $X$ is multivariate gaussian if and only if
+$\left\langle t,X\right\rangle $ is univariate gaussian for any $t\in\mathbb{R}^{n}-\{0\}.$
+\label{lem: necessary and sufficent condition to be MVN}
+\end{lem}
+\begin{proof}
+$\Rightarrow$ Suppose that $X$ is multivariate gaussian. Then by
+\ref{lem: distribution of linear transformation of gaussian}, $\left\langle t,X\right\rangle =t^{T}X$,
+being a linear transformation of $X,$ is also gaussian. Moreover,
+it is univariate gaussian since $t^{T}X\in\mathbb{R}$. \medskip\\
+$\Leftarrow$ On the other hand, suppose $\left\langle t,X\right\rangle $
+is univariate gaussian for any $t\in\mathbb{R}^{n}-\{0\}.$ Then it
+follows that $X_{i}\sim\mathrm{N}(\mu_{i},\Sigma_{i})$ by letting
+$t$ be $e_{i}$ for $i=1,...,n,$ where $e_{i}$ is the standard
+basis vector in $\mathbb{R}^{n}.$ Therefore, $\E\left|X_{i}\right|<\infty,\E[X_{i}^{2}]<\infty$
+and by Cauchy Schwartz $\E[X_{i}X_{j}]\leq\E\left|X_{i}X_{j}\right|\leq\E\left|X_{i}\right|^{1/2}\E\left|X_{j}\right|^{1/2}<\infty$
+for any $i,j=1,...,n$. Therefore, $\E[X]$ and $\mathrm{Cov}[X]$
+(the variance covariance matrix) is finite. We denote $\E[X]=\mu_{X}$
+and $\mathrm{Cov}[X]=\Sigma_{X}.$ Note that with the notation defined
+above, $t^{T}X\sim\mathrm{N}(t^{T}\mu_{X},t^{T}\Sigma_{X}t)$ for
+any $t\in\mathbb{R}^{n}-\{0\}$
+\[
+\varphi_{t^{T}X}(r)=\E[\exp(irt^{T}X)]=\exp(irt^{T}\mu_{X})\exp\left(-\frac{r^{2}}{2}t^{T}\Sigma_{X}t\right).
+\]
+Also note that $\varphi_{X}(t)=\E[\exp(i\left\langle t,X\right\rangle )]=\E[\exp(it^{T}X)]=\varphi_{t^{T}X}(1).$
+It follows that 
+\[
+\varphi_{X}(t)=\exp(it^{T}\mu_{X})\exp\left(-\frac{1}{2}t^{T}\Sigma_{X}t\right).
+\]
+Hence, $X\sim\mathrm{MVN}(\mu_{X},\Sigma_{X})$ in view of \ref{lem: cf of gaussian}. 
+\end{proof}
+An direct application of the previous lemma is that fact that if we
+stack up independent multi dimensional gaussians, the stacked up vector
+will also be random gaussian, which we state formally as a corollary
+below. It should be noted as this result can also be shown using characteristic
+functions directly. 
+\begin{lem}
+Let $\{X_{i}\}_{i=1}^{m}$ be a collection of independent random variables
+such that $X_{i}\in\mathbb{R}^{n_{i}}$ and $X_{i}\sim\mathrm{MVN}(\mu_{i},\Sigma_{i}).$
+Then 
+\[
+X=(X_{1},...,X_{m})\sim\mathrm{MVN}\left(\mu_{X}=\begin{bmatrix}\mu_{1}\\
+\vdots\\
+\mu_{m}
+\end{bmatrix},\Sigma_{X}=\begin{bmatrix}\Sigma_{1} & 0 & 0 & 0\\
+0 & \Sigma_{2} & 0 & 0\\
+0 & 0 & \ddots & 0\\
+0 & 0 & 0 & \Sigma_{n}
+\end{bmatrix}\right).
+\]
+\end{lem}
+\begin{proof}
+For any $t\in\mathbb{R}^{\sum_{i=1}^{m}n_{i}}$, we note that by triangularizing
+it follows that 
+\[
+\left\langle t,X\right\rangle =\sum_{i=1}^{\sum_{i=1}^{m}n_{i}}t_{i}X_{i}=\sum_{i=1}^{m}\bigg(\sum_{j=1}^{n_{i}}t_{ij}X_{ij}\bigg).
+\]
+Since by assumption $X_{i}=(X_{i1},X_{i2},...,X_{in_{i}})$ is gaussian,
+by \ref{lem: necessary and sufficent condition to be MVN} it follow
+that $\sum_{j=1}^{n_{i}}t_{ij}X_{ij}$ is univariate gaussian. By
+well a well known result (for example c.f. QUOTE independence), $Y_{i}:=\sum_{j=1}^{n_{i}}t_{ij}X_{ij}\perp Y_{i'}=\sum_{j=1}^{n_{i'}}t_{i'j}X_{i'j}$
+for $i\neq i'.$ Then by \ref{lem: sum of independent MVN} it follows
+that $\left\langle t,X\right\rangle =\sum_{i=1}^{m}(\sum_{j=1}^{n_{i}}t_{ij}X_{ij})$
+is gaussian. Therefore, \ref{lem: necessary and sufficent condition to be MVN}
+implies that $X$ is multivariate gaussian. That $\mu_{X}$ and $\Sigma_{X}$
+are of the form claimed can be verified by direct computation, which
+we left an easy exercise. 
+\end{proof}
+%
+\begin{cBoxA}[Problem 2.32 - Completing the squares trick for gaussian - 1]{}
+ This exercise and the next provide practice at manipulating the
+quadratic forms that arise in linear-Gaussian models, as well as giving
+an independent check of results derived in the main text. Consider
+a joint distribution $f(x,y)$ defined by the marginal and conditional
+distributions given by (2.99) and (2.100). By examining the quadratic
+form in the exponent of the joint distribution, and using the technique
+of \textquotedbl completing the square\textquotedbl{} discussed in
+Section 2.3, find expressions for the mean and covariance of the marginal
+distribution $f(y)$ in which the variable $x$ has been integrated
+out. To do this, make use of the Woodbury matrix inversion formula
+(2.289). Verify that these results agree with (2.109) and (2.110)
+obtained using the results of Chapter 2.
+\end{cBoxA}
+
+First, we give a lemma that formalize the process of \textquotedbl completing
+the squares\textquotedbl{} for gaussian distribution. Note that most
+of the derivation of the results about Gaussian distribution in the
+book can be attributed to this lemma, although it is not mentioned
+explicitly in the book. \\
+
+\begin{lem}
+Let $X$ be a $\mathbb{R}^{n}$-valued absolutely continuous random
+variable with density function denoted as $f_{X}.$ If $f_{X}(x)\propto\exp(-\frac{1}{2}q(x)),$
+where $q(x)=x^{T}\Lambda x-2b^{T}x+c$, in which $\Lambda\in\mathrm{Mat}_{\mathbb{R}}(n,n)$
+and $\Lambda$ is positive definite, $b\in\mathbb{R}^{n},c\in\mathbb{R},$
+then $X\sim\mathrm{MVN}(\Lambda^{-1}b,\Lambda^{-1}).$ \label{lem: gaussian completion of squares}
+\end{lem}
+\begin{proof}
+First, note that by completing square we have that 
+\[
+q(x)=x^{T}\Lambda x-2b^{T}x+c=(x-\Lambda^{-1}b)^{T}\Lambda(x-\Lambda^{-1}b)-b^{T}\Lambda^{-1}b+c.
+\]
+Then it follows that 
+\begin{align*}
+\exp\left(-\frac{1}{2}q(x)\right) & =\exp\left(-\frac{1}{2}(x-\Lambda^{-1}b)^{T}\Lambda(x-\Lambda^{-1}b)\right)\exp\left(-\frac{1}{2}(b^{T}\Lambda^{-1}b-c)\right)\\
+ & \propto\exp\left(-\frac{1}{2}(x-\Lambda^{-1}b)\Lambda(x-\Lambda^{-1}b)\right).
+\end{align*}
+Now note that $f_{X}(x)$, being a density should integrate to $1$
+and 
+\[
+\int\frac{1}{(2\pi)^{n/2}\left|\det\Lambda^{-1}\right|^{1/2}}\exp\left(-\frac{1}{2}(x-\Lambda^{-1}b)\Lambda(x-\Lambda^{-1}b)\right)dx=1,\tag{1}
+\]
+it follows that $f_{X}(x)$ should be the gaussian density proposed
+in Eq.(1). Hence, it follows that $X\sim\mathrm{MVN}(\Lambda^{-1}b,\Lambda^{-1}).$
+\end{proof}
+%
+With this lemma, we now solve this problem. Note that 
+\begin{align*}
+f_{(X,Y)}(x,y) & =f_{X}(x)f_{Y\vert X}(y\vert x)\\
+ & =C\exp\bigg(\underbrace{-\frac{1}{2}(x-\mu)^{T}\Lambda(x-\mu)-\frac{1}{2}(y-(Ax+b))L^{T}(y-(Ax+b))}_{:=Q(x,y)}\bigg),
+\end{align*}
+where $C$ is some normalizing constant. Now we message $Q(x,y)$
+a little bit by grouping all terms related to $x$ together: 
+\begin{align*}
+Q(x,y) & =-\frac{1}{2}\left[(x-\mu)^{T}\Lambda(x-\mu)+(y-(Ax+b))^{T}L(y-(Ax+b))\right]\\
+ & =-\frac{1}{2}\left[x^{T}\Lambda x-2x^{T}\Lambda\mu+\mu^{T}\Lambda\mu+y^{T}Ly-2y^{T}L(Ax+b)+(Ax+b)^{T}L(Ax+b)\right]\\
+ & =-\frac{1}{2}\left[x^{T}\Lambda x+x^{T}A^{T}LAx+2x^{T}A^{T}Lb-2x^{T}A^{T}Ly+2x^{T}\Lambda\mu-2y^{T}Lb+y^{T}Ly+\mu^{T}\Lambda\mu+b^{T}Lb\right]\\
+ & =-\frac{1}{2}\left[x^{T}(\Lambda+A^{T}LA)x+2x^{T}(\Lambda\mu+A^{T}Lb-A^{T}Ly)\right]+R(y)\\
+ & =-\frac{1}{2}\left[x^{T}(\Lambda+A^{T}LA)x-2x^{T}(\Lambda\mu+A^{T}L(y-b))\right]+R(y)\tag{1}\\
+ & =-\frac{1}{2}\left[(x-\widetilde{\mu})^{T}(\Lambda+A^{T}LA)(x-\widetilde{\mu})+(\Lambda\mu+A^{T}L(y-b))^{T}(\Lambda+A^{T}LA)^{-1}(\Lambda\mu+A^{T}L(y-b))\right]+R(y)\\
+ & =-\frac{1}{2}(x-\widetilde{\mu})^{T}(\Lambda+A^{T}LA)(x-\widetilde{\mu})\\
+ & \ \ +\frac{1}{2}(\Lambda\mu+A^{T}L(y-b))^{T}(\Lambda+A^{T}LA)^{-1}(\Lambda+A^{T}LA)(\Lambda+A^{T}LA)^{-1}(\Lambda\mu+A^{T}L(y-b))+R(y)\\
+ & =\underbrace{-\frac{1}{2}(x-\widetilde{\mu})^{T}(\Lambda+A^{T}LA)(x-\widetilde{\mu})}_{:=\mathcal{H}_{1}(x)}+\underbrace{\frac{1}{2}\widetilde{\mu}^{T}(\Lambda+A^{T}LA)\widetilde{\mu}+R(y)}_{:=\mathcal{H}_{2}(y)}.
+\end{align*}
+where $\widetilde{\mu}=(\Lambda+A^{T}LA)^{-1}(\Lambda\mu+A^{T}L(y-b))$
+and $R(y)=-\frac{1}{2}\mu^{T}\Lambda\mu-\frac{1}{2}b^{T}Lb-\frac{1}{2}y^{T}Ly+y^{T}Lb.$
+Therefore, we have that 
+\begin{align*}
+f_{Y}(y) & =\int f_{(X,Y)}(x,y)dx=\int\frac{1}{(2\pi)^{n/2}\left|\det(\Lambda+A^{T}LA)\right|^{1/2}}\exp\left(\mathcal{H}_{1}(x)\right)dx\cdot\widetilde{C}\exp(\mathcal{H}_{2}(y))\\
+ & =\widetilde{C}\exp(\mathcal{H}_{2}(y)).
+\end{align*}
+where $\widetilde{C}$ a new normalizing constant. Now we do the completion
+of the square again for $f_{Y}(y)$ as follows: 
+\begin{align*}
+ & f_{Y}(y)\\
+=\ \  & \widetilde{C}\exp(\widetilde{\mu}^{T}(\Lambda+A^{T}LA)\widetilde{\mu}+R(y))\\
+\propto\ \  & \exp\left(\frac{1}{2}[(\Lambda+A^{T}LA)^{-1}(\Lambda\mu+A^{T}L(y-b))]^{T}(\Lambda+A^{T}LA)[(\Lambda+A^{T}LA)^{-1}(\Lambda\mu+A^{T}L(y-b))]\right)\\
+ & \times\exp\left(-\frac{1}{2}\mu^{T}\Lambda\mu-\frac{1}{2}b^{T}Lb-\frac{1}{2}y^{T}Ly+2y^{T}Lb\right)\\
+=\ \  & \exp\left(\frac{1}{2}(\Lambda\mu+A^{T}L(y-b)){}^{T}(\Lambda+A^{T}LA)^{-1}(\Lambda\mu+A^{T}L(y-b))\right)\\
+ & \times\exp\left(-\frac{1}{2}\mu^{T}\Lambda\mu-\frac{1}{2}b^{T}Lb-\frac{1}{2}y^{T}Ly+y^{T}Lb\right)\\
+\propto\ \  & \exp\bigg(-\frac{1}{2}y^{T}Ly+y^{T}Lb+\frac{1}{2}y^{T}LA(\Lambda+A^{T}LA)^{-1}A^{T}Ly+(\Lambda\mu)^{T}(\Lambda+A^{T}LA)^{-1}A^{T}Ly\\
+ & \ \ \ \ \ \ -y^{T}LA(\Lambda+A^{T}LA)^{-1}A^{T}Lb\bigg)\\
+=\ \  & \exp\left(-\frac{1}{2}y^{T}(L-LA(\Lambda+A^{T}LA)^{-1}A^{T}L)y+y^{T}[(L-LA(\Lambda+A^{T}LA)^{-1}A^{T}L)b+LA(\Lambda+A^{T}LA)^{-1}\Lambda\mu]\right).
+\end{align*}
+Therefore, by \ref{lem: gaussian completion of squares} it follows
+that $Y\sim\mathrm{MVN}(\mu_{Y},\Sigma_{Y})$, where 
+\begin{align*}
+\Sigma_{Y} & =(L-LA(\Lambda+A^{T}LA)^{-1}A^{T}L)^{-1}\\
+ & =L^{-1}-L^{-1}(-LA)[(\Lambda+A^{T}LA)+A^{T}LL^{-1}(-LA)]^{-1}A^{T}LL^{-1}\tag{by Woodbury inversion formula}\\
+ & =L^{-1}+A[\Lambda+A^{T}LA-A^{T}LA]^{-1}A^{T}\\
+ & =L^{-1}+A\Lambda^{-1}A^{T},
+\end{align*}
+and 
+\begin{align*}
+\mu_{Y} & =(L-LA(\Lambda+A^{T}LA)^{-1}A^{T}L)^{-1}[(L-LA(\Lambda+A^{T}LA)^{-1}A^{T}L)b+LA(\Lambda+A^{T}LA)^{-1}\Lambda\mu]\\
+ & =(L^{-1}+A\Lambda^{-1}A^{T})[(L^{-1}+A\Lambda^{-1}A^{T})^{-1}b+LA(\Lambda+A^{T}LA)^{-1}\Lambda\mu]\\
+ & =b+(L^{-1}+A\Lambda^{-1}A^{T})LA(\Lambda+A^{T}LA)^{-1}\Lambda\mu\\
+ & =b+(A+A\Lambda^{-1}A^{T}LA)(\Lambda+A^{T}LA)^{-1}\Lambda\mu=b+A(I+\Lambda^{-1}A^{T}LA)(I+\Lambda^{-1}A^{T}LA)^{-1}\Lambda^{-1}\Lambda\mu\\
+ & =A\mu+b.
+\end{align*}
+\\
+\begin{cBoxA}[Problem 2.33 - Completing the squares trick for gaussian - 2 ]{}
+ Consider the same joint distribution as in Exercise 2.32, but now
+use the technique of completing the square to find expressions for
+the mean and covariance of the conditional distribution $f(x\vert y)$.
+Again, verify that these agree with the corresponding expressions
+(2.111) and (2.112).
+\end{cBoxA}
+
+First, using the same argument as in Problem 2.32 we see that 
+\[
+f_{(X,Y)}(x,y)=C\exp\bigg(\underbrace{-\frac{1}{2}(x-\mu)^{T}\Lambda(x-\mu)-\frac{1}{2}(y-(Ax+b))L^{T}(y-(Ax+b))}_{:=Q(x,y)}\bigg).
+\]
+And following Eq.(1) in Problem 2.33, we have 
+\begin{align*}
+Q(x,y) & =-\frac{1}{2}\left[x^{T}(\Lambda+A^{T}LA)x-2x^{T}(\Lambda\mu+A^{T}L(y-b))\right]+R(y).
+\end{align*}
+Then it follows from \ref{lem: gaussian completion of squares} that
+\[
+X\vert Y=y\sim\mathrm{MVN}(\mu_{X|Y}=(\Lambda+A^{T}LA)^{-1}(\Lambda\mu+A^{T}L(y-b)),\Sigma_{X|Y}=(\Lambda+A^{T}LA)^{-1}.
+\]
+\\
+
+\begin{cBoxA}[Problem 2.34 - MLE of covariance matrix for multivariate gaussian ]{}
+ To find the maximum likelihood solution for the covariance matrix
+of a multivariate Gaussian, we need to maximize the log likelihood
+function (2.118) with respect to $\Sigma$, noting that the covariance
+matrix must be symmetric and positive definite. Here we proceed by
+ignoring these constraints and doing a straightforward maximization.
+Using the results (C.21), (C.26), and (C.28) from Appendix C, show
+that the covariance matrix $\Sigma$ that maximizes the log likelihood
+function (2.118) is given by the sample covariance (2.122). We note
+that the final result is necessarily symmetric and positive definite
+(provided the sample covariance is nonsingular).
+\end{cBoxA}
+
+\textit{This problem involves differentiating the log-determinant
+of a positive definite matrix. Although relevant formulas have been
+provided in the back of the book, they are somehow not very rigorous
+in its presentation. Hence, through the solution to this problem we
+would develop some results w.r.t to the determinant of the matrix
+determinants.}
+
+\medskip Before we start proving results, we stop and recall the
+definition of determinant. The most generalized definition of determinant
+involves the notion of manifold and Lie groups. For practical purposes
+it suffices to define determinant in the way that characterizes it
+as a function as follows:
+\begin{thm}
+There exists a unique function $D:(\mathbb{R}^{n})^{n}\rightarrow\mathbb{R}$
+such that 
+\begin{enumerate}
+\item $D$ is multilinear, i.e., $D$ is linear w.r.t to each of its arguments.
+\item $D$ is anti-symmetric: Exchanging any two arguments changes its sign.
+\item $D$ is normalized: $D(e_{1},\ldots,e_{n})=1$ the set of the standard
+basis vectors $\{e_{i}\}_{i=1}^{n}$ in $\mathbb{R}^{n}.$
+\end{enumerate}
+The determinant of an $n\times n$ matrix $A=[a_{1},a_{2},\ldots,a_{n}]$
+is defined as $\det A=D(a_{1},\ldots,a_{n})$ where $a_{1},\ldots a_{n}\in\mathbb{R}^{n}$
+are the columns of the matrix $A$. 
+\end{thm}
+In order the find the Frechet derivative of the determinant function,
+we need a specific characterization of the determinant function that
+is easy to work with. 
+\begin{lem}
+Let $A=[a_{ij}]_{ij}\in\mathrm{Mat}_{\mathbb{R}}(n,n).$ Then \label{lem: characterization of determinant}
+\[
+\det A=\sum_{\sigma\in S_{n}}\mathrm{sgn}(\sigma)a_{1,\sigma(1)}\ldots a_{n,\sigma(n)},
+\]
+where $S_{n}$ is the permutation group. 
+\end{lem}
+%
+With the previous two well-known results, we are ready the calculate
+the derivative of the determinant function. 
+\begin{lem}
+The following results about the determinant function are true:\label{lem: log-det differential}
+\begin{enumerate}
+\item The determinant function is Frechet differentiable.
+\item The derivative of the determinant at the identity is given by $[\mathrm{D}\det(I)]B=\mathrm{tr}(B).$ 
+\item If $\det A\neq0,$ then $[\mathrm{D}\det(A)]B=\det A\cdot\mathrm{tr}(A^{-1}B).$ 
+\end{enumerate}
+\end{lem}
+\begin{proof}
+We first find the Frechet differential of the determinant function
+at the identity matrix, $I$. Since all norms are equivalent, it suffices
+to find the Frechet derivative w.r.t to an arbitrarily chosen norm.
+For convenience, we choose this norm to be the max norm, $\left\Vert A\right\Vert _{\infty}=\max_{i,j}|a_{i,j}|.$
+Now consider an arbitrary matrix $H,$ we see that 
+\begin{align*}
+\det(I+H) & =\det\begin{bmatrix}1+h_{1,1} & h_{1,2} & \cdots & h_{1,n}\\
+h_{2,1} & 1+h_{2,2} & \cdots & h_{2,n}\\
+\vdots & \cdots & \ddots & \vdots\\
+h_{n,1} & h_{n,2} & \cdots & 1+h_{n,n}
+\end{bmatrix}\\
+ & =\sum_{\sigma\in S_{n}}\mathrm{sgn}(\sigma)\prod_{i=1}^{n}(I+H)_{i,\sigma(i)}\\
+ & =\mathrm{sgn}(\mathrm{id})\prod_{i=1}^{n}(I+H)_{i,i}+\sum_{\sigma\in S_{n},\sigma\neq\mathrm{id}}\prod_{i=1}^{n}(I+H)_{i,\sigma(i)}\\
+ & =\prod_{i=1}^{n}(1+h_{i,i})+\sum_{\sigma\in S_{n},\sigma\neq\mathrm{id}}\prod_{i=1}^{n}(I+H)_{i,\sigma(i).}\tag{1}
+\end{align*}
+Now we analysis the terms in Eq.(1) term by term: 
+\begin{align*}
+\prod_{i=1}^{n}(1+h_{i,i}) & =1+\sum_{i=1}^{n}h_{i,i}+\underbrace{\sum_{i_{1},i_{2}\in\{1,...,n\},i_{1}\neq i_{2}}h_{i_{1}}h_{i_{2}}}_{\leq\binom{n}{2}\left\Vert H\right\Vert _{\infty}^{2}=o(\left\Vert H\right\Vert _{\infty})}+\cdots+\underbrace{h_{i_{1}}h_{i_{2}}\ldots h_{i_{n}}}_{\leq\left\Vert H\right\Vert ^{n}=o(\left\Vert H\right\Vert _{\infty})}\\
+ & =\det I+\mathrm{tr}(H)+o(\left\Vert H\right\Vert _{\infty}).
+\end{align*}
+On the other hand, note that for $\sigma\notin\mathrm{id}$, there
+are at least two terms of $(I+H)_{i,\sigma(i)}$ are off diagonal
+since every permutation can be written as a product of disjoint cycles
+and identity element is the only element in the permutation group
+that has a representation as product of $1$-cycles\footnote{this is because group identity is unique. };
+so $\sigma$ has at least one $2$ cycle in its product representation,
+which means there exists at least one pair $(i,j)$ with $i\neq j$
+such that $(I+H)_{i,\sigma(i)}=(I+H)_{i,j}=h_{i,j}$ and similarly
+$(I+H)_{j,\sigma(j)}=h_{j,i}$. As a result, 
+\[
+\prod_{i=1}^{n}(I+H)_{i,\sigma(i)}=h_{i}h_{j}\prod_{k\in\{1,...,n\}-\{i,j\}}(I+H)_{i,\sigma(i)}\leq\left\Vert H\right\Vert _{\infty}^{2}\prod_{k\in\{1,...,n\}-\{i,j\}}(I+H)_{i,\sigma(i)}=o(\left\Vert H\right\Vert _{\infty})
+\]
+Therefore, it follows that 
+\[
+\mathrm{Eq}.(1)=\det I+\mathrm{tr}(H)+o(\left\Vert H\right\Vert _{\infty}).
+\]
+Hence, by definition we have $[\mathrm{D}\det I](H)=\mathrm{tr}(H)$.
+\medskip\\
+Now we find the Frechet differential of the determinant function at
+any invertible matrix $A$.To start with, we note that 
+\begin{align*}
+\det(A+H) & =\det A\det(I+A^{-1}H)=\det A(\det I+\mathrm{tr}(A^{-1}H)+o(\left\Vert A^{-1}H\right\Vert ))\\
+ & =\det A+\det A\cdot\mathrm{tr}(A^{-1}H)+o(\left\Vert A^{-1}H\right\Vert )\\
+ & =\det A+\det(A)\cdot\mathrm{tr}(A^{-1}H)+o(\left\Vert H\right\Vert ),
+\end{align*}
+where $\left\Vert \cdot\right\Vert $ is any consistent norm of our
+choosing. Since $\det(A)\cdot\mathrm{tr}(A^{-1}H)=\left\langle \det A\cdot A^{-1},H\right\rangle ,$
+it follow that $[\mathrm{D}\det(A)](H)=\det$$\nabla\det(A)=\det A\cdot A^{-1}.$ 
+\end{proof}
+We have an intermediate corollary. 
+\begin{cor}
+Let $A\in\mathrm{GL}_{\mathbb{R}}(n,n).$ Then $\nabla\log\det A=A^{-1}.$ 
+\end{cor}
+\begin{proof}
+By the chain rule, 
+\[
+\mathrm{D}(\log\det A)(H)=\frac{1}{\det A}\circ\mathrm{D}(\det A)=\frac{1}{\det A}\det A\left\langle A^{-1},H\right\rangle =\left\langle A^{-1},H\right\rangle .
+\]
+Therefore, it follows that $\nabla\log\det A=A^{-1}.$
+\end{proof}
+We still need one more result to reach fully rigorous solution to
+this problem; that is the differential of the function $\mathrm{GL}_{\mathbb{R}}(n)\rightarrow\mathrm{GL}_{\mathbb{R}}(n)$
+defined by $A\mapsto A^{-1}.$ First, a lemma coupled with a definition. 
+\begin{defn}
+A Banach algebra is an associative algebra with unit $1$ over complex
+(or real) numbers that is at the same time a Banach space, and so
+that the norm is sub-multiplicative and $\left\Vert 1\right\Vert =1.$
+\end{defn}
+\begin{lem}
+\label{lem: neumann series}Let $\mathcal{A}$ be a unital Banach
+algebra, and $a\in\mathcal{A}$ with $\left\Vert a\right\Vert <1.$
+Then $1-a$ is invertible with inverse $(1-a)^{-1}=\sum_{i=0}^{\infty}a^{n}.$
+\end{lem}
+\begin{proof}
+For each $n\in\mathbb{N},$ define the partial sums $S_{n}=\sum_{i=0}^{n}a_{i}.$
+Note that $\left\Vert a\right\Vert <1$; so $\left\Vert a^{n}\right\Vert \leq\left\Vert a\right\Vert ^{n}<1$
+and it follows that $\sum_{i=0}^{\infty}\left\Vert a^{n}\right\Vert \leq\sum_{i=0}^{\infty}\left\Vert a\right\Vert ^{n}<\infty,$
+whence $\sum_{i=0}^{\infty}a^{n}$ absolutely convergent and thus
+convergent. We then denote $S=\lim_{i=0}^{\infty}a_{i}=\lim_{n}S_{n}$.
+Now we note that 
+\[
+(1-a)S_{n}=(1-a)\left(\sum_{i=0}^{n}a^{i}\right)=1-a^{n+1}.
+\]
+Now we take the limit, it follows that 
+\[
+\lim_{n\rightarrow\infty}(1-a)S_{n}=(1-a)\lim_{n\rightarrow\infty}S_{n}=(1-a)S=1-\lim_{n\rightarrow\infty}a^{n+1}=1.
+\]
+And similarly, 
+\[
+\lim_{n\rightarrow\infty}[S_{n}(1-a)]=(\lim_{n\rightarrow}S_{n})(1-a)=S(1-a)=1-\lim_{n\rightarrow\infty}a^{n+1}=1.
+\]
+As a result, $S=a^{-1}.$ 
+\end{proof}
+\begin{rem}
+A direct application of the this lemma is that in the context of matrix
+inversion. Let $A\in\mathrm{GL}_{\mathbb{R}}(n);$ if $\left\Vert A\right\Vert <1$,
+then it follows that $(I-A)$ is invertible and $(I-A)^{-1}=\sum_{i=0}^{\infty}A^{i}.$ 
+\end{rem}
+Now with the Neumann series, have the following lemma. 
+\begin{lem}
+Let $f$ be a function $\mathrm{GL}_{\mathbb{R}}(n)\rightarrow\mathrm{GL}_{\mathbb{R}}(n):A\mapsto A^{-1}.$
+Then $(\mathrm{D}f(A))(H)=-A^{-1}HA^{-1}.$
+\end{lem}
+\begin{proof}
+We fix $\left\Vert \cdot\right\Vert $ to be any consistent matrix
+norm. First, we note that for $H\in\mathrm{GL}_{\mathbb{R}}(n)$ such
+that $\left\Vert A^{-1}H\right\Vert <\frac{1}{2}.$
+\begin{align*}
+f(A+H) & =(A+H)^{-1}-A^{-1}=A(I-(-(A^{-1}H)^{-1})\\
+ & =\left[A\left(\sum_{i=0}^{\infty}(-A^{-1}H)^{-i}\right)\right]^{-1}\\
+ & =\left[\left(I-A^{-1}H+\sum_{i=2}^{\infty}(-1)^{i}(A^{-1}H)^{i}\right)A^{-1}\right]\\
+ & =A^{-1}+(-A^{-1}HA^{-1})+\sum_{i=2}^{\infty}(-1)^{i}(A^{-1}H)^{i}A^{-1}.\tag{1}
+\end{align*}
+Next, note that 
+\begin{align*}
+\left\Vert \sum_{i=2}^{\infty}(-1)^{i}(A^{-1}H)^{i}A^{-1}\right\Vert  & \leq\sum_{i=2}^{\infty}\left\Vert (A^{-1}H)^{i}A^{-1}\right\Vert \leq\left\Vert A^{-1}\right\Vert \sum_{i=2}^{\infty}\left\Vert (A^{-1}H)^{i}\right\Vert \leq\left\Vert A^{-1}\right\Vert \sum_{i=2}^{\infty}\left\Vert A^{-1}H\right\Vert ^{i}\\
+ & =\left\Vert A^{-1}\right\Vert \left\Vert A^{-1}H\right\Vert \sum_{i=1}^{\infty}\left\Vert A^{-1}H\right\Vert ^{i}=\frac{\left\Vert A^{-1}H\right\Vert \left\Vert A^{-1}\right\Vert \left\Vert A^{-1}H\right\Vert }{1-\left\Vert A^{-1}H\right\Vert }\leq\frac{\left\Vert A^{-1}\right\Vert ^{3}\left\Vert H\right\Vert ^{2}}{1-\left\Vert A^{-1}H\right\Vert }\\
+ & \leq2\left\Vert A^{-1}\right\Vert ^{3}\left\Vert H\right\Vert ^{2}\tag{since \ensuremath{\left\Vert A^{-1}H\right\Vert \leq\frac{1}{2}} by assumption}.
+\end{align*}
+Hence, it follows that 
+\[
+\frac{\left\Vert \sum_{i=2}^{\infty}(-1)^{i}(A^{-1}H)^{i}A^{-1}\right\Vert }{\left\Vert H\right\Vert }\leq\frac{2\left\Vert A^{-1}\right\Vert ^{3}\left\Vert H\right\Vert ^{2}}{\left\Vert H\right\Vert }=2\left\Vert A^{-1}\right\Vert ^{3}\left\Vert H\right\Vert \xrightarrow{\left\Vert H\right\Vert \rightarrow0}0.
+\]
+It follows that 
+\[
+f(A+H)=A^{-1}+(-A^{-1}HA^{-1})+o(\left\Vert H\right\Vert ).
+\]
+Since the function $\mathrm{GL}_{\mathbb{R}}(n)\ni H\mapsto-A^{-1}HA^{-1}$
+is in $\mathrm{Hom}(\mathrm{GL}_{\mathbb{R}}(n),\mathrm{GL}_{\mathbb{R}}(n)),$
+it follows that $[\mathrm{D}f(A)]\circ H=-A^{-1}HA^{-1}.$ 
+\end{proof}
+Now we come back to solve this problem. First, we write out the likelihood
+equation as follows: 
+\[
+\mathcal{L}(\mu,\Sigma)=\prod_{i=1}^{d}\frac{1}{(2\pi)^{n/2}\det\Sigma^{1/2}}\exp\left(-\frac{1}{2}(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu)\right).
+\]
+Take the logarithm and we get 
+\begin{align*}
+\ell(\mu,\Sigma) & =\sum_{i=1}^{d}\left[\log\frac{1}{(2\pi)^{n/2}\det\Sigma^{1/2}}-\frac{1}{2}(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu)\right]\\
+ & =-\sum_{i=1}^{d}\log\frac{1}{(2\pi)^{n/2}}-\sum_{i=1}^{d}\log\frac{1}{\det\Sigma^{1/2}}-\sum_{i=1}^{d}(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu)\\
+ & =-\frac{nd}{2}\log2\pi-\frac{d}{2}\log\det\Sigma-\sum_{i=1}^{d}(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu).
+\end{align*}
+To find the critical points, we set the gradient to zero. First, we
+find the gradient. Note that by the product rule, we have that 
+\[
+\mathrm{D}_{\Sigma}\ell(\mu,\Sigma)=-\frac{d}{2}(\mathrm{D}_{\Sigma^{-1}}\log\det\Sigma)-\frac{1}{2}\sum_{i=1}^{d}\mathrm{D}_{\Sigma^{-1}}(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu).\tag{2 }
+\]
+By \ref{lem: log-det differential}, it follows that $\mathrm{D}\log\det\Sigma=\Sigma^{-1}.$
+For the term $(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu),$ we see that
+by \ref{lem: prod rule}
+\begin{align*}
+\mathrm{\mathrm{D}}_{\Sigma}[(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu)]\circ H & =\mathrm{D}_{\Sigma}\left\langle \Sigma^{-1}(x_{i}-\mu),(x_{i}-\mu)\right\rangle \circ H\\
+ & =\mathrm{D}_{\Sigma}\left\langle \Sigma^{-1},(x_{i}-\mu)(x_{i}-\mu)^{T}\right\rangle \circ H\\
+ & =\left\langle (\mathrm{D}_{\Sigma}\Sigma^{-1})\circ H,(x_{i}-\mu)(x_{i}-\mu)^{T}\right\rangle \\
+ & =\left\langle (x_{i}-\mu)(x_{i}-\mu)^{T},-\Sigma^{-1}H\Sigma^{-1}\right\rangle \\
+ & =\left\langle -\Sigma^{-1}(x_{i}-\mu)(x_{i}-\mu)^{T}\Sigma^{-1},H\right\rangle .
+\end{align*}
+Therefore, it follows that $\mathrm{D}_{\Sigma}[(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu)]=\Sigma^{-1}(x_{i}-\mu)(x_{i}-\mu)^{T}\Sigma^{-1}.$
+Now substitute these result back into Eq.(2) and we get 
+\[
+\nabla_{\Sigma}\ell(\mu,\Sigma)=-\frac{d}{2}\Sigma^{-1}+\frac{1}{2}\sum_{i=1}^{d}\Sigma^{-1}(x_{i}-\mu)(x_{i}-\mu)^{T}\Sigma^{-1}.
+\]
+ Setting it to zero yields 
+\begin{align*}
+\frac{1}{2}\sum_{i=1}^{d}\Sigma^{-1}(x_{i}-\mu)(x_{i}-\mu)^{T}\Sigma^{-1}=\frac{d}{2}\Sigma^{-1} & \implies I=\frac{1}{d}\Sigma^{-1}\sum_{i=1}^{d}(x_{i}-\mu)(x_{i}-\mu)^{T}\\
+ & \implies\Sigma=\frac{1}{d}\sum_{i=1}^{d}(x_{i}-\mu)(x_{i}-\mu)^{T}.
+\end{align*}
+
+\begin{cBoxA}[Problem 2.35 - Expectation of $\Sigma_{MLE}$ in multivariate gaussian]{}
+ Use the result (2.59) to prove (2.62). Now, using the results (2.59),
+and (2.62), show that 
+\[
+\E[x_{n}x_{m}]=\mu\mu^{T}+I_{nm}\Sigma
+\]
+where $x_{n}$ denotes a data point sampled from a Gaussian distribution
+with mean $\mu$ and covariance $\Sigma$ and $I_{nm}$ denotes the
+$(n,m)$ element of the identity matrix. Hence, prove the result (2.124).
+\end{cBoxA}
+
+Recall in Problem 3.34, we have that $\Sigma_{MLE}=\frac{1}{n}\sum_{i=1}^{n}(X_{i}-\mu_{MLE})(X_{i}-\mu_{MLE})^{T}.$
+Then we have 
+\begin{align*}
+\E[\Sigma_{MLE}] & =\frac{1}{n}\sum_{i=1}^{n}\E[(X_{i}-\mu_{MLE})(X_{i}-\mu_{MLE})^{T}]\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\underbrace{\E[X_{i}X_{i}^{T}-X_{i}\mu_{MLE}^{T}-\mu_{MLE}X_{i}^{T}+\mu_{MLE}\mu_{MLE}^{T}]}_{:=\mathcal{H}(X_{i})}.
+\end{align*}
+Now we note that 
+\begin{align*}
+\mathcal{H}(X_{i}) & =\E\bigg[X_{i}X_{i}^{T}-X_{i}\bigg(\frac{1}{n}\sum_{j=1}^{n}X_{j}\bigg)^{T}-\bigg(\sum_{j=1}^{n}X_{i}\bigg)X_{i}^{T}+\bigg(\sum_{i=1}^{n}X_{i}\bigg)\bigg(\sum_{i=1}^{n}X_{i}\bigg)^{T}\bigg]\\
+ & =\E\bigg[X_{i}X_{i}^{T}-\frac{2}{n}\sum_{j=1}^{n}X_{i}X_{j}+\bigg(\sum_{i=1}^{n}X_{i}\bigg)\bigg(\sum_{i=1}^{n}X_{i}\bigg)^{T}\bigg]\\
+ & =\mu\mu^{T}+\Sigma-\frac{2}{n}\bigg(\sum_{j=1}^{n}\mu\mu^{T}+\Sigma\bigg)+\frac{1}{n^{2}}\bigg[\sum_{i,j=1}^{n}\mu\mu^{T}+\sum_{i=1}^{n}\Sigma\bigg]\\
+ & =\mu\mu^{T}+\Sigma-2\mu\mu^{T}-\frac{2}{n}\Sigma+\mu\mu^{T}+\frac{1}{n}\Sigma\\
+ & =\left(1-\frac{1}{n}\right)\Sigma.
+\end{align*}
+\\
+
+\begin{cBoxA}[Problem 2.36 - Sequential estimation of gaussian covariance - univariate
+case]{}
+ Using an analogous procedure to that used to obtain (2.126), derive
+an expression for the sequential estimation of the variance of a univariate
+Gaussian distribution, by starting with the maximum likelihood expression
+\[
+\sigma_{ML}^{2}=\frac{1}{n}\sum_{i=1}^{n}(x_{n}-\mu)^{2}
+\]
+Verify that substituting the expression for a Gaussian distribution
+into the Robbins-Monro sequential estimation formula (2.135) gives
+a result of the same form, and hence obtain an expression for the
+corresponding coefficients $a_{n}$.
+\end{cBoxA}
+
+First, we note that 
+\begin{align*}
+\sigma_{n}^{2} & =\frac{1}{n}\sum_{i=1}^{n}(x_{i}-\mu)^{2}=\frac{n-1}{n}\frac{1}{n-1}\bigg[\sum_{i=1}^{n-1}(x_{i}-\mu)^{2}+(x_{n}-\mu)^{2}\bigg]\\
+ & =\left(1-\frac{1}{n}\right)\sigma_{n-1}^{2}+\frac{1}{n}(x_{n}-\mu)^{2}\\
+ & =\sigma_{n-1}^{2}+\frac{1}{n}[(x_{n}-\mu)^{2}-\sigma_{n-1}^{2}].\tag{1}
+\end{align*}
+On the other hand, using the sequential estimation formula, Eq.(2.135),
+we have that 
+\begin{align*}
+\sigma_{n}^{2} & =\sigma_{n-1}^{2}+a_{n-1}\frac{\partial}{\partial\sigma_{n-1}^{2}}\log\left[\frac{1}{(2\pi\sigma_{n-1}^{2})^{1/2}}\exp\left\{ -\frac{(x_{n}-\mu)^{2}}{2\sigma_{n-1}^{2}}\right\} \right]\\
+ & =\sigma_{n-1}^{2}+a_{n-1}\left[\frac{(x_{n}-\mu)^{2}}{2\sigma_{n-1}^{4}}-\frac{1}{2\sigma_{n-1}^{2}}\right]\\
+ & =\sigma_{n-1}^{2}+\frac{a_{n-1}}{2\sigma_{n-1}^{4}}[(x_{n}-\mu)^{2}-\sigma_{n-1}^{2}].\tag{2}
+\end{align*}
+Compared Eq.(1) and Eq.(2), we see that 
+\[
+\frac{1}{n}=\frac{a_{n-1}}{2\sigma_{n-1}^{4}}\implies a_{n-1}=\frac{2\sigma_{n-1}^{4}}{n}.
+\]
+\\
+
+\begin{cBoxA}[Problem 2.37 - Sequential estimation of gaussian covariance - multivariate
+case]{}
+ Using an analogous procedure to that used to obtain (2.126), derive
+an expression for the sequential estimation of the covariance of a
+multivariate Gaussian distribution, by starting with the maximum likelihood
+expression (2.122). Verify that substituting the expression for a
+Gaussian distribution into the Robbins-Monro sequential estimation
+formula (2.135) gives a result of the same form, and hence obtain
+an expression for the corresponding coefficients $a_{n}$.
+\end{cBoxA}
+
+Using the result in Problem 2.34 we have 
+\begin{align*}
+\Sigma_{n} & =\frac{1}{n}\sum_{i=1}^{n}(x_{i}-\mu)(x_{i}-\mu)^{T}=\frac{n-1}{n}\frac{1}{n-1}\left[\sum_{i=1}^{n}(x_{i}-\mu)(x_{i}-\mu)^{T}\right]\\
+ & =\left(1-\frac{1}{n}\right)\frac{1}{n-1}\left[\sum_{i=1}^{n-1}(x_{i}-\mu)(x_{i}-\mu)^{T}+(x_{n}-\mu)(x_{n}-\mu)^{T}\right]\\
+ & =\left(1-\frac{1}{n}\right)\Sigma_{n-1}+\frac{1}{n}(x_{n}-\mu)(x_{n}-\mu)^{T}\\
+ & =\Sigma_{n-1}+\frac{1}{n}\left[(x_{n}-\mu)(x_{n}-\mu)^{T}-\Sigma_{n-1}\right].\tag{1 }
+\end{align*}
+On the other hand, using the sequential estimation formula, Eq.(2.135)
+, we see that 
+\begin{align*}
+\Sigma_{n} & =\Sigma_{n-1}+a_{n-1}\frac{\partial}{\partial\Sigma_{n-1}}\log\left[\frac{1}{(2\pi)^{d/2}(\det\Sigma_{n-1})^{1/2}}\exp\left(-\frac{1}{2}(x_{n}-\mu)^{T}\Sigma_{n-1}^{-1}(x_{n}-\mu)\right)\right]\\
+ & =\Sigma_{n-1}+a_{n-1}\mathrm{D}_{\Sigma_{n-1}}\left(-\frac{d}{2}\log2\pi-\frac{1}{2}\log\det\Sigma_{n-1}-\frac{1}{2}(x_{n}-\mu)^{T}\Sigma_{n-1}^{-1}(x_{n}-\mu)\right)\\
+ & =\Sigma_{n-1}-\frac{1}{2}a_{n-1}(\mathrm{D}_{\Sigma_{n-1}}\log\det\Sigma_{n-1}+\mathrm{D}_{\Sigma_{n-1}}\left\langle \Sigma_{n-1}^{-1}(x_{n}-\mu)^{T},(x_{n}-\mu)\right\rangle )\\
+ & =\Sigma_{n-1}-\frac{1}{2}a_{n-1}(\Sigma_{n-1}^{-1}-\mathrm{D}_{\Sigma_{n-1}}\left\langle \Sigma_{n-1}^{-1},(x_{n}-\mu)(x_{n}-\mu)^{T}\right\rangle )\\
+ & =\Sigma_{n-1}-\frac{1}{2}a_{n-1}(\Sigma_{n-1}^{-1}-\Sigma_{n-1}^{-1}(x_{n}-\mu)(x_{n}-\mu)^{T}\Sigma_{n-1}^{-1})\\
+ & =\Sigma_{n-1}+\frac{1}{2}a_{n-1}(\Sigma_{n-1}^{-2}(x_{n}-\mu)(x_{n}-\mu)^{T}-\Sigma_{n-1}^{-1})\\
+ & =\Sigma_{n-1}+\frac{a_{n-1}}{2}\Sigma_{n-1}^{-2}((x_{n}-\mu)(x_{n}-\mu)^{T}-\Sigma_{n-1}).\tag{2 }
+\end{align*}
+Compare Eq.(1) and Eq.(2) and we get that 
+\[
+\frac{a_{n-1}}{2}\Sigma_{n-1}^{-2}=\frac{1}{n}\implies a_{n-1}=\frac{2\Sigma_{n-1}^{2}}{n}.
+\]
+\\
+
+\begin{cBoxA}[Problem 2.38 - Completion the square for Gaussian bayesian update]{}
+ Use the technique of completing the square for the quadratic form
+in the expo- nent to derive the results (2.141) and (2.142). 
+\end{cBoxA}
+
+Recall that we are given 
+\begin{align*}
+f(x_{1},\dots,x_{n}\vert\mu) & =\prod_{i=1}^{n}f(x_{n}\vert\mu)=\frac{1}{(2\pi)^{n/2}\sigma^{2}}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(x_{i}-\mu)^{2}\right);\\
+f(\mu\vert\mu_{0},\sigma_{0}) & =\frac{1}{(2\pi)^{1/2}\sigma_{0}^{2}}\exp\left(-\frac{1}{2\sigma_{0}^{2}}(\mu-\mu_{0})^{2}\right).
+\end{align*}
+Then it follows that 
+\begin{align*}
+f(\mu\vert x_{1},\ldots,x_{n}) & \propto f(x_{1},\ldots,x_{n}\vert\mu)f(\mu\vert\mu_{0},\sigma_{0})\\
+ & \propto\exp\left(-\frac{1}{2}\left(\frac{1}{\sigma^{2}}\sum_{i=1}^{n}(x_{i}-\mu)^{2}+\frac{1}{\sigma_{0}^{2}}(\mu-\mu_{0})^{2}\right)\right)\\
+ & =\exp\left(-\frac{1}{2}\left(\frac{\mu^{2}}{\sigma_{0}^{2}}-\frac{2\mu\mu_{0}}{\sigma_{0}^{2}}+\frac{\mu_{0}^{2}}{\sigma_{0}^{2}}+\frac{1}{\sigma^{2}}\sum_{i=1}^{n}x_{i}^{2}-\frac{2}{\sigma^{2}}\sum_{i=1}^{n}x_{i}\mu+\frac{1}{\sigma^{2}}\sum_{i=1}^{n}\mu^{2}\right)\right)\\
+ & =\exp\left(-\frac{1}{2}\left[\mu^{2}\left(\frac{1}{\sigma_{0}^{2}}+\frac{n}{\sigma^{2}}\right)-2\mu\left(\frac{\mu_{0}}{\sigma_{0}^{2}}+\frac{1}{\sigma^{2}}\sum_{i=1}^{n}x_{i}\right)+\frac{\mu_{0}^{2}}{\sigma_{0}^{2}}+\frac{1}{\sigma^{2}}\sum_{i=1}^{n}x_{i}^{2}\right]\right)\\
+ & \propto\exp\left(-\frac{1}{2}\left[\mu^{2}\left(\frac{1}{\sigma_{0}^{2}}+\frac{n}{\sigma^{2}}\right)-2\mu\left(\frac{\mu_{0}}{\sigma_{0}^{2}}+\frac{1}{\sigma^{2}}\sum_{i=1}^{n}x_{i}\right)\right]\right).
+\end{align*}
+Therefore, by \ref{lem: gaussian completion of squares} it follows
+that $\mu\sim\mathrm{N}((\frac{1}{\sigma_{0}^{2}}+\frac{n}{\sigma^{2}})^{-1}(\frac{\mu_{0}}{\sigma_{0}^{2}}+\frac{1}{\sigma^{2}}\sum_{i=1}^{n}x_{i}),(\frac{1}{\sigma_{0}^{2}}+\frac{n}{\sigma^{2}})^{-1}).$
+And we can get the desired result by noticing that 
+\begin{align*}
+\left(\frac{1}{\sigma_{0}^{2}}+\frac{n}{\sigma^{2}}\right)^{-1}\left(\frac{\mu_{0}}{\sigma_{0}^{2}}+\frac{1}{\sigma^{2}}\sum_{i=1}^{n}x_{i}\right) & =\frac{\sigma_{0}^{2}\sigma^{2}}{\sigma^{2}+n\sigma_{0}^{2}}\frac{\mu_{0}\sigma^{2}+\sigma_{0}\sum_{i=1}^{n}x_{i}}{\sigma_{0}^{2}\sigma^{2}}=\frac{\mu_{0}\sigma^{2}}{\sigma^{2}+n\sigma_{0}^{2}}+\frac{\sigma_{0}\sum_{i=1}^{n}x_{i}}{\sigma^{2}+n\sigma_{0}^{2}}\\
+ & =\frac{\mu_{0}\sigma^{2}}{\sigma^{2}+n\sigma_{0}^{2}}+\frac{n\sigma_{0}}{\sigma^{2}+n\sigma_{0}^{2}}\mu_{ML},
+\end{align*}
+and that 
+\[
+\left(\frac{1}{\sigma_{0}^{2}}+\frac{n}{\sigma^{2}}\right)^{-1}=\frac{\sigma_{0}^{2}\sigma^{2}}{\sigma^{2}+n\sigma_{0}^{2}}.
+\]
+\\
+
+\begin{cBoxA}[Problem 2.39 - Sequential bayesian for univariate gaussian]{}
+Starting from the results (2.141) and (2.142) for the posterior distribution
+of the mean of a Gaussian random variable, dissect out the contributions
+from the first $n-1$ data points and hence obtain expressions for
+the sequential update of $\mu_{n}$ and $\sigma_{n}^{2}$ . Now derive
+the same results starting from the posterior distribution $f(\mu\vert x_{1},\ldots,x_{n-1})=\mathrm{N}(\mu\vert\mu_{n-1},\sigma_{n-1}^{2})$
+and multiplying by the likelihood function $f(x_{n}\vert\mu)=\mathrm{N}(x_{n}\vert\mu,\sigma^{2})$
+and then completing the square and normalizing to obtain the posterior
+distribution after $n$ observations.
+\end{cBoxA}
+
+Recall that by Eq.(2.141) and Eq.(2.142), we have 
+\[
+\mu_{n}=\frac{\sigma^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\mu_{0}+\frac{n\sigma_{0}^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\mu_{ML}\ \text{and }\frac{1}{\sigma_{n}^{2}}=\frac{1}{\sigma_{0}^{2}}+\frac{n}{\sigma^{2}}=\frac{\sigma^{2}+n\sigma_{0}^{2}}{\sigma_{0}^{2}\sigma^{2}}.
+\]
+First, we note that since for any $i=1,...,n$, $\frac{1}{\sigma_{i}^{2}}=\frac{1}{\sigma_{i}^{2}}+\frac{i}{\sigma^{2}},$
+then it follows that 
+\[
+\frac{1}{\sigma_{n}^{2}}=\frac{1}{\sigma_{0}^{2}}+\frac{n-1}{\sigma^{2}}+\frac{1}{\sigma^{2}}=\frac{1}{\sigma_{n-1}^{2}}+\frac{1}{\sigma^{2}}=\frac{\sigma^{2}+\sigma_{n-1}^{2}}{\sigma_{n-1}^{2}\sigma^{2}}.
+\]
+Next, note that 
+\[
+\frac{\sigma_{n}^{2}}{\sigma_{n-1}^{2}}=\frac{\sigma^{2}+(n-1)\sigma_{0}^{2}}{\sigma_{0}^{2}\sigma^{2}}\frac{\sigma_{0}^{2}\sigma^{2}}{\sigma^{2}+n\sigma_{0}^{2}}=\frac{\sigma^{2}+(n-1)\sigma_{0}^{2}}{\sigma^{2}+n\sigma_{0}^{2}}.
+\]
+Hence, it follows that 
+\begin{align*}
+\mu_{n-1} & =\frac{1}{n\sigma_{0}^{2}+\sigma^{2}}(\sigma^{2}\mu_{0}+n\sigma_{0}^{2}\mu_{ML})=\frac{1}{n\sigma_{0}^{2}+\sigma^{2}}\left(\sigma^{2}\mu_{0}+\sigma_{0}^{2}\sum_{i=1}^{n}x_{i}\right)\\
+ & =\frac{1}{n\sigma_{0}^{2}+\sigma^{2}}\left(\sigma^{2}\mu_{0}+\sigma_{0}^{2}\sum_{i=1}^{n-1}x_{i}+\sigma_{0}^{2}x_{n}\right)\\
+ & =\frac{(n-1)\sigma_{0}^{2}+\sigma^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\frac{1}{(n-1)\sigma_{0}^{2}+\sigma^{2}}\left(\sigma^{2}\mu_{0}+\sigma_{0}^{2}\sum_{i=1}^{n-1}x_{i}\right)+\frac{\sigma_{0}^{2}x_{n}}{n\sigma_{0}^{2}+\sigma^{2}}\\
+ & =\frac{\sigma_{n}^{2}}{\sigma_{n-1}^{2}}\underbrace{\frac{1}{(n-1)\sigma_{0}^{2}+\sigma^{2}}\left(\sigma^{2}\mu_{0}+\sigma_{0}^{2}\sum_{i=1}^{n-1}x_{i}\right)}_{:=\mu_{n-1}}+\frac{\sigma_{0}^{2}x_{n}}{n\sigma_{0}^{2}+\sigma^{2}}\\
+ & =\frac{\sigma_{n}^{2}}{\sigma_{n-1}^{2}}\mu_{n-1}+\frac{\sigma^{2}\sigma_{0}^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\frac{x_{n}}{\sigma^{2}}\\
+ & =\frac{\sigma_{n}^{2}}{\sigma_{n-1}^{2}}\mu_{n-1}+\frac{\sigma_{n}x_{n}}{\sigma^{2}}.
+\end{align*}
+On the other hand, using the sequential update formula we have that
+\begin{align*}
+f(\mu|x_{1},\ldots,x_{n}) & =f(\mu)f(x_{n}\vert\mu)=f(\mu\vert x_{1},\ldots,x_{n-1})f(x_{n}\vert\mu)=f_{\mathrm{N}(\mu_{n-1},\sigma_{n-1}^{2})}(\mu)f_{\mathrm{N}(\mu,\sigma^{2})}(x_{n})\tag{1}\\
+ & \propto\exp\left(-\frac{1}{2\sigma_{n-1}^{2}}(\mu-\mu_{n-1})^{2}-\frac{1}{2\sigma^{2}}(x_{n}-\mu)^{2}\right)\\
+ & =\exp\left(-\frac{1}{2}\left(\frac{\mu^{2}-2\mu_{n-1}\mu+\mu_{n-1}^{2}}{\sigma_{n-1}^{2}}+\frac{x_{n}^{2}-2\mu x_{n}+\mu^{2}}{\sigma^{2}}\right)\right)\\
+ & =\exp\left(-\frac{1}{2}\left(\mu^{2}\left(\frac{1}{\sigma_{n-1}^{2}}+\frac{1}{\sigma^{2}}\right)-2\mu\left(\frac{\mu_{n-1}}{\sigma_{n-1}^{2}}+\frac{x_{n}}{\sigma^{2}}\right)\right)-\frac{\mu_{n-1}^{2}}{2\sigma_{n-1}^{2}}-\frac{x_{n}^{2}}{2\sigma^{2}}\right)\\
+ & \propto\exp\left(-\frac{1}{2}\left(\mu^{2}\left(\frac{1}{\sigma_{n-1}^{2}}+\frac{1}{\sigma^{2}}\right)-2\mu\left(\frac{\mu_{n-1}}{\sigma_{n-1}^{2}}+\frac{x_{n}}{\sigma^{2}}\right)\right)\right).
+\end{align*}
+Therefore, by \ref{lem: gaussian completion of squares}, $\mu_{n}|x_{1},...,x_{n}\sim\mathrm{N}(\mu_{n}=(\frac{1}{\sigma_{n-1}^{2}}+\frac{1}{\sigma^{2}})^{-1}(\frac{\mu_{n-1}}{\sigma_{n-1}^{2}}+\frac{x_{n}}{\sigma^{2}}),\sigma_{n}=(\frac{1}{\sigma_{n-1}^{2}}+\frac{1}{\sigma^{2}})^{-1})$.
+We can conclude by noting 
+\begin{align*}
+\mu_{n} & =\left(\frac{\sigma_{n-1}^{2}\sigma^{2}}{\sigma_{n-1}^{2}+\sigma^{2}}\right)\left(\frac{\sigma^{2}\mu_{n-1}+\sigma_{n-1}^{2}x_{n}}{\sigma_{n-1}^{2}\sigma^{2}}\right)=\frac{\sigma^{2}\mu_{n-1}+\sigma_{n-1}^{2}x_{n}}{\sigma_{n-1}^{2}+\sigma^{2}}=\frac{\mu_{n-1}}{\sigma_{n-1}^{2}}+\frac{\sigma_{n}x_{n}}{\sigma^{2}}.\\
+\frac{1}{\sigma_{n}} & =\frac{1}{\sigma_{n-1}^{2}}+\frac{1}{\sigma^{2}}=\frac{\sigma_{n-1}^{2}+\sigma^{2}}{\sigma_{n-1}^{2}\sigma^{2}},
+\end{align*}
+which is the same as what we derived previously. \\
+
+\begin{cBoxA}[Problem 2.40 - Bayesian update for multivariate gaussian ]{}
+ Consider a $D$ dimensional Gaussian random variable $x$ with distribution
+$\mathrm{N}(x\vert\mu,\Sigma)$ in which the covariance $\Sigma$
+is known and for which we wish to infer the mean $\mu$ from a set
+of observations $X=(x_{1},\ldots,x_{n}).$ Given a prior distribution
+$f(\mu)=\mathrm{N}(\mu\vert\mu_{0},\Sigma_{0})$, find the corresponding
+posterior distribution $f(\mu\vert X)$. 
+\end{cBoxA}
+
+Note that 
+\begin{align*}
+f(\mu\vert x_{1},...,x_{n}) & \propto f(\mu\vert\mu_{0},\Sigma_{0})\prod_{i=1}^{n}f(x_{i}\vert\mu,\Sigma)\\
+ & \propto\exp\left(-\frac{1}{2}(\mu-\mu_{0})^{T}\Sigma_{0}^{-1}(\mu-\mu_{0})-\frac{1}{2}\sum_{i=1}^{n}(x_{i}-\mu)^{T}\Sigma^{-1}(x_{i}-\mu)\right)\\
+ & =\exp\left(-\frac{1}{2}\left(\mu^{T}\Sigma_{0}^{-1}u-2\mu^{T}\Sigma_{0}^{-1}\mu_{0}+\mu_{0}^{T}\Sigma_{0}^{-1}\mu_{0}+\sum_{i=1}^{n}(x_{i}^{T}\Sigma^{-1}x_{i}-2\mu^{T}\Sigma^{-1}x_{i}+\mu^{T}\Sigma^{-1}\mu)\right)\right)\\
+ & =\exp\left(-\frac{1}{2}\left(\mu^{T}(\Sigma_{0}^{-1}+n\Sigma^{-1})\mu-2\mu^{T}\bigg(\Sigma_{0}^{-1}\mu_{0}-\Sigma^{-1}\sum_{i=1}^{n}x_{i}\bigg)+\mu_{0}^{T}\Sigma_{0}^{-1}\mu_{0}+\sum_{i=1}^{n}(x_{i}^{T}\Sigma^{-1}x_{i})\right)\right).
+\end{align*}
+Therefore, it follows from \ref{lem: gaussian completion of squares}
+that 
+\begin{align*}
+\mu\vert x_{1},\ldots,x_{n} & \sim\mathrm{MVN}\bigg((\Sigma_{0}^{-1}+n\Sigma^{-1})^{-1}\bigg(\Sigma_{0}^{-1}\mu_{0}-\Sigma^{-1}\sum_{i=1}^{n}x_{i}\bigg),(\Sigma_{0}^{-1}+n\Sigma^{-1})^{-1}\bigg)\\
+ & \sim\mathrm{MVN}\left((\Sigma_{0}^{-1}+n\Sigma^{-1})^{-1}(\Sigma_{0}^{-1}\mu_{0}-n\Sigma^{-1}\mu_{ML}),(\Sigma_{0}^{-1}+n\Sigma^{-1})^{-1}\right),
+\end{align*}
+where $\mu_{ML}=\frac{1}{n}\sum_{i=1}^{n}x_{i}.$\\
+
+\begin{cBoxA}[Problem 2.41 - Gamma density is normalized]{}
+ Use the definition of the gamma function (1.141) to show that the
+gamma distribution (2.146) is normalized. 
+\end{cBoxA}
+
+Recall that the Gamma density with parameter $a,b$ is given by 
+\[
+f(x)=\frac{1}{\Gamma(a)}b^{a}x^{a-1}e^{-bx}\mathbbm{1}_{\{x\geq0\}}.
+\]
+Therefore, we have by \ref{thm: transformation thm}
+\begin{align*}
+\int_{[0,\infty)}f(x)dx & =\int_{[0,\infty)}f(T(y))\left|\det J_{T}\right|dy\tag{where \ensuremath{T(y)=\frac{y}{b}}}\\
+ & =\frac{1}{\Gamma(a)}\int_{0}^{\infty}b^{a}\frac{y^{a-1}}{b^{a-1}}e^{-b\frac{1}{b}y}\cdot\frac{1}{b}dy=\frac{1}{\Gamma(a)}\underbrace{\int_{0}^{\infty}y^{a-1}e^{-y}dy}_{=\Gamma(a)}=1.
+\end{align*}
+\\
+
+\begin{cBoxA}[Problem 2.42 - Gamma distribution's mean, mode, variance]{}
+ Evaluate the mean, variance, and mode of the gamma distribution
+(2.146).
+\end{cBoxA}
+ 
+
+To find the mean, note that 
+\begin{align*}
+\E[X] & =\frac{1}{\Gamma(a)}\int_{0}^{\infty}xb^{a}x^{a-1}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}b^{a}x^{a}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}b^{a}\frac{y^{a}}{b^{a}}e^{-y}\frac{1}{b}dy\\
+ & =\frac{1}{b\Gamma(a)}\int_{0}^{\infty}y^{a+1-1}e^{-y}dy=\frac{\Gamma(a+1)}{b\Gamma(a)}=\frac{a}{b}.
+\end{align*}
+To find the variance, we first note find 
+\begin{align*}
+\E[X^{2}] & =\frac{1}{\Gamma(a)}\int_{0}^{\infty}x^{2}b^{a}x^{a-1}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}x^{a+1}b^{a}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}\frac{y^{a+1}}{b^{a+1}}b^{a}e^{-y}\frac{1}{b}dy\\
+ & =\frac{1}{b^{2}\Gamma(a)}\int_{0}^{\infty}y^{a+2-1}e^{-y}dy=\frac{\Gamma(a+2)}{b^{2}\Gamma(a)}=\frac{(a+1)a}{b^{2}}.
+\end{align*}
+Hence, we have 
+\[
+\mathrm{Var}[X]=\E[X^{2}]-(\E[X])^{2}=\frac{a^{2}+a}{b^{2}}-\frac{a^{2}}{b^{2}}=\frac{a}{b^{2}}.
+\]
+To find the mode, we differentiate the density function and set its
+derivative to 0: 
+\[
+\frac{d}{dx}f(x)=\frac{d}{dx}\left(\frac{1}{\Gamma(a)}x^{a-1}b^{a}e^{-bx}\right)=(a-1)x^{a-2}e^{-bx}-bx^{a-1}e^{-bx}=0.
+\]
+Rearranging it a bit we get $x^{a-1}\left(\frac{a-1}{x}-b\right)e^{-bx}=0$.
+Since $x>0$ by assumption, we can further reduce to $\frac{a-1}{x}-b=0,$
+which implies that $x=\frac{a-1}{b}.$\\
+
+\begin{cBoxA}[Problem 2.43 - Generalized univariate Gaussian distribution ]{}
+The following distribution 
+\[
+p(x\vert\sigma^{2},q)=\frac{q}{2(2\sigma^{2})^{1/q}\Gamma(1/q)}\exp\left(-\frac{\left|x\right|^{q}}{2\sigma^{2}}\right)\tag{1}
+\]
+is a generalization of the univariate Gaussian distribution. Show
+that this distribution is normalized so that 
+\[
+\int_{-\infty}^{\infty}p(x\vert\sigma^{2},q)dx=1
+\]
+and that it reduces to the Gaussian when $q=2.$ Consider a regression
+model in which the target variable is given by $t=y(x,w)+\varepsilon$
+and $\varepsilon$ is a random noise varaible drawn from distribution
+Eq.(1). Show that the log-likelihood function over $w$ and $\sigma^{2}$,
+for an observed date set of input vectors $X=(x_{1},\ldots,x_{n})$
+and corresponding target variables $t=(t_{1},\dots,t_{n})$ is given
+by 
+\[
+\ln p(t\vert X,w,\sigma^{2})=-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left|y(x_{n},w)-t_{n}\right|^{q}-\frac{n}{q}\ln(2\sigma^{2})+\mathrm{const.}
+\]
+\end{cBoxA}
+
+Note that by change of variable of $u=\frac{x^{q}}{2\sigma^{2}},$
+which implies that $x=(2\sigma^{2}u)^{1/q}$ and $du=\frac{qx^{q-1}}{2\sigma^{2}}dx$,
+we have
+
+\begin{align*}
+\int f(x\vert\sigma^{2},q)dx & =\frac{q}{2(2\sigma^{2})^{1/q}\Gamma(1/q)}\int_{\mathbb{R}}\exp\left(-\frac{\left|x\right|^{q}}{2\sigma^{2}}\right)dx\\
+ & =\frac{q}{(2\sigma^{2})^{1/q}\Gamma(1/q)}\int_{0}^{\infty}\exp\left(-\frac{x^{q}}{2\sigma^{2}}\right)dx\\
+ & =\frac{q}{(2\sigma^{2})^{1/q}\Gamma(1/q)}\int_{0}^{\infty}\exp(-u)\frac{2\sigma^{2}}{qx^{q-1}}du\\
+ & =\frac{q}{(2\sigma^{2})^{1/q}\Gamma(1/q)}\int_{0}^{\infty}\exp(-u)\frac{2\sigma^{2}}{q((2\sigma^{2}u)^{1/q})^{q-1}}du\\
+ & =\frac{2\sigma^{2}}{(2\sigma^{2})^{1/q}\Gamma(1/q)}\cdot(2\sigma^{2})^{1/q-1}\cdot\int_{0}^{\infty}\exp(-u)u^{1/q-1}du\\
+ & =(2\sigma^{2})^{1-1/q}(2\sigma^{2})^{1/q-1}\frac{1}{\Gamma(1/q)}\Gamma(1/q)\\
+ & =1.
+\end{align*}
+Next, we show that this distribution recovers the normal gaussian
+distribution when $q=2.$ But first, we need a lemma. 
+\begin{lem}
+For all $s\in\mathbb{C},$ $\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin\pi s}.$\label{lem: gamma function reflection property}
+\end{lem}
+\noindent Hence, we let $s=\frac{1}{2}$ in the previous lemma; and
+we will get $\Gamma(1/2)^{2}=\pi,$ which implies that $\Gamma(1/2)=\sqrt{\pi}.$
+Therefore, we plugin and get 
+\[
+f\left(x\vert\sigma^{2},\frac{1}{2}\right)=\frac{2}{2(2\sigma^{2})^{1/2}\sqrt{\pi}}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)=\frac{1}{(2\pi\sigma^{2})^{1/2}}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right).
+\]
+
+For the regression model, $t=y(x,w)+\varepsilon$ where $\varepsilon$
+is a random noise variable drawn from the generalized univariate gaussian
+distribution, we note that $t-y(x,w)=\varepsilon$, which is generalized
+univariate gaussian. Hence, the likelihood function 
+
+\[
+\P(t\vert x,w,\sigma^{2})=\prod_{i=1}^{n}\frac{q}{2(2\sigma^{2})^{1/q}\Gamma(1/q)}\exp\left(-\frac{\left|t_{i}-y(x_{i},w\right|^{q}}{2\sigma^{2}}\right).
+\]
+Then we take the logarithm to get the likelihood function: 
+\begin{align*}
+\ell(t\vert x,w,\sigma^{2}) & =\log\P(t\vert x,w,\sigma^{2})=\sum_{i=1}^{n}\log\left(\frac{q}{2(2\sigma^{2})^{1/q}\Gamma(1/q)}\exp\left(-\frac{\left|t_{i}-y(x_{i},w)\right|^{q}}{2\sigma^{2}}\right)\right)\\
+ & =\sum_{i=1}^{n}\frac{\left|t_{i}-y(x_{i},w)\right|^{q}}{2\sigma^{2}}-\log(2\sigma^{2})+\mathrm{const}.
+\end{align*}
+\\
+
+\begin{cBoxA}[Problem 2.44 - Posterior of Gaussian with Gauss-Gamma is Gauss Gamma]{}
+Consider a univariate Gaussian distribution $N(x|\mu,\lambda^{-1})$
+having conjugate Gaussian-gamma prior given by (2.154), and a data
+set $x=\{x_{1},\cdots,x_{n}\}$ of i.i.d observations. Show that the
+posterior distribution is also a Gaussian-gamma distribution of the
+same functional form as the prior, and write down expressions for
+the parameters of this posterior distribution
+\end{cBoxA}
+
+First, we note that by Eq.(2.152) in the book, 
+\begin{align*}
+\P(X\vert\mu,\lambda) & =\prod_{i=1}^{n}\left(\frac{\lambda}{2\pi}\right)^{1/2}\exp\left(-\frac{\lambda}{2}(x_{n}-\mu)^{2}\right)\propto\left[\lambda^{1/2}\exp\left(-\frac{\lambda\mu^{2}}{2}\right)\right]^{n}\exp\left(\lambda\mu\sum_{i=1}^{n}x_{i}-\frac{\lambda}{2}\sum_{i=1}^{n}x_{i}^{2}\right).
+\end{align*}
+And by assumption, 
+\[
+\P(\mu,\lambda)=\mathrm{N}(\mu\vert\mu_{0},(\beta\lambda)^{-1})\mathrm{Gamma}(\lambda\vert a,b)=(\beta\lambda)^{1/2}\exp\left(-\frac{\beta\lambda}{2}(\mu^{2}-\mu_{0})^{2}\right)\lambda^{a-1}\exp(-b\lambda).
+\]
+Then it follows that 
+\begin{align*}
+\P(\mu,\lambda\vert X) & \propto\P(X\vert\mu,\lambda)\P(\mu,\lambda)\\
+ & \propto\left[\lambda^{\frac{1}{2}}\exp\left(-\frac{\lambda\mu^{2}}{2}\right)\right]^{n}\exp\left(\lambda\mu\sum_{i=1}^{n}x_{i}-\frac{\lambda}{2}\sum_{i=1}^{n}x_{i}^{2}\right)(\beta\lambda)^{\frac{1}{2}}\exp\left(-\frac{\beta\lambda}{2}(\mu^{2}-\mu_{0})^{2}\right)\lambda^{a-1}\exp(-b\lambda)\\
+ & =\lambda^{\frac{n}{2}}(\beta\lambda)^{\frac{1}{2}}\lambda^{a-1}\exp\bigg(-\frac{n\lambda\mu^{2}}{2}+\lambda\mu\sum_{i=1}^{n}x_{i}-\frac{\lambda}{2}\sum_{i=1}^{n}x_{i}^{2}-\frac{\beta\lambda}{2}(\mu^{2}-2\mu\mu_{0}+\mu_{0})-b\lambda\bigg)\\
+ & =\beta^{\frac{1}{2}}\lambda^{\frac{1}{2}+\frac{n}{2}+a-1}\exp\bigg(\mu^{2}\left(-\frac{n\lambda}{2}-\frac{\beta\lambda}{2}\right)+\mu\bigg(\beta\lambda\mu_{0}+\lambda\sum_{i=1}^{n}x_{i}\bigg)-b\lambda-\frac{\lambda}{2}\sum_{i=1}^{n}x_{i}^{2}-\frac{\beta\lambda}{2}\mu_{0}^{2}\bigg)\\
+ & =\beta^{\frac{1}{2}}\lambda^{\frac{1}{2}+\frac{n}{2}+a-1}\exp\bigg(-\frac{\lambda(n+\beta)}{2}\mu^{2}+\mu\lambda\bigg(\beta\mu_{0}+\sum_{i=1}^{n}x_{i}\bigg)-\lambda\bigg(b+\frac{1}{2}\sum_{i=1}^{n}x_{i}^{2}+\frac{\beta}{2}\mu_{0}^{2}\bigg)\bigg)\\
+ & =\beta^{\frac{1}{2}}\lambda^{\frac{1}{2}+\frac{n}{2}+a-1}\exp\bigg(-\frac{\lambda(n+\beta)}{2}\bigg(\mu^{2}-\frac{\beta\mu_{0}+\sum_{i=1}^{n}x_{i}}{n+\beta}\bigg)^{2}-\lambda\bigg(b+\frac{1}{2}\sum_{i=1}^{n}x_{i}^{2}+\frac{\beta}{2}\mu_{0}^{2}-\frac{(\beta\mu_{0}+\sum_{i=1}^{n}x_{i})^{2}}{2(n+\beta)}\bigg)\bigg)\\
+ & =(\lambda(n+\beta))^{\frac{1}{2}}\exp\bigg(-\frac{\lambda(n+\beta)}{2}\bigg(\mu^{2}-\frac{\beta\mu_{0}+\sum_{i=1}^{n}x_{i}}{n+\beta}\bigg)^{2}\bigg)\\
+ & \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \times\lambda^{a+\frac{n}{2}-1}\exp\bigg(-\bigg(b+\frac{1}{2}\sum_{i=1}^{n}x_{n}^{2}+\frac{\beta}{2}\mu_{0}^{2}-\frac{(\beta\mu_{0}+\sum_{i=1}^{n}x_{i})^{2}}{2(n+\beta)}\bigg)\lambda\bigg).
+\end{align*}
+By comparing coefficients, we get that 
+\[
+(\lambda(n+\beta))^{\frac{1}{2}}\exp\bigg(-\frac{\lambda(n+\beta)}{2}\bigg(\mu^{2}-\frac{\beta\mu_{0}+\sum_{i=1}^{n}x_{i}}{n+\beta}\bigg)^{2}\bigg)\sim\mathrm{N}(\mu\vert\mu_{n},\lambda_{n}^{-1}),
+\]
+where 
+\[
+\mu_{n}=\frac{\beta\mu_{0}+\sum_{i=1}^{n}x_{i}}{n+\beta},\ \ \lambda_{n}=\frac{1}{\lambda(n+\beta)}.
+\]
+And that 
+\[
+\lambda^{a+\frac{n}{2}-1}\exp\bigg(-\bigg(b+\frac{1}{2}\sum_{i=1}^{n}x_{n}^{2}+\frac{\beta}{2}\mu_{0}^{2}-\frac{(\beta\mu_{0}+\sum_{i=1}^{n}x_{i})^{2}}{2(n+\beta)}\bigg)\lambda\bigg)\sim\mathrm{Gamma}(\lambda\vert a_{n},b_{n}),
+\]
+where 
+\[
+a_{n}=a+\frac{n}{2},\ \ b_{b}=b+\frac{1}{2}\sum_{i=1}^{n}x_{i}^{2}+\frac{\beta}{2}\mu_{0}^{2}-\frac{(\beta\mu_{0}+\sum_{i=1}^{n}x_{n})^{2}}{2(n+\beta)}.
+\]
+\\
+
+\begin{cBoxA}[Problem 2.45 - Wishart distribution is conjugate prior of Gaussian
+precision]{}
+ Verify that the Wishart distribution defined by (2.155) is indeed
+a conjugate prior for the precision matrix of multivariate Gaussian. 
+\end{cBoxA}
+
+Note that by Bayes update formula, 
+\begin{align*}
+f(\Lambda\vert X_{1},\ldots,X_{n}) & \propto f(X_{1},\ldots,X_{n}\vert\Lambda)f(\Lambda)=\prod_{i=1}^{n}f_{\mathrm{N}(\mu_{0},\Lambda^{-1})}(x_{i})f_{\mathrm{Wishart}(W,\nu)}(\Lambda)\\
+ & =\bigg(\prod_{i=1}^{n}\frac{\left|\det\Lambda\right|{}^{1/2}}{(2\pi)^{d/2}}\bigg)\exp\bigg(-\frac{1}{2}\sum_{i=1}^{n}(x_{i}-\mu)^{T}\Lambda(x_{i}-\mu)\bigg)\cdot B\left|\det\Lambda\right|^{(v-d-1)/2}\exp\left(-\frac{1}{2}\mathrm{tr}(W^{-1}\Lambda)\right)\\
+ & =\bigg(\prod_{i=1}^{n}\frac{\left|\det\Lambda\right|{}^{1/2}}{(2\pi)^{d/2}}\bigg)\exp\bigg(-\frac{1}{2}\sum_{i=1}^{n}(x_{i}-\mu)^{T}\Lambda(x_{i}-\mu)\bigg)\cdot B\left|\det\Lambda\right|^{(v-d-1)/2}\exp\left(-\frac{1}{2}\mathrm{tr}(W^{-1}\Lambda)\right)\\
+ & \propto\left|\det\Lambda\right|^{n/2+(v-d-1)/2}\exp\bigg(-\frac{1}{2}\sum_{i=1}^{n}\mathrm{tr}((x_{i}-\mu)^{T}\Lambda(x_{i}-\mu)-\frac{1}{2}\mathrm{tr}(\Lambda W^{-1})\bigg)\\
+ & =\left|\det\Lambda\right|^{(n+v-d-1)/2}\exp\bigg(-\frac{1}{2}\mathrm{tr}\bigg(\Lambda\bigg(\sum_{i=1}^{n}(x_{i}-\mu)(x_{i}-\mu)^{T}+W\bigg)\bigg)\bigg)\\
+ & \propto f_{\mathrm{Wishart}(\sum_{i=1}^{n}(x_{i}-\mu)(x_{i}-\mu)^{T}+W,n+v)}(\Lambda).
+\end{align*}
+Therefore, we have shown that Wishart distribution is a conjugate
+prior for the precision matrix of multivariate Gaussian. 
+
+\begin{cBoxA}[Problem 2.46 - ]{}
+\end{cBoxA}
+
+\begin{cBoxA}[Problem 2.47 - Student $t$-distribution converges to Gaussian]{}
+ Show that in the limit $v\rightarrow\infty$, the $t$-distribution
+(2.159) becomes a Gaussian. Hint: ignore the normalization coefficient,
+and simply look at the dependence on $x$.
+\end{cBoxA}
+
+Before, we go into the solution, we need an asymptotic approximation
+of ratio of Gamma function. We provide this approximation and give
+a proof as follows.
+\begin{lem}
+For any $\alpha\in\mathbb{R},$ we have 
+\[
+\lim_{x\rightarrow\infty}\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}=1.
+\]
+\label{lem: gamma stirling approximation}
+\end{lem}
+%
+\begin{proof}
+First, we note that by OEIS A046968 and A046969 we have that for $z\in\mathbb{R}$
+\begin{align*}
+\log\Gamma(z) & =z\log z-z+\frac{1}{2}(\log2\pi+\log\frac{1}{z})+\frac{1}{12z}-\frac{1}{360z^{3}}+\frac{1}{1260z^{5}}-\cdots\\
+ & =z(\log z-1)+\frac{1}{2}(\log2\pi+\log\frac{1}{z})+\frac{1}{12z}+O\bigg(\frac{1}{z^{3}}\bigg).\tag{1 }
+\end{align*}
+Hence, it suffices to prove that $\log\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}\rightarrow0$
+as $x\rightarrow\infty.$ Note that 
+\begin{align*}
+\log\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}} & =\log\Gamma(x+\alpha)-\log\Gamma(x)-\alpha\log x\\
+ & =(x+\alpha)(\log(x+\alpha)-1)+\frac{1}{2}\bigg(\log2\pi+\log\frac{1}{x+\alpha}\bigg)+\frac{1}{12(x+\alpha)}+O\bigg(\frac{1}{(x+\alpha)^{3}}\bigg)\\
+ & \ \ -x\log x-x-\frac{1}{2}\bigg(\log2\pi+\log\frac{1}{\alpha}\bigg)-\frac{1}{12x}-O\bigg(\frac{1}{x^{3}}\bigg)-\alpha\log x\\
+ & =x\log\bigg(1+\frac{\alpha}{x}\bigg)-\frac{1}{2}\log\bigg(1+\frac{\alpha}{x}\bigg)+\alpha\log\bigg(1+\frac{\alpha}{x}\bigg)+\frac{1}{12}\bigg(\frac{1}{x+\alpha}-\frac{1}{x}\bigg)+O\bigg(\frac{1}{x^{3}}\bigg).\tag{2}
+\end{align*}
+Note that $\log(1+\frac{\alpha}{x})=\frac{\alpha}{x}+O(\frac{1}{x^{2}})=\frac{\alpha}{x}-\frac{\alpha^{2}}{2x^{2}}+O(\frac{1}{x^{3}})$
+via Taylor expansion. So substituting back we have 
+
+\begin{align*}
+\mathrm{Eq}.(2) & =x\bigg(\frac{\alpha}{x}-\frac{\alpha^{2}}{2x^{2}}+O\bigg(\frac{1}{x^{3}}\bigg)\bigg)-\frac{1}{2}\biggp{\frac{\alpha}{x}+O\biggp{\frac{1}{x^{2}}}}+O\biggp{\frac{1}{x^{2}}}-\alpha\biggp{\frac{\alpha}{x}+O\biggp{\frac{1}{x^{2}}}}-\alpha+O\biggp{\frac{1}{x^{3}}}\\
+ & =-\frac{\alpha^{2}}{2x}+\frac{\alpha^{2}}{x}-\frac{\alpha}{2x}+O\biggp{\frac{1}{x^{3}}}+O\biggp{\frac{1}{x^{2}}}\\
+ & =\frac{\alpha(\alpha-1)}{2x}+O\biggp{\frac{1}{x^{2}}},
+\end{align*}
+where the last equality follows from the assumption $x\geq1$ and
+the fact that $O(f(x))+O(g(x))=O(\max(f(x)+g(x))$. Now we take the
+limit of $x\rightarrow\infty,$ we get that 
+\[
+\lim_{x\rightarrow\infty}\log\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}=\lim_{x\rightarrow\infty}\left[\frac{\alpha(\alpha-1)}{2x}+O\biggp{\frac{1}{x^{2}}}\right]=0\implies\lim_{x\rightarrow\infty}\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}=1.
+\]
+\end{proof}
+Now we observe that 
+\begin{align*}
+f_{\mathrm{St}(x\vert\mu,\lambda,v)}(x) & =\frac{\Gamma(\frac{v}{2}+\frac{1}{2})}{\Gamma(\frac{v}{2})}\biggp{\frac{\lambda}{\pi v}}^{1/2}\left[1+\frac{\lambda(x-\mu)^{2}}{v}\right]^{-v/2-1/2}\\
+ & =\frac{\Gamma(\frac{v}{2}+\frac{1}{2})}{\Gamma(\frac{v}{2})(\frac{v}{2})^{1/2}}\underbrace{\bigg(\frac{v}{2}\bigg)^{1/2}\biggp{\frac{\lambda}{\pi v}}^{1/2}\exp\left[-\frac{v+1}{2}\log\biggp{1+\frac{\lambda(x-\mu)^{2}}{v}}\right]}_{:=\mathcal{H}_{1}(x)}.
+\end{align*}
+Now note that by \ref{lem: gamma stirling approximation}, $\frac{\Gamma(\frac{v}{2}+\frac{1}{2})}{\Gamma(\frac{v}{2})(\frac{v}{2})^{1/2}}\rightarrow1$
+as $v\rightarrow\infty.$ And by Taylor expansion of logarithm, 
+\begin{align*}
+\mathcal{H}_{1}(x) & =\frac{1}{(2\pi\lambda^{-1})^{1/2}}\exp\left[-\frac{v+1}{2}\biggp{\frac{\lambda(x-\mu)^{2}}{v}+O\biggp{\frac{1}{v^{2}}}}\right]\\
+ & =\frac{1}{(2\pi\lambda^{-1})^{1/2}}\exp\left[-\frac{v+1}{v}\frac{(x-\mu)^{2}}{2\lambda^{-1}}+O\biggp{\frac{1}{v}}\right]\\
+ & \xrightarrow{v\rightarrow\infty}\frac{1}{(2\pi\lambda^{-1})^{1/2}}\exp\left(\frac{(x-\mu)^{2}}{2\lambda^{-1}}\right).
+\end{align*}
+Hence, combined together we have that $f_{\mathrm{St}(x\vert\mu,\lambda,v)}(x)\xrightarrow{v\rightarrow\infty}f_{\mathrm{N}(\mu,\lambda^{-1})}(x).$ 
+\begin{rem}
+The argument we used in solution is almost perfectly rigorous except
+a subtle point that we need to show that convergence in density functions
+implies convergence in distribution. This is actually a quite famous
+result, called Scheffe's lemma. We state without a proof the theorem
+statement below. A proof can be found in the reference provided. 
+\end{rem}
+\begin{lem}[{\cite[Lemma 8.2.1]{resnickProbabilityPath2014}}]
+Let $\{X_{n}\}_{n\in\mathbb{N}}$ be absolutely continuous random
+variables with densities $f_{X_{n}}$, such that $f_{X_{n}}(x)\rightarrow f(x)$
+almost everywhere, where $f$ is the density of the absolutely continuous
+random variable $X$. Then $X_{n}$ converges to $X$ in total variation,
+and therefore, also in distribution. 
+\end{lem}
+%
+\begin{cBoxA}[qua]{}
+\end{cBoxA}
+

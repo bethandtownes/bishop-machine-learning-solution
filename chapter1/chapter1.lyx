@@ -13,6 +13,8 @@
 \begin_modules
 theorems-ams-chap-bytype
 enumitem
+tcolorbox
+multicol
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -73,7 +75,7 @@ enumitem
 \secnumdepth -1
 \tocdepth 3
 \paragraph_separation indent
-\paragraph_indentation default
+\paragraph_indentation 0bp
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -94,8 +96,37 @@ enumitem
 Solutions for exercises to chapter 1
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.1 - Closed form solution to polynomial regression
+\end_layout
+
+\end_inset
+
+ Consider the sum-of-squares error function given by (1.2) in which the function
+ 
+\begin_inset Formula $y(x,w)$
+\end_inset
+
+ is given by the polynomial (1.1).
+ Show that the coefficients 
+\begin_inset Formula $w=\{w_{i}\}$
+\end_inset
+
+ that minimize this error function are given by the solution to the following
+ set of linear equations
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -187,10 +218,35 @@ So
 
 as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.2 - Closed form solution to regularized polynomial regression
 \end_layout
 
-\begin_layout Section
-Problem 1.2 - Closed form solution to regularized polynomial regression
+\end_inset
+
+ Write down the set of coupled linear equations, analogous to (1.122), satisfied
+ by the coefficients 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ which minimize the regularized sum-of-squares error function given by (1.4).
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -246,11 +302,67 @@ Hence,
 \begin_inset Formula $X^{T}t$
 \end_inset
 
- are the corresponding matrices.
+ are the corresponding matrices
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.3 - Bayes formula warm up
 \end_layout
 
-\begin_layout Section
-Problem 1.3 - Bayes formula warm up
+\end_inset
+
+ Suppose that we have three coloured boxes 
+\begin_inset Formula $r$
+\end_inset
+
+ (red), 
+\begin_inset Formula $b$
+\end_inset
+
+ (blue), and 
+\begin_inset Formula $g$
+\end_inset
+
+ (green).
+ Box 
+\begin_inset Formula $r$
+\end_inset
+
+ contains 3 apples, 4 oranges, and 3 limes, box 
+\begin_inset Formula $b$
+\end_inset
+
+ contains 1 apple, 1 orange, and 0 limes, and box 
+\begin_inset Formula $g$
+\end_inset
+
+ contains 3 apples, 3 oranges, and 4 limes.
+ If a box is chosen at random with probabilities 
+\begin_inset Formula $\P(r)=0.2,\P(b)=0.2,\P(g)=0.6$
+\end_inset
+
+, and a piece of fruit is removed from the box (with equal probability of
+ selecting any of the items in the box), then what is the probability of
+ selecting an apple? If we observe that the selected fruit is in fact an
+ orange, what is the probability that it came from the green box?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -274,11 +386,67 @@ P\left(\text{g}\vert\text{orange}\right) & =\frac{P\left(\text{orange}\vert\text
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.4 - Nonlinear transform of likelihood function doesn't preserve
  its extrema
+\end_layout
+
+\end_inset
+
+ Consider a probability density 
+\begin_inset Formula $p_{x}(x)$
+\end_inset
+
+ defined over a continuous variable 
+\begin_inset Formula $x$
+\end_inset
+
+, and suppose that we make a nonlinear change of variable using 
+\begin_inset Formula $x=g(y)$
+\end_inset
+
+, so that the density transforms according to (1.27).
+ By differentiating (1.27), show that the location 
+\begin_inset Formula $y$
+\end_inset
+
+ of the maximum of the density in 
+\begin_inset Formula $y$
+\end_inset
+
+ is not in general related to the location 
+\begin_inset Formula $x$
+\end_inset
+
+ of the maximum of the density over 
+\begin_inset Formula $x$
+\end_inset
+
+ by the simple functional relation 
+\begin_inset Formula $x=g(y)$
+\end_inset
+
+ as a consequence of the Jacobian factor.
+ This shows that the maximum of a probability density (in contrast to a
+ simple function) is dependent on the choice of variable.
+ Verify that, in the case of a linear transformation, the location of the
+ maximum transforms in the same way as the variable itself.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -388,10 +556,29 @@ On the other hand, if
 \end_inset
 
  
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.5 - Characterization of variance
 \end_layout
 
-\begin_layout Section
-Problem 1.5 - Characterization of variance
+\end_inset
+
+ Using the definition (1.38) show that var[f(x)] satisfies (1.39).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -421,11 +608,42 @@ It suffices to show that
 
 as desired.
  
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.6 - Covariance of two independent r.v.
  is zero
+\end_layout
+
+\end_inset
+
+ Show that if two variables 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent, then their covariance is zero.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -451,10 +669,81 @@ Since
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.7 - Gaussian integral via polar coordinate
 \end_layout
 
-\begin_layout Section
-Problem 1.7 - Gaussian integral via polar coordinate
+\end_inset
+
+ In this exercise, we prove the normalization condition (1.48) for the univariate
+ Gaussian.
+ To do this consider, the integral
+\begin_inset Formula 
+\[
+I=\int_{-\infty}^{\infty}\exp\left(-\frac{1}{2\sigma^{2}}x^{2}\right)dx,
+\]
+
+\end_inset
+
+which we can evaluate by first writing its square in the form 
+\begin_inset Formula 
+\[
+I^{2}=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\exp\bigg(-\frac{1}{2\sigma^{2}}x^{2}-\frac{1}{2\sigma^{2}}y^{2}\bigg)dxdy.
+\]
+
+\end_inset
+
+Now make the transformation from Cartesian coordinates 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ to polar coordinates 
+\begin_inset Formula $(r,\theta)$
+\end_inset
+
+ and then substitute 
+\begin_inset Formula $u=r^{2}$
+\end_inset
+
+.
+ Show that, by performing the integrals over 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+, and then taking the square root of both sides, we obtain 
+\begin_inset Formula 
+\[
+I=(2\pi\sigma^{2})^{1/2}.
+\]
+
+\end_inset
+
+Finally, use this result to show that Gaussian distribution 
+\begin_inset Formula $\mathrm{N}(x\vert\mu,\sigma^{2})$
+\end_inset
+
+ is normalized.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -498,10 +787,49 @@ I^{2} & =\int_{0}^{2\pi}\int_{0}^{\infty}\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.8 - Second moment of gaussian integral via Feymann's trick
 \end_layout
 
-\begin_layout Section
-Problem 1.8 - Second moment of gaussian integral via Feymann's trick
+\end_inset
+
+ By using a change of variables, verify that the univariate Gaussian distributio
+n given by (1.46) satisfies (1.49).
+ Next, by differentiating both sides of the normalization condition 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}\mathrm{N}(x\vert\mu,\sigma^{2})dx=1
+\]
+
+\end_inset
+
+with respect to 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+, verify that the Gaussian satisfies 
+\begin_inset Formula $(1.50)$
+\end_inset
+
+.
+ Finally, show that (1.51) holds.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -570,10 +898,32 @@ And as a result,
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.9 - Gaussian density peaks at mean
 \end_layout
 
-\begin_layout Section
-Problem 1.9 - Gaussian density peaks at mean
+\end_inset
+
+Show that the mode (i.e.
+ the maximum) of the Gaussian distribution (1.46) is given by μ.
+ Similarly, show that the mode of the multivariate Gaussian (1.52) is given
+ by μ.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -656,13 +1006,59 @@ whence
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.10 - Linearity of expectation and variance
 \end_layout
 
+\end_inset
+
+ Suppose that the two variables 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $z$
+\end_inset
+
+ are statistically independent.
+ Show that the mean and variance of their sum satisfies 
+\begin_inset Formula 
+\begin{align*}
+\E[x+z] & =\E[x]+\E[z],\\
+\mathrm{Var}[x+z] & =\mathrm{Var}[x]+\mathrm{Var}[z].
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 Note 
 \begin_inset Formula 
 \begin{align*}
@@ -694,14 +1090,34 @@ Note
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.11 - MLE of gaussian
+\end_layout
+
+\end_inset
+
+ By setting the derivatives of the log likelihood function (1.54) with respect
+ to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ equal to zero, verify the results (1.55) and (1.56).
+\end_layout
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Problem 1.11 - MLE of gaussian
 \end_layout
 
 \begin_layout Standard
@@ -758,15 +1174,133 @@ Plug in
 \end_inset
 
  as desired.
- 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.12 - Inconsistency gaussian MLE
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TODO
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.14 - Independent terms of 2-nd order term in polynomial
+\end_layout
+
+\end_inset
+
+ Show that an arbitrary square matrix with elements 
+\begin_inset Formula $w_{ij}$
+\end_inset
+
+ can be written in the form 
+\begin_inset Formula $w_{ij}=w_{ij}^{S}+w_{ij}^{A},$
+\end_inset
+
+ where 
+\begin_inset Formula $w_{ij}^{S}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{ij}^{A}$
+\end_inset
+
+ are symmetric and anti-symmetric matrices, respectively, satisfying 
+\begin_inset Formula $w_{ij}^{S}=w_{ji}^{S}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{ij}^{A}=-w_{ji}^{A}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Now consider the second order term in higher order polynomial in 
+\begin_inset Formula $D$
+\end_inset
+
+ dimensions, given by 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{D}\sum_{j=1}^{D}w_{ij}x_{i}x_{j}.
+\]
+
+\end_inset
+
+Show that 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{D}\sum_{j=1}^{D}w_{ij}x_{i}x_{j}=\sum_{i=1}^{D}\sum_{j=1}^{D}w_{ij}^{S}x_{i}x_{j},
+\]
+
+\end_inset
+
+so that the contribution from the anti-symmetric matrix vanishes.
+ We therefore see that, without loss of generality, the matrix of coefficients
+ 
+\begin_inset Formula $w_{ij}$
+\end_inset
+
+ can be chosen to be symmetric, and so not all of the 
+\begin_inset Formula $D^{2}$
+\end_inset
+
+ elements of this matrix can be chosen independently.
+ Show that he number of independent parameter in the matrix 
+\begin_inset Formula $w_{ij}^{S}$
+\end_inset
+
+ is given by 
+\begin_inset Formula $D(D+1)/2$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -840,9 +1374,18 @@ where the last inequality follows from the fact that
 
 , we have established our claim.
  
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.15 - Independent terms of 
 \begin_inset Formula $M$
 \end_inset
@@ -850,7 +1393,161 @@ Problem 1.15 - Independent terms of
 -th order term in polynomial
 \end_layout
 
+\end_inset
+
+ In this exercise and the next, we explore how the number of independent
+ parameters in a polynomial grows with the order 
+\begin_inset Formula $M$
+\end_inset
+
+ of the polynomial and with the dimensionality 
+\begin_inset Formula $D$
+\end_inset
+
+ of the input space.
+ We start by writing down the 
+\begin_inset Formula $M$
+\end_inset
+
+-th order term for a polynomial in 
+\begin_inset Formula $D$
+\end_inset
+
+ dimensions in the form
+\begin_inset Formula 
+\[
+\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{D}\cdots\sum_{i_{M}=1}^{D}w_{i_{1}i_{2}\cdots i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}.
+\]
+
+\end_inset
+
+The coefficients 
+\begin_inset Formula $w_{i_{1}i_{2}\cdots i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}$
+\end_inset
+
+ comprise 
+\begin_inset Formula $D^{M}$
+\end_inset
+
+ elements, but the number of independent parameters is significantly fewer
+ due to the many interchange symmetries of the factor 
+\begin_inset Formula $x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}$
+\end_inset
+
+.
+ Begin by showing that the redundancy in the coefficients can be removed
+ by rewriting this 
+\begin_inset Formula $M$
+\end_inset
+
+-th order term in the form
+\begin_inset Formula 
+\[
+\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{i_{1}}\cdots\sum_{i_{M}=1}^{i_{M-1}}\tilde{w}_{i_{1}i_{2}\cdots i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}.
+\]
+
+\end_inset
+
+Note that the precise relationship between the 
+\begin_inset Formula $w$
+\end_inset
+
+ coefficients and 
+\begin_inset Formula $w$
+\end_inset
+
+ coefficients need not be made explicit.
+ Use this result to show that the number of independent parameters 
+\begin_inset Formula $n(D,M)$
+\end_inset
+
+, which appear at order 
+\begin_inset Formula $M$
+\end_inset
+
+, satisfies the following recursion relation 
+\begin_inset Formula 
+\[
+n(D,M)=\sum_{i=1}^{D}n(i,M-1).
+\]
+
+\end_inset
+
+Next use proof by induction to show that the following results holds
+\begin_inset Formula 
+\[
+\sum_{i=1}^{D}\frac{(i+M-2)!}{(i-1)!(M-1)!}=\frac{(D+M-1)!}{(D-1)!M!},
+\]
+
+\end_inset
+
+which can be done by first proving the result for 
+\begin_inset Formula $D=1$
+\end_inset
+
+ and arbitrary 
+\begin_inset Formula $M$
+\end_inset
+
+ by making use of the result 
+\begin_inset Formula $0!=1$
+\end_inset
+
+, then assuming it is correct for dimension 
+\begin_inset Formula $D$
+\end_inset
+
+ and verifying that it is correct for dimension 
+\begin_inset Formula $D+1$
+\end_inset
+
+.
+ Finally, use the two previous results, together with proof by induction,
+ to show
+\begin_inset Formula 
+\[
+n(D,M)=\frac{(D+M-1)!}{(D-1)!M!}.
+\]
+
+\end_inset
+
+To do this, first show that the result is true for 
+\begin_inset Formula $M=2$
+\end_inset
+
+, and any value of 
+\begin_inset Formula $D\geq1$
+\end_inset
+
+, by comparison with the result of Exercise 1.14.
+ Then make use of (1.135), together with (1.136), to show that, if the result
+ holds at order 
+\begin_inset Formula $M-1$
+\end_inset
+
+, then it will also hold at order 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftmargin=*
+\end_layout
+
+\end_inset
+
 Since by writing the 
 \begin_inset Formula $M$
 \end_inset
@@ -978,8 +1675,143 @@ using part-2.
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.16 - Independent terms of high order polynomial
+\end_layout
+
+\end_inset
+
+ In Exercise 1.15, we proved the result (1.135) for the number of independent
+ parameters in the 
+\begin_inset Formula $M$
+\end_inset
+
+-th order term of a 
+\begin_inset Formula $D$
+\end_inset
+
+-dimensional polynomial.
+ We now find an expression for the total number 
+\begin_inset Formula $N(D,M)$
+\end_inset
+
+ of independent parameters in all of the terms up to and including the 
+\begin_inset Formula $M$
+\end_inset
+
+ 6th order.
+ First show that 
+\begin_inset Formula $N(D,M)$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\[
+N(D,M)=\sum_{m=0}^{M}n(D,m),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $n(D,m)$
+\end_inset
+
+ is the number of independent parameters in the term of order 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ Now make use of the result (1.137) together with proof by induction, to
+ show that 
+\begin_inset Formula 
+\[
+N(d,M)=\frac{(D+M)!}{D!M!}.
+\]
+
+\end_inset
+
+This can be done by first proving that the result holds for 
+\begin_inset Formula $M=0$
+\end_inset
+
+ and arbitrary 
+\begin_inset Formula $D\geq1$
+\end_inset
+
+, then assuming that it holds at order 
+\begin_inset Formula $M$
+\end_inset
+
+, and hence showing that it holds at order 
+\begin_inset Formula $M+1$
+\end_inset
+
+.
+ Finally, make use of Stirling’s approximation in the form 
+\begin_inset Formula 
+\[
+n!\simeq n^{n}e^{-n},
+\]
+
+\end_inset
+
+for large 
+\begin_inset Formula $n$
+\end_inset
+
+ to show that, for 
+\begin_inset Formula $D\gg M$
+\end_inset
+
+, the quantity 
+\begin_inset Formula $N(D,M)$
+\end_inset
+
+ grows like 
+\begin_inset Formula $D^{M}$
+\end_inset
+
+, and for 
+\begin_inset Formula $M\gg D$
+\end_inset
+
+ it grows like 
+\begin_inset Formula $M^{D}$
+\end_inset
+
+.
+ Consider a cubic (
+\begin_inset Formula $M=3$
+\end_inset
+
+) polynomial in 
+\begin_inset Formula $D$
+\end_inset
+
+ dimensions, and evaluate numerically the total number of independent parameters
+ for (i) 
+\begin_inset Formula $D$
+\end_inset
+
+ = 10 and (ii) 
+\begin_inset Formula $D$
+\end_inset
+
+ = 100, which correspond to typical small-scale and medium-scale machine
+ learning applications.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1108,14 +1940,50 @@ The case for
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.17 - Gamma density warmup
+\end_layout
+
+\end_inset
+
+ The gamma function is defined by 
+\begin_inset Formula 
+\[
+\Gamma(x)=\int_{0}^{\infty}u^{x-1}e^{-u}du.
+\]
+
+\end_inset
+
+Using integration by parts, prove the relation 
+\begin_inset Formula $\Gamma(x+1)=x\Gamma(x).$
+\end_inset
+
+ Show also that 
+\begin_inset Formula $\Gamma(1)=1$
+\end_inset
+
+ and hence that 
+\begin_inset Formula $\Gamma(x+1)=x!$
+\end_inset
+
+ when 
+\begin_inset Formula $x$
+\end_inset
+
+ is an integer.
+ 
+\end_layout
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Problem 1.17 - Gamma density warmup
 \end_layout
 
 \begin_layout Enumerate
@@ -1162,14 +2030,109 @@ And as a result, by recursion
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.18 - Volume of unit sphere in n-space
+\end_layout
+
+\end_inset
+
+ We can use the result (1.126) to derive an expression for the surface area
+ 
+\begin_inset Formula $S_{D}$
+\end_inset
+
+, and the volume 
+\begin_inset Formula $V_{D}$
+\end_inset
+
+, of a sphere of unit radius in 
+\begin_inset Formula $D$
+\end_inset
+
+ dimensions.
+ To do this, consider the following result, which is obtained by transforming
+ from Cartesian to polar coordinates
+\begin_inset Formula 
+\[
+\prod_{i=1}^{D}\int_{-\infty}^{\infty}e^{-x_{i}^{2}}dx_{i}=S_{D}\int_{0}^{\infty}e^{-r^{2}}r^{D-1}dr.
+\]
+
+\end_inset
+
+Using the definition 
+\begin_inset Formula $(1.141)$
+\end_inset
+
+ of Gamma function, together with 
+\begin_inset Formula $(1.126)$
+\end_inset
+
+, evaluate both side of this equation, and hence show that 
+\begin_inset Formula 
+\[
+S_{D}=\frac{2\pi^{D/2}}{\Gamma(D/2)}.
+\]
+
+\end_inset
+
+Next, by integrating with respect to radius from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $1$
+\end_inset
+
+, show that the volume of the unit sphere in 
+\begin_inset Formula $D$
+\end_inset
+
+ dimensions is given by 
+\begin_inset Formula 
+\[
+V_{D}=\frac{S_{D}}{D}.
+\]
+
+\end_inset
+
+Finally, use the results 
+\begin_inset Formula $\Gamma(1)=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\Gamma(3/2)=\sqrt{\pi}/2$
+\end_inset
+
+ to show that 
+\begin_inset Formula $(1.143)$
+\end_inset
+
+ and 
+\begin_inset Formula $(1.144)$
+\end_inset
+
+ reduce to the usual expressions for 
+\begin_inset Formula $D=2$
+\end_inset
+
+ and 
+\begin_inset Formula $D=3$
+\end_inset
+
+.
+ 
+\end_layout
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Problem 1.18 - Volume of unit sphere in n-space
 \end_layout
 
 \begin_layout Standard
@@ -1374,8 +2337,84 @@ This problem could have been solved heuristically.
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.19 - High dimensional cubes concentrate on corners
+\end_layout
+
+\end_inset
+
+ Consider a sphere of radius 
+\begin_inset Formula $a$
+\end_inset
+
+ in 
+\begin_inset Formula $D$
+\end_inset
+
+-dimensions together with the concentric hypercube of side 
+\begin_inset Formula $2a$
+\end_inset
+
+, so that the sphere touches the hypercube at the centres of each of its
+ sides.
+ By using the results of Exercise 1.18, show that the ratio of the volume
+ of the sphere to the volume of the cube is given by
+\begin_inset Formula 
+\[
+\frac{\mathrm{volume\ of\ sphere}}{\mathrm{volume\ of\ cube}}=\frac{\pi^{D/2}}{D2^{D-1}\Gamma(D/2)}.
+\]
+
+\end_inset
+
+Now make use of Stirling's formula in the form 
+\begin_inset Formula 
+\[
+\Gamma(x+1)\simeq(2\pi)^{1/2}e^{-x}x^{x+1/2},
+\]
+
+\end_inset
+
+which is valid for 
+\begin_inset Formula $x\gg1$
+\end_inset
+
+, to show that, as 
+\begin_inset Formula $D$
+\end_inset
+
+, the ratio (1.145) goes to zero.
+ Show also that the ratio of the distance from the centre of the hypercubes
+ to one of the corners, divided by the perpendicular distance to one of
+ the sides, is 
+\begin_inset Formula $\sqrt{D},$
+\end_inset
+
+ which therefore goes to 
+\begin_inset Formula $\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $D\rightarrow\infty$
+\end_inset
+
+.
+ From these results we see that, in a space of high dimensionality, most
+ of the volume of a cube is concentrated in the large number of corners,
+ which themselves become very long "spikes".
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1442,14 +2481,152 @@ And thus the ratio is
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.20 - High dimensional gaussian concentrate on a thin strip
+\end_layout
+
+\end_inset
+
+ In this exercise, we explore the behavior of the Gaussian distribution
+ in high-dimensional spaces.
+ Consider a Gaussian distribution in 
+\begin_inset Formula $D$
+\end_inset
+
+ dimensions given by 
+\begin_inset Formula 
+\[
+p(x)=\frac{1}{(2\pi\sigma^{2})^{D/2}}\exp\left(-\frac{\left\Vert x\right\Vert ^{2}}{2\sigma^{2}}\right).
+\]
+
+\end_inset
+
+We wish to find the density with respect to radius in polar coordinates
+ in which the direction variables have been integrated out.
+ To do this, show that he integral of the probiality density over a thin
+ shell of radius 
+\begin_inset Formula $r$
+\end_inset
+
+ and thickness 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+, where 
+\begin_inset Formula $\varepsilon\ll1,$
+\end_inset
+
+ is given by 
+\begin_inset Formula $p(r)\varepsilon$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\[
+p(r)=\frac{S_{D}r^{D-1}}{(2\pi\sigma^{2})^{D/2}}\exp\left(-\frac{r^{2}}{2\sigma^{2}}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $S_{D}$
+\end_inset
+
+ is the surface area of a unit sphere in 
+\begin_inset Formula $D$
+\end_inset
+
+ dimensions.
+ Show that the function 
+\begin_inset Formula $p(r)$
+\end_inset
+
+ has a single stationary point located, for large 
+\begin_inset Formula $D$
+\end_inset
+
+, at 
+\begin_inset Formula $\widehat{r}\simeq\sqrt{D}\sigma.$
+\end_inset
+
+ By considering 
+\begin_inset Formula $p(\widehat{r}+\varepsilon)$
+\end_inset
+
+ where 
+\begin_inset Formula $\varepsilon\ll\widehat{r}$
+\end_inset
+
+, show that for large 
+\begin_inset Formula $D,$
 \end_inset
 
 
+\begin_inset Formula 
+\[
+p(\widehat{r}+\varepsilon)=p(\widehat{r})\exp\left(-\frac{3\varepsilon^{2}}{2\sigma^{2}}\right),
+\]
+
+\end_inset
+
+which show that 
+\begin_inset Formula $\widehat{r}$
+\end_inset
+
+ is a maximum of the radial probability density and also that 
+\begin_inset Formula $p(r)$
+\end_inset
+
+ decays exponentially away from its maximum at 
+\begin_inset Formula $\widehat{r}$
+\end_inset
+
+ with length scale 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ We have already seen that 
+\begin_inset Formula $\sigma\ll\widehat{r}$
+\end_inset
+
+ for large 
+\begin_inset Formula $D,$
+\end_inset
+
+ and so we see that most of the probability mass is concentrated in a thin
+ shell at large radius.
+ Finally, show that the probability density 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ is larger at the origin than at the radius 
+\begin_inset Formula $\widehat{r}$
+\end_inset
+
+ by a factor of 
+\begin_inset Formula $\exp(D/2).$
+\end_inset
+
+ We therefore see that most of the probability mass in a high dimensional
+ Gaussian distribution is located at a different radius from the region
+ of high probability density.
+ This property of distributions in spaces of high dimensionality will have
+ important consequences when we consider Bayesian inference of model parameters
+ in later chapters.
+ 
 \end_layout
 
-\begin_layout Section
-Problem 1.20 - High dimensional gaussian concentrate on a thin strip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1605,14 +2782,52 @@ whence
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.21 - Upper bound of bayesian classification error
+\end_layout
+
+\end_inset
+
+ Consider two nonnegative numbers 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+, and show that, if 
+\begin_inset Formula $a\leq b$
+\end_inset
+
+, then 
+\begin_inset Formula $a\leq(ab)^{1/2}$
+\end_inset
+
+.
+ Use this result to show that, if the decision regions of a two-class classifica
+tion problem are chosen to minimize the probability of misclassification,
+ this probability will satisfy
+\begin_inset Formula 
+\[
+p(\mathrm{mistake})\leq\int\{p(x,\mathcal{C}_{1})p(x,\mathcal{C}_{2})\}^{1/2}dx.
+\]
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section
-Problem 1.21 - Upper bound of bayesian classification error
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1669,8 +2884,45 @@ where the last inequality follows since we are working in a two-class setting
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.22 - Uniform loss maximizes posterior probability 
+\end_layout
+
+\end_inset
+
+ Given a loss matrix with elements 
+\begin_inset Formula $L_{kj}$
+\end_inset
+
+, the expected risk is minimized if, for each 
+\begin_inset Formula $x$
+\end_inset
+
+, we choose the class that minimizes (1.81).
+ Verify that, when the loss matrix is given by 
+\begin_inset Formula $L_{kj}=1-I_{kl}$
+\end_inset
+
+ , where 
+\begin_inset Formula $I_{kj}$
+\end_inset
+
+ are the elements of the identity matrix, this reduces to the criterion
+ of choosing the class having the largest posterior probability.
+ What is the interpretation of this form of loss matrix?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1730,11 +2982,33 @@ We can interpret this loss in the following way: this loss assigns unit
  weight to each misclassified labels and zero weight to correctly classified
  labels and therefore minimizing the expectation represents minimizing the
  misclassification rate.
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.23 - Characterization for minimizing general expected loss
+\end_layout
+
+\end_inset
+
+ Derive the criterion for minimizing the expected loss when there is a general
+ loss matrix and general prior probabilities for the classes.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1768,10 +3042,65 @@ Suppose
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.24 - Duality between decision and rejection criterion 
+\end_layout
+
+\end_inset
+
+ Consider a classification problem in which the loss incurred when an input
+ vector from class 
+\begin_inset Formula $\mathcal{C}_{k}$
+\end_inset
+
+ is classified as belonging to class 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ is given by the loss matrix 
+\begin_inset Formula $L_{kj}$
+\end_inset
+
+ and for which the loss incurred in selecting the reject option is 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ Find the decision criterion that will give the minimum expected loss.
+ Verify that this reduces to the reject criterion discussed in Section 1.5.3
+ when the loss matrix is given by 
+\begin_inset Formula $L_{kj}=1-I_{kj}$
+\end_inset
+
+ .
+ What is the relationship between 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and the rejection threshold 
+\begin_inset Formula $\theta$
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1850,10 +3179,70 @@ Note that the last stipulation is equivalent to
 \end_inset
 
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.25 - Generalized squared loss function
+\end_layout
+
+\end_inset
+
+ Consider the generalization of the squared loss function (1.87) for a single
+ target variable 
+\begin_inset Formula $t$
+\end_inset
+
+ to the case of multiple target variables described by the vector 
+\begin_inset Formula $t$
+\end_inset
+
+ given by
+\begin_inset Formula 
+\[
+\E[L(t,y(x))]=\int\int\left\Vert y(x)-t\right\Vert ^{2}p(x,t)dxdt.
+\]
+
+\end_inset
+
+Using the calculus of variations, show that the function 
+\begin_inset Formula $y(x)$
+\end_inset
+
+ for which this expected loss is minimized is given by 
+\begin_inset Formula $y(x)=\E_{t}[t\vert x]$
+\end_inset
+
+.
+ Show that this result reduces to (1.89) for the case of a single target
+ variable 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1878,10 +3267,46 @@ y(x)\int p(t,x)dt=\int tp(t,x)dt & \iff y(x)=\frac{\int tp(t,x)dt}{\int p(t,x)dt
 
 as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.26 - Decomposition of expected squared loss
+\end_layout
+
+\end_inset
+
+ By expansion of the square in (1.151), derive a result analogous to (1.90)
+ and hence show that the function 
+\begin_inset Formula $y(x)$
+\end_inset
+
+ that minimizes the expected squared loss for the case of a vector 
+\begin_inset Formula $t$
+\end_inset
+
+ of target variables is again given by the conditional expectation of 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1925,14 +3350,91 @@ Hence, we see that
  which is analogues to Eq.
  (1.90).
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.27 - Maximizer of 
 \begin_inset Formula $L_{1},L_{0^{+}}$
 \end_inset
 
  expected loss 
+\end_layout
+
+\end_inset
+
+ Consider the expected loss for regression problems under the 
+\begin_inset Formula $L_{q}$
+\end_inset
+
+ loss function given by (1.91).
+ Write down the condition that 
+\begin_inset Formula $y(x)$
+\end_inset
+
+ must satisfy in order to minimize 
+\begin_inset Formula $\E[L_{q}]$
+\end_inset
+
+.
+ Show that, for 
+\begin_inset Formula $q=1$
+\end_inset
+
+, this solution represents the conditional median, i.e., the function 
+\begin_inset Formula $y(x)$
+\end_inset
+
+ such that the probability mass for 
+\begin_inset Formula $t<y(x)$
+\end_inset
+
+ is the same as for 
+\begin_inset Formula $t\geq y(x)$
+\end_inset
+
+.
+ Also show that the minimum expected 
+\begin_inset Formula $L_{q}$
+\end_inset
+
+ loss for 
+\begin_inset Formula $q\rightarrow0$
+\end_inset
+
+ is given by the conditional mode, i.e., by the function 
+\begin_inset Formula $y(x)$
+\end_inset
+
+ equal to the value of 
+\begin_inset Formula $t$
+\end_inset
+
+ that maximizes 
+\begin_inset Formula $p(t\vert x)$
+\end_inset
+
+ for each 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2148,10 +3650,116 @@ So to translate into heuristic terms,
 
 ".
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.28 - Derivation of information content
+\end_layout
+
+\end_inset
+
+ In Section 1.6, we introduced the idea of entropy 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ as the information gained on observing the value of a random variable 
+\begin_inset Formula $x$
+\end_inset
+
+ having distribution 
+\begin_inset Formula $p(x)$
+\end_inset
+
+.
+ We saw that, for independent variables 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ for which 
+\begin_inset Formula $p(x,y)=p(x)p(y)$
+\end_inset
+
+, the entropy functions are additive, so that 
+\begin_inset Formula $h(x,y)=h(x)+h(y)$
+\end_inset
+
+.
+ In this exercise, we derive the relation between 
+\begin_inset Formula $h$
+\end_inset
+
+ and 
+\begin_inset Formula $p$
+\end_inset
+
+ in the form of a function 
+\begin_inset Formula $h(p)$
+\end_inset
+
+.
+ First show that 
+\begin_inset Formula $h(p^{2})=2h(p)$
+\end_inset
+
+, and hence by induction that 
+\begin_inset Formula $h(p^{n})=nh(p)$
+\end_inset
+
+, where 
+\begin_inset Formula $n$
+\end_inset
+
+ is a positive integer.
+ Hence show that 
+\begin_inset Formula $h(p^{n/m})=(n/m)h(p)$
+\end_inset
+
+ where 
+\begin_inset Formula $m$
+\end_inset
+
+ is also a positive integer.
+ This implies that 
+\begin_inset Formula $h(p^{x})=xh(p)$
+\end_inset
+
+ where 
+\begin_inset Formula $x$
+\end_inset
+
+ is a positive rational number, and hence by continuity when it is a positive
+ real number.
+ Finally, show that this implies 
+\begin_inset Formula $h(p)$
+\end_inset
+
+ must take the form 
+\begin_inset Formula $h(p)\propto\ln p$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2369,10 +3977,49 @@ Therefore, we have
 
  as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.29 - Upper bound for entropy of discrete variables
+\end_layout
+
+\end_inset
+
+ Consider an 
+\begin_inset Formula $M$
+\end_inset
+
+-state discrete random variable 
+\begin_inset Formula $x$
+\end_inset
+
+, and use Jensen’s inequality in the form (1.115) to show that the entropy
+ of its distribution 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $H(x)\leq\ln M.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2394,10 +4041,40 @@ where the
 
  is concave.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.30 - KL-divergence for Gaussian
+\end_layout
+
+\end_inset
+
+ Evaluate the Kullback-Leibler divergence (1.113) between two Gaussians 
+\begin_inset Formula $p(x)=\mathrm{N}(x\vert\mu,\sigma^{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $q(x)=\mathrm{N}(x\vert m,s^{2}).$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2444,8 +4121,57 @@ KL(p||q) & =\frac{1}{2}\ln(2\pi s^{2})+\frac{1}{2s^{2}}\left[\sigma^{2}+\mu^{2}-
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.31 - Differential entropy and independence
+\end_layout
+
+\end_inset
+
+ Consider two variables 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ having joint distribution 
+\begin_inset Formula $p(x,y)$
+\end_inset
+
+.
+ Show that the differential entropy of this pair of variables satisfies
+ 
+\begin_inset Formula 
+\[
+H(x,y)\leq H(x)+H(y),
+\]
+
+\end_inset
+
+with equality if and only if 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ are statistically independent.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2696,10 +4422,66 @@ noprefix "false"
 
  are independent.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.32 - Entropy under linear transformation 
+\end_layout
+
+\end_inset
+
+ Consider a vector 
+\begin_inset Formula $X$
+\end_inset
+
+ of continuous variables with distribution 
+\begin_inset Formula $f_{X}(x)$
+\end_inset
+
+ and corresponding entropy 
+\begin_inset Formula $H(X)$
+\end_inset
+
+.
+ Suppose that we make a nonsingular linear transformation of 
+\begin_inset Formula $X$
+\end_inset
+
+ to obtain a new variable 
+\begin_inset Formula $Y=AX$
+\end_inset
+
+.
+ Show that the corresponding entropy is given by 
+\begin_inset Formula $H(Y)=H(X)+\ln\left|A\right|$
+\end_inset
+
+ where 
+\begin_inset Formula $\left|A\right|$
+\end_inset
+
+ denotes the determinant of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2951,8 +4733,68 @@ where
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.33 - Zero conditional entropy implies singleton concentration
+\end_layout
+
+\end_inset
+
+ Suppose that the conditional entropy 
+\begin_inset Formula $H(Y\vert X)$
+\end_inset
+
+between two discrete random variables 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ is zero.
+ Show that, for all values of 
+\begin_inset Formula $X$
+\end_inset
+
+ such that 
+\begin_inset Formula $f_{X}(x)>0$
+\end_inset
+
+, the variable 
+\begin_inset Formula $Y$
+\end_inset
+
+ must be a function of 
+\begin_inset Formula $X$
+\end_inset
+
+, in other words for each 
+\begin_inset Formula $X$
+\end_inset
+
+ there is only one value of 
+\begin_inset Formula $Y$
+\end_inset
+
+ such that 
+\begin_inset Formula $f_{Y\vert X}(y\vert x)\geq0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3079,10 +4921,36 @@ Since
 
 , causing a contradiction.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.34 - Gaussian distribution maximizes entropy under constraints
+\end_layout
+
+\end_inset
+
+ Use the calculus of variations to show that the stationary point of the
+ functional (1.108) is given by (1.108).
+ Then use the constraints (1.105), (1.106), and (1.107) to eliminate the Lagrange
+ multipliers and hence show that the maximum entropy solution is given by
+ the Gaussian (1.109).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3206,10 +5074,30 @@ One can potentially ask is Gaussian a unique minimizer for this optimization
 , has unique solution.
  I would guess some deep theorems are needed to prove this result, assuming
  it is true.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 1.35 - Entropy of Gaussian
 \end_layout
 
-\begin_layout Section
-Problem 1.35 - Entropy of Gaussian
+\end_inset
+
+ Use the results (1.106) and (1.107) to show that the entropy of the univariate
+ Gaussian (1.109) is given by (1.110).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3235,10 +5123,35 @@ H(X) & =-\int\varphi(x\vert\mu,\sigma^{2})\ln\left[\varphi(x\vert\mu,\sigma^{2})
 \end_inset
 
 as desired.
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.36 - Second order characterization of convexity
+\end_layout
+
+\end_inset
+
+ A strictly convex function is defined as one for which every chord lies
+ above the function.
+ Show that this is equivalent to the condition that the second derivative
+ of the function be positive.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3633,10 +5546,44 @@ for some
 \end_inset
 
  
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.37 - Decomposition of joint entropy
+\end_layout
+
+\end_inset
+
+ Using the definition (1.111) together with the product rule of probability,
+ prove the result (1.112).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3667,11 +5614,33 @@ H(X,Y) & =\int\int f_{X,Y}(x,y)\log f_{X,Y}(x,y)dxdy\\
 \end_inset
 
 as desired.
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.38 - Proof of discrete Jensen's inequality
+\end_layout
+
+\end_inset
+
+ Using proof by induction, show that the inequality (1.114) for convex functions
+ implies the result (1.115).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3762,10 +5731,108 @@ Now substituting it back to Eq.(1) and we get
 
 as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.39 - Calculation of entropy and mutual information 
+\end_layout
+
+\end_inset
+
+ Consider two binary variables x and y having the joint distribution given
+ in Table 1.3.
+ Evaluate the following quantities 
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+(a).
+ 
+\begin_inset Formula $H(X)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+(b).
+ 
+\begin_inset Formula $H(Y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+(c).
+ 
+\begin_inset Formula $H(Y\vert X)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+(d).
+ 
+\begin_inset Formula $H(X\vert Y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+(e).
+ 
+\begin_inset Formula $H(X,Y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+(f).
+ 
+\begin_inset Formula $I(X,Y)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -3908,8 +5975,31 @@ I(X,Y)=H(X)-H(X\vert Y)=\frac{2}{3}\log\frac{3}{4}+\frac{1}{3}\log3.
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.40 - Proof of AM-GM using Jensen's inequality
+\end_layout
+
+\end_inset
+
+ By applying Jensen’s inequality (1.115) with 
+\begin_inset Formula $f(x)=\ln x$
+\end_inset
+
+, show that the arithmetic mean of a set of real numbers is never less than
+ their geometrical mean.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3939,10 +6029,37 @@ Next, since
 
 as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 1.41 - Characterization of mutual information
+\end_layout
+
+\end_inset
+
+ Using the sum and product rules of probability, show that the mutual informatio
+n 
+\begin_inset Formula $I(X,Y)$
+\end_inset
+
+ satisfies the relation (1.121).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

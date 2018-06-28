@@ -7,6 +7,7 @@
 \textclass book
 \begin_preamble
 \input{"/config/config.tex"}
+\allowdisplaybreaks
 \end_preamble
 \use_default_options true
 \master ../lyxmain.lyx
@@ -70,7 +71,7 @@ tcolorbox
 \leftmargin 2.5cm
 \topmargin 3cm
 \rightmargin 2.5cm
-\bottommargin 3cm
+\bottommargin 2cm
 \footskip 2cm
 \secnumdepth -1
 \tocdepth 3
@@ -96,9 +97,62 @@ tcolorbox
 Solutions for exercises to chapter 2
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\biggp}[1]{\bigg( #1 \bigg)}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.1 - Bernoulli distribution's expectation, variance, normalization,
  entropy
+\end_layout
+
+\end_inset
+
+ Verify that the Bernoulli distribution (2.2) satisfies the following properties
+ 
+\begin_inset Formula 
+\begin{align*}
+\sum_{x=0}^{1}f(x\vert\mu) & =1,\\
+\E[X] & =\mu,\\
+\mathrm{Var}[X] & =\mu(1-\mu).
+\end{align*}
+
+\end_inset
+
+Show that the entropy 
+\begin_inset Formula $H(X)$
+\end_inset
+
+ of a Bernoulli distributed random binary variable 
+\begin_inset Formula $X$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+H(X)=-\mu\ln\mu-(1-\mu)\ln(1-\mu).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -120,7 +174,7 @@ leftmargin=*
 
 \end_inset
 
- To check normalization, we note 
+ To ch`eck normalization, we note 
 \begin_inset Formula 
 \[
 \sum_{x=0}^{1}f_{X}(x\vert\mu)=\mu+(1-\mu)=1.
@@ -167,17 +221,45 @@ H(X)=-\sum_{x=0}^{1}f_{X}(x\vert\mu)f\log f_{X}(x|\mu)=-\mu\log\mu-(1-\mu)\log1-
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.2 - Symmetric Bernoulli distribution's expectation, variance, normaliza
 tion, entropy
 \end_layout
 
-\begin_layout Standard
-In the discussion below, 
+\end_inset
+
+ The form of the Bernoulli distribution given by (2.2) is not symmetric between
+ the two values of 
 \begin_inset Formula $X$
 \end_inset
 
- is a random variable following the distribution stipulated by Eq.(2.261).
+.
+ In some situations, it will be more convenient to use an equivalent formulation
+ for which 
+\begin_inset Formula $X\in\{-1,1\}$
+\end_inset
+
+, in which case the distribution can be written
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -237,8 +319,69 @@ H(X)=-\sum_{x\in\{-1,1\}}f_{X}(x|\mu)\log f_{X}(x|\mu)=-\left(\frac{1-\mu}{2}\ri
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.3 - Binomial distribution is normalized
+\end_layout
+
+\end_inset
+
+ In this exercise, we prove that the binomial distribution (2.9) is normalized.
+ First use the definition (2.10) of the number of combinations of 
+\begin_inset Formula $m$
+\end_inset
+
+ identical objects chosen from a total of 
+\begin_inset Formula $N$
+\end_inset
+
+ to show that
+\begin_inset Formula 
+\[
+\binom{N}{m}+\binom{N}{m-1}=\binom{N+1}{m}.
+\]
+
+\end_inset
+
+Use this result to prove by induction the following result
+\begin_inset Formula 
+\[
+(1+x)^{N}=\sum_{m=0}^{N}\binom{N}{m}x^{m},
+\]
+
+\end_inset
+
+which is known as the binomial theorem, and which is valid for all real
+ values of 
+\begin_inset Formula $x.$
+\end_inset
+
+ Finally, show that the binomial distribution is normalized, so that 
+\begin_inset Formula 
+\[
+\sum_{m=0}^{N}\binom{N}{m}\mu^{m}(1-\mu)^{N-m}=1,
+\]
+
+\end_inset
+
+which can be done by first pulling out a factor 
+\begin_inset Formula $(1-\mu)^{N}$
+\end_inset
+
+ out of the summation and then making use of the binomial theorem.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -348,8 +491,43 @@ it follows that
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.4 - Binomial distribution's expectation and variance 
+\end_layout
+
+\end_inset
+
+ Show that the mean of the binomial distribution is given by (2.11).
+ To do this, differentiate both sides of the normalization condition (2.264)
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and then rearrange to obtain an expression for the mean of 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Similarly, by differentiating (2.264) twice with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and making use of the result (2.11) for the mean of the binomial distribution
+ prove the result (2.12) for the variance of the binomial.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -478,8 +656,78 @@ The conclusion can be drawn by observing that
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.5 - Beta distribution is normalized 
+\end_layout
+
+\end_inset
+
+ In this exercise, we prove that the beta distribution, given by (2.13),
+ is correctly normalized, so that (2.14) holds.
+ This is equivalent to showing that 
+\begin_inset Formula 
+\[
+\int_{0}^{1}\mu^{a-1}(1-\mu)^{b-1}d\mu=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}.
+\]
+
+\end_inset
+
+From the definition (1.141) of the gamma function, we have 
+\begin_inset Formula 
+\[
+\Gamma(a)\Gamma(b)=\int_{0}^{\infty}\exp(-x)x^{a-1}dx\int_{0}^{\infty}\exp(-y)y^{b-1}dy.
+\]
+
+\end_inset
+
+Use this expression to prove (2.265) as follows.
+ First bring the integral over 
+\begin_inset Formula $y$
+\end_inset
+
+ inside the integrand of the integral of 
+\begin_inset Formula $x$
+\end_inset
+
+, next make the change of variable 
+\begin_inset Formula $t=y+x$
+\end_inset
+
+, where 
+\begin_inset Formula $x$
+\end_inset
+
+ is fixed, then interchange the order of the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ integrations, and finally make the change of variable 
+\begin_inset Formula $x=t\mu$
+\end_inset
+
+ where 
+\begin_inset Formula $t$
+\end_inset
+
+ is fixed.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -542,10 +790,43 @@ Hence, it follows that
 
 and as a result the Beta density integrates to 1.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.6 - Beta distribution's expectation, variance, mode 
+\end_layout
+
+\end_inset
+
+ Make use of the result (2.265) to show that the mean, variance, and mode
+ of the beta distribution (2.13) are given respectively by 
+\begin_inset Formula 
+\begin{align*}
+\E[\mu] & =\frac{a}{a+b},\\
+\mathrm{Var}[\mu] & =\frac{ab}{(a+b)^{2}(a+b+1)},\\
+\mathrm{mode}[\mu] & =\frac{a-1}{a+b-1}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -643,9 +924,72 @@ Setting it to zero yields
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.7 - Comparison between posterior mean and MLE for Bernoulli model
  
+\end_layout
+
+\end_inset
+
+ Consider a binomial random variable 
+\begin_inset Formula $X$
+\end_inset
+
+ given by (2.9), with prior distribution for 
+\begin_inset Formula $\mu$
+\end_inset
+
+ given by the beta distribution (2.13), and suppose we have observed m occurrence
+s of 
+\begin_inset Formula $X=1$
+\end_inset
+
+ and 
+\begin_inset Formula $l$
+\end_inset
+
+ occurrences of 
+\begin_inset Formula $X=0$
+\end_inset
+
+.
+ Show that the posterior mean value of 
+\begin_inset Formula $X$
+\end_inset
+
+ lies between the prior mean and the maximum likelihood estimate for 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ To do this, show that the posterior mean can be written as 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ times the prior mean plus 
+\begin_inset Formula $(1-\lambda)$
+\end_inset
+
+ times the maximum likelihood estimate, where 
+\begin_inset Formula $0\leq\lambda\leq1$
+\end_inset
+
+.
+ This illustrates the concept of the posterior distribution being a compromise
+ between the prior distribution and the maximum likelihood solution.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -832,10 +1176,87 @@ Then the claim is true since
 
  by assumption.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
-Problem 2.9 - Dirichlet distribution is normalized
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.9 - Dirichlet distribution is normalized 
+\end_layout
+
+\end_inset
+
+ In this exercise, we prove the normalization of the Dirichlet distribution
+ (2.38) using induction.
+ We have already shown in Exercise 2.5 that the beta distribution, which
+ is a special case of the Dirichlet for 
+\begin_inset Formula $M=2$
+\end_inset
+
+, is normalized.
+ We now assume that the Dirichlet distribution is normalized for 
+\begin_inset Formula $M-1$
+\end_inset
+
+ variables and prove that it is normalized for 
+\begin_inset Formula $M$
+\end_inset
+
+ variables.
+ To do this, consider the Dirichlet distribution over 
+\begin_inset Formula $M$
+\end_inset
+
+ variables, and take account of the constraint 
+\begin_inset Formula $\sum_{k=1}^{M}\mu_{k}$
+\end_inset
+
+ by eliminating 
+\begin_inset Formula $\mu_{m}$
+\end_inset
+
+ , so that the Dirichlet is written 
+\begin_inset Formula 
+\[
+p_{M}(\mu_{1},\ldots,\mu_{M-1})=C_{M}\prod_{k=1}^{M-1}\mu_{k}^{\alpha_{k}-1}\bigg(1-\sum_{j=1}^{M-1}\mu_{j}\bigg)^{\alpha_{M}-1}
+\]
+
+\end_inset
+
+and out goal is to find an expression for 
+\begin_inset Formula $C_{M}.$
+\end_inset
+
+ To do this, integrate over 
+\begin_inset Formula $\mu_{M-1}$
+\end_inset
+
+, taking care over the limits of integration, and then make a change of
+ variable so that this integral has limits 0 and 1.
+ By assuming the correct result for 
+\begin_inset Formula $C_{M-1}$
+\end_inset
+
+ and making use of (2.265), derive the expression for 
+\begin_inset Formula $C_{M}$
+\end_inset
+
+ .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1101,15 +1522,58 @@ Therefore,
 \end_inset
 
 as desired.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
-Problem 2.10 - Dirichlet distribution's expectation, variance and covariance
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
 
-\shape italic
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.10 - Dirichlet distribution's expectation, variance and covariance
+\end_layout
+
+\end_inset
+
+ Using the property 
+\begin_inset Formula $\Gamma(x+1)=x\Gamma(x)$
+\end_inset
+
+ of the gamma function, derive the following results for the mean, and covarianc
+e of the Dirichlet distribution given by (2.38) 
+\begin_inset Formula 
+\begin{align*}
+ & \E[\mu_{j}]=\frac{\alpha_{j}}{\alpha_{0}},\\
+ & \mathrm{Var}[\mu_{j}]=\frac{\alpha_{j}(\alpha_{0}-\alpha_{j})}{\alpha_{0}^{2}(\alpha_{0}+1)},\\
+ & \mathrm{Cov}[\mu_{j}\mu_{l}]=-\frac{\alpha_{j}\alpha_{l}}{\alpha_{0}^{2}(\alpha_{0}+1)},\ \ j\neq l,
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+ is defined by 
+\begin_inset Formula $(2.39)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 In the discussion below, we let 
 \begin_inset Formula $\mu$
 \end_inset
@@ -1214,11 +1678,63 @@ Therefore, it follows that
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.11 - Expression for 
 \begin_inset Formula $\mathbb{E}[\log\mathrm{Dir}(\alpha)]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ By expressing the expectation of 
+\begin_inset Formula $\ln\mu_{j}$
+\end_inset
+
+ under the Dirichlet distribution (2.38) as a derivative with respect to
+ 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+, show that 
+\begin_inset Formula 
+\[
+\E[\ln\mu_{j}]=\psi(\alpha_{j})-\psi(\alpha_{0})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+ is given by (2.39) and 
+\begin_inset Formula 
+\[
+\psi(a)\equiv\frac{d}{da}\ln\Gamma(a)
+\]
+
+\end_inset
+
+is the digamma function.
+ 
+\end_layout
+
 \end_inset
 
 
@@ -1302,11 +1818,46 @@ Hence,
 
  as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.12 - Uniform distribution's normalization, expectation, variance
  
+\end_layout
+
+\end_inset
+
+ The uniform distribution for a continuous variable 
+\begin_inset Formula $X$
+\end_inset
+
+ is defined by 
+\begin_inset Formula 
+\[
+\mathrm{U}(x\vert a,b)=\frac{1}{b-a},\ a\leq x\leq b.
+\]
+
+\end_inset
+
+Verify that this distribution is normalized, and find expressions for its
+ mean and variance.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1383,10 +1934,70 @@ To find the variance, first we note that
 
 as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.14 - Multidimensional gaussian maximizes entropy 
+\end_layout
+
+\end_inset
+
+ This exercise demonstrates that the multivariate distribution with maximum
+ entropy, for a given covariance, is a Gaussian.
+ The entropy of a distribution 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+H(X)=-\int p(x)\ln p(x)dx.
+\]
+
+\end_inset
+
+We with to maximize 
+\begin_inset Formula $H(X)$
+\end_inset
+
+ over all distribution 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ subject to the constraints that 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ be normalized and that it have specific mean and covariance, so that 
+\begin_inset Formula 
+\begin{align*}
+ & \int p(x)dx=1,\\
+ & \int p(x)xdx=\mu,\\
+ & \int p(x)(x-\mu)(x-\mu)^{T}dx=\Sigma.
+\end{align*}
+
+\end_inset
+
+By performing a variational maximization of (2.279) and using Lagrange multiplier
+s to enforce the constraints (2.280), (2.281), and (2.282), show that the maximum
+ likelihood distribution is given by the Gaussian (2.43).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1723,15 +2334,55 @@ forms a set of admissible solution.
  distribution is a minimizer of the calculus of variation program proposed
  in this problem.
  
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
-Problem 2.15 - Entropy of multivariate gaussian
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
 
-\shape italic
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.15 - Entropy of multivariate gaussian
+\end_layout
+
+\end_inset
+
+ Show that the entropy of the multivariate Gaussian 
+\begin_inset Formula $\mathrm{N}(x\vert\mu,\Sigma)$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+H(X)=\frac{1}{2}\ln\left|\Sigma\right|+\frac{D}{2}(1+\ln(2\pi))
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $D$
+\end_inset
+
+ is the dimensionality of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 In the discussion below, let 
 \begin_inset Formula $X$
 \end_inset
@@ -1745,23 +2396,7 @@ In the discussion below, let
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-noindent 
-\end_layout
-
-\end_inset
-
-First, we give a lemma to be used later.
+ First, we give a lemma to be used later.
  
 \end_layout
 
@@ -1836,11 +2471,70 @@ H(X) & =-\int\varphi(x|\mu,\Sigma)\ln\varphi(x|\mu,\Sigma)\\
 
 \end_inset
 
+as desired.
+\begin_inset Newline newline
+\end_inset
+
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.16 - Entropy of sum of two gaussians
+\end_layout
+
+\end_inset
+
+ Consider two random variables 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ having Gaussian distribution with means 
+\begin_inset Formula $\mu_{1},\mu_{2}$
+\end_inset
+
+ and precisions 
+\begin_inset Formula $\tau_{1},\tau_{2}$
+\end_inset
+
+ respectively.
+ Derive an expression for the differential entropy of the variable 
+\begin_inset Formula $X=X_{1}+X_{2}.$
+\end_inset
+
+ To do this, first find the distribution of 
+\begin_inset Formula $X$
+\end_inset
+
+ by using the relation 
+\begin_inset Formula 
+\[
+f(x)=\int_{-\infty}^{\infty}f(x\vert x_{2})f(x_{2})dx_{2}
+\]
+
+\end_inset
+
+and completing the square in the exponent.
+ Then observe that this represents the convolution of two Gaussian distributions
+, which itself will be Gaussian, and finally make use of the result (1.110)
+ for the entropy of the univariate Gaussian.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2947,14 +3641,47 @@ Therefore,
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.17 - Suffices to assume the parameter 
 \begin_inset Formula $\Sigma$
 \end_inset
 
  in Gaussian to be symmetric
+\end_layout
+
+\end_inset
+
+ Consider the multivariate Gaussian distribution given by (2.43).
+ By writing the precision matrix (inverse covariance matrix) 
+\begin_inset Formula $\Sigma^{-1}$
+\end_inset
+
+ as the sum of a symmetric and an anti-symmetric matrix, show that the anti-symm
+etric term does not appear in the exponent of the Gaussian, and hence that
+ the precision matrix may be taken to be symmetric without loss of generality.
+ Because the inverse of a symmetric matrix is also symmetric (see Exercise
+ 2.22), it follows that the covariance matrix may also be chosen to be symmetric
+ without loss of generality.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2989,10 +3716,42 @@ Since
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.18 - Eigen-decomposition for symmetric matrices 
+\end_layout
+
+\end_inset
+
+ Consider a real, symmetric matrix Σ whose eigenvalue equation is given
+ by (2.45).
+ By taking the complex conjugate of this equation and subtracting the original
+ equation, and then forming the inner product with eigenvector ui, show
+ that the eigenvalues λi are real.
+ Similarly, use the symmetry property of Σ to show that two eigenvectors
+ ui and uj will be orthogonal provided λj à= λi.
+ Finally, show that without loss of generality, the set of eigenvectors
+ can be chosen to be orthonormal, so that they satisfy (2.46), even if some
+ of the eigenvalues are zero.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3604,15 +4363,48 @@ noprefix "false"
 \end_inset
 
 .
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.19 - Characterization of 
 \begin_inset Formula $\Sigma,\Sigma^{-1}$
 \end_inset
 
  in Gaussian distribution
+\end_layout
+
+\end_inset
+
+ Show that a real, symmetric matrix 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ having the eigenvector equation (2.45) can be expressed as an expansion
+ in the eigenvectors, with coefficients given by the eigenvalues, of the
+ form (2.48).
+ Similarly, show that the inverse matrix 
+\begin_inset Formula $\Sigma^{-1}$
+\end_inset
+
+ has a representation of the form (2.49).
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3642,10 +4434,57 @@ Note that
 
  as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.20 - Positive definite has positive eigenvalues
+\end_layout
+
+\end_inset
+
+ A positive definite matrix 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ can be defined as one for which the quadratic form 
+\begin_inset Formula 
+\[
+a^{T}\Sigma a
+\]
+
+\end_inset
+
+is positive for any real value of the vector a.
+ Show that a necessary and sufficient condition for 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ to be positive definite is that all of the eigenvalues 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ of 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, defined by (2.45), are positive.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3849,6 +4688,10 @@ One detail we left out here is to show that
 
  is positive as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3858,8 +4701,34 @@ One detail we left out here is to show that
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.21 - Independent parameter for symmetric matrix 
+\end_layout
+
+\end_inset
+
+Show that a real, symmetric matrix of size 
+\begin_inset Formula $D\times D$
+\end_inset
+
+ has 
+\begin_inset Formula $D(D+1)/2$
+\end_inset
+
+ independent parameters.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3871,10 +4740,32 @@ Clearly, once we have known the upper triangular part of the matrix plus
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.22 - Inverse of symmetric matrix is symmetric
+\end_layout
+
+\end_inset
+
+ Show that the inverse of a symmetric matrix is itself symmetric.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3917,14 +4808,59 @@ Hence, it follows that
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.23 - Volume of hyperellipsoid in 
 \begin_inset Formula $n$
 \end_inset
 
 -dimensional space 
+\end_layout
+
+\end_inset
+
+ By diagonalizing the coordinate system using the eigenvector expansion
+ (2.45), show that the volume contained within the hyperellipsoid corresponding
+ to a constant Mahalanobis distance 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+V_{D}\left|\Sigma\right|^{1/2}\Delta^{D}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $V_{D}$
+\end_inset
+
+ is the volume of the unit sphere in 
+\begin_inset Formula $D$
+\end_inset
+
+ dimensions, and the Mahalanobis distance is defined by (2.44).
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4002,10 +4938,46 @@ where the last equality follows since
 
 .
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.24 - Block matrix inversion formula
+\end_layout
+
+\end_inset
+
+ Prove the identity (2.76) by multiplying both sides by the matrix 
+\begin_inset Formula 
+\[
+\begin{bmatrix}A & B\\
+C & D
+\end{bmatrix}
+\]
+
+\end_inset
+
+and making use of the definition 
+\begin_inset Formula $(2.77).$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4038,6 +5010,10 @@ To facilitate notation, we use
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Lemma
@@ -4211,14 +5187,80 @@ P_{22} & =I.
 
 Therefore, the results follows.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.25 - Marginal and conditional expectation of multivariate gaussian
  
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ In Sections 2.3.1 and 2.3.2, we considered the conditional and marginal distributio
+ns for a multivariate Gaussian.
+ More generally, we can consider a partitioning of the components of 
+\begin_inset Formula $X$
+\end_inset
+
+ into three groups 
+\begin_inset Formula $X_{a}$
+\end_inset
+
+, 
+\begin_inset Formula $B_{b}$
+\end_inset
+
+, and 
+\begin_inset Formula $X_{c}$
+\end_inset
+
+, with a corresponding partitioning of the mean vector 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and of the covariance matrix 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ in the form 
+\begin_inset Formula 
+\[
+\mu=\begin{bmatrix}\mu_{a}\\
+\mu_{b}\\
+\mu_{c}
+\end{bmatrix},\ \ \Sigma=\begin{bmatrix}\Sigma_{aa} & \Sigma_{ab} & \Sigma_{ac}\\
+\Sigma_{ba} & \Sigma_{bb} & \Sigma_{bc}\\
+\Sigma_{ca} & \Sigma_{cb} & \Sigma_{cc}
+\end{bmatrix}
+\]
+
+\end_inset
+
+By making use of the results of Section 2.3, find an expression for the condition
+al distribution 
+\begin_inset Formula $\P(X_{a}\vert X_{b})$
+\end_inset
+
+ in which 
+\begin_inset Formula $X_{c}$
+\end_inset
+
+ has been marginalized out.
+\end_layout
+
+\begin_layout Remark
 
 \shape italic
 Although this textbook has derived the result for marginal and conditional
@@ -4231,24 +5273,14 @@ ns.
  Details of the derivation proposed by the book will also be discussed in
  the reading notes.
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
 \end_layout
 
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
-\shape default
+\begin_layout Standard
 To begin with, we introduce a few auxiliary lemmas to help proving later
  results.
 \end_layout
@@ -5384,10 +6416,45 @@ where
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.26 - Woodbury matrix inversion formula
+\end_layout
+
+\end_inset
+
+ A very useful result from linear algebra is the Woodbury matrix inversion
+ formula given by 
+\begin_inset Formula 
+\[
+(A+BCD)^{-1}=A^{-1}-A^{-1}B(C^{-1}+DA^{-1}B)^{-1}DA^{-1}.
+\]
+
+\end_inset
+
+By multiplying both sides by 
+\begin_inset Formula $(A+BCD)$
+\end_inset
+
+ prove the correctness of this result.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5420,10 +6487,63 @@ noprefix "false"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.27 - Linearity of expectation and covariance (multivariate case)
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Z$
+\end_inset
+
+ be two independent random vectors, so that 
+\begin_inset Formula $f(x,z)=f(x)f(z)$
+\end_inset
+
+.
+ Show that the mean of their sum 
+\begin_inset Formula $Y=X+Z$
+\end_inset
+
+ is given by the sum of the means of each of the variable separately.
+ Similarly, show that the covariance matrix of 
+\begin_inset Formula $Y$
+\end_inset
+
+ is given by the sum of the covariance matrices of 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Z$
+\end_inset
+
+.
+ Confirm that this result agrees with that of Exercise 1.10.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -5463,11 +6583,55 @@ For covariance, note that
 
 \end_inset
 
- 
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.28 - Conditional distribution from joint gaussian
+\end_layout
+
+\end_inset
+
+ Consider a joint distribution over the variable 
+\begin_inset Formula 
+\[
+z=\begin{bmatrix}x\\
+y
+\end{bmatrix}
+\]
+
+\end_inset
+
+whose mean and covariance are given by (2.108) and (2.105) respectively.
+ By making use of the results (2.92) and (2.93) show that the marginal distributio
+n 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ is given (2.99).
+ Similarly, by making use of the results (2.81) and (2.82) show that the condition
+al distribution 
+\begin_inset Formula $f(y\vert x)$
+\end_inset
+
+ is given by (2.100).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5605,10 +6769,33 @@ Y\vert X=x & \sim\mathrm{MVN}(\mu_{Y\vert X=x}=A\mu_{1}+b+(A\Lambda^{-1})\Lambda
 
 as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.29 - Verify Eq.(2.105) 
+\end_layout
+
+\end_inset
+
+ Using the partitioned matrix inversion formula (2.76), show that the inverse
+ of the precision matrix (2.104) is given by the covariance matrix (2.105).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5658,10 +6845,33 @@ where
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.30 - Verify Eq.(2.108) 
+\end_layout
+
+\end_inset
+
+ By starting from (2.107) and making use of the result (2.105), verify the
+ result (2.108).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5687,10 +6897,60 @@ A\mu+b
 
 as desired.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.31 - Sum of multivariate gaussian
+\end_layout
+
+\end_inset
+
+ Consider two multidimensional random vectors x and z having Gaussian distributi
+ons 
+\begin_inset Formula $f(x)=\mathrm{N}(x\vert\mu_{x},\Sigma_{x})$
+\end_inset
+
+ and 
+\begin_inset Formula $f(z)=\mathrm{N}(z\vert\mu_{z},\Sigma_{z})$
+\end_inset
+
+ respectively, together with their sum 
+\begin_inset Formula $y=x+z$
+\end_inset
+
+.
+ Use the results (2.109) and (2.110) to find an expression for the marginal
+ distribution 
+\begin_inset Formula $f(y)$
+\end_inset
+
+ by considering the linear-Gaussian model comprising the product of the
+ marginal distribution 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ and the conditional distribution 
+\begin_inset Formula $f(y\vert x)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6207,14 +7467,62 @@ noprefix "false"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.32 - Completing the squares trick for gaussian - 1
+\end_layout
+
+\end_inset
+
+ This exercise and the next provide practice at manipulating the quadratic
+ forms that arise in linear-Gaussian models, as well as giving an independent
+ check of results derived in the main text.
+ Consider a joint distribution 
+\begin_inset Formula $f(x,y)$
+\end_inset
+
+ defined by the marginal and conditional distributions given by (2.99) and
+ (2.100).
+ By examining the quadratic form in the exponent of the joint distribution,
+ and using the technique of "completing the square" discussed in Section
+ 2.3, find expressions for the mean and covariance of the marginal distribution
+ 
+\begin_inset Formula $f(y)$
+\end_inset
+
+ in which the variable 
+\begin_inset Formula $x$
+\end_inset
+
+ has been integrated out.
+ To do this, make use of the Woodbury matrix inversion formula (2.289).
+ Verify that these results agree with (2.109) and (2.110) obtained using the
+ results of Chapter 2.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 First, we give a lemma that formalize the process of "completing the squares"
  for gaussian distribution.
+ Note that most of the derivation of the results about Gaussian distribution
+ in the book can be attributed to this lemma, although it is not mentioned
+ explicitly in the book.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Lemma
@@ -6438,10 +7746,37 @@ and
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.33 - Completing the squares trick for gaussian - 2 
 \end_layout
 
-\begin_layout Section
-Problem 2.33 - Completing the squares trick for gaussian - 2 
+\end_inset
+
+ Consider the same joint distribution as in Exercise 2.32, but now use the
+ technique of completing the square to find expressions for the mean and
+ covariance of the conditional distribution 
+\begin_inset Formula $f(x\vert y)$
+\end_inset
+
+.
+ Again, verify that these agree with the corresponding expressions (2.111)
+ and (2.112).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6480,10 +7815,49 @@ X\vert Y=y\sim\mathrm{MVN}(\mu_{X|Y}=(\Lambda+A^{T}LA)^{-1}(\Lambda\mu+A^{T}L(y-
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.34 - MLE of covariance matrix for multivariate gaussian 
+\end_layout
+
+\end_inset
+
+ To find the maximum likelihood solution for the covariance matrix of a
+ multivariate Gaussian, we need to maximize the log likelihood function
+ (2.118) with respect to 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, noting that the covariance matrix must be symmetric and positive definite.
+ Here we proceed by ignoring these constraints and doing a straightforward
+ maximization.
+ Using the results (C.21), (C.26), and (C.28) from Appendix C, show that the
+ covariance matrix 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ that maximizes the log likelihood function (2.118) is given by the sample
+ covariance (2.122).
+ We note that the final result is necessarily symmetric and positive definite
+ (provided the sample covariance is nonsingular).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7195,12 +8569,60 @@ Therefore, it follows that
 
 \end_layout
 
-\begin_layout Section
-Problem 3.35 - Expectation of 
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.35 - Expectation of 
 \begin_inset Formula $\Sigma_{MLE}$
 \end_inset
 
  in multivariate gaussian
+\end_layout
+
+\end_inset
+
+ Use the result (2.59) to prove (2.62).
+ Now, using the results (2.59), and (2.62), show that 
+\begin_inset Formula 
+\[
+\E[x_{n}x_{m}]=\mu\mu^{T}+I_{nm}\Sigma
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ denotes a data point sampled from a Gaussian distribution with mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and covariance 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{nm}$
+\end_inset
+
+ denotes the 
+\begin_inset Formula $(n,m)$
+\end_inset
+
+ element of the identity matrix.
+ Hence, prove the result (2.124).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7230,11 +8652,50 @@ Now we note that
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
-Problem 3.36 - Sequential estimation of gaussian covariance - univariate
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.36 - Sequential estimation of gaussian covariance - univariate
  case
+\end_layout
+
+\end_inset
+
+ Using an analogous procedure to that used to obtain (2.126), derive an expressio
+n for the sequential estimation of the variance of a univariate Gaussian
+ distribution, by starting with the maximum likelihood expression 
+\begin_inset Formula 
+\[
+\sigma_{ML}^{2}=\frac{1}{n}\sum_{i=1}^{n}(x_{n}-\mu)^{2}
+\]
+
+\end_inset
+
+Verify that substituting the expression for a Gaussian distribution into
+ the Robbins-Monro sequential estimation formula (2.135) gives a result of
+ the same form, and hence obtain an expression for the corresponding coefficient
+s 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7268,11 +8729,43 @@ Compared Eq.(1) and Eq.(2), we see that
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
-Problem 3.37 - Sequential estimation of gaussian covariance - multivariate
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.37 - Sequential estimation of gaussian covariance - multivariate
  case
+\end_layout
+
+\end_inset
+
+ Using an analogous procedure to that used to obtain (2.126), derive an expressio
+n for the sequential estimation of the covariance of a multivariate Gaussian
+ distribution, by starting with the maximum likelihood expression (2.122).
+ Verify that substituting the expression for a Gaussian distribution into
+ the Robbins-Monro sequential estimation formula (2.135) gives a result of
+ the same form, and hence obtain an expression for the corresponding coefficient
+s 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7311,10 +8804,34 @@ Compare Eq.(1) and Eq.(2) and we get that
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
-Problem 3.38 - Completion the square for Gaussian bayesian update
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.38 - Completion the square for Gaussian bayesian update
+\end_layout
+
+\end_inset
+
+ Use the technique of completing the square for the quadratic form in the
+ expo- nent to derive the results (2.141) and (2.142).
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7371,10 +8888,60 @@ and that
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
-Problem 3.39 - Sequential bayesian for univariate gaussian
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.39 - Sequential bayesian for univariate gaussian
+\end_layout
+
+\end_inset
+
+Starting from the results (2.141) and (2.142) for the posterior distribution
+ of the mean of a Gaussian random variable, dissect out the contributions
+ from the first 
+\begin_inset Formula $n-1$
+\end_inset
+
+ data points and hence obtain expressions for the sequential update of 
+\begin_inset Formula $\mu_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{n}^{2}$
+\end_inset
+
+ .
+ Now derive the same results starting from the posterior distribution 
+\begin_inset Formula $f(\mu\vert x_{1},\ldots,x_{n-1})=\mathrm{N}(\mu\vert\mu_{n-1},\sigma_{n-1}^{2})$
+\end_inset
+
+ and multiplying by the likelihood function 
+\begin_inset Formula $f(x_{n}\vert\mu)=\mathrm{N}(x_{n}\vert\mu,\sigma^{2})$
+\end_inset
+
+ and then completing the square and normalizing to obtain the posterior
+ distribution after 
+\begin_inset Formula $n$
+\end_inset
+
+ observations.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7461,10 +9028,65 @@ noprefix "false"
 
 which is the same as what we derived previously.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Problem 2.40 - Bayesian update for multivariate gaussian 
+\end_layout
+
+\end_inset
+
+ Consider a 
+\begin_inset Formula $D$
+\end_inset
+
+ dimensional Gaussian random variable 
+\begin_inset Formula $x$
+\end_inset
+
+ with distribution 
+\begin_inset Formula $\mathrm{N}(x\vert\mu,\Sigma)$
+\end_inset
+
+ in which the covariance 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ is known and for which we wish to infer the mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ from a set of observations 
+\begin_inset Formula $X=(x_{1},\ldots,x_{n}).$
+\end_inset
+
+ Given a prior distribution 
+\begin_inset Formula $f(\mu)=\mathrm{N}(\mu\vert\mu_{0},\Sigma_{0})$
+\end_inset
+
+, find the corresponding posterior distribution 
+\begin_inset Formula $f(\mu\vert X)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7499,7 +9121,11 @@ noprefix "false"
 \end_inset
 
 where 
-\begin_inset Formula $\mu_{ML}=\frac{1}{n}\sum_{i=1}^{n}x_{i},$
+\begin_inset Formula $\mu_{ML}=\frac{1}{n}\sum_{i=1}^{n}x_{i}.$
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 
@@ -7562,6 +9188,10 @@ noprefix "false"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7583,7 +9213,7 @@ Problem 2.42 - Gamma distribution's mean, mode, variance
 
 \end_inset
 
- Thing s
+ 
 \end_layout
 
 \begin_layout Standard
@@ -7637,6 +9267,10 @@ Rearranging it a bit we get
 
  which implies that 
 \begin_inset Formula $x=\frac{a-1}{b}.$
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 
@@ -7848,6 +9482,10 @@ Then we take the logarithm to get the likelihood function:
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7948,6 +9586,10 @@ a_{n}=a+\frac{n}{2},\ \ b_{b}=b+\frac{1}{2}\sum_{i=1}^{n}x_{i}^{2}+\frac{\beta}{
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7967,6 +9609,333 @@ Problem 2.45 - Wishart distribution is conjugate prior of Gaussian precision
  Verify that the Wishart distribution defined by (2.155) is indeed a conjugate
  prior for the precision matrix of multivariate Gaussian.
  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that by Bayes update formula, 
+\begin_inset Formula 
+\begin{align*}
+f(\Lambda\vert X_{1},\ldots,X_{n}) & \propto f(X_{1},\ldots,X_{n}\vert\Lambda)f(\Lambda)=\prod_{i=1}^{n}f_{\mathrm{N}(\mu_{0},\Lambda^{-1})}(x_{i})f_{\mathrm{Wishart}(W,\nu)}(\Lambda)\\
+ & =\bigg(\prod_{i=1}^{n}\frac{\left|\det\Lambda\right|{}^{1/2}}{(2\pi)^{d/2}}\bigg)\exp\bigg(-\frac{1}{2}\sum_{i=1}^{n}(x_{i}-\mu)^{T}\Lambda(x_{i}-\mu)\bigg)\cdot B\left|\det\Lambda\right|^{(v-d-1)/2}\exp\left(-\frac{1}{2}\mathrm{tr}(W^{-1}\Lambda)\right)\\
+ & =\bigg(\prod_{i=1}^{n}\frac{\left|\det\Lambda\right|{}^{1/2}}{(2\pi)^{d/2}}\bigg)\exp\bigg(-\frac{1}{2}\sum_{i=1}^{n}(x_{i}-\mu)^{T}\Lambda(x_{i}-\mu)\bigg)\cdot B\left|\det\Lambda\right|^{(v-d-1)/2}\exp\left(-\frac{1}{2}\mathrm{tr}(W^{-1}\Lambda)\right)\\
+ & \propto\left|\det\Lambda\right|^{n/2+(v-d-1)/2}\exp\bigg(-\frac{1}{2}\sum_{i=1}^{n}\mathrm{tr}((x_{i}-\mu)^{T}\Lambda(x_{i}-\mu)-\frac{1}{2}\mathrm{tr}(\Lambda W^{-1})\bigg)\\
+ & =\left|\det\Lambda\right|^{(n+v-d-1)/2}\exp\bigg(-\frac{1}{2}\mathrm{tr}\bigg(\Lambda\bigg(\sum_{i=1}^{n}(x_{i}-\mu)(x_{i}-\mu)^{T}+W\bigg)\bigg)\bigg)\\
+ & \propto f_{\mathrm{Wishart}(\sum_{i=1}^{n}(x_{i}-\mu)(x_{i}-\mu)^{T}+W,n+v)}(\Lambda).
+\end{align*}
+
+\end_inset
+
+Therefore, we have shown that Wishart distribution is a conjugate prior
+ for the precision matrix of multivariate Gaussian.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.46 - 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.47 - Student 
+\begin_inset Formula $t$
+\end_inset
+
+-distribution converges to Gaussian
+\end_layout
+
+\end_inset
+
+ Show that in the limit 
+\begin_inset Formula $v\rightarrow\infty$
+\end_inset
+
+, the 
+\begin_inset Formula $t$
+\end_inset
+
+-distribution (2.159) becomes a Gaussian.
+ Hint: ignore the normalization coefficient, and simply look at the dependence
+ on 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Before, we go into the solution, we need an asymptotic approximation of
+ ratio of Gamma function.
+ We provide this approximation and give a proof as follows.
+\end_layout
+
+\begin_layout Lemma
+For any 
+\begin_inset Formula $\alpha\in\mathbb{R},$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+\lim_{x\rightarrow\infty}\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}=1.
+\]
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: gamma stirling approximation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+First, we note that by OEIS A046968 and A046969 we have that for 
+\begin_inset Formula $z\in\mathbb{R}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\log\Gamma(z) & =z\log z-z+\frac{1}{2}(\log2\pi+\log\frac{1}{z})+\frac{1}{12z}-\frac{1}{360z^{3}}+\frac{1}{1260z^{5}}-\cdots\\
+ & =z(\log z-1)+\frac{1}{2}(\log2\pi+\log\frac{1}{z})+\frac{1}{12z}+O\bigg(\frac{1}{z^{3}}\bigg).\tag{1 }
+\end{align*}
+
+\end_inset
+
+Hence, it suffices to prove that 
+\begin_inset Formula $\log\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}\rightarrow0$
+\end_inset
+
+ as 
+\begin_inset Formula $x\rightarrow\infty.$
+\end_inset
+
+ Note that 
+\begin_inset Formula 
+\begin{align*}
+\log\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}} & =\log\Gamma(x+\alpha)-\log\Gamma(x)-\alpha\log x\\
+ & =(x+\alpha)(\log(x+\alpha)-1)+\frac{1}{2}\bigg(\log2\pi+\log\frac{1}{x+\alpha}\bigg)+\frac{1}{12(x+\alpha)}+O\bigg(\frac{1}{(x+\alpha)^{3}}\bigg)\\
+ & \ \ -x\log x-x-\frac{1}{2}\bigg(\log2\pi+\log\frac{1}{\alpha}\bigg)-\frac{1}{12x}-O\bigg(\frac{1}{x^{3}}\bigg)-\alpha\log x\\
+ & =x\log\bigg(1+\frac{\alpha}{x}\bigg)-\frac{1}{2}\log\bigg(1+\frac{\alpha}{x}\bigg)+\alpha\log\bigg(1+\frac{\alpha}{x}\bigg)+\frac{1}{12}\bigg(\frac{1}{x+\alpha}-\frac{1}{x}\bigg)+O\bigg(\frac{1}{x^{3}}\bigg).\tag{2}
+\end{align*}
+
+\end_inset
+
+Note that 
+\begin_inset Formula $\log(1+\frac{\alpha}{x})=\frac{\alpha}{x}+O(\frac{1}{x^{2}})=\frac{\alpha}{x}-\frac{\alpha^{2}}{2x^{2}}+O(\frac{1}{x^{3}})$
+\end_inset
+
+ via Taylor expansion.
+ So substituting back we have 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+\mathrm{Eq}.(2) & =x\bigg(\frac{\alpha}{x}-\frac{\alpha^{2}}{2x^{2}}+O\bigg(\frac{1}{x^{3}}\bigg)\bigg)-\frac{1}{2}\biggp{\frac{\alpha}{x}+O\biggp{\frac{1}{x^{2}}}}+O\biggp{\frac{1}{x^{2}}}-\alpha\biggp{\frac{\alpha}{x}+O\biggp{\frac{1}{x^{2}}}}-\alpha+O\biggp{\frac{1}{x^{3}}}\\
+ & =-\frac{\alpha^{2}}{2x}+\frac{\alpha^{2}}{x}-\frac{\alpha}{2x}+O\biggp{\frac{1}{x^{3}}}+O\biggp{\frac{1}{x^{2}}}\\
+ & =\frac{\alpha(\alpha-1)}{2x}+O\biggp{\frac{1}{x^{2}}},
+\end{align*}
+
+\end_inset
+
+where the last equality follows from the assumption 
+\begin_inset Formula $x\geq1$
+\end_inset
+
+ and the fact that 
+\begin_inset Formula $O(f(x))+O(g(x))=O(\max(f(x)+g(x))$
+\end_inset
+
+.
+ Now we take the limit of 
+\begin_inset Formula $x\rightarrow\infty,$
+\end_inset
+
+ we get that 
+\begin_inset Formula 
+\[
+\lim_{x\rightarrow\infty}\log\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}=\lim_{x\rightarrow\infty}\left[\frac{\alpha(\alpha-1)}{2x}+O\biggp{\frac{1}{x^{2}}}\right]=0\implies\lim_{x\rightarrow\infty}\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we observe that 
+\begin_inset Formula 
+\begin{align*}
+f_{\mathrm{St}(x\vert\mu,\lambda,v)}(x) & =\frac{\Gamma(\frac{v}{2}+\frac{1}{2})}{\Gamma(\frac{v}{2})}\biggp{\frac{\lambda}{\pi v}}^{1/2}\left[1+\frac{\lambda(x-\mu)^{2}}{v}\right]^{-v/2-1/2}\\
+ & =\frac{\Gamma(\frac{v}{2}+\frac{1}{2})}{\Gamma(\frac{v}{2})(\frac{v}{2})^{1/2}}\underbrace{\bigg(\frac{v}{2}\bigg)^{1/2}\biggp{\frac{\lambda}{\pi v}}^{1/2}\exp\left[-\frac{v+1}{2}\log\biggp{1+\frac{\lambda(x-\mu)^{2}}{v}}\right]}_{:=\mathcal{H}_{1}(x)}.
+\end{align*}
+
+\end_inset
+
+Now note that by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: gamma stirling approximation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $\frac{\Gamma(\frac{v}{2}+\frac{1}{2})}{\Gamma(\frac{v}{2})(\frac{v}{2})^{1/2}}\rightarrow1$
+\end_inset
+
+ as 
+\begin_inset Formula $v\rightarrow\infty.$
+\end_inset
+
+ And by Taylor expansion of logarithm, 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{H}_{1}(x) & =\frac{1}{(2\pi\lambda^{-1})^{1/2}}\exp\left[-\frac{v+1}{2}\biggp{\frac{\lambda(x-\mu)^{2}}{v}+O\biggp{\frac{1}{v^{2}}}}\right]\\
+ & =\frac{1}{(2\pi\lambda^{-1})^{1/2}}\exp\left[-\frac{v+1}{v}\frac{(x-\mu)^{2}}{2\lambda^{-1}}+O\biggp{\frac{1}{v}}\right]\\
+ & \xrightarrow{v\rightarrow\infty}\frac{1}{(2\pi\lambda^{-1})^{1/2}}\exp\left(\frac{(x-\mu)^{2}}{2\lambda^{-1}}\right).
+\end{align*}
+
+\end_inset
+
+Hence, combined together we have that 
+\begin_inset Formula $f_{\mathrm{St}(x\vert\mu,\lambda,v)}(x)\xrightarrow{v\rightarrow\infty}f_{\mathrm{N}(\mu,\lambda^{-1})}(x).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Remark
+The argument we used in solution is almost perfectly rigorous except a subtle
+ point that we need to show that convergence in density functions implies
+ convergence in distribution.
+ This is actually a quite famous result, called Scheffe's lemma.
+ We state without a proof the theorem statement below.
+ A proof can be found in the reference provided.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Lemma 8.2.1"
+key "resnickProbabilityPath2014"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\{X_{n}\}_{n\in\mathbb{N}}$
+\end_inset
+
+ be absolutely continuous random variables with densities 
+\begin_inset Formula $f_{X_{n}}$
+\end_inset
+
+, such that 
+\begin_inset Formula $f_{X_{n}}(x)\rightarrow f(x)$
+\end_inset
+
+ almost everywhere, where 
+\begin_inset Formula $f$
+\end_inset
+
+ is the density of the absolutely continuous random variable 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+ converges to 
+\begin_inset Formula $X$
+\end_inset
+
+ in total variation, and therefore, also in distribution.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+qua
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

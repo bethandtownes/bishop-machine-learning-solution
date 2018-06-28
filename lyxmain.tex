@@ -1,0 +1,100 @@
+%% LyX 2.3.0 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{book}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2.5cm,rmargin=2.5cm}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{3}
+\setlength{\parindent}{0bp}
+\synctex=-1
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathdots}
+\usepackage{stackrel}
+\usepackage{setspace}
+\setstretch{1.12}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\ProvideTextCommand{\~}{LGR}[1]{\char126#1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+\theoremstyle{definition}
+    \ifx\thechapter\undefined
+      \newtheorem{rem}{\protect\remarkname}
+    \else
+      \newtheorem{rem}{\protect\remarkname}[chapter]
+    \fi
+\theoremstyle{definition}
+    \ifx\thechapter\undefined
+      \newtheorem{defn}{\protect\definitionname}
+    \else
+      \newtheorem{defn}{\protect\definitionname}[chapter]
+    \fi
+\theoremstyle{plain}
+    \ifx\thechapter\undefined
+      \newtheorem{lem}{\protect\lemmaname}
+    \else
+      \newtheorem{lem}{\protect\lemmaname}[chapter]
+    \fi
+\theoremstyle{plain}
+    \ifx\thechapter\undefined
+	    \newtheorem{thm}{\protect\theoremname}
+	  \else
+      \newtheorem{thm}{\protect\theoremname}[chapter]
+    \fi
+\theoremstyle{plain}
+    \ifx\thechapter\undefined
+      \newtheorem{prop}{\protect\propositionname}
+    \else
+      \newtheorem{prop}{\protect\propositionname}[chapter]
+    \fi
+\theoremstyle{plain}
+    \ifx\thechapter\undefined
+  \newtheorem{cor}{\protect\corollaryname}
+\else
+      \newtheorem{cor}{\protect\corollaryname}[chapter]
+    \fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\input{"/config/config.tex"}
+\allowdisplaybreaks
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\corollaryname}{Corollary}
+\providecommand{\definitionname}{Definition}
+\providecommand{\lemmaname}{Lemma}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\remarkname}{Remark}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\include{chapter1/chapter1}
+
+\newpage{}
+
+\include{chapter2/chapter2}
+
+\bibliographystyle{alpha-letters}
+\bibliography{\string"/Users/daqiansun/Box Sync/research/chained-matrix-completion/manuscript/bib/reference\string",\string"/Users/daqiansun/Box Sync/research/references/bib\string"}
+
+\end{document}

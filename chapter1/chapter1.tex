@@ -1,3 +1,1643 @@
-\input{chapter1/problem-1.tex}
-\input{chapter1/problem-2.tex}
-\input{chapter1/problem-3.tex}
+
+\chapter{Solutions for exercises to chapter 1}
+
+\begin{cBoxA}[Problem 1.1 - Closed form solution to polynomial regression]{}
+ Consider the sum-of-squares error function given by (1.2) in which
+the function $y(x,w)$ is given by the polynomial (1.1). Show that
+the coefficients $w=\{w_{i}\}$ that minimize this error function
+are given by the solution to the following set of linear equations
+\end{cBoxA}
+
+We use a slightly better notation to write this problem. Let $X$
+be the matrix of the form 
+\[
+X=\begin{bmatrix}x_{1}^{0} & x_{1}^{1} & \cdots & x_{1}^{M}\\
+x_{2}^{0} & x_{2}^{1} & \cdots & x_{2}^{M}\\
+\vdots & \vdots & \ddots & \vdots\\
+x_{N}^{0} & x_{N}^{1} & \cdots & x_{N}^{M}
+\end{bmatrix},\ \ t=\begin{bmatrix}t_{1}\\
+t_{2}\\
+\vdots\\
+t_{n}
+\end{bmatrix}
+\]
+The the problem can be rewritten in the following form: 
+\begin{align*}
+E(w) & =\frac{1}{2}\left(\left(Xw-t\right)^{T}\left(Xw-t\right)\right).
+\end{align*}
+Now we differentiate w.r.t $w$, note that 
+\begin{align*}
+E(w+h) & =\frac{1}{2}\left(X\left(w+h\right)-t\right)^{T}\left(X\left(w+h\right)-t\right)\\
+ & =\frac{1}{2}\left(\left(Xw-t\right)^{T}+\left(Xh\right)^{T}\right)\left(Xw-t+Xh\right)\\
+ & =\frac{1}{2}\left[\left(Xw-t\right)^{T}\left(Xw-t\right)+\left(Xw-t\right)^{T}Xh+\left(Xh\right)^{T}\left(Xw-t\right)+\left(Xh\right)^{T}\left(Xh\right)\right]\\
+ & =E\left(w\right)+\left\langle \left(Xw-t\right)^{T},Xh\right\rangle +\frac{1}{2}\left\langle Xh,Xh\right\rangle \\
+ & =E\left(w\right)+\left\langle X^{T}\left(Xw-t\right),h\right\rangle +\frac{1}{2}\left\langle Xh,Xh\right\rangle .
+\end{align*}
+Note that $\left\langle X^{T}\left(Xw-t\right),h\right\rangle \in\text{Hom}(\mathbb{R}^{M+1},\mathbb{R})$
+and 
+\[
+\frac{1}{2}\left\langle Xh,Xh\right\rangle \leq\frac{1}{2}\left\Vert Xh\right\Vert \left\Vert Xh\right\Vert \leq\frac{C}{2}\left\Vert X\right\Vert _{\infty}^{2}\left\Vert h\right\Vert \xrightarrow{\left\Vert h\right\Vert \rightarrow0}0,
+\]
+it follows that $\nabla E(w)=X^{T}(Xw-t).$ Set it to zero and we
+get 
+\[
+X^{T}(Xw-t)=0\iff X^{T}Xw=X^{\top}t.
+\]
+So $X^{T}X$ is the $A$ proposed in the problem. 
+\[
+\left[X^{T}X\right]_{ij}=\sum_{n=1}^{N}\left(x_{n}^{i}x_{n}^{j}\right)=\sum_{n=1}^{N}x_{n}^{i+j},\text{ and }\left[X^{T}t\right]_{i}=\sum_{n=1}^{N}x_{n}^{i}t_{n},
+\]
+as desired. \\
+\begin{cBoxA}[Problem 1.2 - Closed form solution to regularized polynomial regression]{}
+ Write down the set of coupled linear equations, analogous to (1.122),
+satisfied by the coefficients $w_{i}$ which minimize the regularized
+sum-of-squares error function given by (1.4). 
+\end{cBoxA}
+
+We use the same notation as in the previous problem and still rewrite
+the loss function in matrix form as follows: 
+\[
+\widetilde{E}(w)=\frac{1}{2}\left\langle Xw-t,Xw-t\right\rangle +\frac{\lambda}{2}\left\langle w,w\right\rangle .
+\]
+Still we differentiate the expression. Note that if we let $\varphi(w)=\frac{\lambda}{2}\left\langle w,w\right\rangle ,$we
+have that 
+\begin{align*}
+\varphi(w+h) & =\frac{\lambda}{2}\left(w+h\right)^{T}\left(w+h\right)\\
+ & =\frac{\lambda}{2}\left(w^{T}w+w^{T}h+h^{T}x+\left\Vert h\right\Vert \right)\\
+ & =\varphi\left(w\right)+\left\langle \lambda w,h\right\rangle +\underbrace{\frac{\lambda}{2}\left\Vert h\right\Vert ^{2}}_{=o(\left\Vert h\right\Vert )}.
+\end{align*}
+Therefore, $\nabla\varphi(w)=\lambda w,$ and as a result 
+\[
+\nabla\widetilde{E}(w)=\nabla E(w)+\nabla\varphi(w)=X^{T}(Xw-t)+\lambda w.
+\]
+Setting it to zero: 
+\[
+X^{T}(Xw-t)+\lambda w=0\iff(X^{T}X+\lambda I)w=X^{T}t.
+\]
+Hence, $(X^{T}X+\lambda I)$ and $X^{T}t$ are the corresponding matrices\\
+\\
+\begin{cBoxA}[Problem 1.3 - Bayes formula warm up]{}
+ Suppose that we have three coloured boxes $r$ (red), $b$ (blue),
+and $g$ (green). Box $r$ contains 3 apples, 4 oranges, and 3 limes,
+box $b$ contains 1 apple, 1 orange, and 0 limes, and box $g$ contains
+3 apples, 3 oranges, and 4 limes. If a box is chosen at random with
+probabilities $\P(r)=0.2,\P(b)=0.2,\P(g)=0.6$, and a piece of fruit
+is removed from the box (with equal probability of selecting any of
+the items in the box), then what is the probability of selecting an
+apple? If we observe that the selected fruit is in fact an orange,
+what is the probability that it came from the green box?
+\end{cBoxA}
+
+According to the Bayes formula, we get that 
+\begin{align*}
+P\left(\text{apple}\right) & =P\left(\text{apple}\vert\text{r}\right)P\left(\text{r}\right)+P\left(\text{apple}\vert\text{g}\right)P\left(\text{g}\right)+P\left(\text{apple}\vert\text{b}\right)P\left(\text{b}\right)\\
+ & =\frac{3}{10}\cdot\frac{2}{10}+\frac{1}{2}\frac{2}{10}+\frac{3}{10}\frac{6}{10}=\frac{17}{50}.
+\end{align*}
+And again, we can use formula to get 
+\begin{align*}
+P\left(\text{g}\vert\text{orange}\right) & =\frac{P\left(\text{orange}\vert\text{g}\right)P\left(\text{g}\right)}{P\left(\text{orange}\vert\text{g}\right)P\left(\text{g}\right)+P\left(\text{orange}\vert\text{b}\right)P\left(\text{b}\right)+P\left(\text{orange}\vert\text{r}\right)P\left(\text{r}\right)}\\
+ & =\frac{\frac{3}{10}\frac{6}{10}}{\frac{3}{10}\frac{6}{10}+\frac{2}{10}\frac{1}{2}+\frac{2}{10}\frac{4}{10}}\\
+ & =\frac{1}{2}.
+\end{align*}
+\\
+\begin{cBoxA}[Problem 1.4 - Nonlinear transform of likelihood function doesn't preserve
+its extrema]{}
+ Consider a probability density $p_{x}(x)$ defined over a continuous
+variable $x$, and suppose that we make a nonlinear change of variable
+using $x=g(y)$, so that the density transforms according to (1.27).
+By differentiating (1.27), show that the location $y$ of the maximum
+of the density in $y$ is not in general related to the location $x$
+of the maximum of the density over $x$ by the simple functional relation
+$x=g(y)$ as a consequence of the Jacobian factor. This shows that
+the maximum of a probability density (in contrast to a simple function)
+is dependent on the choice of variable. Verify that, in the case of
+a linear transformation, the location of the maximum transforms in
+the same way as the variable itself.
+\end{cBoxA}
+
+We first observe that if $x_{*}$ maximizes the likelihood function
+$p_{x}(x)$, then $p_{x}'(x_{*})=0.$ By chain rule, we have that
+\begin{align*}
+\frac{dp_{x}(g(y))\left|g'\left(y\right)\right|}{dy} & =\frac{dp_{x}(g(y))}{dy}\left|g'(y)\right|+p_{x}(g(y))\frac{d\left|g'(y)\right|}{dy}\\
+ & =\frac{dp_{x}(g(y))}{dg(y)}\frac{dg(y)}{dy}\left|g'(y)\right|+p_{x}(g(y))\frac{d\left|g'(y)\right|}{dy}\tag{1}.
+\end{align*}
+Hence, if $x_{*}=g(y_{*})$, the 
+\[
+\frac{dp_{x}(g(y_{*}))}{dg(y_{*})}=\frac{dp_{x}(x_{*})}{dx_{*}}=0.
+\]
+However, there is no guarantee that the second term of the RHS of
+Eq. 1 is zero. For example, if $p_{x}(x)=2x$ for $0\leq x\leq1$
+and $x=\sin(y),$ where $0\leq y\leq\pi/2.$ Then according to the
+transformation formula, we have that 
+\[
+p_{y}(y)=p_{x}(g(y))g'(y)=2\sin(y)\cos(y)=\sin(2y)\text{ for }0\leq y\leq\frac{\pi}{2}.
+\]
+Clearly, $p_{y}(y)$ reaches its peak at $y=\pi/4$ but $\sin(\pi/4)\neq x_{*}=1.$
+Thus, we have found a counterexample. \bigskip\\
+On the other hand, if $g(y)$ is an affine map, then $g'(y)$ is a
+constant map and as a result 
+\[
+\frac{d\left|g'(y)\right|}{dy}=0
+\]
+ \\
+\begin{cBoxA}[Problem 1.5 - Characterization of variance]{}
+ Using the definition (1.38) show that var{[}f(x){]} satisfies (1.39).
+\end{cBoxA}
+
+It suffices to show that $\mathrm{Var}[X]=\E[X^{2}]-(\E[X])^{2}$
+since any a measurable function of a random variable is again a random
+variable and in this case $f$ although is not mentioned, it is safe
+to assume in this context that $f$ is measurable. So note 
+\begin{align*}
+\mathrm{Var}[X] & =\E[X-\E[X]]^{2}\\
+ & =\E[X^{2}]-2\E[X]\E[X]+(\E[X])^{2}\\
+ & =\E[X^{2}]-\E[X]^{2}
+\end{align*}
+as desired. \\
+\\
+\begin{cBoxA}[Problem 1.6 - Covariance of two independent r.v. is zero]{}
+ Show that if two variables $X$ and $Y$ are independent, then their
+covariance is zero.
+\end{cBoxA}
+
+Since $X\perp Y,$ then it follows that $\E[XY]=\E[X]\E[Y]$. Then
+we have 
+\begin{align*}
+\mathrm{Cov}(X,Y) & =\E[(X-\E[X])(Y-\E[Y])]\\
+ & =\E[XY-X\E[Y]-\E[X]Y+\E[X]\E[Y]]\\
+ & =\E[XY]-\E[X]\E[Y]-\E[X]\E[Y]+\E[X]\E[Y]\\
+ & =\E[X]\E[Y]-\E[X]\E[Y]-\E[X]\E[Y]+\E[X]\E[Y]\\
+ & =0.
+\end{align*}
+\\
+\begin{cBoxA}[Problem 1.7 - Gaussian integral via polar coordinate]{}
+ In this exercise, we prove the normalization condition (1.48) for
+the univariate Gaussian. To do this consider, the integral
+\[
+I=\int_{-\infty}^{\infty}\exp\left(-\frac{1}{2\sigma^{2}}x^{2}\right)dx,
+\]
+which we can evaluate by first writing its square in the form 
+\[
+I^{2}=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\exp\bigg(-\frac{1}{2\sigma^{2}}x^{2}-\frac{1}{2\sigma^{2}}y^{2}\bigg)dxdy.
+\]
+Now make the transformation from Cartesian coordinates $(x,y)$ to
+polar coordinates $(r,\theta)$ and then substitute $u=r^{2}$. Show
+that, by performing the integrals over $\theta$ and $\mu$, and then
+taking the square root of both sides, we obtain 
+\[
+I=(2\pi\sigma^{2})^{1/2}.
+\]
+Finally, use this result to show that Gaussian distribution $\mathrm{N}(x\vert\mu,\sigma^{2})$
+is normalized. 
+\end{cBoxA}
+
+First, we write 
+\begin{align*}
+I^{2} & =\left(\int_{\R}\exp\bigg\{-\frac{1}{2\sigma^{2}}x^{2}\bigg\} dx\right)\left(\int_{\R}\exp\left\{ -\frac{1}{2\sigma^{2}}y^{2}\right\} dy\right)\\
+ & =\int\int_{\R\times\R}\exp\left\{ -\frac{1}{2\sigma^{2}}\left(x^{2}+y^{2}\right)\right\} dxdx.
+\end{align*}
+Now using polar coordinate - let $x=r\cos\theta$ and $y=r\sin\theta$.
+Then we get the Jacobian matrix as 
+\[
+\frac{\partial(x,y)}{\partial(r,\theta)}=\begin{bmatrix}\cos\theta & -r\sin\theta\\
+\sin\theta & r\cos\theta
+\end{bmatrix}\implies\left|\frac{\partial(x,y)}{\partial(r,\theta)}\right|=r(\cos\theta^{2}+\sin\theta^{2})=r.
+\]
+Hence, as a result 
+\begin{align*}
+I^{2} & =\int_{0}^{2\pi}\int_{0}^{\infty}\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\right\} rdrd\theta\\
+ & =_{1}\int_{0}^{2\pi}\int_{0}^{\infty}\exp(-u)\sigma^{2}dud\theta\\
+ & =\int_{0}^{2\pi}\sigma^{2}d\theta\int_{0}^{\infty}\exp(-u)du\\
+ & =2\pi\sigma^{2}\left[-\exp(-u)\right]_{0}^{\infty}=2\pi\sigma^{2}.
+\end{align*}
+\\
+\begin{cBoxA}[Problem 1.8 - Second moment of gaussian integral via Feymann's trick]{}
+ By using a change of variables, verify that the univariate Gaussian
+distribution given by (1.46) satisfies (1.49). Next, by differentiating
+both sides of the normalization condition 
+\[
+\int_{-\infty}^{\infty}\mathrm{N}(x\vert\mu,\sigma^{2})dx=1
+\]
+with respect to $\sigma^{2}$, verify that the Gaussian satisfies
+$(1.50)$. Finally, show that (1.51) holds. 
+\end{cBoxA}
+
+The differentiation under the integral needs a bit more theoretical
+justification. We won't reproduce the related theorems here. But they
+could be found in e.g. Theorem 3.2, Theorem 3.3 in Chapter XIII of
+\cite{sergeundergrad} or in \cite{diffsign}. With this in mind,
+we get 
+\begin{align*}
+\frac{d}{d\sigma^{2}}\int_{\R}\exp\left\{ -\frac{1}{2\sigma^{2}}(x-\mu)^{2}\right\} dx & =\int_{\R}\frac{d}{d\sigma^{2}}\exp\left\{ -\frac{1}{2\sigma^{2}}(x-\mu)^{2}\right\} dx\\
+ & =\int_{\R}\exp\left\{ -\frac{1}{2\sigma^{2}}(x-\mu)^{2}\right\} (x-\mu)^{2}\left(-\frac{1}{2}\right)(\sigma^{-2})^{2}dx
+\end{align*}
+On the the other hand, we have 
+\[
+\frac{d}{d\sigma^{2}}(2\pi\sigma^{2})^{1/2}=-\frac{1}{2}(2\pi)(\sigma^{2})^{-1/2}.
+\]
+So combined together, we get 
+\[
+\int_{\R}\exp\left\{ -\frac{1}{2\sigma^{2}}(x-\mu)^{2}\right\} (x-\mu)^{2}\left(-\frac{1}{2}\right)(\sigma^{-2})^{2}dx=\left(-\frac{1}{2}\right)(2\pi)^{1/2}(\sigma^{2})^{-1/2}.
+\]
+One step of reduction, we get 
+\begin{align*}
+\E[(x-\E[x])^{2}] & =\mathrm{Var}[x]\\
+ & =\frac{1}{(2\pi\sigma^{2})^{1/2}}\int_{\R}\exp\left\{ -\frac{1}{2\sigma^{2}}(x-\mu)^{2}\right\} (x-\mu)^{2}dx\\
+ & =\sigma^{2}.
+\end{align*}
+And as a result, 
+\[
+\E[x^{2}]=\mathrm{Var}[x]+(\E[x])^{2}=\sigma^{2}+\mu^{2}.
+\]
+\\
+\begin{cBoxA}[Problem 1.9 - Gaussian density peaks at mean]{}
+Show that the mode (i.e. the maximum) of the Gaussian distribution
+(1.46) is given by \textgreek{m}. Similarly, show that the mode of
+the multivariate Gaussian (1.52) is given by \textgreek{m}.
+\end{cBoxA}
+
+It suffices to show the result holds in the multidimensional case
+since 1-dim is just a special case. Recall that the density of the
+Gaussian distribution in $D$ dimension is 
+\[
+N(x\vert u,\Sigma)=\frac{1}{(2\pi)^{D/2}\left|\Sigma\right|^{1/2}}\exp\left\{ -\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu)\right\} .
+\]
+Differentiate w.r.t. $x$ and we get: 
+\[
+\nabla_{x}N(x\vert u,\Sigma)=\frac{1}{(2\pi)^{D/2}\left|\Sigma\right|^{1/2}}\exp\left\{ -\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu)\right\} \nabla_{x}\left(\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu)\right).
+\]
+Now note that $\varphi(x)=(x-\mu)^{T}\Sigma^{-1}(x-\mu)$ for $x\in\R^{d}$
+, then note for any $h\in\mathbb{R}^{D}$
+\begin{align*}
+\varphi(x+h) & =(x-u+h)^{T}\Sigma^{-1}(x-\mu+h)\\
+ & =(x-\mu)^{T}\Sigma^{-1}(x-\mu+h)+h^{T}\Sigma^{-1}(x-\mu+h)\\
+ & =(x-\mu)^{T}\Sigma^{-1}(x-\mu)+(x-\mu)^{T}\Sigma^{-1}h+h^{T}\Sigma^{-1}(x-\mu)+h^{T}\Sigma^{-1}h\\
+ & =(x-\mu)^{T}\Sigma^{-1}(x-\mu)+\left\langle 2\Sigma^{-1}(x-\mu),h\right\rangle +h^{T}\Sigma^{-1}h
+\end{align*}
+Note that and 
+\[
+h^{T}\Sigma^{-1}h=\left\langle h\Sigma^{-1/2},h\Sigma^{-1/2}\right\rangle \leq\left\Vert h\Sigma^{-1/2}\right\Vert ^{2}\leq C\left\Vert h\right\Vert ^{2}\left\Vert \Sigma\right\Vert _{\infty}^{2}=o(\left\Vert h\right\Vert ),
+\]
+and that $\left\langle 2\Sigma^{-1}(x-\mu),h\right\rangle \in\text{Hom}(\mathbb{R}^{d},\mathbb{R}).$
+It follows that 
+\[
+\nabla_{x}\varphi(x)=2\Sigma^{-1}(x-\mu),
+\]
+whence 
+\[
+\nabla_{x}\varphi(x)=0\iff2\Sigma^{-1}(x-\mu)=0\iff x=\mu.
+\]
+\\
+\begin{cBoxA}[Problem 1.10 - Linearity of expectation and variance]{}
+ Suppose that the two variables $x$ and $z$ are statistically independent.
+Show that the mean and variance of their sum satisfies 
+\begin{align*}
+\E[x+z] & =\E[x]+\E[z],\\
+\mathrm{Var}[x+z] & =\mathrm{Var}[x]+\mathrm{Var}[z].
+\end{align*}
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item Note 
+\begin{align*}
+\E\left[x+y\right] & =\int_{\text{supp}(x)}\int_{\text{supp}(y)}(x+y)f_{(x,y)}(x,y)dxdy\\
+ & =\int_{\text{supp}(x)}\int_{\text{supp}(y)}(x+y)f_{x}(x)f_{y}(y)dxdy\\
+ & =\int_{\text{supp}(x)}\int_{\text{supp}(y)}xf_{x}(x)f_{y}(y)dxdy+\int_{\text{supp}(x)}\int_{\text{supp}(y)}yf_{x}(x)f_{y}(y)dxdy\\
+ & =\int_{\text{supp}(x)}xf_{x}(x)dx\int_{\text{supp}(y)}f_{y}(y)+\int_{\text{supp}(x)}f_{x}(x)dx\int_{\text{supp}(y)}yf_{y}(y)\\
+ & =\E[x]+\E[y].
+\end{align*}
+\item Note 
+\begin{align*}
+\mathrm{Var}[x+y] & =\E[x+y]^{2}-(\E[x+y])^{2}\\
+ & =\E[x^{2}]+\E[y^{2}]+\underbrace{2\E[xy]}_{\E[x]\E[y]}-(\E[x])^{2}-(\E[y])^{2}-2\E[x]\E[y]\\
+ & =\E[x^{2}]-(\E[x])^{2}+\E[y^{2}]-(\E[y])^{2}\\
+ & =\mathrm{Var}[x]+\mathrm{Var}[y].
+\end{align*}
+\end{enumerate}
+\begin{cBoxA}[Problem 1.11 - MLE of gaussian]{}
+ By setting the derivatives of the log likelihood function (1.54)
+with respect to $\mu$ and $\sigma^{2}$ equal to zero, verify the
+results (1.55) and (1.56).
+\end{cBoxA}
+
+Recall that the log-likelihood function for Gaussian distribution
+is 
+\[
+\ln p(x\vert\mu,\sigma^{2})=-\frac{1}{2\sigma^{2}}\sum_{i=1}^{N}(x_{n}-\mu)^{2}-\frac{N}{2}\ln\sigma^{2}-\frac{N}{2}\ln(2\pi).
+\]
+Now we differentiate it w.r.t. $\mu$ and setting it to zero: 
+\[
+\frac{\partial\ln p(x\vert\mu,\sigma^{2})}{\partial\mu}=-\frac{1}{2\sigma^{2}}\cdot2\cdot\sum_{i=1}^{N}(x_{n}-\mu)=0\iff\sum_{i=1}^{N}(x_{n}-\mu)=0\iff\mu_{ML}=\frac{1}{n}\sum_{i=1}^{N}x_{n}.
+\]
+Now we differentiate it w.r.t. $\sigma^{2}$ and setting it to zero:
+\begin{align*}
+\frac{\partial\ln(p\vert\mu,\sigma^{2})}{\partial\sigma^{2}} & =\underbrace{\sum_{n=1}^{N}(x_{n}-\mu)^{2}\left(-\frac{1}{2}\right)(-1)(\sigma^{2})^{-2}-\frac{N}{2\sigma^{2}}=0}_{(\star)}.
+\end{align*}
+To rearrange, we get 
+\begin{align*}
+(\star) & \iff\sum_{n=1}^{N}(x_{n}-\mu)^{2}\sigma^{-4}=\frac{N}{\sigma^{2}}\\
+ & \iff\sum_{n=1}^{N}(x_{n}-\mu)^{2}=\sigma^{2}N\\
+ & \iff\sigma_{ML}^{2}=\frac{1}{N}\sum_{n=1}^{N}(x_{n}-\mu)^{2}.
+\end{align*}
+Plug in $\mu=\mu_{ML}$ we get $\sigma_{ML}^{2}=\frac{1}{N}\sum_{n=1}^{N}(x_{n}-\mu)^{2}$
+as desired.\\
+\\
+\begin{cBoxA}[Problem 1.12 - Inconsistency gaussian MLE]{}
+\end{cBoxA}
+
+TODO\\
+\begin{cBoxA}[Problem 1.14 - Independent terms of 2-nd order term in polynomial]{}
+ Show that an arbitrary square matrix with elements $w_{ij}$ can
+be written in the form $w_{ij}=w_{ij}^{S}+w_{ij}^{A},$ where $w_{ij}^{S}$
+and $w_{ij}^{A}$ are symmetric and anti-symmetric matrices, respectively,
+satisfying $w_{ij}^{S}=w_{ji}^{S}$ and $w_{ij}^{A}=-w_{ji}^{A}$
+for all $i$ and $j$. Now consider the second order term in higher
+order polynomial in $D$ dimensions, given by 
+\[
+\sum_{i=1}^{D}\sum_{j=1}^{D}w_{ij}x_{i}x_{j}.
+\]
+Show that 
+\[
+\sum_{i=1}^{D}\sum_{j=1}^{D}w_{ij}x_{i}x_{j}=\sum_{i=1}^{D}\sum_{j=1}^{D}w_{ij}^{S}x_{i}x_{j},
+\]
+so that the contribution from the anti-symmetric matrix vanishes.
+We therefore see that, without loss of generality, the matrix of coefficients
+$w_{ij}$ can be chosen to be symmetric, and so not all of the $D^{2}$
+elements of this matrix can be chosen independently. Show that he
+number of independent parameter in the matrix $w_{ij}^{S}$ is given
+by $D(D+1)/2$. 
+\end{cBoxA}
+
+We rewrite the sum in matrix form: $\sum_{i=1}^{D}\sum_{j=1}^{D}w_{ij}x_{i}x_{j}=x^{T}Wx,$
+where $[W]_{ij}=w_{ij}.$ Define 
+\[
+W_{S}=\frac{1}{2}(W+W^{T})\text{ and }W_{A}=\frac{1}{2}(W-W^{T}).
+\]
+Clearly, $W_{S}$ is symmetric and $W_{A}^{T}=\frac{1}{2}(W^{T}-W)=-W_{A}$
+is anti-symmetric and $W_{S}+W_{A}=W.$ Therefore, 
+\[
+x^{T}Wx=x^{T}(W_{S}+W_{A})x=x^{T}W_{S}x+x^{T}W_{A}x.
+\]
+Notice that 
+\[
+x^{T}W_{A}x=\frac{1}{2}(x^{T}W_{S}x-x^{T}W^{T}x)=\frac{1}{2}(x^{T}W_{S}s-x^{T}Wx)=0,
+\]
+where the last inequality follows from the fact that $x^{T}W^{T}x$
+is a scalar and is equal to $x^{T}Wx.$ Since we have shown the sum,
+$\sum_{i,j}w_{ij}x_{i}x_{j}$, only depends on a symmetric matrix,
+$W_{S}$, whose independent items is of the cardinality of $\sum_{i=1}^{D}i=D(D+1)/2$
+if we assume its of dimension $D\times D$, we have established our
+claim. \\
+\begin{cBoxA}[Problem 1.15 - Independent terms of $M$-th order term in polynomial]{}
+ In this exercise and the next, we explore how the number of independent
+parameters in a polynomial grows with the order $M$ of the polynomial
+and with the dimensionality $D$ of the input space. We start by writing
+down the $M$-th order term for a polynomial in $D$ dimensions in
+the form
+\[
+\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{D}\cdots\sum_{i_{M}=1}^{D}w_{i_{1}i_{2}\cdots i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}.
+\]
+The coefficients $w_{i_{1}i_{2}\cdots i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}$
+comprise $D^{M}$ elements, but the number of independent parameters
+is significantly fewer due to the many interchange symmetries of the
+factor $x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}$. Begin by showing that
+the redundancy in the coefficients can be removed by rewriting this
+$M$-th order term in the form
+\[
+\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{i_{1}}\cdots\sum_{i_{M}=1}^{i_{M-1}}\tilde{w}_{i_{1}i_{2}\cdots i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}.
+\]
+Note that the precise relationship between the $w$ coefficients and
+$w$ coefficients need not be made explicit. Use this result to show
+that the number of independent parameters $n(D,M)$, which appear
+at order $M$, satisfies the following recursion relation 
+\[
+n(D,M)=\sum_{i=1}^{D}n(i,M-1).
+\]
+Next use proof by induction to show that the following results holds
+\[
+\sum_{i=1}^{D}\frac{(i+M-2)!}{(i-1)!(M-1)!}=\frac{(D+M-1)!}{(D-1)!M!},
+\]
+which can be done by first proving the result for $D=1$ and arbitrary
+$M$ by making use of the result $0!=1$, then assuming it is correct
+for dimension $D$ and verifying that it is correct for dimension
+$D+1$. Finally, use the two previous results, together with proof
+by induction, to show
+\[
+n(D,M)=\frac{(D+M-1)!}{(D-1)!M!}.
+\]
+To do this, first show that the result is true for $M=2$, and any
+value of $D\geq1$, by comparison with the result of Exercise 1.14.
+Then make use of (1.135), together with (1.136), to show that, if
+the result holds at order $M-1$, then it will also hold at order
+$M$. 
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item Since by writing the $M$-th order in the form of 
+\[
+\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{D}\cdots\sum_{i_{M}=1}^{D}w_{i_{1},i_{2},\cdots,i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}
+\]
+introduces duplicate terms, e.g. if $w_{1,3,2}x_{1}x_{3}x_{2}$ and
+$w_{2,3,1}x_{2}x_{3}x_{1}$ are the same and can be combined into
+$(w_{1,3,2}+w_{2,3,1})x_{1}x_{2}x_{3},$ we can introduce an ordering
+that prevents such duplication from happening. Rewrite the sum in
+the newly introduced ordering yields 
+\[
+\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{i_{1}}\cdots\sum_{i_{M}=1}^{i_{M-1}}w_{i_{1},i_{2},\cdots,i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}.
+\]
+Thus, we have ll
+\begin{align*}
+n(D,M) & =\sum_{i_{1}=1}^{D}\sum_{i_{2}=1}^{i_{1}}\cdots\sum_{i_{M}=1}^{i_{M-1}}w_{i_{1},i_{2},\cdots,i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}\\
+ & =\sum_{i_{1}=1}^{D}\left(\sum_{i_{2}=1}^{i_{1}}\cdots\sum_{i_{M}=1}^{i_{M-1}}w_{i_{1},i_{2},\cdots,i_{M}}x_{i_{1}}x_{i_{2}}\cdots x_{i_{M}}\right)\\
+ & =\sum_{i_{1}=1}^{D}n(i_{1},M-1).
+\end{align*}
+\item To show the equality holds using induction, we note for the base case
+of $D=1,$ 
+\[
+\text{LHS}=\frac{(1+M-2)!}{0!(M-1)!}=\frac{(M-1)!}{(M-1)!}=1.
+\]
+And 
+\[
+\text{RHS}=\frac{(1+M-1)!}{(D-1)!M!}=\frac{M!}{M!}=1.
+\]
+Now suppose $D=k$ and the equality holds. Then 
+\begin{align*}
+\sum_{i=1}^{k+1}\frac{(i+M-2)!}{(i-1)!(M-1)!} & =\sum_{i=1}^{k}\frac{(i+M-2)!}{(i-1)!(M-1)!}+\frac{(k+1+M-2)!}{k!(M-1)!}\\
+ & =\frac{(k+M-1)!}{(k-1)!M!}+\frac{(k+M-1)!}{k!(M-1)!}\tag{1}\\
+ & =\frac{(k+M-1)!(k+M)}{k!(M-1)!}\\
+ & =\frac{(k+M)!}{k!M!}\\
+ & =\frac{((k+1)+M-1)!}{(k+1-1)!M!},
+\end{align*}
+where Eq. (1) follows from induction hypothesis. 
+\item We establish the identity by inducting on $M$. By Problem 1.14, it
+follows that 
+\[
+n(D,2)=\frac{1}{2}D(D+1)=\frac{(D+2-1)!}{(D-1)!2!}=\frac{(D+1)!}{(D-1)!2!},
+\]
+which proves the base case. Now suppose the statement holds for $M=k$.
+Then for $M=k+1$, we have 
+\[
+n(D,k+1)=\sum_{i=1}^{D}n(i,k)=\sum_{i=1}^{D}\frac{(i+M-2)!}{(i-1)!(M-1)!}=\frac{(D+M-1)!}{(D-1)!M!}
+\]
+using part-2. 
+\end{enumerate}
+\begin{cBoxA}[Problem 1.16 - Independent terms of high order polynomial]{}
+ In Exercise 1.15, we proved the result (1.135) for the number of
+independent parameters in the $M$-th order term of a $D$-dimensional
+polynomial. We now find an expression for the total number $N(D,M)$
+of independent parameters in all of the terms up to and including
+the $M$ 6th order. First show that $N(D,M)$ satisfies 
+\[
+N(D,M)=\sum_{m=0}^{M}n(D,m),
+\]
+where $n(D,m)$ is the number of independent parameters in the term
+of order $m$. Now make use of the result (1.137) together with proof
+by induction, to show that 
+\[
+N(d,M)=\frac{(D+M)!}{D!M!}.
+\]
+This can be done by first proving that the result holds for $M=0$
+and arbitrary $D\geq1$, then assuming that it holds at order $M$,
+and hence showing that it holds at order $M+1$. Finally, make use
+of Stirling\textquoteright s approximation in the form 
+\[
+n!\simeq n^{n}e^{-n},
+\]
+for large $n$ to show that, for $D\gg M$, the quantity $N(D,M)$
+grows like $D^{M}$, and for $M\gg D$ it grows like $M^{D}$. Consider
+a cubic ($M=3$) polynomial in $D$ dimensions, and evaluate numerically
+the total number of independent parameters for (i) $D$ = 10 and (ii)
+$D$ = 100, which correspond to typical small-scale and medium-scale
+machine learning applications.
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item The first equality just follows from that summing up all the independent
+terms: 
+\[
+N(D,M)=\sum_{i=0}^{M}n(D,i).
+\]
+\item We prove this inequality by inducting on $M.$ Now for the base case,
+$M=0,$ we note that 
+\[
+\text{LHS}=n(D,0)=\frac{(D+0-1)!}{(D-1)!0!}=1=\frac{(D+0)!}{D!0!}=\text{RHS}.
+\]
+Now assume that the claim holds for $M=k$. Then for $M=k+1,$ we
+have 
+\begin{align*}
+N(D,k+1) & =\sum_{i=0}^{k}n(D,i)+n(D,k+1)\\
+ & =\frac{(D+k)!}{D!k!}+\frac{(D+k+1-1)!}{(D-1)!(k+1)!}\\
+ & =\frac{(D+k)!(D+k+1)}{D!(k+1)!}\\
+ & =\frac{(D+k+1)!}{D!(k+1)!},
+\end{align*}
+proving the inducting step. 
+\item Now we show that $N(D,M)$ grows in polynomial fashion like $D^{M}.$
+Assume $D\ll M.$ First, we write 
+\begin{align*}
+N(D,M) & =\frac{(D+M)!}{D!M!}\\
+ & \simeq\frac{(D+M)^{D+M}e^{-(D+M)}}{D!M^{M}e^{-M}}\tag{by Stirling's approximation}\\
+ & =\frac{1}{D!M^{M}}\left(1+\frac{D}{M}\right)^{D+M}M^{D+M}\frac{e^{-(D+M)}}{e^{-M}}\\
+ & =\frac{e^{-D}}{D!}\left(1+\frac{D}{M}\right)^{D+M}M^{D}.\tag{1}
+\end{align*}
+Now we take a more delicate look at the term $(1+\frac{D}{M})^{D+M}.$
+Note that 
+\begin{align*}
+\left(1+\frac{D}{M}\right)^{D+M} & =\left(1+\frac{D}{M}\right)^{M}\left(1+\frac{D}{M}\right)^{D}\\
+ & =\biggl(\left(1+\frac{1}{M/D}\right)^{M/D}\biggl)^{D}\left(1+\frac{D}{M}\right)^{D}\\
+ & \leq e^{D}2^{D},
+\end{align*}
+where the inequality comes from the fact that $(1+1/x)^{x}$ is an
+increasing function and $D<M\Rightarrow D/M\leq1.$ Substitution back
+into Eq (1), we get 
+\[
+N(D,M)\leq\frac{e^{-D}}{D!}e^{D}2^{D}M^{D}=\frac{2^{D}}{D!}M^{D}.
+\]
+The case for $M\ll D$ follows by symmetry. 
+\end{enumerate}
+\begin{cBoxA}[Problem 1.17 - Gamma density warmup]{}
+ The gamma function is defined by 
+\[
+\Gamma(x)=\int_{0}^{\infty}u^{x-1}e^{-u}du.
+\]
+Using integration by parts, prove the relation $\Gamma(x+1)=x\Gamma(x).$
+Show also that $\Gamma(1)=1$ and hence that $\Gamma(x+1)=x!$ when
+$x$ is an integer. 
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item Note 
+\begin{align*}
+\Gamma(x+1) & =\int_{0}^{\infty}u^{x}e^{-u}du\\
+ & =\left[-u^{x}e^{-u}\right]_{u=0}^{\infty}+\int_{0}^{\infty}xu^{x-1}e^{-u}du\\
+ & =x\Gamma(x).
+\end{align*}
+\item We note that 
+\[
+\Gamma(1)=\int_{0}^{\infty}e^{-u}du=\left[e^{-u}\right]_{0}^{\infty}=1.
+\]
+And as a result, by recursion
+\[
+\Gamma(x+1)=x\Gamma(x)=\cdots=x!\text{ for }x\in\mathbb{N}.
+\]
+\end{enumerate}
+\begin{cBoxA}[Problem 1.18 - Volume of unit sphere in n-space]{}
+ We can use the result (1.126) to derive an expression for the surface
+area $S_{D}$, and the volume $V_{D}$, of a sphere of unit radius
+in $D$ dimensions. To do this, consider the following result, which
+is obtained by transforming from Cartesian to polar coordinates
+\[
+\prod_{i=1}^{D}\int_{-\infty}^{\infty}e^{-x_{i}^{2}}dx_{i}=S_{D}\int_{0}^{\infty}e^{-r^{2}}r^{D-1}dr.
+\]
+Using the definition $(1.141)$ of Gamma function, together with $(1.126)$,
+evaluate both side of this equation, and hence show that 
+\[
+S_{D}=\frac{2\pi^{D/2}}{\Gamma(D/2)}.
+\]
+Next, by integrating with respect to radius from $0$ to $1$, show
+that the volume of the unit sphere in $D$ dimensions is given by
+\[
+V_{D}=\frac{S_{D}}{D}.
+\]
+Finally, use the results $\Gamma(1)=1$ and $\Gamma(3/2)=\sqrt{\pi}/2$
+to show that $(1.143)$ and $(1.144)$ reduce to the usual expressions
+for $D=2$ and $D=3$. 
+\end{cBoxA}
+
+To state the problem statement in a clearer manner, we solve this
+problem in several steps. In this problem, we let $d\mu$ denote the
+Lebesgue measure. 
+\begin{enumerate}[leftmargin={*}]
+\item First we derive Eq (1.142) in the book. We first rewrite the LHS
+in the following way. Let $x\in\mathbb{R}^{D}$ be arbitrary, then
+\begin{align*}
+\int_{\mathbb{R}^{d}}e^{-\left\Vert x\right\Vert ^{2}}dx & =\int_{\mathbb{R}}\int_{\mathbb{R}}\cdots\int_{\mathbb{R}}e^{-(x_{1}^{2}+x_{2}^{2}+\cdots+x_{n}^{2})}dx_{1}dx_{2}\cdots dx_{n}\\
+ & =\prod_{i=1}^{D}\int_{\mathbb{R}}e^{-x_{i}^{2}}dx_{i}.
+\end{align*}
+Next, we evaluate this integral. In order to make the computation
+easier, we choose to let the integrand be $e^{-\pi\left|x\right|^{2}}$instead
+(it doesn't effect the final result, and one could always get the
+original integral by scaling). Note that using the same argument as
+above, we have 
+\[
+\int_{\mathbb{R}^{D}}e^{-\pi\left\Vert x\right\Vert ^{2}}dx=\left(\int_{\mathbb{R}}e^{-\pi x^{2}}dx\right)^{D}.
+\]
+Next, we have 
+\begin{align*}
+\left(\int_{\mathbb{R}}e^{-\pi x^{2}}dx\right)^{2} & =\left(\int_{\mathbb{R}}e^{-\pi x_{1}^{2}}dx_{1}\right)\left(\int_{\mathbb{R}}e^{-\pi x_{2}^{2}}dx_{2}\right)\\
+ & =\int_{\mathbb{R}\times\mathbb{R}}e^{-\pi(x_{1}^{2}+x_{2}^{2})}d(x_{1}\times x_{2})\tag{by Fubini's theorem}\\
+ & =\int_{\mathbb{R}}\int_{\mathbb{R}}e^{-\pi(x_{1}^{2}+x_{2}^{2})}dx_{1}dx_{2}\tag{by Fubini's theorem}\\
+ & =\int_{[0,2\pi]}\int_{\mathbb{R}}e^{-\pi r^{2}}rdrd\theta\tag{switch to polar coordinates}\\
+ & =\int_{[0,2\pi]}d\theta\int_{\mathbb{R}}e^{-\pi r^{2}}rdr\\
+ & =2\pi\left[-\frac{1}{2\pi}e^{-\pi r^{2}}\right]_{0}^{\infty}\\
+ & =1.
+\end{align*}
+Since $\int_{\mathbb{R}}e^{\pi x^{2}}dx>0$, it follows that $\int_{\mathbb{R}^{D}}e^{-\pi\left\Vert x\right\Vert ^{2}}dx=1.$ 
+\item Consider the function $f:\mathbb{R}^{D}\rightarrow\mathbb{R};x\mapsto e^{-\pi\left\Vert x\right\Vert ^{2}}.$
+We just showed in part-1 that $f\in L^{1}(\mathbb{R}^{D}).$ Therefore,
+using generalized spherical coordinate (e.g. Theorem 6.3.4 in \cite{stein2005real}),
+we have that 
+\begin{align*}
+1=\int_{\mathbb{R}^{D}}f(x)dx & =\int_{S^{D-1}}\left(\int_{\mathbb{R^{+}}}f(r\gamma)r^{D-1}dr\right)d\sigma(\gamma)\\
+ & =\int_{S^{D-1}}\left(\int_{\mathbb{R}^{+}}e^{-\pi\left\Vert r\gamma\right\Vert ^{2}}r^{D-1}dr\right)d\sigma(\gamma)\\
+ & =\int_{S^{D-1}}\left(\int_{\mathbb{R}^{+}}e^{-\pi r^{2}}r^{D-1}dr\right)d\sigma(\gamma)\\
+ & =\int_{S^{D-1}}d\sigma(r)\int_{\mathbb{R}^{+}}e^{-\pi r^{2}}r^{D-1}dr\\
+ & =\sigma(S^{D-1})\int_{\mathbb{R}^{+}}e^{-\pi r^{2}}r^{D-1}dr.
+\end{align*}
+Now we evaluate the integral on the RHS: 
+\begin{align*}
+\int_{\mathbb{R}^{+}}e^{-\pi r^{r}}r^{D-1}dr & =\int_{0}^{\infty}e^{-u}\left(\frac{u}{\pi}\right)^{\frac{D-1}{2}}\frac{1}{2\pi(u/\pi)^{1/2}}du\\
+ & =\frac{1}{2\pi}\int_{0}^{\infty}e^{-u}\left(\frac{u}{\pi}\right)^{\frac{D}{2}-1}du\\
+ & =\frac{1}{2\pi}\pi^{1-\frac{D}{2}}\int_{0}^{\infty}e^{-u}u{}^{\frac{D}{2}-1}du\\
+ & =\frac{1}{2}\pi^{-\frac{D}{2}}\Gamma\left(\frac{D}{2}\right).
+\end{align*}
+Therefore, substituting back we get 
+\[
+\sigma(S^{D-1})=\frac{1}{\int_{\mathbb{R}^{+}}e^{-\pi r^{2}}r^{D-1}dr}=\frac{2\pi^{D/2}}{\Gamma\left(D/2\right)}.
+\]
+This $\sigma(S^{D-1})$ is the $S_{D}$ in the problem. 
+\item Now we calculate the volume of the ball. Let $B_{1}$ denote the unit
+ball in $\mathbb{R}^{D}$. Note that again by generalized spherical
+coordinate, 
+\begin{align*}
+V_{D} & =\int_{\mathbb{R}^{D}}\1_{B_{1}}(x)d\mu\\
+ & =\int_{S^{D-1}}\int_{\mathbb{R}^{+}}\1_{B_{1}}(r\gamma)r^{D-1}d\sigma(\gamma)\\
+ & =\int_{S^{D-1}}\left(\int_{[0,1]}r^{D-1}dr\right)d\sigma(\gamma)\\
+ & =\left(\int_{S^{D-1}}d\sigma(\gamma)\right)\left(\int_{[0,1]}r^{D-1}dr\right)\\
+ & =\sigma(S^{D-1})\left[\frac{1}{D}r^{D}\right]_{0}^{1}\\
+ & =\frac{\pi^{D/2}}{\Gamma(D/2)(D/2)}\\
+ & =\frac{\pi^{D/2}}{\Gamma(D/2+1)}.
+\end{align*}
+as desired. 
+\item When $D=2,$ we get 
+\[
+S_{D}=\frac{2\pi^{2/2}}{\Gamma(1)}=2\pi\text{ and }V_{D}=\frac{S_{D}}{D}=\pi.
+\]
+When $D=2,$ we get 
+\[
+S_{D}=\frac{2\pi^{3/2}}{\Gamma(3/2)}=\frac{2\pi^{3/2}}{\pi^{1/2}/2}=4\pi\text{ and }V_{D}=\frac{4}{3}\pi.
+\]
+\end{enumerate}
+\begin{rem}
+This problem could have been solved heuristically. But it loses rigor.
+What was showed was a rigorous mathematical way to treat this problem. 
+\end{rem}
+\begin{cBoxA}[Problem 1.19 - High dimensional cubes concentrate on corners]{}
+ Consider a sphere of radius $a$ in $D$-dimensions together with
+the concentric hypercube of side $2a$, so that the sphere touches
+the hypercube at the centres of each of its sides. By using the results
+of Exercise 1.18, show that the ratio of the volume of the sphere
+to the volume of the cube is given by
+\[
+\frac{\mathrm{volume\ of\ sphere}}{\mathrm{volume\ of\ cube}}=\frac{\pi^{D/2}}{D2^{D-1}\Gamma(D/2)}.
+\]
+Now make use of Stirling's formula in the form 
+\[
+\Gamma(x+1)\simeq(2\pi)^{1/2}e^{-x}x^{x+1/2},
+\]
+which is valid for $x\gg1$, to show that, as $D$, the ratio (1.145)
+goes to zero. Show also that the ratio of the distance from the centre
+of the hypercubes to one of the corners, divided by the perpendicular
+distance to one of the sides, is $\sqrt{D},$ which therefore goes
+to $\infty$ as $D\rightarrow\infty$. From these results we see that,
+in a space of high dimensionality, most of the volume of a cube is
+concentrated in the large number of corners, which themselves become
+very long \textquotedbl spikes\textquotedbl . 
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item Using the result of the previous problem, and the fact that $m_{d}(rB)=r^{d}m(B),$
+where $m_{d}$ is the Lebesgue measure in $d$-dimensional Euclidean
+space (e.g. Exercise 1.6 in \cite{stein2005real}), we have that 
+\begin{align*}
+\frac{V_{\text{sphere}}}{V_{\text{cube}}} & =\frac{\pi^{D/2}a^{D}}{\Gamma(D/2+1)2^{D}a^{D}}=\frac{\pi^{D/2}}{\Gamma(D/2+1)2^{D}}\\
+ & \simeq\frac{\pi^{D/2}}{(2\pi)^{1/2}e^{-D/2}(D/2)^{D/2+1/2}2^{D}}\tag{by Stirling formula}\\
+ & =C\frac{\pi^{D/2}e^{D/2}}{(D/2)^{D/2}}\frac{1}{D^{1/2}}2^{-D}\tag{\ensuremath{C} is some constant}\\
+ & =C\left(\frac{2\pi e}{D}\right)^{D/2}\frac{1}{D^{1/2}2^{D}}\xrightarrow{D\rightarrow\infty}0.
+\end{align*}
+\item On the other hand, we have 
+\begin{align*}
+\text{dist}(\text{center to corner}) & =\sqrt{Da^{2}}=a\sqrt{D}\\
+\text{dist}(\text{center to top)} & =a.
+\end{align*}
+And thus the ratio is $\sqrt{D}$. 
+\end{enumerate}
+\begin{cBoxA}[Problem 1.20 - High dimensional gaussian concentrate on a thin strip]{}
+ In this exercise, we explore the behavior of the Gaussian distribution
+in high-dimensional spaces. Consider a Gaussian distribution in $D$
+dimensions given by 
+\[
+p(x)=\frac{1}{(2\pi\sigma^{2})^{D/2}}\exp\left(-\frac{\left\Vert x\right\Vert ^{2}}{2\sigma^{2}}\right).
+\]
+We wish to find the density with respect to radius in polar coordinates
+in which the direction variables have been integrated out. To do this,
+show that he integral of the probiality density over a thin shell
+of radius $r$ and thickness $\varepsilon$, where $\varepsilon\ll1,$
+is given by $p(r)\varepsilon$ where 
+\[
+p(r)=\frac{S_{D}r^{D-1}}{(2\pi\sigma^{2})^{D/2}}\exp\left(-\frac{r^{2}}{2\sigma^{2}}\right),
+\]
+where $S_{D}$ is the surface area of a unit sphere in $D$ dimensions.
+Show that the function $p(r)$ has a single stationary point located,
+for large $D$, at $\widehat{r}\simeq\sqrt{D}\sigma.$ By considering
+$p(\widehat{r}+\varepsilon)$ where $\varepsilon\ll\widehat{r}$,
+show that for large $D,$
+\[
+p(\widehat{r}+\varepsilon)=p(\widehat{r})\exp\left(-\frac{3\varepsilon^{2}}{2\sigma^{2}}\right),
+\]
+which show that $\widehat{r}$ is a maximum of the radial probability
+density and also that $p(r)$ decays exponentially away from its maximum
+at $\widehat{r}$ with length scale $\sigma$. We have already seen
+that $\sigma\ll\widehat{r}$ for large $D,$ and so we see that most
+of the probability mass is concentrated in a thin shell at large radius.
+Finally, show that the probability density $p(x)$ is larger at the
+origin than at the radius $\widehat{r}$ by a factor of $\exp(D/2).$
+We therefore see that most of the probability mass in a high dimensional
+Gaussian distribution is located at a different radius from the region
+of high probability density. This property of distributions in spaces
+of high dimensionality will have important consequences when we consider
+Bayesian inference of model parameters in later chapters. 
+\end{cBoxA}
+
+First, note that the density given in the problem is that of a Gaussian
+in $D$ dimensional Euclidean space with $\Sigma=\text{diag}(\sigma^{2}).$ 
+\begin{enumerate}[leftmargin={*}]
+\item To show that the density is of the form exhibited in (1.148), we
+note that again by generalized spherical coordinate we have 
+\begin{align*}
+\int_{\mathbb{R}^{D}}p(x)dx & =\int_{S^{D-1}}\int_{\mathbb{R}^{+}}p(\gamma r)drd\sigma(\gamma)\\
+ & =\int_{S^{D-1}}\int_{\mathbb{R}^{+}}\frac{1}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{\left\Vert \gamma r\right\Vert ^{2}}{2\sigma^{2}}\right\} r^{D-1}drd\sigma(\gamma)\\
+ & =\int_{S^{D-1}}\int_{\mathbb{R}^{+}}\frac{1}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{\left\Vert \gamma\right\Vert ^{2}r^{2}}{2\sigma^{2}}\right\} r^{D-1}drd\sigma(\gamma)\\
+ & =\int_{S^{D-1}}d\sigma(\gamma)\int_{\mathbb{R^{+}}}\frac{1}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\right\} r^{D-1}dr\\
+ & =\sigma(S^{D-1})\int_{\mathbb{R}^{+}}\frac{1}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\right\} r^{D-1}dr.
+\end{align*}
+This is the formula in (1.148) if we relabel $\sigma(S^{D-1})=S_{D}.$ 
+\item First, we note 
+\begin{align*}
+\frac{d}{dr}p(r) & =C\cdot\frac{d}{dr}\left[r^{D-1}\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\right\} \right]\\
+ & =C\cdot\left[(D-1)r^{D-2}\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\right\} +r^{D-1}\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\right\} \left(-\frac{1}{2\sigma^{2}}\right)2r\right]\\
+ & =C\left[(D-1)r^{D-2}-\frac{r^{D}}{\sigma^{2}}\right]\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\right\} .
+\end{align*}
+To find the stationary point, we set it to zero: 
+\begin{align*}
+\frac{d}{dr}p(r)=0 & \iff C\left[(D-1)r^{D-2}-\frac{r^{D}}{2\sigma^{2}}\right]\exp\left\{ -\frac{r^{2}}{2\sigma^{2}}\right\} =0\\
+ & \iff(D-1)r^{D-2}-\frac{r^{D}}{\sigma^{2}}=0\\
+ & \iff\hat{r}=\sqrt{(D-1)\sigma^{2}}\simeq\sqrt{D}\sigma,
+\end{align*}
+where the approximation follows since $\sqrt{D+1}=\sqrt{D}$ for large
+$D$. 
+\item To show (1.149), first we note 
+\begin{align*}
+p(\hat{r}+\varepsilon) & =\frac{S_{D}(\hat{r}+\varepsilon)^{D-1}}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{(\hat{r}+\varepsilon)^{2}}{2\sigma^{2}}\right\} \\
+ & =\frac{S_{D}}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{(\hat{r}+\varepsilon)^{2}}{2\sigma^{2}}+(D-1)\log(\hat{r}+\varepsilon)\right\} \\
+ & =\frac{S_{D}}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{(\hat{r}+\varepsilon)^{2}}{2\sigma^{2}}+(D-1)\left[\log\left(1+\frac{\varepsilon}{\hat{r}}\right)+\log\hat{r}\right]\right\} \\
+ & =\frac{S_{D}\hat{r}^{D-1}}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{\hat{r}^{2}}{2\sigma^{2}}-\frac{\hat{r}\varepsilon}{\sigma^{2}}-\frac{\varepsilon^{2}}{2\sigma^{2}}+(D-1)\bigg(\frac{\varepsilon}{\hat{r}}-\frac{\varepsilon^{2}}{2\hat{\gamma}^{2}}+o\bigg(\frac{\varepsilon^{2}}{\hat{\gamma}^{2}}\bigg)\bigg)\right\} \\
+ & =\underbrace{\frac{S_{D}\hat{r}^{D-1}}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{\hat{r}^{2}}{2\sigma^{2}}\right\} }_{=p(r)}\underbrace{\exp\left\{ -\frac{\hat{r}\varepsilon}{\sigma^{2}}-\frac{\varepsilon^{2}}{2\sigma^{2}}+(D-1)\bigg(\frac{\varepsilon}{\hat{r}}-\frac{\varepsilon^{2}}{2\hat{\gamma}^{2}}+o\bigg(\frac{\varepsilon^{2}}{\hat{\gamma}^{2}}\bigg)\bigg)\right\} }_{:=\mathcal{E}(\varepsilon,\sigma,\hat{r})}\tag{1}.
+\end{align*}
+Now, we just need to massage last term in the RHS of (1): since $\hat{r}=\sqrt{D-1}\sigma$,
+we get 
+\begin{align*}
+\mathcal{E}(\varepsilon,\sigma,\hat{r}) & =\exp\left\{ -\frac{\sqrt{D}-1\varepsilon}{\sigma}-\frac{\varepsilon^{2}}{2\sigma^{2}}+\frac{\sqrt{D-1}\varepsilon}{\sigma}-\frac{\varepsilon^{2}}{2\sigma^{2}}+o\bigg(\frac{\varepsilon^{2}}{\hat{\gamma}^{2}}\bigg)\right\} \\
+ & =\exp\left\{ -\frac{\varepsilon^{2}}{\sigma^{2}}\right\} \exp\left\{ o\bigg(\frac{\varepsilon^{2}}{\hat{\gamma}^{2}}\bigg)\right\} .
+\end{align*}
+Since by assumption $\varepsilon\ll\hat{r}$, it follows that $\mathcal{E}(\varepsilon,\sigma,\hat{r})\simeq\exp\{-\varepsilon^{2}/\sigma^{2}\}.$
+Substituting back we get 
+\[
+p(\hat{r}+\varepsilon)=p(r)\exp\left\{ -\frac{\varepsilon^{2}}{\sigma^{2}}\right\} 
+\]
+as desired. 
+\item Note that we have 
+\[
+p(x=0)=\frac{1}{(2\pi\sigma^{2})^{D/2}},
+\]
+ and 
+\begin{align*}
+p(x\in\Gamma\vert\Gamma=\{\gamma\in\mathbb{R}^{d}\vert\left\Vert \gamma\right\Vert =\sqrt{D-1}\sigma\}) & =\frac{1}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{(D-1)\sigma^{2}}{2\sigma^{2}}\right\} \\
+ & =\frac{1}{(2\pi\sigma^{2})^{D/2}}\exp\left\{ -\frac{D-1}{2}\right\} ,
+\end{align*}
+whence 
+\begin{align*}
+\frac{p(x\in\Gamma\vert\Gamma=\{\gamma\in\mathbb{R}^{d}\vert\left\Vert \gamma\right\Vert =\sqrt{D-1}\sigma\})}{p(x=0)} & =\exp\left\{ -\frac{D-1}{2}\right\} \\
+ & \simeq\exp\left\{ -\frac{D}{2}\right\} \text{ when }D\text{ is large}
+\end{align*}
+\end{enumerate}
+\begin{cBoxA}[Problem 1.21 - Upper bound of bayesian classification error]{}
+ Consider two nonnegative numbers $a$ and $b$, and show that, if
+$a\leq b$, then $a\leq(ab)^{1/2}$. Use this result to show that,
+if the decision regions of a two-class classification problem are
+chosen to minimize the probability of misclassification, this probability
+will satisfy
+\[
+p(\mathrm{mistake})\leq\int\{p(x,\mathcal{C}_{1})p(x,\mathcal{C}_{2})\}^{1/2}dx.
+\]
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item Since $x\mapsto\sqrt{x}$ is monotonically increasing and $a\leq b,$
+it follows that $0\leq a^{1/2}\leq b^{1/2},$ which then implies $a\leq a^{1/2}b^{1/2}$
+after multiplying both sides with $a^{1/2}.$ 
+\item To show the desired inequality, we note (for notation, we let $\mathcal{X}$
+be the ambient input space), 
+\begin{align*}
+\P(\text{mistake}) & =\int_{\mathcal{R}_{1}}\P(x,\mathcal{C}_{2})dx+\int_{\mathcal{R}_{2}}\P(x,\mathcal{C}_{1})dx\\
+ & \leq\int_{\mathcal{R}_{1}}\P(x,\mathcal{C}_{1})\P(x,\mathcal{C}_{2})dx+\int_{\mathcal{R}_{2}}\P(x,\mathcal{C}_{1})\P(x,\mathcal{C}_{2})dx\tag{by part-1 }\\
+ & =\int_{\mathcal{R}_{1}\cup\mathcal{R}_{2}}\P(x,\mathcal{C}_{1})\P(x,\mathcal{C}_{2})dx\\
+ & =\int_{\mathcal{X}}\P(x,\mathcal{C}_{1})\P(x,\mathcal{C}_{2})dx,
+\end{align*}
+where the last inequality follows since we are working in a two-class
+setting and the fact that decision regions partition the input space. 
+\end{enumerate}
+\begin{cBoxA}[Problem 1.22 - Uniform loss maximizes posterior probability ]{}
+ Given a loss matrix with elements $L_{kj}$, the expected risk is
+minimized if, for each $x$, we choose the class that minimizes (1.81).
+Verify that, when the loss matrix is given by $L_{kj}=1-I_{kl}$ ,
+where $I_{kj}$ are the elements of the identity matrix, this reduces
+to the criterion of choosing the class having the largest posterior
+probability. What is the interpretation of this form of loss matrix?
+\end{cBoxA}
+
+For concise notation, we write the loss matrix as $L=\mathbbm{1}\mathbbm{1}^{T}-I$,
+where here $\mathbbm{1}$ stands for vector of $1$'s and $\vec{\P}(\mathcal{C}\vert x)$
+as a vector of $\P(\mathcal{C}_{k},x)$'s. Then we can rewrite Eq.
+(1.81) in the book as 
+\begin{align*}
+\min_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x) & =\min_{j}\vec{\P}(\mathcal{C}\vert x)^{T}(\mathbbm{1}\mathbbm{1}^{T}-I)e_{j}\\
+ & =\min_{j}\vec{\P}(\mathcal{C}\vert x)^{T}\mathbbm{1}-\P(\mathcal{C}_{j}\vert x)\\
+ & =\min_{j}1-\P(\mathcal{C}_{j}\vert x)\\
+ & =\max_{j}\P(\mathcal{C}_{j}\vert x).
+\end{align*}
+where the second equality follows from the fact the conditional distribution
+sums to 1. \bigskip\\
+We can interpret this loss in the following way: this loss assigns
+unit weight to each misclassified labels and zero weight to correctly
+classified labels and therefore minimizing the expectation represents
+minimizing the misclassification rate.\\
+
+\begin{cBoxA}[Problem 1.23 - Characterization for minimizing general expected loss]{}
+ Derive the criterion for minimizing the expected loss when there
+is a general loss matrix and general prior probabilities for the classes.
+\end{cBoxA}
+
+Note 
+\[
+\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x)=\frac{1}{p(x)}\sum_{k}L_{kj}\P(x\vert\mathcal{C}_{k})\P(\mathcal{C}_{k}).
+\]
+Suppose $m=\min(\sum_{k}L_{kj}\P(x\vert\mathcal{C}_{k})$, if we increase
+$\P(\mathcal{C}_{k})$, we would have to decrease $L_{kj}$ to keep
+the minimum. Hence, there is a direct trade-off between $\P(\mathcal{C}_{k})$
+and $L_{kj}.$\\
+
+\begin{cBoxA}[Problem 1.24 - Duality between decision and rejection criterion ]{}
+ Consider a classification problem in which the loss incurred when
+an input vector from class $\mathcal{C}_{k}$ is classified as belonging
+to class $C_{j}$ is given by the loss matrix $L_{kj}$ and for which
+the loss incurred in selecting the reject option is $\lambda$. Find
+the decision criterion that will give the minimum expected loss. Verify
+that this reduces to the reject criterion discussed in Section 1.5.3
+when the loss matrix is given by $L_{kj}=1-I_{kj}$ . What is the
+relationship between $\lambda$ and the rejection threshold $\theta$?
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item According to Eq. (1.81) in the book, the decision of labels is found
+by computing $\argmin_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x).$
+Since rejection option is also used, let $\hat{j}$ be the minimum,
+then the decision criterion can be modeled as a function $\varphi:\mathbb{N}\rightarrow\mathbb{N}\cup\{\emptyset\}$
+by 
+\[
+j\mapsto\begin{cases}
+\argmin_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x) & \text{if }\min_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x)\\
+\emptyset & \text{otherwise}
+\end{cases}.
+\]
+Note the $j$ defined in $\varphi$ by default refers to the minimizer
+of $\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x),$ and the mapping to
+empty set means rejection. 
+\item When $L=\mathbbm{1}\mathbbm{1}^{T}-I,$ then we have by previous part
+that 
+\begin{align*}
+\varphi(\hat{j})=j & \iff\min_{j}\sum_{k}L_{kj}\P(\mathcal{C}_{k}\vert x)\leq\lambda\\
+ & \iff\min_{j}1-\P(\mathcal{C}_{j}\vert x)\leq\lambda\tag{by Problem 1.22}\\
+ & \iff\max\P(\mathcal{C}_{k}\vert x)\geq1-\lambda.
+\end{align*}
+Note that the last stipulation is equivalent to $\theta=1-\lambda$
+in the reject option definition. Hence, the two criteria coincide
+when $\theta=1-\lambda.$ \\
+\end{enumerate}
+%
+\begin{cBoxA}[Problem 1.25 - Generalized squared loss function]{}
+ Consider the generalization of the squared loss function (1.87)
+for a single target variable $t$ to the case of multiple target variables
+described by the vector $t$ given by
+\[
+\E[L(t,y(x))]=\int\int\left\Vert y(x)-t\right\Vert ^{2}p(x,t)dxdt.
+\]
+Using the calculus of variations, show that the function $y(x)$ for
+which this expected loss is minimized is given by $y(x)=\E_{t}[t\vert x]$.
+Show that this result reduces to (1.89) for the case of a single target
+variable $t$.
+\end{cBoxA}
+
+We follow the same procedure as in the 1 dimensional case. Note 
+\begin{align*}
+\frac{\delta\E[L]}{\delta L} & =\frac{\delta}{\delta L}\left[\int\int\left\Vert y(x)-t\right\Vert ^{2}p(t,x)dxdt\right]\\
+ & =\int2(y(x)-t)p(t,x)dt.
+\end{align*}
+Setting it to zero yields: 
+\begin{align*}
+y(x)\int p(t,x)dt=\int tp(t,x)dt & \iff y(x)=\frac{\int tp(t,x)dt}{\int p(t,x)dt}\\
+ & \iff y(x)=\frac{\int tp(t,x)dt}{p(x)}=\int tp(t\vert x)dt
+\end{align*}
+as desired. \\
+
+\begin{cBoxA}[Problem 1.26 - Decomposition of expected squared loss]{}
+ By expansion of the square in (1.151), derive a result analogous
+to (1.90) and hence show that the function $y(x)$ that minimizes
+the expected squared loss for the case of a vector $t$ of target
+variables is again given by the conditional expectation of $t$. 
+\end{cBoxA}
+
+We use the similar argument as in deriving Eq. (1.90) in here. We
+write 
+\begin{align*}
+\left\Vert y(x)-t\right\Vert ^{2} & =\left\Vert y(x)-\E[t\vert x]+\E[t\vert x]-t\right\Vert ^{2}\\
+ & =\left\Vert y(x)-\E[t\vert x]\right\Vert ^{2}-2(y(x)-\E[y\vert x])^{T}(\E[t\vert x]-t)+\left\Vert \E[t\vert x]-t\right\Vert ^{2}.
+\end{align*}
+Also note that we can rewrite $\E[t\vert x]-t=\E[t\vert x]-\E[\E[t\vert x]]$
+and that $\E[y(x)-\E[y\vert x]]=\E[y]-\E[y]=0$. Hence 
+\begin{align*}
+\E\left[\left\Vert y(x)-t\right\Vert ^{2}\right] & =\int\left\Vert y(x)-\E[t\vert x]\right\Vert ^{2}p(x)dx+\int\left\Vert \E[t\vert x-t\right\Vert ^{2}p(x)dx\\
+ & =\int\left\Vert y(x)-\E[t\vert x]\right\Vert ^{2}p(x)dx+\int\text{Var}[t\vert x]p(x)dx.
+\end{align*}
+Hence, we see that $\E[\left\Vert y(x)-t\right\Vert ^{2}]$ is minimized
+when $y(x)=\E[t\vert x],$ which is analogues to Eq. (1.90). \\
+
+\begin{cBoxA}[Problem 1.27 - Maximizer of $L_{1},L_{0^{+}}$ expected loss ]{}
+ Consider the expected loss for regression problems under the $L_{q}$
+loss function given by (1.91). Write down the condition that $y(x)$
+must satisfy in order to minimize $\E[L_{q}]$. Show that, for $q=1$,
+this solution represents the conditional median, i.e., the function
+$y(x)$ such that the probability mass for $t<y(x)$ is the same as
+for $t\geq y(x)$. Also show that the minimum expected $L_{q}$ loss
+for $q\rightarrow0$ is given by the conditional mode, i.e., by the
+function $y(x)$ equal to the value of $t$ that maximizes $p(t\vert x)$
+for each $x$.
+\end{cBoxA}
+
+According to Eq. (1.91), an application of Fubini's theorem we can
+rewrite the expected Minkowski loss in the following form:
+\[
+\E[L]=\int\underbrace{\int\left|y(x)-t\right|^{q}p(x,t)dt}_{:=G(x,y(x))}dx
+\]
+Here we need assume $G(x,y(x))$ converges uniformly so that we can
+differentiate under the improper (possibly) integral. As usual, we
+compute the first variation: 
+\begin{align*}
+\frac{\delta\E[L]}{\delta y(x)} & =\frac{\partial G(x,y(x))}{\partial y(x)}=\int q\left|y(x)-t\right|^{q-1}\frac{(y(x)-t)}{\left|y(x)-t\right|}p(x,t)dt\\
+ & =p(x)\int q\left|y(x)-t\right|^{q-1}\text{sgn}(y(x)-t)p(t\vert x)dt\\
+ & =p(x)\left(\int_{\{t\leq y(x)\}}q\left|y(x)\right|^{q-1}p(t\vert x)dt-\int_{t>y(x)}q\left|y(x)-t\right|^{q-1}p(t\vert x)dt\right)\tag{1}
+\end{align*}
+To find the stationary point when $q=1$, we set Eq.(1) to zero: 
+\begin{align*}
+ & p(x)\left(\int_{\{t\leq y(x)\}}q\left|y(x)\right|^{q-1}p(t\vert x)dt-\int_{\{t>y(x)\}}q\left|y(x)-t\right|^{q-1}p(t\vert x)dt\right)=0\\
+\implies_{1} & \int_{\{t\leq y(x)\}}p(t\vert x)dt=\int_{\{t>y(x)\}}p(t\vert x),\tag{2}
+\end{align*}
+where $\implies_{1}$ follows since we only need to care about $x\in\text{supp}(p(x)).$
+Hence, the $y(x)$ that maximizes the expected loss function with
+$q=1$ satisfies Eq.(2), which is the definition of the median. \bigskip\\
+Now we consider the case when $p\rightarrow0.$ Instead of taking
+the functional derivative, we will use a more delicate and analytical
+approach. First, we write 
+\[
+\E[L]=\lim_{q\rightarrow0}\int\left|y(x)-t\right|^{q}d(F_{x}\times F_{t}).
+\]
+Observe that $\lim_{q\rightarrow0}\left|y(x)-t\right|^{q}=\mathbbm{1}_{\{y(x)\neq t\}},$
+which is in $L_{2}(\Omega)$ (we use $\Omega$ to denote the probability
+space). An application of DCT yields 
+\begin{align*}
+\E[L] & =\int\mathbbm{1}_{\{y(x)\neq t\}}d(F_{x}\times F_{t})\\
+ & =\int d(F_{x}\times F_{t})-\int\mathbbm{1}_{\{y(x)=t\}}d(F_{x}\times F_{t})\\
+ & =1-\underbrace{\int\int\mathbbm{1}_{\{y(x)=t\}}p(x,t)dtdx}_{:=\mathcal{I}_{1}(y(x),x,t)}\tag{by change of variable theorem}.
+\end{align*}
+In order to minimize $\E[L]$, it suffices to find $\argmax_{y(x)}\mathcal{I}_{1}(y(x),x,t).$
+First, we rewrite 
+\[
+\mathcal{I}_{1}(y(x),x,t)=\int p(x)\underbrace{\int\mathbbm{1}_{\{t=y(x)\}}p(t\vert x)dt}_{:=\mathcal{I}_{2}(y(x),x,t)}dx.
+\]
+Since $p(x)\geq0$ for any $x\in\mathbb{R}^{n}$ and $\mathcal{I}_{2}(y(x),x,t)\geq0,$
+it follows that $\argmax_{y(x)}\mathcal{I}_{1}(y(x),x,t)=\argmax_{y(x)}\mathcal{I}_{2}(y(x),x,t).$
+Note that $\mathcal{I}_{2}(y(x),x,t)=0$ since it is an integral w.r.t
+to a singleton point whose Lebesgue measure is zero. However, we can
+circumvent this in the following manner: note that 
+\begin{align*}
+\mathcal{I}_{2}(y(x),x,t) & =\int\lim_{n\rightarrow\infty}\mathbbm{1}_{\{t\in(y(x)-\frac{1}{2n},y(x)+\frac{1}{2n})\}}p(t\vert x)dt\\
+ & =\lim_{n\rightarrow\infty}\int\mathbbm{1}_{\{t\in(y(x)-\frac{1}{2n},y(x)+\frac{1}{2n})\}}p(t\vert x)dt\\
+ & \leq\lim_{n\rightarrow\infty}\frac{1}{n}\sup_{t\in(y(x)-\frac{1}{2n},y(x)+\frac{1}{2n})}p(t\vert x)\tag{3}
+\end{align*}
+If we define $F_{n}(y(x))=\frac{1}{n}\sup_{t\in(y(x)-1/(2n),y(x)+1/(2n))}p(t\vert x),$
+then it follows from Eq.(3) that $F_{n}(y(x))\rightarrow0$ as $n\rightarrow\infty$
+for any $y(x)\in\mathbb{R}$. However, we would like to find a $\tilde{y}(x)$
+s.t. $F_{n}(\tilde{y}(x))\leq F_{n}(y(x))$ for any other choice of
+$y(x).$ We claim that $\tilde{y}(x)=\argmax_{t\in\mathbb{R}}p(t\vert x).$
+Indeed, if so, we have 
+\begin{align*}
+F_{n}(\tilde{y}(x)) & =\frac{1}{n}\sup_{t\in(\argmax_{t}p(t\vert x)-\frac{1}{2n},\argmax_{t}p(t\vert x)+\frac{1}{2n})}p(t\vert x)=\frac{1}{n}\sup_{t\in\mathbb{R}^{n}}p(t\vert x)\\
+ & \geq\frac{1}{n}\sup_{t\in(y(x)-1/(2n),y(x)+1/(2n))}p(t\vert x)=F(y(x)).
+\end{align*}
+So to translate into heuristic terms, $y(x)=\argmax_{t}p(t\vert x)$
+minimizes the loss function in \textquotedbl each step\textquotedbl{}
+of the process of \textquotedbl approaching the limit of $q\rightarrow0$\textquotedbl .
+\\
+
+\begin{cBoxA}[Problem 1.28 - Derivation of information content]{}
+ In Section 1.6, we introduced the idea of entropy $h(x)$ as the
+information gained on observing the value of a random variable $x$
+having distribution $p(x)$. We saw that, for independent variables
+$x$ and $y$ for which $p(x,y)=p(x)p(y)$, the entropy functions
+are additive, so that $h(x,y)=h(x)+h(y)$. In this exercise, we derive
+the relation between $h$ and $p$ in the form of a function $h(p)$.
+First show that $h(p^{2})=2h(p)$, and hence by induction that $h(p^{n})=nh(p)$,
+where $n$ is a positive integer. Hence show that $h(p^{n/m})=(n/m)h(p)$
+where $m$ is also a positive integer. This implies that $h(p^{x})=xh(p)$
+where $x$ is a positive rational number, and hence by continuity
+when it is a positive real number. Finally, show that this implies
+$h(p)$ must take the form $h(p)\propto\ln p$. 
+\end{cBoxA}
+
+Assuming the randoms variables to be discrete does simplifies the
+argument but it also losses rigor. To achieve maximum amount of rigor
+possible, we use a measure theoretic language. For this reason, we
+will use a slightly different formulation, but the idea remains the
+same. \medskip\\
+Instead of using $x,y$ to denote random variable, we use $X,Y$.
+Note that for any $A\in\mathcal{B}(X),$ $B\in\mathcal{B}(Y)$, where
+$\mathcal{B}$ denote the Borel sets, if $X$ and $Y$ are independent,
+\begin{align*}
+h(X\in A,Y\in B) & =h\bigg(\int_{A\times B}d(F_{X}\times F_{Y})\bigg)=h\bigg(\int_{A}dF_{X}\cdot\int_{B}dF_{Y}\bigg).\tag{by independence}\\
+ & =h(X\in A)+h(Y\in B)=h\bigg(\int_{A}dF_{X}\bigg)+h\bigg(\int_{B}dF_{Y}\bigg).
+\end{align*}
+If we let $x=\int_{A}dF_{X}$ and $y=\int_{B}dF_{Y},$ then this problem
+reduces to the following form: find a representation of $h$ such
+that $h(xy)=h(x)+h(y)$ for any $x,y\in[0,1].$ This is variant of
+the Cauchy Functional Equation problem. \medskip\\
+Recall that the Cauchy functional equation in its standard form is
+as follows: find a function $f$ that satisfies $f(x+y)=f(x)+f(y).$
+The obvious solution to $f$ is the linear one: $x\mapsto cx$ for
+$x\in\mathbb{R}^{n}.$ However, without additional assumptions, one
+can obtain other complicated solutions as well. But generally these
+solutions serves as pedagogical example. A classical result is that
+if we assume $f$ to be either continuous or monotone, then $f(x)=cx$
+for arbitrary $c\in\mathbb{R}$ is the only solution. (cf. \cite{kuczma2009an}).
+\medskip\\
+With this in mind, to solve for $h$, we define $g(x)=h(e^{x}).$
+Then we see that 
+\[
+g(x+y)=h(e^{x}e^{y})=h(e^{x})+h(e^{y})=g(x)+g(y).
+\]
+Then if we require $g$ to be continuous, then $g(x)$ is uniquely
+represented as $cx$ for any $c\in\mathbb{R}.$ Then note that for
+any $x\in\mathbb{R}^{+},$ 
+\[
+h(x)=h(e^{\ln x})=g(\ln x)=c\ln x,\text{ for any }c\in\mathbb{R}.
+\]
+Therefore, we have $h(x)\propto\ln(x)$ as desired. \\
+
+\begin{cBoxA}[Problem 1.29 - Upper bound for entropy of discrete variables]{}
+ Consider an $M$-state discrete random variable $x$, and use Jensen\textquoteright s
+inequality in the form (1.115) to show that the entropy of its distribution
+$p(x)$ satisfies $H(x)\leq\ln M.$
+\end{cBoxA}
+
+We directly apply Jensen's inequality: 
+\[
+H(x)=-\sum_{i=1}^{M}p(x_{i})\ln(x_{i})=\sum_{i=1}^{M}p(x_{i})\ln\frac{1}{p(x_{i})}\leq\ln\bigg(\sum_{i=1}^{M}p(x_{i})\frac{1}{p(x_{i})}\bigg)=\ln M,
+\]
+where the $\leq$ follows since $\ln(x)$ is concave. \\
+
+\begin{cBoxA}[Problem 1.30 - KL-divergence for Gaussian]{}
+ Evaluate the Kullback-Leibler divergence (1.113) between two Gaussians
+$p(x)=\mathrm{N}(x\vert\mu,\sigma^{2})$ and $q(x)=\mathrm{N}(x\vert m,s^{2}).$ 
+\end{cBoxA}
+
+We use the original definition of KL-divergence: 
+\[
+KL(p||q)=\underbrace{-\int p(x)\ln q(x)dx}_{(1)}-\underbrace{\left(-\int p(x)\ln p(x)dx\right)}_{(2)}.
+\]
+We compute it term by term, first note that 
+\begin{alignat*}{1}
+(1)= & -\int\varphi(x\vert\mu,\sigma^{2})\ln\left[\varphi(x\vert m,s^{2})\right]dx\\
+= & -\int\varphi(x\vert\mu,\sigma^{2})\left\{ \ln\frac{1}{(2\pi s^{2})^{1/2}}-\frac{(x-m)^{2}}{2s^{2}}\right\} \\
+= & \int\varphi(x\vert\mu,\sigma^{2})\left[\frac{1}{2}\ln(2\pi s^{2})+\frac{(x-m)^{2}}{2s^{2}}\right]dx\\
+= & \frac{1}{2}\int\varphi(x\vert\mu,\sigma^{2})\ln(2\pi s^{2})dx+\frac{1}{2s^{2}}\left[\int\varphi(x\vert\mu,\sigma^{2})x^{2}dx-2m\int\varphi(x\vert\mu,\sigma^{2})xdx+\int\varphi(x\vert\mu,\sigma^{2})m^{2}dx\right]\\
+= & \frac{1}{2}\ln(2\pi s^{2})+\frac{1}{2s^{2}}\left[\sigma^{2}+\mu^{2}-2m\mu+m^{2}\right].
+\end{alignat*}
+And similarly 
+\begin{align*}
+(2) & =-\int\varphi(x\vert\mu,\sigma^{2})\ln\left[\varphi(x\vert\mu,\sigma^{2})\right]dx\\
+ & =\frac{1}{2}\int\varphi(x\vert\mu,\sigma^{2})\ln(2\pi\sigma^{2})dx+\frac{1}{2\sigma^{2}}\left[\int\varphi(x\vert\mu,\sigma^{2})x^{2}dx-2\mu\int\varphi(x\vert\mu,\sigma^{2})xdx+\mu^{2}\int\varphi(x\vert\mu,\sigma^{2})dx\right]\\
+ & =\frac{1}{2}\ln(2\pi\sigma^{2})+\frac{1}{2\sigma^{2}}\left[\sigma^{2}+\mu^{2}-2\mu^{2}+\mu^{2}\right]\\
+ & =\frac{1}{2}\ln(2\pi\sigma^{2})+\frac{1}{2}.
+\end{align*}
+Hence, it follows that 
+\begin{align*}
+KL(p||q) & =\frac{1}{2}\ln(2\pi s^{2})+\frac{1}{2s^{2}}\left[\sigma^{2}+\mu^{2}-2m\mu+m^{2}\right]-\frac{1}{2}\ln(2\pi\sigma^{2})-\frac{1}{2}\\
+ & =\frac{1}{2s^{2}}\left[(m-\mu)^{2}+(\sigma^{2}-s^{2})+s^{2}\log\frac{s^{2}}{\sigma^{2}}\right]
+\end{align*}
+
+\begin{cBoxA}[Problem 1.31 - Differential entropy and independence]{}
+ Consider two variables $x$ and $y$ having joint distribution $p(x,y)$.
+Show that the differential entropy of this pair of variables satisfies
+\[
+H(x,y)\leq H(x)+H(y),
+\]
+with equality if and only if $x$ and $y$ are statistically independent. 
+\end{cBoxA}
+
+In this problem, we extend the definition to of KL-divergence to a
+more general setting as follows:
+\begin{defn}
+If $P$ and $Q$ are probability measures over a set $\Omega$, if
+$P$ is absolutely continuous w.r.t. $Q$, then the KL divergence
+is defined as 
+\[
+KL(P||Q)=\int_{\Omega}\log\frac{dP}{dQ}dP,
+\]
+where $dP/dQ$ is the Radon-Nikodym derivative, whose existence is
+guaranteed by the fact that $P$ is absolutely continuous w.r.t $Q$. 
+\end{defn}
+\begin{lem}
+$KL(P||Q)\geq0$ for any pair\label{lem: KL divergence eq} of probability
+measures $P$ and $Q$ such that $P\ll Q$, the equality if $P$ and
+$Q$ are equal. 
+\end{lem}
+\begin{proof}
+This is a directly application of Jensen's inequality. Note that 
+\[
+KL(P||Q)=-\int_{\Omega}\log\frac{dQ}{dP}dP\geq-\log\left(\int_{\Omega}\frac{dQ}{dP}dP\right)=-\log\int_{\Omega}dQ=0.
+\]
+Recall that Jensen's inequality attains the equality if and only if
+when the function is affine or its argument is constant. In this case,
+$\log(t)$ is not constant, and thus $KL(P||Q)=0$ iff $dP/dQ=C$
+for some constant $C\in\mathbb{R}$. We claim that $C=1,$ since otherwise
+we would have 
+\[
+\int_{\Omega}dP=\int_{\Omega}\frac{dP}{dQ}dQ=C\int_{\Omega}dQ=C\neq1,
+\]
+which is a contradiction since $P$ is a probability measure. Then
+we claim that $P$ and $Q$ are equal. For any set $A$ in the (predefined)
+sigma algebra, we have 
+\[
+P(A)=\int_{A}dP=\int_{A}\frac{dP}{dQ}dQ=\int_{A}1dQ=Q(A).
+\]
+Hence, $P=Q.$ 
+\end{proof}
+Now we come back to the problem. We instead use $X$ and $Y$ two
+denote the random variables and $f_{X},f_{Y},f_{X,Y}$, to denote
+their (marginal) densities. Suppose $X$ and $Y$ are independent.
+Then it follows that 
+\begin{align*}
+H(X,Y) & =\int\int f_{X,Y}(x,y)\log f_{X,Y}(x,y)dxdy\\
+ & =\int\int f_{X}(x)f_{Y}(y)(\log f_{X}(x)+\log f_{Y}(y))dxdy\\
+ & =\int\int f_{X}(x)f_{Y}(y)\log f_{X}(x)dxdy+\int\int f_{X}(x)f_{Y}(y)\log f_{Y}(y)dxdy\\
+ & =\int f_{X}(x)\log f_{X}(x)dx+\int f_{Y}(y)\log f_{Y}(y)dy\\
+ & =H(X)+H(Y).
+\end{align*}
+Now on the other hand, suppose $H(X,Y)=H(X)+H(Y).$ Then since $H(X,Y)=H(Y\vert X)+H(X)$
+according to Eq. (1.112), it follows that $H(Y\vert X)=H(Y).$ Note
+that 
+\begin{align*}
+H(Y\vert X)-H(Y) & =-\int\int f(x,y)\log f(y\vert x)dxdy+\int\int f(x,y)\log f(y)dxdy\\
+ & =\int\int f(x,y)\log\frac{f(y)}{f(y\vert x)}dxdy\\
+ & =KL(f_{Y}(y)||f_{Y\vert X}(y\vert x)).
+\end{align*}
+Then according to \ref{lem: KL divergence eq}, $f_{Y}(y)=f_{Y\vert X}(y\vert x)$
+almost surely, and as a result $f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)$ which
+implies that $X$ and $Y$ are independent. \\
+
+\begin{cBoxA}[Problem 1.32 - Entropy under linear transformation ]{}
+ Consider a vector $X$ of continuous variables with distribution
+$f_{X}(x)$ and corresponding entropy $H(X)$. Suppose that we make
+a nonsingular linear transformation of $X$ to obtain a new variable
+$Y=AX$. Show that the corresponding entropy is given by $H(Y)=H(X)+\ln\left|A\right|$
+where $\left|A\right|$ denotes the determinant of $A$.
+\end{cBoxA}
+
+Since this problem uses transformation theorem, we first recall this
+classical result: 
+\begin{thm}[{\cite[Thm. 17.2]{billingsley2012probability}}]
+ Let $T$ be a continuously differentiable map of the open set $U$
+onto $V.$ Suppose that $T$ is injective an that $J(x)\neq0$ for
+all $x.$ If $f$ is non-negative, then \label{thm: transformation thm}
+\[
+\int_{U}f(Tx)\left|J(x)\right|dx=\int_{V=TU}f(y)dy.
+\]
+\end{thm}
+\begin{rem}
+We can use this theorem to the get change of variable formula for
+random variables in $\mathbb{R}^{d}$ in the following way. Suppose
+$X$ is a random variable in $\mathbb{R}^{d}$ with density $f_{X}$
+and $g(\cdot)$ is a $C^{1}$ diffeomorphism in $\mathbb{R}^{d},$
+whose inverse is denoted as $T$ and $J_{T}(x)\neq0,$ then it follows
+that 
+\[
+\P[g(X)\in A]=\P[X\in g^{-1}(A)]=\P[X\in TA]=\int_{TA}f_{X}(y)dy.
+\]
+Now apply \ref{thm: transformation thm}, and we get 
+\[
+\int_{TA}f_{X}(y)dy=\int_{A}f_{X}(Tx)|J_{T}(x)|dx=\int_{A}f_{X}(g^{-1}(x))|J_{g^{-1}}(x)|dx.
+\]
+Hence, from 
+\begin{align*}
+\P(g(X)\in A) & =\int\mathbbm{1}_{A}dF_{g(X)}=\int\mathbbm{1}_{A}\frac{dF_{g(X)}}{dx}dx\tag{\ensuremath{dx} refers to Lebesgue measure}\\
+ & =\int_{A}f_{X}(g^{-1}(x))\left|J_{g^{-1}}(x)\right|dx
+\end{align*}
+and the fact that Radon-Nikodym derivative is unique it follows that
+$g(X)$ has density of the form $f_{X}(g^{-1}(x))\left|J_{g^{-1}}(x)\right|.$
+
+Now we return to the problem. We instead use $f_{Y}(y)$ and $f_{X}(x)$
+to denote the density function for $X$ and $Y$. First, by previous
+remark, we see that $f_{Y}(y)=f_{X}(A^{-1}y)\left|J_{A^{-1}}\right|=f_{X}(A^{-1}y)\left|\det(A)^{-1}\right|.$
+So,
+\begin{align*}
+H(Y) & =-\int\ln f_{Y}(y)dF_{Y}=\int\ln f_{X}(A^{-1}y)\left|\det(A)^{-1}\right|dF_{Y}\\
+ & =-\int\ln\left[f_{X}(A^{-1}y)\left|\det(A)^{-1}\right|\right]f_{X}(A^{-1}y)\left|\det(A)^{-1}\right|dy\\
+ & =-\int\ln\left[f_{X}(A^{-1}Ax)\left|\det(A)^{-1}\right|\right]f_{X}(A^{-1}Ax)\left|\det(A)^{-1}\right|\left|\det(A)\right|dx\tag{1}\\
+ & =-\int\ln\left[f_{X}(x)\left|\det(A)^{-1}\right|\right]f_{X}(x)dx\\
+ & =-\int f_{X}(x)\ln f_{X}(x)dx+\int(\ln\det A)f_{X}(x)dx\\
+ & =H(X)+\ln(\det A)
+\end{align*}
+as desired. Note that the justification for Eq. (1) is as follows:
+we abbreviate 
+\[
+\varphi(x)=f_{X}(x)\left|\det(A)^{-1}\right|f_{X}(x)\left|\det(A)^{-1}\right|,
+\]
+then again by an application of \ref{thm: transformation thm} 
+\[
+(1)=-\int\varphi\circ Ld\mu=-\det(L^{-1})\int\varphi\circ L\circ L^{-1}d\mu=-\det(L^{-1})\int\varphi d\mu.
+\]
+where $\mu$ is the Lebesgue measure. Here since $L$ is represented
+by $A^{-1},$ $L^{-1}$ is thus represented by $A.$ 
+\end{rem}
+%
+\begin{cBoxA}[Problem 1.33 - Zero conditional entropy implies singleton concentration]{}
+ Suppose that the conditional entropy $H(Y\vert X)$between two discrete
+random variables $X$ and $Y$ is zero. Show that, for all values
+of $X$ such that $f_{X}(x)>0$, the variable $Y$ must be a function
+of $X$, in other words for each $X$ there is only one value of $Y$
+such that $f_{Y\vert X}(y\vert x)\geq0$. 
+\end{cBoxA}
+
+Instead of $x,y,$ we use $X,Y$ to denote random variables. First,
+we reformulate $H(Y\vert X)$ as follows:
+\begin{align*}
+H(Y\vert X) & =-\sum_{i}\sum_{j}\P(X=x_{i},Y=y_{j})\log\P(Y_{j}=y_{j}\vert X=x_{i})\\
+ & =-\sum_{i}\sum_{j}\P(Y=y_{j}\vert X=x_{i})\P(X=x_{i})\log\P(Y_{j}=y_{j}\vert X=x_{i})\\
+ & =\sum_{i}\P(X=x_{i})\sum_{j}f(x_{ij}),
+\end{align*}
+where $f:\mathbb{R}^{+}\cup\{0\}\rightarrow\mathbb{R}$ is defined
+as $x\mapsto-x\log x$. We now observe that $f$ is strictly positive
+for $x\in(0,1)$ and zero for $x=1$or $0$. The latter is straightforward
+by direct substitution. To see the former, note 
+\[
+f(x)=x\log\frac{1}{x}>x\log1=0\text{ for }x\in(0,1).
+\]
+Without loss of generality, we assume $\P(X=x_{i})>0$ since otherwise
+we get remove these zeros terms without affect the sum. Note that
+\begin{align*}
+H(Y\vert X)=0 & \implies\sum_{i}x\P(X=x_{i})\sum_{j}f(x_{ij})=0\\
+ & \implies\sum_{j}f(x_{ij})=0\text{ \ \ \ \ for any given }i\tag{since \ensuremath{\P(X=x_{i})>0} for any \ensuremath{i} }.
+\end{align*}
+Since $f(x)=0$ iff $x_{ij}=0$ or $1$, it follows that for any given
+$i$, $\P(Y=y_{j}\vert X=x_{i})=0$ or $1$ for any $j$. Clearly,
+there must be only $j$ such that $\P(Y=y_{j}\vert X=x_{i})=1$ and
+$\P(Y=y_{j}\vert X=x_{i})=0$ for all other $j$'s since otherwise
+$\sum_{j}\P(Y=y_{j}\vert X=x_{i})\neq0$, causing a contradiction.
+\\
+
+\begin{cBoxA}[Problem 1.34 - Gaussian distribution maximizes entropy under constraints]{}
+ Use the calculus of variations to show that the stationary point
+of the functional (1.108) is given by (1.108). Then use the constraints
+(1.105), (1.106), and (1.107) to eliminate the Lagrange multipliers
+and hence show that the maximum entropy solution is given by the Gaussian
+(1.109).
+\end{cBoxA}
+
+To facilitate the notation, we define 
+\[
+F(p(x)=-\int_{\mathbb{R}}p(x)\ln p(x)dx+\lambda_{1}\left(\int_{\R}p(x)dx-1\right)+\lambda_{2}\left(\int_{\mathbb{R}}xp(x)dx-\mu\right)+\lambda_{3}\left(\int_{\mathbb{R}}(x-\mu)^{2}p(x)dx-\sigma^{2}\right).
+\]
+First, we rearrange to get 
+\[
+F(p(x))=\int_{\mathbb{R}}\underbrace{-p(x)\ln p(x)dx+\lambda_{1}p(x)+\lambda_{2}xp(x)+\lambda_{3}(x-\mu)^{2}p(x)}_{:=G(p(x),x)}dx-(\lambda_{1}+\lambda_{2}\mu+\lambda_{3}\sigma^{2}).
+\]
+To get the stationary point, we take the functional derivative: 
+\[
+\frac{\delta F(p(x))}{\delta p(x)}=\frac{\partial G(p(x),x)}{\partial p(x)}=-\ln p(x)-1+\lambda_{1}+\lambda_{2}x+\lambda_{3}(x-\mu)^{2}.
+\]
+Setting it to zero yields, 
+\[
+\ln(p(x))=\lambda_{1}+\lambda_{2}x+\lambda_{3}(x-\mu)^{2}-1\implies p(x)=\exp\{\lambda_{1}+\lambda_{2}x+\lambda_{3}(x-\mu)^{2}-1\}.
+\]
+Now we need to eliminate the $\lambda'$s by substituting back to
+the constraints 
+\begin{enumerate}
+\item $\int p(x)dx=1$
+\item $\int xp(x)dx=\mu$
+\item $\int(x-\mu)^{2}p(x)dx=\sigma^{2}.$
+\end{enumerate}
+This is system of integral equations. To solve it using first principles
+would require a lot more work (plus I don't know if Gaussian density
+is the unique solution). But since we are only required to show that
+Gaussian density is indeed one solution, we are relieved from the
+burden of proving uniqueness. And we can just directly compare the
+coefficients. Note that 
+\[
+\int_{\mathbb{R}}\frac{1}{(2\pi\sigma^{2})^{1/2}}\exp\left\{ -\frac{(x-\mu)^{2}}{2\sigma^{2}}\right\} dx=1.
+\]
+Hence, if we let 
+\[
+\exp\left\{ \lambda_{2}x+\lambda_{3}(x-\mu)^{2}\right\} =\exp\left\{ -\frac{(x-\mu)^{2}}{2\sigma^{2}}\right\} \implies\lambda_{3}=-\frac{1}{2\sigma^{2}},\lambda_{2}=0\text{ is a solution}
+\]
+and 
+\[
+\exp\left\{ \lambda_{1}-1\right\} =\frac{1}{(2\pi\sigma^{2})^{1/2}}\implies\lambda_{1}=1-\frac{1}{2}\ln2\pi\sigma^{2}\text{ is a solution}.
+\]
+Hence, we have shown that we can find admissible $\lambda_{1},\lambda_{2},\lambda_{3}$
+such that $p(x)$ satisfies the constraint, and the resulting distribution
+with this set of $\lambda$'s is Gaussian. Therefore, Gaussian distribution
+is a minimizer. 
+\begin{rem}
+One can potentially ask is Gaussian a unique minimizer for this optimization
+problem? I don't know on the top of my head. This is equivalent to
+showing that the solution to the integral constraints with $p(x)=\exp\{\lambda_{1}+\lambda_{2}x+\lambda_{3}(x-\mu)^{2}-1\}$,
+has unique solution. I would guess some deep theorems are needed to
+prove this result, assuming it is true.\\
+\begin{cBoxA}[Problem 1.35 - Entropy of Gaussian]{}
+ Use the results (1.106) and (1.107) to show that the entropy of
+the univariate Gaussian (1.109) is given by (1.110).
+\end{cBoxA}
+\end{rem}
+We let $\varphi(x\vert\mu,\sigma^{2})$ denote the density of Gaussian
+distribution. Let $X$ be a Gaussian random variable, then 
+\begin{align*}
+H(X) & =-\int\varphi(x\vert\mu,\sigma^{2})\ln\left[\varphi(x\vert\mu,\sigma^{2})\right]dx\\
+ & =\frac{1}{2}\int\varphi(x\vert\mu,\sigma^{2})\ln(2\pi\sigma^{2})dx+\frac{1}{2\sigma^{2}}\left[\int\varphi(x\vert\mu,\sigma^{2})x^{2}dx-2\mu\int\varphi(x\vert\mu,\sigma^{2})xdx+\mu^{2}\int\varphi(x\vert\mu,\sigma^{2})dx\right]\\
+ & =\frac{1}{2}\ln(2\pi\sigma^{2})+\frac{1}{2\sigma^{2}}\left[\sigma^{2}+\mu^{2}-2\mu^{2}+\mu^{2}\right]\\
+ & =\frac{1}{2}\ln(2\pi\sigma^{2})+\frac{1}{2}\\
+ & =\frac{1}{2}(1+\ln(2\pi\sigma^{2}))
+\end{align*}
+as desired.\\
+
+\begin{cBoxA}[Problem 1.36 - Second order characterization of convexity]{}
+ A strictly convex function is defined as one for which every chord
+lies above the function. Show that this is equivalent to the condition
+that the second derivative of the function be positive.
+\end{cBoxA}
+
+We prove a slightly more generalized version. First, we recall the
+definition of the convexity. 
+\begin{defn}
+A function $f:\mathbb{R}^{n}\rightarrow\mathbb{R}$ is convex if its
+domain $\mathcal{D}_{f}$ is a convex set and for any $x,y\in\mathcal{D}_{f}$
+and $\lambda\in[0,1],$ 
+\[
+f(\lambda x+(1-\lambda)y)\leq\lambda f(x)+(1-\lambda)f(y).\tag{1}
+\]
+The result of this problem is an direct consequence of the following
+proposition.
+\end{defn}
+\begin{prop}
+Let $f:\mathbb{R}^{n}\rightarrow\mathbb{R}$ be a function. Then the
+following statements are equivalent. 
+\begin{enumerate}
+\item $f$ is convex. 
+\item $f(y)\geq f(x)+\nabla f(x)^{T}(y-x)$ assuming $f$ is differentiable. 
+\item The Hessian matrix $H_{f}(x)$ is positive semidefinite, assuming
+$f$ is twice differentiable and $\mathcal{D}_{f}$ is open. 
+\end{enumerate}
+\end{prop}
+\begin{proof}
+$(1)\Rightarrow(2).$ Suppose $f$ is convex. Then by definition for
+any $y,x\in\mathcal{D}_{f}$, 
+\begin{align*}
+f(\lambda y+(1-\lambda)x) & =f(x+\lambda(y-x))\\
+ & \leq\lambda f(y)+(1-\lambda)f(x)\\
+ & =f(x)+\lambda(f(y)-f(x)).
+\end{align*}
+Rearranging the expression yields 
+\[
+\frac{f(x+\lambda(y-x))-f(x)}{\lambda}\leq f(y)-f(x).
+\]
+Now we take the limit: 
+\[
+\lim_{\lambda\rightarrow0}\frac{f(x+\lambda(y-x))-f(x)}{\lambda}=\nabla f(x)^{T}(y-x).
+\]
+This equality can be derived from the following argument: note the
+Taylor expansion of $f$ at $x+h$ is 
+\[
+f(x+th)=f(x)+t\left\langle \nabla f(x),h\right\rangle +o(\left\Vert th\right\Vert ).
+\]
+Then by rearranging we get 
+\[
+\frac{f(x+th)-f(x)}{t}=\left\langle \nabla f(x),h\right\rangle +\frac{o(\left\Vert th\right\Vert )}{t\left\Vert h\right\Vert }\left\Vert h\right\Vert \xrightarrow{t\rightarrow0}\left\langle \nabla f(x),h\right\rangle =\nabla f(x)^{T}h.
+\]
+Hence, we have 
+\[
+\nabla f(x)^{T}(y-x)\leq f(y)-f(x)\iff f(y)\geq f(x)+f(x)^{T}(y-x)
+\]
+as desired. \medskip\\
+$(2)\Rightarrow(1)$. Now assume $f(y)\geq f(x)+\nabla f(x)^{T}(y-x)$
+for any $x,y\in\mathcal{D}_{f}.$ Fix $x,y\in\mathcal{D}_{f}$. Then
+note that since $\mathcal{D}_{f}$ is convex, $\lambda x+(1-\lambda)y\in\mathcal{D}_{f}$.
+We first apply it to the pair $(\lambda x+(1-\lambda)y,y)$: 
+\begin{align*}
+f(y) & \geq f(\lambda x+(1-\lambda)y)+\nabla f(\lambda x+(1-\lambda)y)^{T}(y-\lambda x-(1-\lambda)y)\\
+ & =f(\lambda x+(1-\lambda)y)+\nabla f(\lambda x+(1-\lambda)y)^{T}\lambda(y-x).\tag{2}
+\end{align*}
+Similarly, we apply it to the pair $(\lambda x+(1-\lambda)y,x):$
+\[
+f(x)\geq f(\lambda x+(1-\lambda)y)+\nabla f(\lambda x+(1-\lambda)y)(1-\lambda)(x-y).\tag{3}
+\]
+Now, we note that for $\lambda\in(0,1),$ 
+\begin{align*}
+(1-\lambda)\times\text{Eq.}(2)+\lambda\times\text{Eq.}(3)= & (1-\lambda f(y))+\lambda f(x)\\
+\geq & (1-\lambda+\lambda)f(\lambda x+(1-\lambda)y)\\
+= & f(\lambda x+(1-\lambda)y),
+\end{align*}
+which is the definition of convexity in defined in Eq. (1). \medskip\\
+$(2)\Rightarrow(3).$ Pick arbitrary $x,h\in\mathcal{D}_{f}$. Since
+$\mathcal{D}_{f}$ is open, we can find a sufficiently small $\lambda$
+such that $x+\lambda h\in\mathcal{D}_{f}$. We first write out the
+second order Taylor expansion of $f$ at $x+\lambda h,$ 
+\[
+f(x+\lambda h)=f(x)+\lambda\left\langle \nabla f(x),h\right\rangle +\frac{\lambda^{2}}{2}H_{f}(x)(h,h)+o(\left\Vert \lambda h\right\Vert ^{2}).\tag{4}
+\]
+Since $f$ is convex, it follows that $f(x+\lambda h)\geq f(x)+\lambda\left\langle \nabla f(x),h\right\rangle $.
+Substituting back to Eq.(4) yields 
+\begin{align*}
+\lambda^{2}H_{f}(x)(h,h)+o(\left\Vert \lambda h\right\Vert ^{2})\geq0 & \implies H_{f}(x)(h,h)+\frac{o(\left\Vert \lambda h\right\Vert ^{2})}{\left\Vert \lambda h\right\Vert ^{2}}\left\Vert h\right\Vert ^{2}\geq0\tag{any \ensuremath{\lambda\in(0,1)}}\\
+ & \implies\lim_{\lambda\rightarrow0^{+}}\left[H_{f}(x)(h,h)+\frac{o(\left\Vert \lambda h\right\Vert ^{2})}{\left\Vert \lambda h\right\Vert ^{2}}\left\Vert h\right\Vert ^{2}\right]\geq0\\
+ & \implies H_{f}(x)(h,h)\geq0.
+\end{align*}
+Since $h$ is arbitrary, it follows that $H_{f}(x)$ is positive semidefinite.
+\medskip\\
+$(3)\Rightarrow(2).$ Suppose $H_{f}$ is positive semidefinite. Then
+for any $x,y\in\mathcal{D}_{f},$ since $\mathcal{D}_{f}$ is convex,
+$\lambda x+(1-\lambda)y\in\mathcal{D}_{f}$ for any $\lambda\in(0,1).$
+Then by a second order Taylor formula, we can write 
+\[
+f(y)=f(x)+\left\langle \nabla f(x),y-x\right\rangle +\frac{1}{2}H_{f}(z)(y-x,y-x)
+\]
+for some $z$ in the segment $\left[x,y\right]:=\left\{ \text{all points of form }\lambda x+(1-\lambda)y\text{ for }\lambda\in(0,1)\right\} $.
+Since $H_{f}$ is positive semidefinite, it follows that $f(y)\geq f(x)+\left\langle \nabla f(x),y-x\right\rangle .$
+\\
+\\
+\end{proof}
+%
+\begin{cBoxA}[Problem 1.37 - Decomposition of joint entropy]{}
+ Using the definition (1.111) together with the product rule of probability,
+prove the result (1.112).
+\end{cBoxA}
+
+We instead use $X,Y$ to denote the random variable and $f_{X},f_{Y}$
+denote marginal distribution and $f_{X,Y}$ joint distribution. Note
+that 
+\begin{align*}
+H(X,Y) & =\int\int f_{X,Y}(x,y)\log f_{X,Y}(x,y)dxdy\\
+ & =\int\int f_{X,Y}(x,y)\log f_{Y|X}(y\vert x)f_{X}(x)dxdy\\
+ & =\int\int f_{X,Y}(x,y)\log f_{Y\vert X}(y|x)dxdy+\int\int f_{X,Y}(x,y)\log f_{X}(x)dxdy\\
+ & =H(Y\vert X)+\int\log f_{X}(x)\left(\int f_{X,Y}(x,y)dy\right)dx\\
+ & =H(Y\vert X)+\int f_{X}(x)\log f_{X}(x)dx\\
+ & =H(Y\vert X)+H(X),
+\end{align*}
+as desired.\\
+
+\begin{cBoxA}[Problem 1.38 - Proof of discrete Jensen's inequality]{}
+ Using proof by induction, show that the inequality (1.114) for convex
+functions implies the result (1.115).
+\end{cBoxA}
+
+We would like to show $f(\sum_{i=1}^{M}\lambda_{i}x_{i})\leq\sum_{i=1}^{M}\lambda_{i}f(x_{i})$
+for any set of point $\{x_{i}\}_{i=1}^{M}$ under the assumption that
+$\lambda_{i}\geq0$ and $\sum\lambda_{i}=1$ and $f$ is convex. We
+show this by inducting on $M$. For the base case, note that $M=2$
+holds trivially, since by definition of convexity, 
+\[
+f(\lambda_{1}x_{1}+\lambda_{2}x_{2})=f(\lambda_{1}x_{1}+(1-\lambda_{1})x_{2})\leq\lambda_{1}f(x_{1})+(1-\lambda_{2})f(x_{2})=\lambda_{1}f(x_{1})+\lambda_{2}f(x_{2}).
+\]
+Now suppose the claim holds for $M=k.$ Then for $M=k+1,$ we have
+\begin{align*}
+f\left(\sum_{i=1}^{k+1}\lambda_{i}x_{i}\right) & =f\left(\sum_{i=1}^{k}\lambda_{i}x_{i}+\lambda_{k+1}x_{k+1}\right)\\
+ & =f\left((1-\lambda_{k+1})\left(\sum_{i=1}^{k}\frac{\lambda_{i}}{1-\lambda_{k+1}}x_{i}\right)+\lambda_{k+1}x_{k+1}\right)\\
+ & \leq(1-\lambda_{k+1})f\left(\sum_{i=1}^{k}\frac{\lambda_{i}}{1-\lambda_{k+1}}x_{i}\right)+\lambda_{k+1}f(x_{k+1})\tag{1}
+\end{align*}
+where the last inequality follows by treating $\sum_{i=1}^{k}\lambda_{i}x_{i}/(1-\lambda_{k+1})$
+as a singleton point and applying the base case. Now note 
+\[
+\sum_{i=1}^{k}\frac{\lambda_{i}}{1-\lambda_{k+1}}=\frac{1-\lambda_{k+1}}{1-\lambda_{k+1}}=1.
+\]
+It follows from induction hypothesis that 
+\[
+f\left(\sum_{i=1}^{k}\frac{\lambda_{i}}{1-\lambda_{k+1}}x_{i}\right)\leq\sum_{i=1}^{k}\frac{\lambda_{i}}{1-\lambda_{k+1}}f(x_{i}).
+\]
+Now substituting it back to Eq.(1) and we get 
+\begin{align*}
+\text{Eq.(1)} & \leq(1-\lambda_{k+1})\sum_{i=1}^{k}\frac{\lambda_{i}}{1-\lambda_{k+1}}f(x_{i})+\lambda_{k+1}f(x_{k+1})=\sum_{i=1}^{k+1}\lambda_{i}f(x_{i})
+\end{align*}
+as desired. \\
+
+\begin{cBoxA}[Problem 1.39 - Calculation of entropy and mutual information ]{}
+ Consider two binary variables x and y having the joint distribution
+given in Table 1.3. Evaluate the following quantities 
+\begin{multicols}{3}
+ 
+
+(a). $H(X)$
+
+(b). $H(Y)$
+
+(c). $H(Y\vert X)$
+
+(d). $H(X\vert Y)$
+
+(e). $H(X,Y)$
+
+(f). $I(X,Y)$
+\end{multicols}
+\end{cBoxA}
+
+\begin{enumerate}[leftmargin={*}]
+\item To find $H(X),$ note 
+\begin{align*}
+H(X) & =-\sum_{x\in\{0,1\}}f_{X}(x)\log f_{X}(x)=-\frac{2}{3}\log\frac{2}{3}-\frac{1}{3}\log\frac{1}{3}.
+\end{align*}
+\item To find $H(Y),$ note 
+\[
+H(Y)=-\sum_{y\in\{0,1\}}f_{Y}(y)\log f_{Y}(y)=-\frac{2}{3}\log\frac{2}{3}-\frac{1}{3}\log\frac{1}{3}.
+\]
+\item To find $H(X\vert Y),$ we need to find $f_{X\vert Y}(x\vert y).$
+Note that 
+\[
+f_{X\vert Y}(x\vert y)=\frac{f_{X,Y}(x,y)}{f_{Y}(y)}=\begin{cases}
+1 & \text{if }x=0,y=0\\
+0 & \text{if }x=1,y=0\\
+\frac{1}{2} & \text{if }x=1,y=1\ \text{or }x=0,y=1.
+\end{cases}
+\]
+Hence, it follows that 
+\[
+H(X\vert Y)-=\sum_{(x,y)\in\{0,1)\times\{0,1\}}f_{X,Y}(x,y)\log f_{X\vert Y}(x\vert y)=-\frac{2}{3}\log\frac{1}{2}.
+\]
+\item Similarly, to find $H(Y|X)$, note that since 
+\[
+f_{Y\vert X}(y|x)=\frac{f_{X,Y}(x,y)}{f_{Y}(y)}=\begin{cases}
+0 & \text{if }x=1,y=0\\
+1 & \text{if }x=1,y=1\\
+\frac{1}{2} & \text{if }x=0,y=0\text{ or }x=0,y=1
+\end{cases},
+\]
+it follows that 
+\[
+H(Y\vert X)=-\sum_{(x,y)\in\{0,1\}\times\{0,1\}}f_{X,Y}(x,y)\log f_{Y\vert X}(y\vert x)=-\frac{2}{3}\log\frac{1}{2}.
+\]
+\item To find $H(X,Y),$ note 
+\[
+H(X,Y)=-\sum_{(x,y)\in\{0,1\}\times\{0,1\}}f_{X,Y}(x,y)\log f_{X,Y}(x,y)=\log3.
+\]
+\item Finally, to find $I(X,Y),$ we note that 
+\[
+I(X,Y)=H(X)-H(X\vert Y)=\frac{2}{3}\log\frac{3}{4}+\frac{1}{3}\log3.
+\]
+\end{enumerate}
+%
+\begin{cBoxA}[Problem 1.40 - Proof of AM-GM using Jensen's inequality]{}
+ By applying Jensen\textquoteright s inequality (1.115) with $f(x)=\ln x$,
+show that the arithmetic mean of a set of real numbers is never less
+than their geometrical mean.
+\end{cBoxA}
+
+Since the function $x\mapsto\log x$ is concave, it follows that for
+any set of points $\{x_{i}\}_{i=1}^{N},N\in\mathbb{N}$ we have 
+\[
+\ln\left(\sum_{i=1}^{N}\frac{1}{N}x_{i}\right)\geq\sum_{i=1}^{N}\frac{1}{N}\log(x_{i})=\log\left(\prod_{i=1}^{N}\sqrt[N]{x_{i}}\right).
+\]
+Next, since $x\mapsto\exp(x)$ preserves monotonicity, it follows
+that $\sum_{i=1}^{N}\frac{1}{N}x_{i}\geq\prod_{i=1}^{N}\sqrt[^{N}]{x_{i}}$as
+desired. \\
+
+\begin{cBoxA}[Problem 1.41 - Characterization of mutual information]{}
+ Using the sum and product rules of probability, show that the mutual
+information $I(X,Y)$ satisfies the relation (1.121).
+\end{cBoxA}
+
+To show that desired equality, note that 
+\begin{align*}
+I(X,Y) & =-\int\int f_{X,Y}(x,y)\log\frac{f_{X}(x)f_{Y}(y)}{f_{X,Y}(x,y)}dxdy\\
+ & =-\int\int f_{X,Y}(x,y)\log f_{X}(x)dxdy-\left(-\int\int f_{X,Y}(x,y)\log\frac{f_{X,Y}(x,y)}{f_{Y}(y)}dxdy\right)\\
+ & =-\int\log f_{X}(x)\left(\int f_{X,Y}(x,y)dy\right)dx-\left(-\int\int f_{X,Y}(x,y)\log f_{X\vert Y}(x\vert y)dxdy\right)\\
+ & =\left(-\int f_{X}(x)\log f_{X}(x)dx\right)-\left(-\int\int f_{X,Y}(x,y)\log f_{X\vert Y}(x\vert y)dxdy\right)\\
+ & =H(X)-H(X\vert Y).
+\end{align*}
+That $I(X,Y)=H(Y)-H(Y\vert X)$ follows by the same argument but swapping
+$X$ and $Y$. 
+
+
