@@ -29,8 +29,38 @@
 
 % scetion option 2: as box titles
 \titleformat{\section}{\normalfont\normalsize\bfseries}{\thesection}{1em}{}
-\titlespacing*{\section}{0pt}{0ex}{0ex}
+\titlespacing*{\section}{0pt}{0ex}{0.1ex}
 
 
 % custom box 1: small title is the section title
-\newtcolorbox{cBoxA}[1][]{before skip=15pt,after skip=15pt,title=\protect\section{#1}}
+
+
+
+\definecolor{myblue}{RGB}{0,163,243}
+\definecolor{lightb}{RGB}{255,204,204}
+
+
+% \newtcolorbox{cBoxA}[1][]{
+%     before skip=15pt,
+%     after skip=15pt,
+%     colframe = red,
+%     colback  = white,
+%     coltitle = black,
+%     colbacktitle = lightb,  
+%     title=\protect\section{#1},
+%     sharp corners
+%     }
+
+\newtcolorbox{cBoxA}[1][]{
+    before skip=15pt,
+    after skip=15pt,
+	tile, 
+    title=sharp corners,
+    borderline south={0.5mm}{0pt}{red!40},
+    title=\protect\section{#1},
+    colback=white,
+    coltitle=black,
+    colbacktitle=red!40
+    }
+
+

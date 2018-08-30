@@ -2100,6 +2100,13 @@ where
 \end_inset
 
  
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: odd function in multivariate dimension"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Proof
@@ -5010,10 +5017,6 @@ To facilitate notation, we use
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Lemma
@@ -7519,7 +7522,16 @@ First, we give a lemma that formalize the process of "completing the squares"
  in the book can be attributed to this lemma, although it is not mentioned
  explicitly in the book.
  
-\begin_inset Newline newline
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
 \end_inset
 
 
@@ -7884,6 +7896,11 @@ medskip
 
 \end_inset
 
+ 
+\series bold
+Solution.
+
+\series default
  Before we start proving results, we stop and recall the definition of determina
 nt.
  The most generalized definition of determinant involves the notion of manifold
@@ -8626,7 +8643,12 @@ where
 \end_layout
 
 \begin_layout Standard
-Recall in Problem 3.34, we have that 
+
+\series bold
+Solution.
+
+\series default
+ Recall in Problem 3.34, we have that 
 \begin_inset Formula $\Sigma_{MLE}=\frac{1}{n}\sum_{i=1}^{n}(X_{i}-\mu_{MLE})(X_{i}-\mu_{MLE})^{T}.$
 \end_inset
 
@@ -8699,7 +8721,12 @@ s
 \end_layout
 
 \begin_layout Standard
-First, we note that 
+
+\series bold
+Solution.
+
+\series default
+ First, we note that 
 \begin_inset Formula 
 \begin{align*}
 \sigma_{n}^{2} & =\frac{1}{n}\sum_{i=1}^{n}(x_{i}-\mu)^{2}=\frac{n-1}{n}\frac{1}{n-1}\bigg[\sum_{i=1}^{n-1}(x_{i}-\mu)^{2}+(x_{n}-\mu)^{2}\bigg]\\
@@ -8769,7 +8796,12 @@ s
 \end_layout
 
 \begin_layout Standard
-Using the result in Problem 2.34 we have 
+
+\series bold
+Solution.
+
+\series default
+ Using the result in Problem 2.34 we have 
 \begin_inset Formula 
 \begin{align*}
 \Sigma_{n} & =\frac{1}{n}\sum_{i=1}^{n}(x_{i}-\mu)(x_{i}-\mu)^{T}=\frac{n-1}{n}\frac{1}{n-1}\left[\sum_{i=1}^{n}(x_{i}-\mu)(x_{i}-\mu)^{T}\right]\\
@@ -8835,7 +8867,12 @@ Problem 2.38 - Completion the square for Gaussian bayesian update
 \end_layout
 
 \begin_layout Standard
-Recall that we are given 
+
+\series bold
+Solution.
+
+\series default
+ Recall that we are given 
 \begin_inset Formula 
 \begin{align*}
 f(x_{1},\dots,x_{n}\vert\mu) & =\prod_{i=1}^{n}f(x_{n}\vert\mu)=\frac{1}{(2\pi)^{n/2}\sigma^{2}}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(x_{i}-\mu)^{2}\right);\\
@@ -8945,7 +8982,12 @@ Starting from the results (2.141) and (2.142) for the posterior distribution
 \end_layout
 
 \begin_layout Standard
-Recall that by Eq.(2.141) and Eq.(2.142), we have 
+
+\series bold
+Solution.
+
+\series default
+ Recall that by Eq.(2.141) and Eq.(2.142), we have 
 \begin_inset Formula 
 \[
 \mu_{n}=\frac{\sigma^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\mu_{0}+\frac{n\sigma_{0}^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\mu_{ML}\ \text{and }\frac{1}{\sigma_{n}^{2}}=\frac{1}{\sigma_{0}^{2}}+\frac{n}{\sigma^{2}}=\frac{\sigma^{2}+n\sigma_{0}^{2}}{\sigma_{0}^{2}\sigma^{2}}.
@@ -9090,7 +9132,12 @@ Problem 2.40 - Bayesian update for multivariate gaussian
 \end_layout
 
 \begin_layout Standard
-Note that 
+
+\series bold
+Solution.
+
+\series default
+ Note that 
 \begin_inset Formula 
 \begin{align*}
 f(\mu\vert x_{1},...,x_{n}) & \propto f(\mu\vert\mu_{0},\Sigma_{0})\prod_{i=1}^{n}f(x_{i}\vert\mu,\Sigma)\\
@@ -9156,7 +9203,12 @@ Problem 2.41 - Gamma density is normalized
 \end_layout
 
 \begin_layout Standard
-Recall that the Gamma density with parameter 
+
+\series bold
+Solution.
+
+\series default
+ Recall that the Gamma density with parameter 
 \begin_inset Formula $a,b$
 \end_inset
 
@@ -9217,7 +9269,12 @@ Problem 2.42 - Gamma distribution's mean, mode, variance
 \end_layout
 
 \begin_layout Standard
-To find the mean, note that 
+
+\series bold
+Solution.
+
+\series default
+ To find the mean, note that 
 \begin_inset Formula 
 \begin{align*}
 \E[X] & =\frac{1}{\Gamma(a)}\int_{0}^{\infty}xb^{a}x^{a-1}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}b^{a}x^{a}e^{-bx}dx=\frac{1}{\Gamma(a)}\int_{0}^{\infty}b^{a}\frac{y^{a}}{b^{a}}e^{-y}\frac{1}{b}dy\\
@@ -9633,6 +9690,10 @@ f(\Lambda\vert X_{1},\ldots,X_{n}) & \propto f(X_{1},\ldots,X_{n}\vert\Lambda)f(
 Therefore, we have shown that Wishart distribution is a conjugate prior
  for the precision matrix of multivariate Gaussian.
  
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -9644,7 +9705,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-Problem 2.46 - 
+Problem 2.46 - Verify that evaluating the integral in (2.158) leads to the
+ result (2.159).
+ 
 \end_layout
 
 \end_inset
@@ -9652,6 +9715,66 @@ Problem 2.46 -
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that we have 
+\begin_inset Formula 
+\begin{align*}
+f_{\mathrm{St}(x\vert\mu,\lambda,v)}(x) & =\int_{0}^{\infty}\frac{b^{a}e^{-b\lambda}\lambda^{a-1}}{\Gamma(a)}\biggp{\frac{\lambda}{2\pi}}^{1/2}\exp\biggp{-\frac{\lambda}{2}(x-\mu)^{2}}d\lambda\\
+ & =\frac{b^{a}}{\Gamma(a)}\biggp{\frac{1}{2\pi}}^{1/2}\int_{0}^{\infty}\lambda^{a-1/2}\exp\biggp{-\lambda\biggp{b+\frac{1}{2}(x-\mu)^{2}}}d\lambda.\tag{1}
+\end{align*}
+
+\end_inset
+
+Now, define the homeomorphism 
+\begin_inset Formula $T:[0,\infty)\rightarrow[0,\infty)$
+\end_inset
+
+ by 
+\begin_inset Formula $y\mapsto(b+\frac{1}{2}(x-\mu)^{2})^{-1}y$
+\end_inset
+
+ and apply 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm: transformation thm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we see that 
+\begin_inset Formula 
+\begin{align*}
+\mathrm{Eq}.(1) & =\frac{b^{a}}{\Gamma(a)}\biggp{\frac{1}{2\pi}}^{1/2}\int_{0}^{\infty}y^{a-1/2}\left(b+\frac{1}{2}(x-\mu)\right)^{-a+1/2}\exp(-y)\left(b+\frac{1}{2}(x-\mu)^{2}\right)^{-1}dy\\
+ & =\frac{b^{a}}{\Gamma(a)}\biggp{\frac{1}{2\pi}}^{1/2}\left(b+\frac{1}{2}(x-\mu)\right)^{-a-1/2}\int_{0}^{\infty}y^{a-1/2}\exp(-y)dy.\\
+ & =\frac{\Gamma(a+\frac{1}{2})}{\Gamma(a)}b^{a}\left(\frac{1}{2\pi}\right)^{1/2}\biggp{b+\frac{1}{2}(x-\mu)}^{-a-1/2}\tag{2 }
+\end{align*}
+
+\end_inset
+
+Now we substitute in 
+\begin_inset Formula $a=b=v/2,$
+\end_inset
+
+ we get 
+\begin_inset Formula 
+\begin{align*}
+\mathrm{Eq.}(2) & =\frac{\Gamma(a+\frac{1}{2})}{\Gamma(a)}\biggp{\frac{v}{2}}^{v/2}\biggp{\frac{1}{2\pi}}^{1/2}\biggp{\frac{v}{2}+\frac{1}{2}(x-\mu)}^{-v/2-1/2}\\
+ & =\frac{\Gamma(a+\frac{1}{2})}{\Gamma(a)}\biggp{\frac{v}{2}}^{v/2}\biggp{\frac{1}{2\pi}}^{1/2}\biggp{\frac{v}{2}}^{-v/2-1/2}\biggp{1+\frac{1}{v}(x-\mu)}^{-v/2-1/2}\\
+ & =\frac{\Gamma(a+\frac{1}{2})}{\Gamma(a)}\biggp{\frac{1}{\pi v}}^{1/2}\biggp{1+\frac{1}{v}(x-\mu)}^{-(v+1)/2},
+\end{align*}
+
+\end_inset
+
+as desired.
+ 
+\begin_inset Newline newline
 \end_inset
 
 
@@ -9701,6 +9824,19 @@ Problem 2.47 - Student
 Before, we go into the solution, we need an asymptotic approximation of
  ratio of Gamma function.
  We provide this approximation and give a proof as follows.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Lemma
@@ -9709,14 +9845,6 @@ For any
 \end_inset
 
  we have 
-\begin_inset Formula 
-\[
-\lim_{x\rightarrow\infty}\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}=1.
-\]
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "lem: gamma stirling approximation"
@@ -9724,10 +9852,11 @@ name "lem: gamma stirling approximation"
 \end_inset
 
 
-\end_layout
+\begin_inset Formula 
+\[
+\lim_{x\rightarrow\infty}\frac{\Gamma(x+\alpha)}{\Gamma(x)x^{\alpha}}=1.
+\]
 
-\begin_layout Standard
-\begin_inset Separator plain
 \end_inset
 
 
@@ -9912,6 +10041,17 @@ Let
 
  in total variation, and therefore, also in distribution.
  
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: scheffe'e lemma"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -9930,12 +10070,716 @@ status open
 status open
 
 \begin_layout Plain Layout
-qua
+Problem 2.48 - Multivariate 
+\begin_inset Formula $t$
+\end_inset
+
+-distribution: derivation 
+\end_layout
+
+\end_inset
+
+ By following analogous steps to those used to derive the univariate Student’s
+ 
+\begin_inset Formula $t$
+\end_inset
+
+-distribution (2.159), verify the result (2.162) for the multivariate form
+ of the Student’s 
+\begin_inset Formula $t$
+\end_inset
+
+-distribution, by marginalizing over the variable 
+\begin_inset Formula $\eta$
+\end_inset
+
+ in (2.161).
+ Using the definition (2.161), show by exchanging integration variables that
+ the multivariate 
+\begin_inset Formula $t$
+\end_inset
+
+-distribution is correctly normalized.
+ 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+WLOG, assume we are working in 
+\begin_inset Formula $\mathbb{R}^{d}.$
+\end_inset
+
+ By definition, we have that 
+\begin_inset Formula 
+\begin{align*}
+f_{\mathrm{St}(x\vert\mu,\Lambda,v)}(x) & =\int_{0}^{\infty}f_{\mathrm{MVN}(x\vert\mu,(\eta\Lambda)^{-1})}f_{\mathrm{Gamma}(\eta\vert v/2,v/2)}d\eta\\
+ & =\int_{0}^{\infty}\frac{\det((\eta I)\Lambda)^{1/2}}{(2\pi)^{d/2}}\exp\biggp{-\frac{1}{2}(x-\mu)^{T}(\eta\Lambda)(x-\mu)}\frac{1}{\Gamma(v/2)}\eta^{v/2-1}\biggp{\frac{v}{2}}^{v/2}\exp(-\eta v/2)d\eta\\
+ & =\frac{1}{\Gamma(v/2)}\frac{1}{(2\pi)^{d/2}}\biggp{\frac{v}{2}}^{v/2}\int\eta^{d/2+v/2-1}\exp\biggp{-\eta\left(\frac{(x-\mu)^{T}\Lambda(x-\mu)}{2}+\frac{v}{2}\right)}d\eta\\
+ & =\frac{\left|\det\Lambda\right|^{1/2}}{\Gamma(v/2)}\frac{1}{(2\pi)^{d/2}}\biggp{\frac{v}{2}}^{v/2}\biggp{\frac{(x-\mu)^{T}\Lambda(x-\mu)}{2}+\frac{v}{2}}^{-d/2-v/2}\int\lambda^{d/2+v/2-1}\exp(-\lambda)d\lambda\\
+ & =\frac{\Gamma(v/2+d/2)}{\Gamma(v/2)}\frac{\left|\det\Lambda\right|^{1/2}}{(2\pi)^{d/2}}\biggp{\frac{v}{2}}^{v/2}\biggp{\frac{v}{2}}^{-d/2-v/2}\biggp{\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)+1}^{-d/2-v/2}\\
+ & =\frac{\Gamma(v/2+d/2)}{\Gamma(v/2)}\frac{\left|\det\Lambda\right|^{1/2}}{(\pi v)^{d/2}}\biggp{\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)+1}^{-d/2-v/2}.
+\end{align*}
+
+\end_inset
+
+To see that it normalizes to 
+\begin_inset Formula $1$
+\end_inset
+
+, we note that 
+\begin_inset Formula 
+\begin{align*}
+\int f_{\mathrm{St}(x\vert\mu,\Lambda,v)}(x) & =\int\int f_{\mathrm{MVN}(x\vert\mu,(\eta\Lambda)^{-1})}f_{\mathrm{Gamma}(\eta\vert v/2,v/2)}d\eta dx\\
+ & =\int\biggp{\int f_{\mathrm{MVN}(x\vert\mu,(\eta\Lambda)^{-1})}dx}f_{\mathrm{Gamma}(\eta\vert v/2,v/2)}d\eta\tag{by Fubini's theorem}\\
+ & =\int f_{\mathrm{Gamma}(\eta\vert v/2,v/2)}d\eta=1.
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.49 - Multivariate 
+\begin_inset Formula $t$
+\end_inset
+
+ distribution: mean, variance, mode
+\end_layout
+
+\end_inset
+
+ By using the definition (2.161) of the multivariate Student’s 
+\begin_inset Formula $t$
+\end_inset
+
+-distribution as a convolution of a Gaussian with a gamma distribution,
+ verify the properties (2.164), (2.165), and (2.166) for the multivariate 
+\begin_inset Formula $t$
+\end_inset
+
+-distribution defined by (2.162).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solution.
+
+\series default
+ In the discussion below, we let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a random variable with multivariate 
+\begin_inset Formula $t$
+\end_inset
+
+ distribution.
+ Then for expectation, we note 
+\begin_inset Formula 
+\begin{align*}
+\E[X] & =\int_{\mathbb{R}^{d}}\frac{\Gamma(\frac{d}{2}+\frac{v}{2})}{\Gamma(\frac{v}{2})}\frac{(\det\Lambda)^{1/2}}{(\pi v)^{d/2}}\biggp{1+\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)}^{-d/2-v/2}xdx\\
+ & =\int_{\mathbb{R}^{d}}\biggp{1+\frac{z^{T}\Lambda z}{v}}^{-d/2-v/2}(z+\mu)dz\tag{let \ensuremath{x=z+\mu}}\\
+ & =\frac{\Gamma(\frac{d}{2}+\frac{v}{2})}{\Gamma(\frac{v}{2})}\frac{(\det\Lambda)^{1/2}}{(\pi v)^{d/2}}\int_{\mathbb{R}^{d}}\biggp{1+\frac{z^{T}\Lambda z}{v}}^{-d/2-v/2}zdz+\int_{\mathbb{R}^{d}}f_{\mathrm{St}(z\vert0,\Lambda,v)}(z)\mu dz.
+\end{align*}
+
+\end_inset
+
+Note that using similar argument as in the proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: odd function in multivariate dimension"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we have that 
+\begin_inset Formula $\int_{\mathbb{R}^{d}}(1+\frac{z^{T}\Lambda z}{v})^{-d/2-v/2}zdz=0$
+\end_inset
+
+.
+ Also, we have 
+\begin_inset Formula $\int_{\mathbb{R}^{d}}f_{\mathrm{St}(z\vert0,\Lambda,v)}(z)\mu dz=\mu\int_{\mathbb{R}^{d}}f_{\mathrm{St}(z\vert0,\Lambda,v)}(z)dz=1.$
+\end_inset
+
+ Therefore, it follows that 
+\begin_inset Formula $\E[X]=\mu.$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To find the covariance, we note that 
+\begin_inset Formula 
+\begin{align*}
+\mathrm{Cov}[X] & =\int f_{\mathrm{St}(x\vert\mu,\Lambda,v)}(x)(x-\mu)(x-\mu)^{T}dx\\
+ & =\int\int f_{\mathrm{MVN}(x\vert\mu,(\eta\Lambda)^{-1})}(x)f_{\mathrm{Gamma}(\eta\vert v/2,v/2)}(\eta)d\eta(x-\mu)(x-\mu)^{T}dx\\
+ & =\int\biggp{\int f_{\mathrm{MVN}(x\vert\mu,(\eta\Lambda)^{-1})}(x)(x-\mu)(x-\mu)^{T}dx}f_{\mathrm{Gamma}(\eta\vert v/2,v/2)}(\eta)d\eta\tag{by Fubini's theorem}\\
+ & =\Lambda^{-1}\int\eta^{-1}f_{\mathrm{Gamma}(\eta\vert v/2,v/2)}(\eta)d\eta.\tag{1}
+\end{align*}
+
+\end_inset
+
+To evaluate the Eq.(1), we need an additional lemma regarding moments of
+ Gamma distribution.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be an 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+-valued random variable such that 
+\begin_inset Formula $X\sim\mathrm{Gamma}(a,b).$
+\end_inset
+
+ Then 
+\begin_inset Formula $\E[X^{-1}]=\frac{b}{a-1}.$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: E[1/X] for gamma"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Note that 
+\begin_inset Formula 
+\begin{align*}
+\E[X^{-1}] & =\int_{0}^{\infty}\frac{1}{x}\frac{1}{\Gamma(a)}x^{a-1}b^{a}\exp(-bx)dx\\
+ & =\frac{b\Gamma(a-1)}{\Gamma(a)}\int_{0}^{\infty}\frac{1}{\Gamma(a-1)}x^{(a-1)-1}b^{a-1}\exp(-bx)dx\\
+ & =\frac{b}{a-1}\int_{0}^{\infty}f_{\mathrm{Gamma}(x\vert a-1,b)}(x)dx\\
+ & =\frac{b}{a-1}.
+\end{align*}
+
+\end_inset
+
+as desired.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we come back to the solution.
+ Note that by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: E[1/X] for gamma"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we have that Eq.(1) = 
+\begin_inset Formula $\frac{b}{a-1}$
+\end_inset
+
+ and as a result, 
+\begin_inset Formula 
+\[
+\mathrm{Cov}[X]=\Lambda^{-1}\frac{v/2}{v/2-1}=\frac{v}{v-2}\Lambda^{-1}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now to find node, it suffices for us to find the critical points of the
+ density function.
+ Note that 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial x}f_{\mathrm{St}(x\vert\mu,\Lambda,v)}(x) & =\frac{\partial}{\partial x}\bigg[\frac{\Gamma(\frac{d}{2}+\frac{v}{2})}{\Gamma(\frac{v}{2})}\frac{(\det\Lambda)^{1/2}}{(\pi v)^{d/2}}\biggp{1+\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)}^{-d/2-v/2}\bigg]\\
+ & \propto\frac{\partial}{\partial x}\bigg[\bigg(1+\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)\bigg)^{-d/2-v/2}\bigg]\\
+ & =-\biggp{\frac{d}{2}+\frac{v}{2}}\biggp{1+\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)}^{-d/2-v/2-1}\frac{\partial}{\partial x}[(x-\mu)^{T}\Lambda(x-\mu)]\\
+ & =-2\biggp{\frac{d}{2}+\frac{v}{2}}\biggp{1+\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)}^{-d/2-v/2-1}\Lambda(x-\mu).
+\end{align*}
+
+\end_inset
+
+Setting it to zero:
+\begin_inset Formula 
+\begin{align*}
+\nabla f_{\mathrm{St}(x\vert\mu,\Lambda,v)}(x)=0 & \implies\Lambda(x-\mu)=0\tag{since \ensuremath{-2(\frac{d}{2}+\frac{v}{2})(1+\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)^{-d/2-v/2-1})\neq0}}\\
+ & \implies x=\mu\tag{since \ensuremath{\Lambda\ }is p.s.d thus invertible}.
+\end{align*}
+
+\end_inset
+
+Hence, we have that 
+\begin_inset Formula $\mathrm{mode}[X]=\mu.$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.50 - Multivariate 
+\begin_inset Formula $t$
+\end_inset
+
+ distribution converges to multivariate gaussian as 
+\begin_inset Formula $v\rightarrow\infty$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Show that in the limit 
+\begin_inset Formula $v\rightarrow\infty,$
+\end_inset
+
+ the multivariate Student 
+\begin_inset Formula $t$
+\end_inset
+
+ distribution reduces to a Gaussian with mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and precision 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solution.
+ 
+\series default
+Recall that the multivariate 
+\begin_inset Formula $t$
+\end_inset
+
+ distribution has density of the form 
+\begin_inset Formula 
+\[
+f_{\mathrm{St}(x\vert\mu,\Lambda,v)}(x)=\underbrace{\frac{\Gamma(\frac{d}{2}+\frac{v}{2})}{\Gamma(\frac{v}{2})}\frac{\left|\det\Lambda\right|{}^{1/2}}{(\pi v)^{d/2}}}_{:=\mathcal{H}_{1}(x)}\underbrace{\biggp{1+\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)}^{-d/2-v/2}}_{:=\mathcal{H}_{2}(x)}.
+\]
+
+\end_inset
+
+We massage term by term: 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{H}_{1}(v) & =\frac{\Gamma(\frac{d}{2}+\frac{v}{2})}{\Gamma(\frac{v}{2})(\frac{v}{2})^{d/2}}v^{d/2}2^{-d/2}\frac{\left|\det\Lambda\right|^{1/2}}{\pi^{d/2}}v^{-d/2}\xrightarrow{v\rightarrow\infty}\frac{\left|\det\Lambda\right|^{1/2}}{(2\pi)^{d/2}}\tag{by \ref{lem: gamma stirling approximation}}
+\end{align*}
+
+\end_inset
+
+Also, we have 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{H}_{2}(v) & =\exp\bigg[\log\biggp{1+\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)}^{-d/2-v/2}\bigg]\\
+ & =\exp\left[-\frac{d+v}{2}\log\biggp{1+\frac{1}{v}(x-\mu)^{T}\Lambda(x-\mu)}\right]\\
+ & =\exp\bigg[-\frac{d+v}{2}\biggp{\frac{\Delta^{2}}{v}+O(v^{-2})}\bigg]\\
+ & =\exp\bigg[-\frac{\Delta^{2}}{2}-\underbrace{\frac{d\Delta^{2}}{2}\frac{1}{v}}_{=O(v^{-1})}-\frac{d+v}{2}O(v^{-2})\bigg]\\
+ & =\exp\bigg[-\frac{\Delta^{2}}{2}+O(v^{-1})\bigg]\xrightarrow{v\rightarrow\infty}\exp\left[-\frac{1}{2}(x-\mu)^{T}\Lambda(x-\mu)\right].
+\end{align*}
+
+\end_inset
+
+Combined, we get that 
+\begin_inset Formula 
+\[
+f_{\mathrm{St}(x\vert\mu,\Lambda,v)}(x)\xrightarrow{v\rightarrow\infty}\frac{\det\left|\Lambda\right|^{1/2}}{(2\pi)^{d/2}}\exp\left[-\frac{1}{2}(x-\mu)^{T}\Lambda(x-\mu)\right].
+\]
+
+\end_inset
+
+Then the result follow by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: scheffe'e lemma"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.51 - Verify Eq.
+ (2.177), (2.178), (2.283)
+\end_layout
+
+\end_inset
+
+ The various trigonometric identities used in the discussion of periodic
+ variables in this chapter can be proven easily from the relation 
+\begin_inset Formula 
+\[
+\exp(iA)=\cos A+i\sin A,
+\]
+
+\end_inset
+
+in which 
+\begin_inset Formula $i$
+\end_inset
+
+ is the square root of minus one.
+ By considering the identity 
+\begin_inset Formula 
+\[
+\exp(iA)\exp(-iA)=1,
+\]
+
+\end_inset
+
+prove the result (2.177).
+ Similarly, using the identity 
+\begin_inset Formula 
+\[
+\cos(A-B)=\mathrm{Re}\{\exp(i(A-B))\},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathrm{Re}\{\cdot\}$
+\end_inset
+
+ denotes the real part, prove (2.178).
+ Finally, by using 
+\begin_inset Formula $\sin(A-B)=\mathrm{Im}\{\exp(i(A-B))\}$
+\end_inset
+
+ denotes the imaginary part, prove the result (2.183).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solution.
+
+\series default
+  First, to verify (2.177) we note that 
+\begin_inset Formula 
+\[
+\cos^{2}A+\sin^{2}A=(\cos A+i\sin A)(\cos A-i\sin A)=\exp(iA)\exp(-iA)=1.
+\]
+
+\end_inset
+
+Then, to verify (2.178), we have that 
+\begin_inset Formula 
+\begin{align*}
+\cos(A-B) & =\mathrm{Re}\left\{ \exp(i(A-B))\right\} =\mathrm{Re}\left\{ \exp(iA)\exp(-iB)\right\} \\
+ & =\mathrm{Re}\left\{ (\cos A+i\sin A)(\cos B-i\sin B)\right\} \\
+ & =\cos A\cos B+\sin A\sin B.
+\end{align*}
+
+\end_inset
+
+Finally, to verify (2.183), we have that 
+\begin_inset Formula 
+\begin{align*}
+\sin(A-B) & =\mathrm{Im}\left\{ \exp(i(A-B))\right\} =\mathrm{Im}\{\exp(iA)\exp(-iB)\}\\
+ & =\mathrm{Im}\left\{ (\cos A+i\sin A)(\cos B-i\sin B)\right\} \\
+ & =\sin A\cos B-\cos A\sin B
+\end{align*}
+
+\end_inset
+
+as desired.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.52 - von Mise distribution converge to Gaussian asymptotically
+\end_layout
+
+\end_inset
+
+ For large 
+\begin_inset Formula $m$
+\end_inset
+
+, the von Mises distribution (2.179) becomes sharply peaked around the mode
+ 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ By defining 
+\begin_inset Formula $\xi=m^{1/2}(\theta-\theta_{0})$
+\end_inset
+
+ and making the Taylor expansion of the cosine function given by 
+\begin_inset Formula 
+\[
+\cos\alpha=1-\frac{\alpha^{2}}{2}+O(\alpha^{4})
+\]
+
+\end_inset
+
+show that as 
+\begin_inset Formula $m\rightarrow\infty,$
+\end_inset
+
+ the von Mises distribution tends to a Gaussian.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solution.
+
+\series default
+ We follow the hint to use the substitution 
+\begin_inset Formula $\xi=m^{1/2}(\theta-\theta_{0}),$
+\end_inset
+
+ with which we can write the density of von Mises distribution as 
+\begin_inset Formula 
+\begin{align*}
+f(\theta\vert\theta_{0},m) & =f(\xi)\propto\exp(m\cos(\xi m^{1/2}))\\
+ & =\exp\biggp{m\biggp{1-\frac{1}{2}m^{-1}\xi^{2}+O(m^{-2})}}\\
+ & \propto\exp\biggp{-\frac{\xi^{2}}{2}}=\exp\biggp{-\frac{m(\theta-\theta_{0})^{2}}{2}},
+\end{align*}
+
+\end_inset
+
+and the result follows from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: gaussian completion of squares"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.53 - MLE of von Mises distribution
+\end_layout
+
+\end_inset
+
+ Using the trigonometric identity (2.183), show that solution of (2.182) for
+ 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is given by (2.184).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solution.
+
+\series default
+ Using the formula provided in Eq.(2.183), we can rewrite Eq.(2.182) as 
+\begin_inset Formula 
+\begin{align*}
+\sum_{i=1}^{n}\sin(\theta_{i}-\theta_{0}) & =\sum_{i=1}^{n}(\cos\theta_{0}\sin\theta_{i}-\cos\theta_{i}\sin\theta_{0})\\
+ & =\cos\theta_{0}\biggp{\sum_{i=1}^{n}\sin\theta_{i}}-\sin\theta_{0}\biggp{\sum_{i=1}^{n}\cos\theta_{i}}\\
+ & =0.
+\end{align*}
+
+\end_inset
+
+Rearranging the terms we get 
+\begin_inset Formula 
+\begin{align*}
+\cos\theta_{0}\biggp{\sum_{i=1}^{n}\sin\theta_{i}}=\sin\theta_{0}\biggp{\sum_{i=1}^{n}\cos\theta_{i}} & \implies\tan\theta_{0}=\frac{\sin\theta_{0}}{\cos\theta_{0}}=\frac{\sum_{i=1}^{n}\sin\theta_{i}}{\sum_{i=1}^{n}\cos\theta_{i}}\\
+ & \implies\theta_{0}=\tan^{-1}\left\{ \frac{\sum_{i=1}^{n}\sin\theta_{i}}{\sum_{i=1}^{n}\cos\theta_{i}}\right\} 
+\end{align*}
+
+\end_inset
+
+as desired.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Problem 2.54 - Mode of von Mises distribution
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_inset

@@ -17,6 +17,10 @@ tcolorbox
 multicol
 \end_modules
 \maintain_unincluded_children false
+\begin_local_layout
+Format 66
+PackageOptions tcolorbox most
+\end_local_layout
 \language english
 \language_package default
 \inputencoding auto
@@ -121,6 +125,10 @@ tableofcontents
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
